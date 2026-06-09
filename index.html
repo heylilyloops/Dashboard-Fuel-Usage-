@@ -297,6 +297,12 @@ async function getSiteCSVList(){
   }
 }
 
+// Grup site untuk label peta (agregat)
+const MAP_GROUPS = {
+  'HUB HCI': { color:'#6366f1', sites: s => s.startsWith('HUB HCI'), coord: [-6.209, 106.846] },
+  'HUB AHI': { color:'#6366f1', sites: s => s.startsWith('HUB AHI'), coord: [-6.220, 106.830] },
+};
+
 const SITE_COORDS = {
   'AHI JABABEKA':[-6.320,107.160],'HCI JABABEKA':[-6.325,107.165],'KLS JABABEKA':[-6.330,107.170],
   'HCI CIKUPA':[-6.240,106.520],'SDA':[-7.448,112.718],
@@ -340,10 +346,33 @@ const dpcls=(d,lg)=>d===0?'dpn':(lg?(d<0?'dpg':'dpb'):(d>0?'dpg':'dpb'));
 const isSDC=s=>{const g=grpOf(s);return g&&g.key==='SDC';};
 const csvToSite=f=>f.replace('.csv','').replace(/_/g,' ');
 
+const MONTH_MAP={'jan':0,'feb':1,'mar':2,'apr':3,'mei':4,'may':4,'jun':5,'jul':6,'aug':7,'agu':7,'sep':8,'okt':9,'oct':9,'nov':10,'des':11,'dec':11};
+
 function parseDate(raw){
-  if(!raw) return null;
-  if(raw.includes('/')){const p=raw.split('/');if(p.length===3){const d=new Date(parseInt(p[2]),parseInt(p[0])-1,parseInt(p[1]));return isNaN(d)?null:d;}}
-  const d=new Date(raw+'T00:00:00');return isNaN(d)?null:d;
+  if(!raw||!raw.trim()) return null;
+  const s=raw.trim();
+
+  // Format M/D/YYYY (NDC, Hub)
+  if(s.includes('/')){
+    const p=s.split('/');
+    if(p.length===3){const d=new Date(parseInt(p[2]),parseInt(p[0])-1,parseInt(p[1]));if(!isNaN(d))return d;}
+  }
+
+  // Format "D Mon YYYY" atau "DD Mon YYYY" (TALLO, SDC) atau "D-Mon-YYYY" (TAMORA)
+  const sep=s.includes('-')&&!s.match(/^\d{4}-/)?' ':null;
+  const parts=sep?s.replace(/-/g,' ').split(' '):s.split(' ');
+  if(parts.length===3){
+    const day=parseInt(parts[0]);
+    const mon=MONTH_MAP[parts[1].toLowerCase().substring(0,3)];
+    const year=parseInt(parts[2]);
+    if(!isNaN(day)&&mon!==undefined&&!isNaN(year)){
+      const d=new Date(year,mon,day);
+      if(!isNaN(d))return d;
+    }
+  }
+
+  // Fallback YYYY-MM-DD
+  const d=new Date(s+'T00:00:00');return isNaN(d)?null:d;
 }
 function fRows(rows,s,e){
   const sd=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');ed.setHours(23,59,59,999);
@@ -378,10 +407,21 @@ function splitLine(line){
   for(let i=0;i<line.length;i++){if(line[i]==='"'){inQ=!inQ;}else if(line[i]===','&&!inQ){res.push(cur.trim().replace(/^"|"$/g,''));cur='';}else cur+=line[i];}
   res.push(cur.trim().replace(/^"|"$/g,''));return res;
 }
+function cleanNum(v){
+  if(!v) return 0;
+  // Remove "Rp ", spaces, dots as thousand sep, then parse
+  const s=String(v).replace(/Rp\s*/gi,'').replace(/\./g,'').replace(/,/g,'.').trim();
+  const n=parseFloat(s);
+  return isNaN(n)?0:n;
+}
+
 function csvToRows(text){
   return parseCSV(text).map(r=>({
-    d:r['Delivery Date']||'',f:r["Fuel's Type"]||'Solar',
-    q:pn(r['Qty Fuel']),j:r['Jalur']||'',i:pn(r['BBM IDR'])
+    d:r['Delivery Date']||'',
+    f:r["Fuel's Type"]||r["Fuels Type"]||'Solar',
+    q:cleanNum(r['Qty Fuel']),
+    j:r['Jalur']||'',
+    i:cleanNum(r['BBM IDR'])
   })).filter(r=>r.q>0||r.i>0);
 }
 
@@ -630,90 +670,106 @@ function renderMapLabels(bS,bE,pA,pB){
   const rightEl=document.getElementById('mapLabelsRight');
   if(!mapEl||!svg||!leftEl||!rightEl) return;
 
-  svg.innerHTML='';
-  leftEl.innerHTML='';
-  rightEl.innerHTML='';
+  svg.innerHTML=''; leftEl.innerHTML=''; rightEl.innerHTML='';
 
-  const rect=mapEl.getBoundingClientRect();
-  const mapW=rect.width, mapH=rect.height;
-  const centerLng=118;
+  const mapW=mapEl.offsetWidth, mapH=mapEl.offsetHeight;
 
-  // Compute site data + pixel position
-  const sites=loadedSites.map(site=>{
-    const coords=SITE_COORDS[site];if(!coords)return null;
+  // Build display items — Hub HCI & Hub AHI aggregated, others individual
+  const items=[];
+
+  // Aggregate Hub HCI
+  const hciSites=loadedSites.filter(s=>s.startsWith('HUB HCI'));
+  if(hciSites.length>0){
+    let totalCost=0;
+    hciSites.forEach(s=>{ const r=siteData[s]||[]; const b2=agg(fRows(r,bS,bE),pA,pB); totalCost+=b2.cA; });
+    if(totalCost>0) items.push({label:'HUB HCI',color:'#6366f1',cost:totalCost,coords:[-6.209,106.846],sites:hciSites});
+  }
+
+  // Aggregate Hub AHI
+  const ahiSites=loadedSites.filter(s=>s.startsWith('HUB AHI'));
+  if(ahiSites.length>0){
+    let totalCost=0;
+    ahiSites.forEach(s=>{ const r=siteData[s]||[]; const b2=agg(fRows(r,bS,bE),pA,pB); totalCost+=b2.cA; });
+    if(totalCost>0) items.push({label:'HUB AHI',color:'#6366f1',cost:totalCost,coords:[-6.220,106.830],sites:ahiSites});
+  }
+
+  // All other sites (non-Hub)
+  loadedSites.filter(s=>!s.startsWith('HUB')).forEach(site=>{
+    const coords=SITE_COORDS[site]; if(!coords) return;
     const rows=siteData[site]||[];
     const b2=agg(fRows(rows,bS,bE),pA,pB);
+    if(b2.cA<=0) return; // skip empty
     const grp=grpOf(site);
     const color=grp?grp.color:'#94a3b8';
-    const pt=leafletMap.latLngToContainerPoint(L.latLng(coords[0],coords[1]));
-    return{site,color,cost:b2.cA,pt,isLeft:coords[1]<centerLng};
-  }).filter(Boolean).sort((a,b)=>b.cost-a.cost);
+    items.push({label:site,color,cost:b2.cA,coords,sites:[site]});
+  });
 
-  const leftSites=sites.filter(s=>s.isLeft);
-  const rightSites=sites.filter(s=>!s.isLeft);
+  // Sort by cost desc
+  items.sort((a,b)=>b.cost-a.cost);
 
-  // Label height
-  const LH=36, GAP=4;
+  // Split left/right by longitude 118
+  const leftItems=items.filter(i=>i.coords[1]<118).slice(0,7);
+  const rightItems=items.filter(i=>i.coords[1]>=118).slice(0,7);
+
+  const LH=34, GAP=3;
 
   function renderSide(list, side){
-    const container = side==='left'?leftEl:rightEl;
-    list.forEach((s,i)=>{
-      const labelY = 10 + i*(LH+GAP);
-      const labelW = 130;
+    const container=side==='left'?leftEl:rightEl;
+    list.forEach((item,i)=>{
+      const labelY=10+i*(LH+GAP);
+      const labelW=140;
 
-      // Label div
       const div=document.createElement('div');
       div.style.cssText=`
-        background:${s.color};color:#fff;
+        background:${item.color};color:#fff;
         padding:4px 10px;border-radius:6px;
         font-size:10px;font-weight:700;line-height:1.3;
         cursor:pointer;pointer-events:auto;
         height:${LH}px;display:flex;flex-direction:column;justify-content:center;
-        width:${labelW}px;
+        width:${labelW}px;box-shadow:0 2px 6px rgba(0,0,0,.15);
       `;
-      div.innerHTML=`<div style="font-size:9px;opacity:.85;">${s.site}</div><div style="font-family:'JetBrains Mono',monospace;">${fS(s.cost)}</div>`;
+      div.innerHTML=`<div style="font-size:9px;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.label}</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;">${fS(item.cost)}</div>`;
       div.onmouseover=()=>div.style.opacity='.8';
       div.onmouseout=()=>div.style.opacity='1';
       div.onclick=()=>{
-        const rows2=siteData[s.site]||[];
-        const b2=agg(fRows(rows2,bS,bE),pA,pB);
-        const grp=grpOf(s.site);
-        if(SITE_COORDS[s.site]&&leafletMap) leafletMap.setView(SITE_COORDS[s.site],7,{animate:true});
-        showPopupDirect(s.site,grp,b2,mapW/2-110,60);
+        if(item.sites.length===1){
+          const site=item.sites[0];
+          const rows2=siteData[site]||[];
+          const b2=agg(fRows(rows2,bS,bE),pA,pB);
+          const grp=grpOf(site);
+          if(SITE_COORDS[site]&&leafletMap) leafletMap.setView(SITE_COORDS[site],7,{animate:true});
+          showPopupDirect(site,grp,b2,mapW/2-110,60);
+        } else {
+          // Hub aggregate — navigate ke sidebar insight
+          setView(item.sites[0],'insight');
+        }
       };
       container.appendChild(div);
 
-      // Line coords
-      const markerX=s.pt.x, markerY=s.pt.y;
+      // Line
+      const pt=leafletMap.latLngToContainerPoint(L.latLng(item.coords[0],item.coords[1]));
+      const markerX=pt.x, markerY=pt.y;
       const labelMidY=labelY+LH/2;
+      let lineX1,lineX2;
+      if(side==='left'){ lineX1=10+labelW; lineX2=markerX; }
+      else { lineX1=mapW-10-labelW; lineX2=markerX; }
 
-      let lineX1,lineX2,lineY1=labelMidY,lineY2=markerY;
-      if(side==='left'){
-        lineX1=10+labelW; // right edge of label
-        lineX2=markerX;
-      } else {
-        lineX1=mapW-10-labelW; // left edge of right label
-        lineX2=markerX;
-      }
-
-      // Draw dashed line
       const line=document.createElementNS('http://www.w3.org/2000/svg','line');
-      line.setAttribute('x1',lineX1);line.setAttribute('y1',lineY1);
-      line.setAttribute('x2',lineX2);line.setAttribute('y2',lineY2);
-      line.setAttribute('stroke',s.color);line.setAttribute('stroke-width','1.2');
-      line.setAttribute('stroke-dasharray','4,3');line.setAttribute('opacity','0.7');
+      line.setAttribute('x1',lineX1);line.setAttribute('y1',labelMidY);
+      line.setAttribute('x2',lineX2);line.setAttribute('y2',markerY);
+      line.setAttribute('stroke',item.color);line.setAttribute('stroke-width','1.2');
+      line.setAttribute('stroke-dasharray','4,3');line.setAttribute('opacity','0.65');
       svg.appendChild(line);
 
-      // Dot at marker end
-      const circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
-      circle.setAttribute('cx',lineX2);circle.setAttribute('cy',lineY2);
-      circle.setAttribute('r','3');circle.setAttribute('fill',s.color);
-      svg.appendChild(circle);
+      const dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      dot.setAttribute('cx',lineX2);dot.setAttribute('cy',markerY);
+      dot.setAttribute('r','3');dot.setAttribute('fill',item.color);
+      svg.appendChild(dot);
     });
   }
 
-  renderSide(leftSites,'left');
-  renderSide(rightSites,'right');
+  renderSide(leftItems,'left');
+  renderSide(rightItems,'right');
 }
 
 function showPopup(site,grp,b,e){
