@@ -564,14 +564,16 @@ function rMap(el,bS,bE,pA,pB){
   const mapCard=document.createElement('div');mapCard.className='map-card';
   mapCard.innerHTML=`
     <div class="map-head">
-      <div><div class="map-title">Peta Distribusi BBM</div><div class="map-sub">Klik marker untuk detail site — Periode B: ${fD(bS)} — ${fD(bE)}</div></div>
+      <div><div class="map-title">Peta Distribusi BBM</div><div class="map-sub">Klik label site untuk detail — Periode B: ${fD(bS)} — ${fD(bE)}</div></div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
         ${Object.entries(GROUPS).map(([k,g])=>`<span style="display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:${g.color}"><span style="width:8px;height:8px;border-radius:50%;background:${g.color};display:inline-block;"></span>${g.label}</span>`).join('')}
       </div>
     </div>
-    <div style="display:flex;gap:0;">
-      <div style="position:relative;flex:1;">
-        <div id="leafletMap"></div>
+    <div style="position:relative;width:100%;height:460px;">
+      <div id="leafletMap" style="width:100%;height:100%;"></div>
+      <svg id="mapLines" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:500;"></svg>
+      <div id="mapLabelsLeft" style="position:absolute;top:0;left:0;padding:10px;display:flex;flex-direction:column;gap:4px;z-index:600;pointer-events:none;"></div>
+      <div id="mapLabelsRight" style="position:absolute;top:0;right:0;padding:10px;display:flex;flex-direction:column;gap:4px;z-index:600;pointer-events:none;align-items:flex-end;"></div>
       <div id="sitePopup" style="display:none;position:absolute;z-index:9999;" class="site-popup">
         <div class="popup-header">
           <div>
@@ -582,97 +584,136 @@ function rMap(el,bS,bE,pA,pB){
         </div>
         <div id="popupContent"></div>
       </div>
-      </div>
-      <div id="mapLabels" style="width:170px;min-width:170px;padding:10px 8px;overflow-y:auto;max-height:420px;border-left:1px solid var(--brd);display:flex;flex-direction:column;gap:4px;"></div>
     </div>`;
   sec.appendChild(mapCard);
 
-  // Destroy map kalau container sudah di-replace oleh render ulang
-  if(leafletMap){
-    leafletMap.remove();
-    leafletMap=null;
-    mapMarkers=[];
-  }
+  // Destroy map dulu
+  if(leafletMap){leafletMap.remove();leafletMap=null;mapMarkers=[];}
 
-  requestAnimationFrame(()=>{
-    setTimeout(()=>{
-      const mapEl=document.getElementById('leafletMap');
-      if(!mapEl)return;
-      leafletMap=L.map('leafletMap',{zoomControl:true}).setView([-2.5,118],5);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:18}).addTo(leafletMap);
-      loadedSites.forEach(site=>{
-        const coords=SITE_COORDS[site];if(!coords)return;
-        const rows=siteData[site]||[];
-        const b2=agg(fRows(rows,bS,bE),pA,pB);
-        const grp=grpOf(site);
-        const color=grp?grp.color:'#94a3b8';
-        const icon=L.divIcon({html:`<div style="width:13px;height:13px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);"></div>`,iconSize:[13,13],iconAnchor:[6,6],className:''});
-        const marker=L.marker(coords,{icon}).addTo(leafletMap);
-        marker.bindTooltip(`<b>${site}</b><br>${fS(b2.cA)}`,{permanent:false,direction:'top',className:'bbm-tooltip'});
-        marker.on('click',function(e){showPopup(site,grp,b2,e);});
-        mapMarkers.push(marker);
+  setTimeout(()=>{
+    const mapEl=document.getElementById('leafletMap');
+    if(!mapEl)return;
+    leafletMap=L.map('leafletMap',{zoomControl:true,attributionControl:true}).setView([-2,118],5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:18}).addTo(leafletMap);
+
+    // Plot markers
+    loadedSites.forEach(site=>{
+      const coords=SITE_COORDS[site];if(!coords)return;
+      const rows=siteData[site]||[];
+      const b2=agg(fRows(rows,bS,bE),pA,pB);
+      const grp=grpOf(site);
+      const color=grp?grp.color:'#94a3b8';
+      const icon=L.divIcon({html:`<div style="width:12px;height:12px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);"></div>`,iconSize:[12,12],iconAnchor:[6,6],className:''});
+      const marker=L.marker(coords,{icon}).addTo(leafletMap);
+      marker.on('click',function(e){
+        const b3=agg(fRows(siteData[site]||[],bS,bE),pA,pB);
+        showPopup(site,grp,b3,e);
       });
-      leafletMap.invalidateSize();
-      renderMapLabels(bS,bE,pA,pB);
-    }, 100);
-  });
+      mapMarkers.push({site,marker,color,coords});
+    });
+
+    leafletMap.invalidateSize();
+
+    // After map ready, render labels + lines
+    leafletMap.whenReady(()=>{
+      setTimeout(()=>renderMapLabels(bS,bE,pA,pB),200);
+    });
+    setTimeout(()=>renderMapLabels(bS,bE,pA,pB),400);
+  },100);
 }
 
 function renderMapLabels(bS,bE,pA,pB){
-  const el=document.getElementById('mapLabels');
-  if(!el)return;
-  // Sort by Cost After B desc
-  const siteList=loadedSites.map(site=>{
+  if(!leafletMap) return;
+  const mapEl=document.getElementById('leafletMap');
+  const svg=document.getElementById('mapLines');
+  const leftEl=document.getElementById('mapLabelsLeft');
+  const rightEl=document.getElementById('mapLabelsRight');
+  if(!mapEl||!svg||!leftEl||!rightEl) return;
+
+  svg.innerHTML='';
+  leftEl.innerHTML='';
+  rightEl.innerHTML='';
+
+  const rect=mapEl.getBoundingClientRect();
+  const mapW=rect.width, mapH=rect.height;
+  const centerLng=118;
+
+  // Compute site data + pixel position
+  const sites=loadedSites.map(site=>{
+    const coords=SITE_COORDS[site];if(!coords)return null;
     const rows=siteData[site]||[];
     const b2=agg(fRows(rows,bS,bE),pA,pB);
     const grp=grpOf(site);
-    return{site,grp,cost:b2.cA};
-  }).sort((a,b)=>b.cost-a.cost);
-
-  el.innerHTML=siteList.map(({site,grp,cost})=>{
     const color=grp?grp.color:'#94a3b8';
-    return `<div onclick="showPopupBySite('${site}')" style="
-      background:${color};color:#fff;
-      padding:5px 10px;border-radius:6px;cursor:pointer;
-      transition:opacity .2s;font-size:11px;font-weight:700;
-      line-height:1.3;
-    " onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
-      <div style="font-size:10px;opacity:.85;font-weight:600;">${site}</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;">${fS(cost)}</div>
-    </div>`;
-  }).join('');
-}
+    const pt=leafletMap.latLngToContainerPoint(L.latLng(coords[0],coords[1]));
+    return{site,color,cost:b2.cA,pt,isLeft:coords[1]<centerLng};
+  }).filter(Boolean).sort((a,b)=>b.cost-a.cost);
 
-function showPopupBySite(site){
-  const bS=document.getElementById('bS').value,bE=document.getElementById('bE').value;
-  const pA=getPx('a'),pB=getPx('b');
-  const rows=siteData[site]||[];
-  const b2=agg(fRows(rows,bS,bE),pA,pB);
-  const grp=grpOf(site);
-  // Pan map ke site
-  const coords=SITE_COORDS[site];
-  if(coords&&leafletMap){
-    leafletMap.setView(coords,7,{animate:true});
-    // Fake click event
-    const popup=document.getElementById('sitePopup');
-    const mapEl=document.getElementById('leafletMap');
-    const rect=mapEl.getBoundingClientRect();
-    showPopupDirect(site,grp,b2,rect.width/2-110,60);
+  const leftSites=sites.filter(s=>s.isLeft);
+  const rightSites=sites.filter(s=>!s.isLeft);
+
+  // Label height
+  const LH=36, GAP=4;
+
+  function renderSide(list, side){
+    const container = side==='left'?leftEl:rightEl;
+    list.forEach((s,i)=>{
+      const labelY = 10 + i*(LH+GAP);
+      const labelW = 130;
+
+      // Label div
+      const div=document.createElement('div');
+      div.style.cssText=`
+        background:${s.color};color:#fff;
+        padding:4px 10px;border-radius:6px;
+        font-size:10px;font-weight:700;line-height:1.3;
+        cursor:pointer;pointer-events:auto;
+        height:${LH}px;display:flex;flex-direction:column;justify-content:center;
+        width:${labelW}px;
+      `;
+      div.innerHTML=`<div style="font-size:9px;opacity:.85;">${s.site}</div><div style="font-family:'JetBrains Mono',monospace;">${fS(s.cost)}</div>`;
+      div.onmouseover=()=>div.style.opacity='.8';
+      div.onmouseout=()=>div.style.opacity='1';
+      div.onclick=()=>{
+        const rows2=siteData[s.site]||[];
+        const b2=agg(fRows(rows2,bS,bE),pA,pB);
+        const grp=grpOf(s.site);
+        if(SITE_COORDS[s.site]&&leafletMap) leafletMap.setView(SITE_COORDS[s.site],7,{animate:true});
+        showPopupDirect(s.site,grp,b2,mapW/2-110,60);
+      };
+      container.appendChild(div);
+
+      // Line coords
+      const markerX=s.pt.x, markerY=s.pt.y;
+      const labelMidY=labelY+LH/2;
+
+      let lineX1,lineX2,lineY1=labelMidY,lineY2=markerY;
+      if(side==='left'){
+        lineX1=10+labelW; // right edge of label
+        lineX2=markerX;
+      } else {
+        lineX1=mapW-10-labelW; // left edge of right label
+        lineX2=markerX;
+      }
+
+      // Draw dashed line
+      const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1',lineX1);line.setAttribute('y1',lineY1);
+      line.setAttribute('x2',lineX2);line.setAttribute('y2',lineY2);
+      line.setAttribute('stroke',s.color);line.setAttribute('stroke-width','1.2');
+      line.setAttribute('stroke-dasharray','4,3');line.setAttribute('opacity','0.7');
+      svg.appendChild(line);
+
+      // Dot at marker end
+      const circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      circle.setAttribute('cx',lineX2);circle.setAttribute('cy',lineY2);
+      circle.setAttribute('r','3');circle.setAttribute('fill',s.color);
+      svg.appendChild(circle);
+    });
   }
-}
 
-function showPopupDirect(site,grp,b,x,y){
-  const ipB=b.cA>0?b.dImp/b.cA:0,dpB=b.tQ>0?b.dQ/b.tQ:0;
-  document.getElementById('popupSite').textContent=site;
-  const grpEl=document.getElementById('popupGrp');
-  if(grp){grpEl.textContent=grp.label;grpEl.style.background=grp.color+'22';grpEl.style.color=grp.color;}
-  const rows2=[['Total Liter',fL(b.tQ)],['Dexlite Volume',fL(b.dQ)+' ('+fP(dpB,1)+')'],['Cost After',fS(b.cA)],['Impact Kenaikan',fS(b.dImp)],['% Impact / Cost',fP(ipB)]];
-  let h='<table class="popup-table">';
-  rows2.forEach(([l,v])=>{h+=`<tr><td>${l}</td><td>${v}</td></tr>`;});
-  h+='</table>';
-  document.getElementById('popupContent').innerHTML=h;
-  const popup=document.getElementById('sitePopup');
-  popup.style.left=x+'px';popup.style.top=y+'px';popup.style.display='block';
+  renderSide(leftSites,'left');
+  renderSide(rightSites,'right');
 }
 
 function showPopup(site,grp,b,e){
