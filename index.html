@@ -623,7 +623,32 @@ function rGrp(el,aS,aE,bS,bE,pA,pB){
   });
 }
 
+function isSDC(site){ const grp=grpOf(site); return grp&&grp.key==='SDC'; }
+
 function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
+  // SDC: summary only, no jalur breakdown
+  if(VIEW!=='NASIONAL'&&isSDC(VIEW)){
+    const sec=mSec(el,'Ringkasan Site');
+    const card=mCard(sec,VIEW+' — Summary','Data jalur tidak tersedia untuk site SDC');
+    const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0,ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
+    const dpA=aggA.tQ>0?aggA.dQ/aggA.tQ:0,dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
+    const rows=[
+      ['Total Liter',fL(aggA.tQ),fL(aggB.tQ)],
+      ['Dexlite Volume',fL(aggA.dQ),fL(aggB.dQ)],
+      ['Dexlite % Vol',fP(dpA),fP(dpB)],
+      ['Cost Before',fS(aggA.cB),fS(aggB.cB)],
+      ['Cost After',fS(aggA.cA),fS(aggB.cA)],
+      ['Impact Kenaikan',fS(aggA.dImp),fS(aggB.dImp)],
+      ['% Impact / Cost',fP(ipA),fP(ipB)],
+      ['Total Trip',aggA.trip.toLocaleString('id-ID'),aggB.trip.toLocaleString('id-ID')],
+    ];
+    let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Periode A</th><th style="color:#f59e0b">Periode B</th></tr></thead><tbody>`;
+    rows.forEach(([m,va,vb])=>{ h+=`<tr><td class="em">${m}</td><td class="ea">${va}</td><td class="eb">${vb}</td></tr>`; });
+    h+='</tbody></table>';
+    card.innerHTML+=h;
+    return;
+  }
+
   if(VIEW==='NASIONAL'){
     const sec=mSec(el,'Detail per Site');
     const card=mCard(sec,'Semua Site — Klik nama site untuk drill down','');
