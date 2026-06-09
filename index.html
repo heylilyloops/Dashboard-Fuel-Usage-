@@ -274,17 +274,28 @@ const GROUPS = {
   SDC:{label:'SDC',color:'#f97316',sites:['SDC BATAM','SDC SAMARINDA','SDC P PINANG','SDC PONTIANAK','SDC TARAKAN','SDC BANJARMASIN','SDC MANADO','SDC MALUKU','SDC KENDARI','SDC TERNATE','SDC SORONG','SDC ABEPURA','SDC PALU','SDC NAGOYA']}
 };
 
-const KNOWN_CSV = [
-  'AHI_JABABEKA.csv','HCI_JABABEKA.csv','KLS_JABABEKA.csv','HCI_CIKUPA.csv',
-  'SDA.csv','TALLO.csv','TAMORA.csv',
-  'HUB_HCI.csv','HUB_AHI.csv','HUB_HCI_BOGOR.csv','HUB_HCI_TANGERANG.csv',
-  'HUB_HCI_UTARA.csv','HUB_HCI_BANDUNG.csv','HUB_HCI_TASIK.csv',
-  'HUB_HCI_SEMARANG.csv','HUB_HCI_YOGYA.csv','HUB_HCI_LAMPUNG.csv','HUB_HCI_PALEMBANG.csv',
-  'SDC_BATAM.csv','SDC_SAMARINDA.csv','SDC_P_PINANG.csv','SDC_PONTIANAK.csv',
-  'SDC_TARAKAN.csv','SDC_BANJARMASIN.csv','SDC_MANADO.csv','SDC_MALUKU.csv',
-  'SDC_KENDARI.csv','SDC_TERNATE.csv','SDC_SORONG.csv','SDC_ABEPURA.csv',
-  'SDC_PALU.csv','SDC_NAGOYA.csv'
-];
+const GITHUB_API = 'https://api.github.com/repos/heylilyloops/Dashboard-Fuel-Usage-/contents/data';
+
+async function getSiteCSVList(){
+  try{
+    const resp = await fetch(GITHUB_API);
+    if(!resp.ok) throw new Error('API error');
+    const files = await resp.json();
+    return files
+      .filter(f => f.name.endsWith('.csv') && f.name !== '.gitkeep')
+      .map(f => f.name);
+  } catch(e){
+    console.warn('GitHub API fallback:', e);
+    // Fallback ke list hardcoded kalau API gagal
+    return [
+      'AHI_JABABEKA.csv','HCI_JABABEKA.csv','KLS_JABABEKA.csv','HCI_CIKUPA.csv',
+      'SDA.csv','TALLO.csv','TAMORA.csv',
+      'HUB_HCI.csv','HUB_AHI.csv','HUB_HCI_BOGOR.csv','HUB_HCI_TANGERANG.csv',
+      'SDC_BATAM.csv','SDC_SAMARINDA.csv','SDC_PONTIANAK.csv','SDC_BANJARMASIN.csv',
+      'SDC_MANADO.csv','SDC_KENDARI.csv','SDC_PALU.csv','SDC_NAGOYA.csv'
+    ];
+  }
+}
 
 const SITE_COORDS = {
   'AHI JABABEKA':[-6.320,107.160],'HCI JABABEKA':[-6.325,107.165],'KLS JABABEKA':[-6.330,107.170],
@@ -384,7 +395,10 @@ async function loadAll(){
   document.getElementById('stx').textContent='Memuat...';
   siteData={};loadedSites=[];
   let loaded=0;
-  await Promise.allSettled(KNOWN_CSV.map(async csv=>{
+  document.getElementById('lo-sub').textContent='Mengambil daftar site...';
+  const csvList = await getSiteCSVList();
+  document.getElementById('lo-sub').textContent=`0 / ${csvList.length} site...`;
+  await Promise.allSettled(csvList.map(async csv=>{
     try{
       const resp=await fetch(`${REPO_BASE}/${csv}`);
       if(!resp.ok)throw new Error('404');
