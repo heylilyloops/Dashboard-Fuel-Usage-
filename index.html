@@ -9,10 +9,20 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#f0f3f9;--sur:#fff;--sur2:#f7f8fc;--brd:#e2e8f0;--nv:#0f2057;--nv2:#1a3380;--ac:#e8a020;--a2:#2563eb;--tx:#1a2035;--mu:#64748b;--sw:220px;--th:52px;}
+:root{
+  --bg:#f0f3f9;--sur:#fff;--sur2:#f7f8fc;--brd:#e2e8f0;
+  --nv:#0f2057;--nv2:#1a3380;--nv3:#243fa0;
+  --ac:#e8a020;--a2:#2563eb;--tx:#1a2035;--mu:#64748b;
+  --sw:220px;--th:52px;
+}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--tx);font-family:'Plus Jakarta Sans',sans-serif;min-height:100vh;}
-.tb{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--th);background:linear-gradient(135deg,var(--nv),var(--nv2));display:flex;align-items:center;padding:0 16px 0 0;box-shadow:0 2px 16px rgba(15,32,87,.3);}
+
+/* TOPBAR */
+.tb{position:fixed;top:0;left:0;right:0;z-index:300;height:var(--th);
+  background:linear-gradient(135deg,var(--nv),var(--nv2));
+  display:flex;align-items:center;padding:0 16px 0 0;
+  box-shadow:0 2px 16px rgba(15,32,87,.3);}
 .tb-br{width:var(--sw);min-width:var(--sw);display:flex;align-items:center;gap:10px;padding:0 16px;border-right:1px solid rgba(255,255,255,.1);}
 .tb-lg{background:var(--ac);color:#fff;font-weight:800;font-size:11px;letter-spacing:2px;padding:4px 8px;border-radius:5px;}
 .tb-ti{color:#fff;font-weight:700;font-size:13px;line-height:1.2;}
@@ -25,18 +35,18 @@ body{background:var(--bg);color:var(--tx);font-family:'Plus Jakarta Sans',sans-s
 input[type=date]{background:transparent;border:none;color:#fff;font-size:11px;font-family:'JetBrains Mono',monospace;outline:none;cursor:pointer;width:100px;}
 input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.6;cursor:pointer;}
 .ps{color:rgba(255,255,255,.3);font-size:11px;}
-.btn{background:var(--ac);color:#fff;border:none;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:5px;}
+.btn{background:var(--ac);color:#fff;border:none;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;white-space:nowrap;}
 .btn:hover{background:#d4901a;}
 .btn:disabled{opacity:.5;cursor:not-allowed;}
 .btn-g{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:6px;font-size:11px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;}
 .btn-g:hover{background:rgba(255,255,255,.2);}
 .btn-mode{background:transparent;color:rgba(255,255,255,.6);border:none;padding:4px 10px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;}
 .btn-mode.active{background:var(--ac);color:#fff;}
-
 .sdot{width:7px;height:7px;border-radius:50%;background:#475569;transition:background .3s;}
 .sdot.ok{background:#10b981;}.sdot.err{background:#ef4444;}.sdot.loading{background:#f59e0b;animation:pulse 1s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 .stx{font-size:10px;color:rgba(255,255,255,.5);font-family:'JetBrains Mono',monospace;white-space:nowrap;}
+
 /* LOADING */
 .lo{display:none;position:fixed;inset:0;background:rgba(15,32,87,.75);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:12px;}
 .lo.show{display:flex;}
@@ -44,7 +54,8 @@ input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.6;
 @keyframes spin{to{transform:rotate(360deg);}}
 .lo-txt{color:#fff;font-size:13px;font-weight:600;}
 .lo-sub{color:rgba(255,255,255,.6);font-size:11px;font-family:'JetBrains Mono',monospace;}
-/* MODAL */
+
+/* MODAL HARGA */
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;align-items:center;justify-content:center;}
 .mo.show{display:flex;}
 .mdl{background:var(--sur);border-radius:14px;padding:26px;width:480px;max-width:95vw;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);}
@@ -61,28 +72,34 @@ input[type=number]{background:var(--sur2);border:1px solid var(--brd);color:var(
 .ma{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;padding-top:12px;border-top:1px solid var(--brd);}
 .btn-sv{background:var(--nv);color:#fff;border:none;padding:8px 20px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
 .btn-cn{background:var(--sur2);color:var(--mu);border:1px solid var(--brd);padding:8px 14px;border-radius:7px;font-size:12px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;}
+
 /* SIDEBAR */
 .sb{position:fixed;top:var(--th);left:0;bottom:0;width:var(--sw);background:var(--nv);overflow-y:auto;overflow-x:hidden;border-right:1px solid rgba(255,255,255,.06);z-index:200;}
 .sb::-webkit-scrollbar{width:3px;}.sb::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);}
-.sg{padding:7px 0 2px;}
-.sg-l{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:0 14px 4px;display:flex;align-items:center;gap:6px;}
+.sb-section{padding:10px 14px 4px;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);}
+.sg{padding:2px 0;}
+.sg-l{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:6px 14px 3px;display:flex;align-items:center;gap:6px;}
 .sg-l::before{content:'';width:3px;height:10px;border-radius:2px;background:var(--gc,rgba(255,255,255,.2));}
-.si{display:flex;align-items:center;gap:8px;padding:6px 14px;cursor:pointer;transition:all .15s;border-left:3px solid transparent;}
+.si{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;transition:all .15s;border-left:3px solid transparent;}
 .si:hover{background:rgba(255,255,255,.06);}
 .si.active{background:rgba(255,255,255,.1);border-left-color:var(--ac);}
 .si-d{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
 .si-n{font-size:11px;font-weight:600;color:rgba(255,255,255,.7);}
 .si.active .si-n{color:#fff;}
 .si-c{margin-left:auto;font-size:9px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.4);padding:1px 5px;border-radius:3px;font-family:'JetBrains Mono',monospace;}
-.sd{height:1px;background:rgba(255,255,255,.06);margin:3px 0;}
+.sd{height:1px;background:rgba(255,255,255,.06);margin:4px 0;}
+
 /* MAIN */
 .main{margin-top:var(--th);margin-left:var(--sw);padding:20px 24px;}
+
+/* PAGE TITLE */
 .pt{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
 .pt-t{font-size:18px;font-weight:800;color:var(--nv);}
 .pt-t span{font-size:12px;font-weight:500;color:var(--mu);margin-left:8px;}
 .pcs{display:flex;gap:6px;}
 .chip{font-size:10px;font-weight:700;padding:3px 10px;border-radius:5px;font-family:'JetBrains Mono',monospace;}
 .ca{background:#dbeafe;color:#1e40af;}.cb{background:#fef3c7;color:#92400e;}
+
 /* KPI */
 .kg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
 .kc{background:var(--sur);border:1px solid var(--brd);border-radius:10px;padding:14px 16px;position:relative;overflow:hidden;}
@@ -94,6 +111,26 @@ input[type=number]{background:var(--sur2);border:1px solid var(--brd);color:var(
 .ksp{font-size:11px;color:var(--brd);}
 .kd{display:inline-flex;align-items:center;font-size:9px;font-weight:700;font-family:'JetBrains Mono',monospace;padding:2px 6px;border-radius:4px;}
 .dg{background:#dcfce7;color:#166534;}.db2{background:#fee2e2;color:#991b1b;}.dn{background:#f1f5f9;color:#64748b;}
+
+/* MAP */
+.map-card{background:var(--sur);border:1px solid var(--brd);border-radius:12px;overflow:hidden;margin-bottom:0;}
+.map-head{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--brd);}
+.map-title{font-size:12px;font-weight:700;color:var(--tx);}
+.map-sub{font-size:10px;color:var(--mu);margin-top:2px;}
+#leafletMap{width:100%;height:420px;}
+.bbm-tooltip{background:#1a2035!important;color:#fff!important;border:none!important;border-radius:6px!important;font-family:'Plus Jakarta Sans',sans-serif!important;font-size:11px!important;padding:6px 10px!important;}
+.bbm-tooltip::before{border-top-color:#1a2035!important;}
+.site-popup{position:absolute;z-index:9999;background:#fff;border:1px solid var(--brd);border-radius:10px;padding:14px 16px;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,.15);pointer-events:auto;}
+.popup-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;}
+.popup-close{background:none;border:none;cursor:pointer;color:var(--mu);font-size:14px;line-height:1;padding:0;}
+.popup-site{font-size:13px;font-weight:800;color:var(--nv);margin-bottom:3px;}
+.gb{display:inline-block;font-size:9px;font-weight:800;padding:2px 6px;border-radius:3px;}
+.popup-table{width:100%;border-collapse:collapse;}
+.popup-table td{padding:4px 0;font-size:11px;}
+.popup-table td:last-child{font-family:'JetBrains Mono',monospace;font-weight:700;text-align:right;color:var(--tx);}
+.popup-table td:first-child{font-size:10px;color:var(--mu);font-weight:600;}
+
+/* SECTION */
 .sec{margin-bottom:22px;}
 .sh{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .sh::after{content:'';flex:1;height:1px;background:var(--brd);}
@@ -104,20 +141,20 @@ input[type=number]{background:var(--sur2);border:1px solid var(--brd);color:var(
 .g2{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-bottom:16px;}
 .g2b{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
 canvas{max-height:240px;}
+
+/* TABLE */
 .tw{overflow-x:auto;}
 table.t{width:100%;border-collapse:collapse;}
 table.t th{background:var(--sur2);font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--mu);padding:7px 10px;text-align:left;border-bottom:1px solid var(--brd);white-space:nowrap;}
 table.t td{padding:7px 10px;font-size:11px;border-bottom:1px solid var(--brd);white-space:nowrap;}
 table.t tr:last-child td{border-bottom:none;}
 table.t tr:hover td{background:var(--sur2);}
-table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var(--brd);}
 .mn{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;}
 .tb2{font-weight:700;font-size:12px;}
 .dp{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;}
 .dpg{background:#dcfce7;color:#166534;}.dpb{background:#fee2e2;color:#991b1b;}.dpn{background:#f1f5f9;color:#64748b;}
 .fc{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;}
 .fcs{background:#fef3c7;color:#92400e;}.fcd{background:#fee2e2;color:#991b1b;}.fcp{background:#dbeafe;color:#1e40af;}.fcx{background:#ede9fe;color:#5b21b6;}
-.gb{display:inline-block;font-size:9px;font-weight:800;padding:2px 6px;border-radius:3px;}
 .et{width:100%;border-collapse:collapse;}
 .et th{font-size:9px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--mu);padding:6px 10px;text-align:left;border-bottom:1px solid var(--brd);}
 .et td{padding:8px 10px;font-size:11px;border-bottom:1px solid var(--brd);}
@@ -138,17 +175,11 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
 .rn{font-size:22px;font-weight:800;color:var(--brd);font-family:'JetBrains Mono',monospace;line-height:1.1;flex-shrink:0;}
 .rt{font-size:11px;font-weight:800;color:var(--nv);margin-bottom:3px;}
 .rb{font-size:10px;color:var(--mu);line-height:1.6;}
-.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:12px;color:var(--mu);}
-.empty-icon{font-size:48px;opacity:.3;}
-.empty-title{font-size:15px;font-weight:700;color:var(--tx);}
-.empty-sub{font-size:12px;text-align:center;line-height:1.7;}
+
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--brd);border-radius:3px;}
 @media(max-width:1100px){.kg{grid-template-columns:repeat(2,1fr);}.g3,.g2,.g2b{grid-template-columns:1fr;}.tg{grid-template-columns:1fr 1fr;}.rg{grid-template-columns:1fr;}}
-
-.bbm-tooltip { background:#1a2035!important; color:#fff!important; border:none!important; border-radius:6px!important; font-family:'Plus Jakarta Sans',sans-serif!important; font-size:11px!important; padding:6px 10px!important; }
-.bbm-tooltip::before { border-top-color:#1a2035!important; }
 </style>
 </head>
 <body>
@@ -163,34 +194,6 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   ConnectOne
 </a>
-
-
-<!-- MAP MODAL -->
-<div class="mo" id="moMap" style="align-items:flex-start;padding-top:60px;">
-<div class="mdl" style="width:900px;max-width:96vw;max-height:80vh;">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-    <div>
-      <div style="font-size:15px;font-weight:800;color:var(--nv);">🗺️ Sebaran Site BBM Nasional</div>
-      <div style="font-size:10px;color:var(--mu);margin-top:2px;" id="mapPeriodLabel">—</div>
-    </div>
-    <button class="btn-cn" onclick="closeMap()">✕ Tutup</button>
-  </div>
-  <div id="mapContainer" style="width:100%;height:460px;border-radius:10px;overflow:hidden;border:1px solid var(--brd);position:relative;">
-    <div id="leafletMap" style="width:100%;height:100%;"></div>
-  </div>
-  <!-- POPUP -->
-  <div id="sitePopup" style="display:none;position:absolute;z-index:9999;background:#fff;border:1px solid var(--brd);border-radius:10px;padding:14px 16px;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,.15);">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-      <div>
-        <div style="font-size:13px;font-weight:800;color:var(--nv);" id="popupSite">—</div>
-        <span id="popupGrp" style="font-size:9px;font-weight:800;padding:2px 6px;border-radius:3px;"></span>
-      </div>
-      <button onclick="document.getElementById('sitePopup').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--mu);font-size:14px;">✕</button>
-    </div>
-    <div id="popupContent"></div>
-  </div>
-</div>
-</div>
 
 <!-- LOADING -->
 <div class="lo" id="lo">
@@ -228,7 +231,8 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
 
 <!-- TOPBAR -->
 <div class="tb">
-  <div class="tb-br"><div class="tb-lg">BBM</div>
+  <div class="tb-br">
+    <div class="tb-lg">BBM</div>
     <div><div class="tb-ti">Dashboard BBM</div><div class="tb-su">Nasional 2026</div></div>
   </div>
   <div class="tb-c">
@@ -238,7 +242,7 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
     <div class="pw"><span class="pd pdb"></span><span class="pl">B</span>
       <input type="date" id="bS" value="2026-05-01"><span class="ps">—</span><input type="date" id="bE" value="2026-05-31">
     </div>
-    <button class="btn" onclick="render()" id="btnRender">▶ Terapkan</button>
+    <button class="btn" onclick="render()">▶ Terapkan</button>
     <div style="display:flex;gap:3px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:3px;">
       <button class="btn-mode active" id="btnFull" onclick="setMode('full')">Full Month</button>
       <button class="btn-mode" id="btnMTD" onclick="setMode('mtd')">MTD</button>
@@ -247,22 +251,15 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
   <div class="tb-r">
     <div style="display:flex;align-items:center;gap:5px;"><div class="sdot" id="sdot"></div><div class="stx" id="stx">Memuat...</div></div>
     <button class="btn-g" onclick="openMo()">⚙️ Harga BBM</button>
-    <button class="btn-g" onclick="toggleMap()" id="btnMap">🗺️ Peta</button>
-    <button class="btn" onclick="loadAll()" id="btnLoad" style="background:rgba(255,255,255,.15);">↻ Reload</button>
+    <button class="btn-g" onclick="loadAll()" id="btnLoad">↻ Reload</button>
   </div>
 </div>
 
 <!-- SIDEBAR -->
 <div class="sb" id="sb"></div>
+
 <!-- MAIN -->
-<div class="main" id="main">
-  <div class="empty" id="emptyState">
-    <div class="empty-icon">⛽</div>
-    <div class="empty-title">Memuat data dari GitHub...</div>
-    <div class="empty-sub">Mengambil data semua site</div>
-  </div>
-  <div id="dashArea" style="display:none;"></div>
-</div>
+<div class="main" id="main"></div>
 
 <script>
 // ============================================================
@@ -270,29 +267,52 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
 // ============================================================
 const REPO_BASE = 'https://raw.githubusercontent.com/heylilyloops/Dashboard-Fuel-Usage-/main/data';
 
-// Mapping site → group (hardcoded, tambah site baru di sini)
 const GROUPS = {
   NDC:{label:'NDC',color:'#eab308',sites:['AHI JABABEKA','HCI JABABEKA','KLS JABABEKA','HCI CIKUPA','SDA']},
   RDC:{label:'RDC',color:'#06b6d4',sites:['TALLO','TAMORA']},
-  HUB:{label:'Hub',color:'#6366f1',sites:['HUB HCI','HUB AHI','HUB HCI BOGOR','HUB HCI TANGERANG']},
+  HUB:{label:'Hub',color:'#6366f1',sites:['HUB HCI','HUB AHI','HUB HCI BOGOR','HUB HCI TANGERANG','HUB HCI UTARA','HUB HCI BANDUNG','HUB HCI TASIK','HUB HCI SEMARANG','HUB HCI YOGYA','HUB HCI LAMPUNG','HUB HCI PALEMBANG']},
   SDC:{label:'SDC',color:'#f97316',sites:['SDC BATAM','SDC SAMARINDA','SDC P PINANG','SDC PONTIANAK','SDC TARAKAN','SDC BANJARMASIN','SDC MANADO','SDC MALUKU','SDC KENDARI','SDC TERNATE','SDC SORONG','SDC ABEPURA','SDC PALU','SDC NAGOYA']}
 };
 
-// CSV filename → Site display name
-// Script Python export pakai nama sheet UPPERCASE + underscore
-// Mapping otomatis: AHI_JABABEKA.csv → "AHI JABABEKA"
-function csvToSiteName(filename){ return filename.replace('.csv','').replace(/_/g,' '); }
-function siteToCSV(site){ return site.replace(/ /g,'_')+'.csv'; }
+const KNOWN_CSV = [
+  'AHI_JABABEKA.csv','HCI_JABABEKA.csv','KLS_JABABEKA.csv','HCI_CIKUPA.csv',
+  'SDA.csv','TALLO.csv','TAMORA.csv',
+  'HUB_HCI.csv','HUB_AHI.csv','HUB_HCI_BOGOR.csv','HUB_HCI_TANGERANG.csv',
+  'HUB_HCI_UTARA.csv','HUB_HCI_BANDUNG.csv','HUB_HCI_TASIK.csv',
+  'HUB_HCI_SEMARANG.csv','HUB_HCI_YOGYA.csv','HUB_HCI_LAMPUNG.csv','HUB_HCI_PALEMBANG.csv',
+  'SDC_BATAM.csv','SDC_SAMARINDA.csv','SDC_P_PINANG.csv','SDC_PONTIANAK.csv',
+  'SDC_TARAKAN.csv','SDC_BANJARMASIN.csv','SDC_MANADO.csv','SDC_MALUKU.csv',
+  'SDC_KENDARI.csv','SDC_TERNATE.csv','SDC_SORONG.csv','SDC_ABEPURA.csv',
+  'SDC_PALU.csv','SDC_NAGOYA.csv'
+];
+
+const SITE_COORDS = {
+  'AHI JABABEKA':[-6.320,107.160],'HCI JABABEKA':[-6.325,107.165],'KLS JABABEKA':[-6.330,107.170],
+  'HCI CIKUPA':[-6.240,106.520],'SDA':[-7.448,112.718],
+  'TALLO':[-5.100,119.410],'TAMORA':[3.595,98.672],
+  'HUB HCI':[-6.209,106.846],'HUB AHI':[-6.220,106.830],
+  'HUB HCI BOGOR':[-6.597,106.806],'HUB HCI TANGERANG':[-6.178,106.630],
+  'HUB HCI UTARA':[-6.150,106.870],'HUB HCI BANDUNG':[-6.914,107.609],
+  'HUB HCI TASIK':[-7.327,108.214],'HUB HCI SEMARANG':[-6.993,110.420],
+  'HUB HCI YOGYA':[-7.795,110.369],'HUB HCI LAMPUNG':[-5.452,105.261],
+  'HUB HCI PALEMBANG':[-2.916,104.745],
+  'SDC BATAM':[1.130,104.053],'SDC SAMARINDA':[-0.502,117.154],
+  'SDC P PINANG':[-2.132,106.117],'SDC PONTIANAK':[-0.026,109.343],
+  'SDC TARAKAN':[3.317,117.578],'SDC BANJARMASIN':[-3.319,114.594],
+  'SDC MANADO':[1.475,124.842],'SDC MALUKU':[-3.695,128.181],
+  'SDC KENDARI':[-3.999,122.513],'SDC TERNATE':[0.790,127.386],
+  'SDC SORONG':[-0.876,131.256],'SDC ABEPURA':[-2.592,140.652],
+  'SDC PALU':[-0.900,119.878],'SDC NAGOYA':[1.135,104.058],
+};
 
 const FUELS=['Solar','Dexlite','Pertalite','Pertamax'];
 const FC={Solar:'#f59e0b',Dexlite:'#ef4444',Pertalite:'#3b82f6',Pertamax:'#8b5cf6'};
 const FMAP={'bio solar':'Solar','solar':'Solar','biosolar':'Solar','dexlite':'Dexlite','pertalite':'Pertalite','pertamax':'Pertamax'};
 const normF=f=>FMAP[(f||'').toLowerCase().trim()]||(f||'Solar');
 
-let siteData={};   // { 'AHI JABABEKA': [rows], ... }
-let loadedSites=[]; // site names yang berhasil di-load
-let VIEW='NASIONAL';
-let CH={};
+let siteData={}, loadedSites=[];
+let VIEW='NASIONAL', PAGE='overview'; // PAGE: 'overview' | 'insight'
+let CH={}, leafletMap=null, mapMarkers=[];
 
 // ============================================================
 // UTILS
@@ -306,32 +326,22 @@ const grpOf=s=>{for(const[k,g]of Object.entries(GROUPS))if(g.sites.includes(s))r
 const getPx=p=>{const x=p==='a'?'pa':'pb';return{Solar:pn(document.getElementById(x+'_s').value)||6800,Dexlite:pn(document.getElementById(x+'_d').value)||14300,Pertalite:pn(document.getElementById(x+'_p').value)||10000,Pertamax:pn(document.getElementById(x+'_x').value)||12300};};
 const dcls=(d,lg)=>d===0?'dn':(lg?(d<0?'dg':'db2'):(d>0?'dg':'db2'));
 const dpcls=(d,lg)=>d===0?'dpn':(lg?(d<0?'dpg':'dpb'):(d>0?'dpg':'dpb'));
+const isSDC=s=>{const g=grpOf(s);return g&&g.key==='SDC';};
+const csvToSite=f=>f.replace('.csv','').replace(/_/g,' ');
 
-// Parse tanggal M/D/YYYY dari G.Sheets
 function parseDate(raw){
   if(!raw) return null;
-  if(raw.includes('/')){
-    const p=raw.split('/');
-    if(p.length===3){
-      const d=new Date(parseInt(p[2]),parseInt(p[0])-1,parseInt(p[1]));
-      return isNaN(d)?null:d;
-    }
-  }
-  // fallback YYYY-MM-DD
-  const d=new Date(raw+'T00:00:00');
-  return isNaN(d)?null:d;
+  if(raw.includes('/')){const p=raw.split('/');if(p.length===3){const d=new Date(parseInt(p[2]),parseInt(p[0])-1,parseInt(p[1]));return isNaN(d)?null:d;}}
+  const d=new Date(raw+'T00:00:00');return isNaN(d)?null:d;
 }
-
 function fRows(rows,s,e){
   const sd=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');ed.setHours(23,59,59,999);
   return rows.filter(r=>{const d=parseDate(r.d);return d&&d>=sd&&d<=ed;});
 }
-
 function agg(rows,pOld,pNew){
-  const bF={},bJ={};
-  let tQ=0,cB=0,cA=0,dQ=0,dcA=0;
+  const bF={},bJ={};let tQ=0,cB=0,cA=0,dQ=0,dcA=0;
   rows.forEach(r=>{
-    const f=normF(r.f),q=pn(r.q),j=(r.j||'Unknown').trim();
+    const f=normF(r.f),q=pn(r.q),j=(r.j||'').trim()||'—';
     const po=pOld[f]||0,pn2=pNew[f]||0;
     tQ+=q;cB+=q*po;cA+=q*pn2;
     if(f==='Dexlite'){dQ+=q;dcA+=q*pn2;}
@@ -345,101 +355,76 @@ function agg(rows,pOld,pNew){
   return{bF,bJ,tQ,cB,cA,imp:cA-cB,dQ,dImp:dcA-dcB,dcA,trip:rows.length};
 }
 
-// ============================================================
-// CSV PARSER
-// ============================================================
+// CSV
 function parseCSV(text){
   const lines=text.split(/\r?\n/).filter(l=>l.trim());
-  if(!lines.length) return [];
+  if(!lines.length)return[];
   const headers=splitLine(lines[0]);
-  return lines.slice(1).map(l=>{
-    const v=splitLine(l);
-    const r={};
-    headers.forEach((h,i)=>r[h.trim()]=v[i]||'');
-    return r;
-  }).filter(r=>Object.values(r).some(v=>v.trim()));
+  return lines.slice(1).map(l=>{const v=splitLine(l);const r={};headers.forEach((h,i)=>r[h.trim()]=v[i]||'');return r;}).filter(r=>Object.values(r).some(v=>v.trim()));
 }
 function splitLine(line){
-  const res=[]; let cur=''; let inQ=false;
-  for(let i=0;i<line.length;i++){
-    if(line[i]==='"'){inQ=!inQ;}
-    else if(line[i]===','&&!inQ){res.push(cur.trim().replace(/^"|"$/g,''));cur='';}
-    else cur+=line[i];
-  }
-  res.push(cur.trim().replace(/^"|"$/g,''));
-  return res;
+  const res=[];let cur='';let inQ=false;
+  for(let i=0;i<line.length;i++){if(line[i]==='"'){inQ=!inQ;}else if(line[i]===','&&!inQ){res.push(cur.trim().replace(/^"|"$/g,''));cur='';}else cur+=line[i];}
+  res.push(cur.trim().replace(/^"|"$/g,''));return res;
 }
 function csvToRows(text){
   return parseCSV(text).map(r=>({
-    d: r['Delivery Date']||'',
-    f: r["Fuel's Type"]||'Solar',
-    q: pn(r['Qty Fuel']),
-    j: r['Jalur']||'',
-    i: pn(r['BBM IDR'])
+    d:r['Delivery Date']||'',f:r["Fuel's Type"]||'Solar',
+    q:pn(r['Qty Fuel']),j:r['Jalur']||'',i:pn(r['BBM IDR'])
   })).filter(r=>r.q>0||r.i>0);
 }
 
 // ============================================================
 // LOAD DATA
 // ============================================================
-// Daftar semua CSV yang diketahui ada di repo
-// Otomatis akan dicoba fetch, yang gagal di-skip
-const KNOWN_CSV = [
-  'AHI_JABABEKA.csv','HCI_JABABEKA.csv','KLS_JABABEKA.csv','HCI_CIKUPA.csv',
-  'SDA.csv','TALLO.csv','TAMORA.csv',
-  'HUB_HCI_BOGOR.csv','HUB_HCI_TANGERANG.csv',
-  'HUB_AHI.csv','HUB_HCI.csv',
-  'SDC_BATAM.csv','SDC_SAMARINDA.csv','SDC_P_PINANG.csv','SDC_PONTIANAK.csv',
-  'SDC_TARAKAN.csv','SDC_BANJARMASIN.csv','SDC_MANADO.csv','SDC_MALUKU.csv',
-  'SDC_KENDARI.csv','SDC_TERNATE.csv','SDC_SORONG.csv','SDC_ABEPURA.csv',
-  'SDC_PALU.csv','SDC_NAGOYA.csv'
-];
-
 async function loadAll(){
   document.getElementById('lo').classList.add('show');
   document.getElementById('btnLoad').disabled=true;
   document.getElementById('sdot').className='sdot loading';
   document.getElementById('stx').textContent='Memuat...';
-
-  siteData={};
-  loadedSites=[];
-  let loaded=0,errors=0;
-
-  const results = await Promise.allSettled(
-    KNOWN_CSV.map(async csv=>{
-      const url=`${REPO_BASE}/${csv}`;
-      const resp=await fetch(url);
-      if(!resp.ok) throw new Error('404');
+  siteData={};loadedSites=[];
+  let loaded=0;
+  await Promise.allSettled(KNOWN_CSV.map(async csv=>{
+    try{
+      const resp=await fetch(`${REPO_BASE}/${csv}`);
+      if(!resp.ok)throw new Error('404');
       const text=await resp.text();
       const rows=csvToRows(text);
-      if(!rows.length) throw new Error('empty');
-      const siteName=csvToSiteName(csv);
-      siteData[siteName]=rows;
-      loadedSites.push(siteName);
-      loaded++;
+      if(!rows.length)throw new Error('empty');
+      const site=csvToSite(csv);
+      siteData[site]=rows;loadedSites.push(site);loaded++;
       document.getElementById('lo-sub').textContent=`${loaded} site loaded...`;
-      return siteName;
-    })
-  );
-
-  errors = results.filter(r=>r.status==='rejected').length;
-
+    }catch(e){}
+  }));
   document.getElementById('lo').classList.remove('show');
   document.getElementById('btnLoad').disabled=false;
-
-  if(loadedSites.length===0){
-    document.getElementById('sdot').className='sdot err';
-    document.getElementById('stx').textContent='Gagal load data';
-    return;
-  }
-
+  if(!loadedSites.length){document.getElementById('sdot').className='sdot err';document.getElementById('stx').textContent='Gagal load';return;}
   document.getElementById('sdot').className='sdot ok';
-  document.getElementById('stx').textContent=`${loadedSites.length} site loaded`;
+  document.getElementById('stx').textContent=`${loadedSites.length} site`;
+  buildSB();render();
+}
 
-  document.getElementById('emptyState').style.display='none';
-  document.getElementById('dashArea').style.display='block';
-
-  buildSB();
+// ============================================================
+// MTD
+// ============================================================
+function setMode(mode){
+  const now=new Date(),y=now.getFullYear(),m=now.getMonth();
+  document.getElementById('btnFull').classList.toggle('active',mode==='full');
+  document.getElementById('btnMTD').classList.toggle('active',mode==='mtd');
+  const pad=n=>String(n).padStart(2,'0');
+  if(mode==='mtd'){
+    document.getElementById('bS').value=`${y}-${pad(m+1)}-01`;
+    document.getElementById('bE').value=now.toISOString().split('T')[0];
+    const lm=m===0?12:m,lmy=m===0?y-1:y,ld=new Date(y,m,0).getDate();
+    document.getElementById('aS').value=`${lmy}-${pad(lm)}-01`;
+    document.getElementById('aE').value=`${lmy}-${pad(lm)}-${pad(ld)}`;
+  }else{
+    const ld=new Date(y,m+1,0).getDate(),lm=m===0?12:m,lmy=m===0?y-1:y,pld=new Date(y,m,0).getDate();
+    document.getElementById('bS').value=`${y}-${pad(m+1)}-01`;
+    document.getElementById('bE').value=`${y}-${pad(m+1)}-${pad(ld)}`;
+    document.getElementById('aS').value=`${lmy}-${pad(lm)}-01`;
+    document.getElementById('aE').value=`${lmy}-${pad(lm)}-${pad(pld)}`;
+  }
   render();
 }
 
@@ -454,69 +439,88 @@ function saveMo(){closeMo();render();}
 // SIDEBAR
 // ============================================================
 function buildSB(){
-  let h=`<div style="padding:8px 0 2px;">
-    <div class="si ${VIEW==='NASIONAL'?'active':''}" onclick="setV('NASIONAL')">
-      <div class="si-d" style="background:#fff;opacity:.5;"></div>
-      <div class="si-n">🏠 Nasional</div>
-      <div class="si-c">${loadedSites.length}</div>
-    </div></div><div class="sd"></div>`;
+  let h=`<div class="sb-section">Menu</div>
+  <div class="si ${PAGE==='overview'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','overview')">
+    <div class="si-d" style="background:#fff;opacity:.5;"></div><div class="si-n">📊 Overview</div>
+  </div>
+  <div class="si ${PAGE==='insight'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','insight')">
+    <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight</div>
+  </div>
+  <div class="sd"></div>
+  <div class="sb-section">Sites</div>
+  <div class="si ${VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','overview')">
+    <div class="si-d" style="background:#fff;opacity:.5;"></div>
+    <div class="si-n">Semua Site</div>
+    <div class="si-c">${loadedSites.length}</div>
+  </div>`;
   Object.entries(GROUPS).forEach(([gk,g])=>{
     const gs=g.sites.filter(s=>siteData[s]);
     if(!gs.length)return;
     h+=`<div class="sg"><div class="sg-l" style="--gc:${g.color}">${g.label} (${gs.length})</div>`;
-    gs.forEach(s=>{h+=`<div class="si ${VIEW===s?'active':''}" onclick="setV('${s}')"><div class="si-d" style="background:${g.color};"></div><div class="si-n">${s}</div></div>`;});
+    gs.forEach(s=>{
+      h+=`<div class="si ${VIEW===s?'active':''}" onclick="setView('${s}','insight')">
+        <div class="si-d" style="background:${g.color};"></div>
+        <div class="si-n">${s}</div>
+      </div>`;
+    });
     h+='</div>';
   });
-  // Site yang tidak ada di grup manapun
-  const ungrouped=loadedSites.filter(s=>!grpOf(s));
-  if(ungrouped.length){
+  // Ungrouped
+  const ug=loadedSites.filter(s=>!grpOf(s));
+  if(ug.length){
     h+=`<div class="sg"><div class="sg-l">Lainnya</div>`;
-    ungrouped.forEach(s=>{h+=`<div class="si ${VIEW===s?'active':''}" onclick="setV('${s}')"><div class="si-d" style="background:#94a3b8;"></div><div class="si-n">${s}</div></div>`;});
+    ug.forEach(s=>{h+=`<div class="si ${VIEW===s?'active':''}" onclick="setView('${s}','insight')"><div class="si-d" style="background:#94a3b8;"></div><div class="si-n">${s}</div></div>`;});
     h+='</div>';
   }
   document.getElementById('sb').innerHTML=h;
 }
-function setV(v){VIEW=v;buildSB();render();}
+
+function setView(v,p){VIEW=v;PAGE=p||'overview';buildSB();render();}
 
 // ============================================================
 // RENDER
 // ============================================================
 function render(){
-  if(!loadedSites.length) return;
+  if(!loadedSites.length)return;
   const aS=document.getElementById('aS').value,aE=document.getElementById('aE').value;
   const bS=document.getElementById('bS').value,bE=document.getElementById('bE').value;
   const pA=getPx('a'),pB=getPx('b');
   let rA=[],rB=[];
-  if(VIEW==='NASIONAL'){
-    loadedSites.forEach(s=>{const r=siteData[s]||[];rA=[...rA,...fRows(r,aS,aE)];rB=[...rB,...fRows(r,bS,bE)];});
-  }else{
-    const r=siteData[VIEW]||[];rA=fRows(r,aS,aE);rB=fRows(r,bS,bE);
-  }
+  if(VIEW==='NASIONAL'){loadedSites.forEach(s=>{const r=siteData[s]||[];rA=[...rA,...fRows(r,aS,aE)];rB=[...rB,...fRows(r,bS,bE)];});}
+  else{const r=siteData[VIEW]||[];rA=fRows(r,aS,aE);rB=fRows(r,bS,bE);}
   const aggA=agg(rA,pA,pA),aggB=agg(rB,pA,pB);
   Object.values(CH).forEach(c=>{try{c.destroy();}catch(e){}});CH={};
-  const m=document.getElementById('dashArea');m.innerHTML='';
+  const m=document.getElementById('main');m.innerHTML='';
+  // Page title
   rPT(m,aS,aE,bS,bE);
-  rKPI(m,aggA,aggB);
-  rExec(m,aggA,aggB);
-  rVol(m,aggA,aggB);
-  rCost(m,aggA,aggB);
-  if(VIEW==='NASIONAL')rGrp(m,aS,aE,bS,bE,pA,pB);
-  rDetail(m,aggA,aggB,aS,aE,bS,bE,pA,pB);
-  rTop(m,aggA,aggB,aS,aE,bS,bE,pA,pB);
-  rReko(m);
+  if(PAGE==='overview') rOverview(m,aggA,aggB,bS,bE,pA,pB);
+  else rInsight(m,aggA,aggB,aS,aE,bS,bE,pA,pB);
 }
 
 function mkC(id,cfg){const c=new Chart(document.getElementById(id).getContext('2d'),cfg);CH[id]=c;return c;}
 function mSec(p,t){const s=document.createElement('div');s.className='sec';const h=document.createElement('div');h.className='sh';h.textContent=t;s.appendChild(h);p.appendChild(s);return s;}
 function mCard(p,t,s){const c=document.createElement('div');c.className='card';c.innerHTML=`<div class="ct">${t}</div>${s?`<div class="cs">${s}</div>`:''}`;p.appendChild(c);return c;}
 
+// PAGE TITLE
 function rPT(el,aS,aE,bS,bE){
-  const g=VIEW!=='NASIONAL'?grpOf(VIEW):null;
-  const sub=VIEW==='NASIONAL'?loadedSites.length+' site':(g?g.label+' Group':'');
+  const isNas=VIEW==='NASIONAL';
+  const grp=!isNas?grpOf(VIEW):null;
+  const title=isNas?(PAGE==='overview'?'Overview':'Insight — Nasional'):(PAGE==='overview'?VIEW:'Insight — '+VIEW);
+  const sub=isNas?loadedSites.length+' site':(grp?grp.label+' Group':'');
   const d=document.createElement('div');d.className='pt';
-  d.innerHTML=`<div class="pt-t">${VIEW==='NASIONAL'?'Nasional':VIEW} <span>${sub}</span></div>
+  d.innerHTML=`<div class="pt-t">${title} <span>${sub}</span></div>
   <div class="pcs"><span class="chip ca">A: ${fD(aS)} — ${fD(aE)}</span><span class="chip cb">B: ${fD(bS)} — ${fD(bE)}</span></div>`;
   el.appendChild(d);
+}
+
+// ============================================================
+// OVERVIEW PAGE
+// ============================================================
+function rOverview(el,aggA,aggB,bS,bE,pA,pB){
+  // KPI
+  rKPI(el,aggA,aggB);
+  // Map
+  rMap(el,bS,bE,pA,pB);
 }
 
 function rKPI(el,a,b){
@@ -541,6 +545,86 @@ function rKPI(el,a,b){
   el.appendChild(g);
 }
 
+function rMap(el,bS,bE,pA,pB){
+  const sec=mSec(el,'Sebaran Site Nasional');
+  const mapCard=document.createElement('div');mapCard.className='map-card';
+  mapCard.innerHTML=`
+    <div class="map-head">
+      <div><div class="map-title">Peta Distribusi BBM</div><div class="map-sub">Klik marker untuk detail site — Periode B: ${fD(bS)} — ${fD(bE)}</div></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        ${Object.entries(GROUPS).map(([k,g])=>`<span style="display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:${g.color}"><span style="width:8px;height:8px;border-radius:50%;background:${g.color};display:inline-block;"></span>${g.label}</span>`).join('')}
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div id="leafletMap"></div>
+      <div id="sitePopup" style="display:none;position:absolute;z-index:9999;" class="site-popup">
+        <div class="popup-header">
+          <div>
+            <div class="popup-site" id="popupSite">—</div>
+            <span id="popupGrp" class="gb"></span>
+          </div>
+          <button class="popup-close" onclick="document.getElementById('sitePopup').style.display='none'">✕</button>
+        </div>
+        <div id="popupContent"></div>
+      </div>
+    </div>`;
+  sec.appendChild(mapCard);
+
+  requestAnimationFrame(()=>{
+    if(!leafletMap){
+      leafletMap=L.map('leafletMap',{zoomControl:true}).setView([-2.5,118],5);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap © CARTO',maxZoom:18}).addTo(leafletMap);
+    } else {
+      mapMarkers.forEach(m=>m.remove());mapMarkers=[];
+    }
+    loadedSites.forEach(site=>{
+      const coords=SITE_COORDS[site];if(!coords)return;
+      const rows=siteData[site]||[];
+      const b2=agg(fRows(rows,bS,bE),pA,pB);
+      const grp=grpOf(site);
+      const color=grp?grp.color:'#94a3b8';
+      const icon=L.divIcon({html:`<div style="width:13px;height:13px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);"></div>`,iconSize:[13,13],iconAnchor:[6,6],className:''});
+      const marker=L.marker(coords,{icon}).addTo(leafletMap);
+      marker.bindTooltip(`<b>${site}</b><br>${fS(b2.cA)}`,{permanent:false,direction:'top',className:'bbm-tooltip'});
+      marker.on('click',function(e){showPopup(site,grp,b2,e);});
+      mapMarkers.push(marker);
+    });
+    setTimeout(()=>leafletMap.invalidateSize(),300);
+  });
+}
+
+function showPopup(site,grp,b,e){
+  const ipB=b.cA>0?b.dImp/b.cA:0,dpB=b.tQ>0?b.dQ/b.tQ:0;
+  document.getElementById('popupSite').textContent=site;
+  const grpEl=document.getElementById('popupGrp');
+  if(grp){grpEl.textContent=grp.label;grpEl.style.background=grp.color+'22';grpEl.style.color=grp.color;}
+  const rows=[['Total Liter',fL(b.tQ)],['Dexlite Volume',fL(b.dQ)+' ('+fP(dpB,1)+')'],['Cost After',fS(b.cA)],['Impact Kenaikan',fS(b.dImp)],['% Impact / Cost',fP(ipB)]];
+  let h='<table class="popup-table">';
+  rows.forEach(([l,v])=>{h+=`<tr><td>${l}</td><td>${v}</td></tr>`;});
+  h+='</table>';
+  document.getElementById('popupContent').innerHTML=h;
+  const popup=document.getElementById('sitePopup');
+  const mapEl=document.getElementById('leafletMap');
+  const rect=mapEl.getBoundingClientRect();
+  let x=e.originalEvent.clientX-rect.left+12,y=e.originalEvent.clientY-rect.top-12;
+  if(x+240>rect.width)x=e.originalEvent.clientX-rect.left-252;
+  if(y+200>rect.height)y=e.originalEvent.clientY-rect.top-210;
+  popup.style.left=x+'px';popup.style.top=y+'px';popup.style.display='block';
+}
+
+// ============================================================
+// INSIGHT PAGE
+// ============================================================
+function rInsight(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
+  rExec(el,aggA,aggB);
+  rVol(el,aggA,aggB);
+  rCost(el,aggA,aggB);
+  if(VIEW==='NASIONAL') rGrp(el,aS,aE,bS,bE,pA,pB);
+  rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB);
+  rTop(el,aggA,aggB,aS,aE,bS,bE,pA,pB);
+  rReko(el);
+}
+
 function rExec(el,a,b){
   const sec=mSec(el,'Executive Summary');
   const card=mCard(sec,'Perbandingan Metrik Utama A vs B','');
@@ -558,11 +642,8 @@ function rExec(el,a,b){
     ['Dexlite % Cost After',fP(dcpA),fP(dcpB),(dcpB-dcpA)*100,v=>Math.abs(v).toFixed(2)+'pp',true],
   ];
   let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Periode A</th><th style="color:#f59e0b">Periode B</th><th>Selisih MoM</th></tr></thead><tbody>`;
-  rows.forEach(([m,va,vb,d,f,lg])=>{
-    h+=`<tr><td class="em">${m}</td><td class="ea">${va}</td><td class="eb">${vb}</td><td><span class="dp ${dpcls(d,lg)}">${d>=0?'+':'−'}${f(d)}</span></td></tr>`;
-  });
-  h+='</tbody></table>';
-  card.innerHTML+=h;
+  rows.forEach(([m,va,vb,d,f,lg])=>{h+=`<tr><td class="em">${m}</td><td class="ea">${va}</td><td class="eb">${vb}</td><td><span class="dp ${dpcls(d,lg)}">${d>=0?'+':'−'}${f(d)}</span></td></tr>`;});
+  h+='</tbody></table>';card.innerHTML+=h;
 }
 
 function rVol(el,a,b){
@@ -586,8 +667,7 @@ function rVol(el,a,b){
       <td class="mn" style="color:#2563eb">${fS(iA)}</td><td class="mn" style="color:#f59e0b">${fS(iB)}</td>
     </tr>`;
   });
-  tbl+='</tbody></table></div>';
-  c4.innerHTML+=tbl;
+  tbl+='</tbody></table></div>';c4.innerHTML+=tbl;
   requestAnimationFrame(()=>{
     mkC('cv_vol',{type:'bar',data:{labels:FUELS,datasets:[
       {label:'Periode A',data:FUELS.map(f=>a.bF[f]?a.bF[f].q:0),backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:5},
@@ -638,17 +718,13 @@ function rGrp(el,aS,aE,bS,bE,pA,pB){
   gRows.forEach(r=>{
     const dI=r.aggB.dImp-r.aggA.dImp;
     h+=`<tr><td><span class="gb" style="background:${r.g.color}22;color:${r.g.color}">${r.g.label}</span></td>
-      <td class="mn" style="color:#2563eb">${fS(r.aggA.cA)}</td>
-      <td><span class="dp ${r.ipA>0.3?'dpb':'dpn'}">${fP(r.ipA)}</span></td>
-      <td class="mn" style="color:#f59e0b">${fS(r.aggB.cA)}</td>
-      <td><span class="dp ${r.ipB>0.3?'dpb':'dpn'}">${fP(r.ipB)}</span></td>
-      <td class="mn" style="color:#2563eb">${fS(r.aggA.dImp)}</td>
-      <td class="mn" style="color:#f59e0b">${fS(r.aggB.dImp)}</td>
+      <td class="mn" style="color:#2563eb">${fS(r.aggA.cA)}</td><td><span class="dp ${r.ipA>0.3?'dpb':'dpn'}">${fP(r.ipA)}</span></td>
+      <td class="mn" style="color:#f59e0b">${fS(r.aggB.cA)}</td><td><span class="dp ${r.ipB>0.3?'dpb':'dpn'}">${fP(r.ipB)}</span></td>
+      <td class="mn" style="color:#2563eb">${fS(r.aggA.dImp)}</td><td class="mn" style="color:#f59e0b">${fS(r.aggB.dImp)}</td>
       <td><span class="dp ${dpcls(dI,true)}">${dI>=0?'+':'−'}${fS(Math.abs(dI))}</span></td>
     </tr>`;
   });
-  h+='</tbody></table></div>';
-  card.innerHTML+=h;
+  h+='</tbody></table></div>';card.innerHTML+=h;
   const row2=document.createElement('div');row2.className='g2b';sec.appendChild(row2);
   const ca=mCard(row2,'% Dexlite per Group','After kenaikan');ca.innerHTML+=`<canvas id="cv_gd"></canvas>`;
   const cb=mCard(row2,'Impact per Group','Juta Rp');cb.innerHTML+=`<canvas id="cv_gi"></canvas>`;
@@ -664,32 +740,18 @@ function rGrp(el,aS,aE,bS,bE,pA,pB){
   });
 }
 
-function isSDC(site){ const grp=grpOf(site); return grp&&grp.key==='SDC'; }
-
 function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
-  // SDC: summary only, no jalur breakdown
+  // SDC: summary only
   if(VIEW!=='NASIONAL'&&isSDC(VIEW)){
     const sec=mSec(el,'Ringkasan Site');
     const card=mCard(sec,VIEW+' — Summary','Data jalur tidak tersedia untuk site SDC');
     const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0,ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
     const dpA=aggA.tQ>0?aggA.dQ/aggA.tQ:0,dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
-    const rows=[
-      ['Total Liter',fL(aggA.tQ),fL(aggB.tQ)],
-      ['Dexlite Volume',fL(aggA.dQ),fL(aggB.dQ)],
-      ['Dexlite % Vol',fP(dpA),fP(dpB)],
-      ['Cost Before',fS(aggA.cB),fS(aggB.cB)],
-      ['Cost After',fS(aggA.cA),fS(aggB.cA)],
-      ['Impact Kenaikan',fS(aggA.dImp),fS(aggB.dImp)],
-      ['% Impact / Cost',fP(ipA),fP(ipB)],
-      ['Total Trip',aggA.trip.toLocaleString('id-ID'),aggB.trip.toLocaleString('id-ID')],
-    ];
+    const rows=[['Total Liter',fL(aggA.tQ),fL(aggB.tQ)],['Dexlite Volume',fL(aggA.dQ),fL(aggB.dQ)],['Dexlite % Vol',fP(dpA),fP(dpB)],['Cost Before',fS(aggA.cB),fS(aggB.cB)],['Cost After',fS(aggA.cA),fS(aggB.cA)],['Impact Kenaikan',fS(aggA.dImp),fS(aggB.dImp)],['% Impact / Cost',fP(ipA),fP(ipB)],['Total Trip',aggA.trip.toLocaleString('id-ID'),aggB.trip.toLocaleString('id-ID')]];
     let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Periode A</th><th style="color:#f59e0b">Periode B</th></tr></thead><tbody>`;
-    rows.forEach(([m,va,vb])=>{ h+=`<tr><td class="em">${m}</td><td class="ea">${va}</td><td class="eb">${vb}</td></tr>`; });
-    h+='</tbody></table>';
-    card.innerHTML+=h;
-    return;
+    rows.forEach(([m,va,vb])=>{h+=`<tr><td class="em">${m}</td><td class="ea">${va}</td><td class="eb">${vb}</td></tr>`;});
+    h+='</tbody></table>';card.innerHTML+=h;return;
   }
-
   if(VIEW==='NASIONAL'){
     const sec=mSec(el,'Detail per Site');
     const card=mCard(sec,'Semua Site — Klik nama site untuk drill down','');
@@ -703,11 +765,10 @@ function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
     sRows.sort((x,y)=>y.b.cA-x.b.cA);
     let h=`<div class="tw"><table class="t"><thead><tr><th>#</th><th>Site</th><th>Grp</th><th>Liter A</th><th>Liter B</th><th>Δ</th><th>Dex A</th><th>Dex B</th><th>Cost After A</th><th>Cost After B</th><th>Impact A</th><th>Impact B</th><th>Δ Impact</th><th>% Dex A</th><th>% Dex B</th></tr></thead><tbody>`;
     sRows.forEach((r,i)=>{
-      const dL=r.b.tQ-r.a.tQ,dI=r.b.dImp-r.a.dImp;
-      const gc=r.grp?r.grp.color:'#888';
+      const dL=r.b.tQ-r.a.tQ,dI=r.b.dImp-r.a.dImp,gc=r.grp?r.grp.color:'#888';
       h+=`<tr>
         <td class="mn" style="color:var(--mu)">${i+1}</td>
-        <td class="tb2" style="cursor:pointer;color:#2563eb;" onclick="setV('${r.s}')">${r.s}</td>
+        <td class="tb2" style="cursor:pointer;color:#2563eb;" onclick="setView('${r.s}','insight')">${r.s}</td>
         <td>${r.grp?`<span class="gb" style="background:${gc}22;color:${gc}">${r.grp.label}</span>`:'—'}</td>
         <td class="mn" style="color:#2563eb">${fL(r.a.tQ)}</td><td class="mn" style="color:#f59e0b">${fL(r.b.tQ)}</td>
         <td><span class="dp ${dpcls(dL,true)}">${dL>=0?'+':'−'}${fL(Math.abs(dL))}</span></td>
@@ -719,27 +780,23 @@ function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
         <td><span class="dp ${r.ipB>0.3?'dpb':'dpn'}">${fP(r.ipB)}</span></td>
       </tr>`;
     });
-    h+='</tbody></table></div>';
-    card.innerHTML+=h;
+    h+='</tbody></table></div>';card.innerHTML+=h;
   } else {
     const sec=mSec(el,'Detail per Jalur');
     const card=mCard(sec,VIEW+' — Semua Jalur','Diurutkan berdasarkan Cost After Periode B');
     const allJ=new Set([...Object.keys(aggA.bJ),...Object.keys(aggB.bJ)]);
-    const jRows=Array.from(allJ).map(j=>{
+    const jRows=Array.from(allJ).filter(j=>j!=='—').map(j=>{
       const ja=aggA.bJ[j]||{},jb=aggB.bJ[j]||{};
       const sum=(d,k)=>Object.values(d).reduce((s,v)=>s+(v[k]||0),0);
-      const lA=sum(ja,'q'),lB=sum(jb,'q');
-      const cBA=sum(ja,'cB'),cBB=sum(jb,'cB'),cAA=sum(ja,'cA'),cAB=sum(jb,'cA');
-      const dA=(ja['Dexlite']||{}).q||0,dB=(jb['Dexlite']||{}).q||0;
-      const iA=cAA-cBA,iB=cAB-cBB;
+      const lA=sum(ja,'q'),lB=sum(jb,'q'),cBA=sum(ja,'cB'),cBB=sum(jb,'cB'),cAA=sum(ja,'cA'),cAB=sum(jb,'cA');
+      const dA=(ja['Dexlite']||{}).q||0,dB=(jb['Dexlite']||{}).q||0,iA=cAA-cBA,iB=cAB-cBB;
       return{j,lA,lB,cBA,cBB,cAA,cAB,dA,dB,iA,iB,pA2:cAA>0?iA/cAA:0,pB2:cAB>0?iB/cAB:0};
     }).sort((x,y)=>y.cAB-x.cAB);
     let h=`<div class="tw"><table class="t"><thead><tr><th>#</th><th>Jalur</th><th>Liter A</th><th>Liter B</th><th>Δ</th><th>Dex A</th><th>Dex B</th><th>Cost Before B</th><th>Cost After B</th><th>Impact A</th><th>Impact B</th><th>% Dex A</th><th>% Dex B</th><th>Δ Impact</th></tr></thead><tbody>`;
     jRows.forEach((r,i)=>{
       const dL=r.lB-r.lA,dI=r.iB-r.iA;
       h+=`<tr>
-        <td class="mn" style="color:var(--mu)">${i+1}</td>
-        <td class="tb2">${r.j}</td>
+        <td class="mn" style="color:var(--mu)">${i+1}</td><td class="tb2">${r.j}</td>
         <td class="mn" style="color:#2563eb">${fL(r.lA)}</td><td class="mn" style="color:#f59e0b">${fL(r.lB)}</td>
         <td><span class="dp ${dpcls(dL,true)}">${dL>=0?'+':'−'}${fL(Math.abs(dL))}</span></td>
         <td class="mn" style="color:#2563eb">${fL(r.dA)}</td><td class="mn" style="color:#f59e0b">${fL(r.dB)}</td>
@@ -750,8 +807,7 @@ function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
         <td><span class="dp ${dpcls(dI,true)}">${dI>=0?'+':'−'}${fS(Math.abs(dI))}</span></td>
       </tr>`;
     });
-    h+='</tbody></table></div>';
-    card.innerHTML+=h;
+    h+='</tbody></table></div>';card.innerHTML+=h;
   }
 }
 
@@ -764,9 +820,10 @@ function rTop(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
       const grp=grpOf(s);
       items.push({n:s,grp,pA:a2.cA>0?a2.dImp/a2.cA:0,pB:b2.cA>0?b2.dImp/b2.cA:0,dQB:b2.dQ,iB:b2.dImp,iA:a2.dImp});
     });
-  }else{
+  } else {
     const allJ=new Set([...Object.keys(aggA.bJ),...Object.keys(aggB.bJ)]);
     allJ.forEach(j=>{
+      if(j==='—')return;
       const ja=aggA.bJ[j]||{},jb=aggB.bJ[j]||{};
       const sum=(d,k)=>Object.values(d).reduce((s,v)=>s+(v[k]||0),0);
       const cAA=sum(ja,'cA'),cAB=sum(jb,'cA'),iA=cAA-sum(ja,'cB'),iB=cAB-sum(jb,'cB');
@@ -806,181 +863,6 @@ function rReko(el){
   });
 }
 
-
-// ============================================================
-// MTD MODE
-// ============================================================
-function setMode(mode){
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = now.getMonth(); // 0-indexed
-  
-  document.getElementById('btnFull').classList.toggle('active', mode==='full');
-  document.getElementById('btnMTD').classList.toggle('active', mode==='mtd');
-
-  if(mode==='mtd'){
-    // Periode B = 1 bulan ini s/d hari ini
-    const bStart = `${y}-${String(m+1).padStart(2,'0')}-01`;
-    const bEnd = now.toISOString().split('T')[0];
-    // Periode A = bulan lalu full
-    const lastMonth = m===0?12:m;
-    const lastMonthYear = m===0?y-1:y;
-    const lastDayPrev = new Date(y,m,0).getDate();
-    const aStart = `${lastMonthYear}-${String(lastMonth).padStart(2,'0')}-01`;
-    const aEnd = `${lastMonthYear}-${String(lastMonth).padStart(2,'0')}-${String(lastDayPrev).padStart(2,'0')}`;
-    document.getElementById('bS').value=bStart;
-    document.getElementById('bE').value=bEnd;
-    document.getElementById('aS').value=aStart;
-    document.getElementById('aE').value=aEnd;
-  } else {
-    // Full month: bulan lalu & bulan ini full
-    const bLastDay = new Date(y,m+1,0).getDate();
-    const bStart = `${y}-${String(m+1).padStart(2,'0')}-01`;
-    const bEnd = `${y}-${String(m+1).padStart(2,'0')}-${String(bLastDay).padStart(2,'0')}`;
-    const lastMonth = m===0?12:m;
-    const lastMonthYear = m===0?y-1:y;
-    const lastDayPrev = new Date(y,m,0).getDate();
-    const aStart = `${lastMonthYear}-${String(lastMonth).padStart(2,'0')}-01`;
-    const aEnd = `${lastMonthYear}-${String(lastMonth).padStart(2,'0')}-${String(lastDayPrev).padStart(2,'0')}`;
-    document.getElementById('bS').value=bStart;
-    document.getElementById('bE').value=bEnd;
-    document.getElementById('aS').value=aStart;
-    document.getElementById('aE').value=aEnd;
-  }
-  render();
-}
-
-// ============================================================
-// MAP
-// ============================================================
-const SITE_COORDS = {
-  'AHI JABABEKA':       [-6.3200, 107.1600],
-  'HCI JABABEKA':       [-6.3250, 107.1650],
-  'KLS JABABEKA':       [-6.3300, 107.1700],
-  'HCI CIKUPA':         [-6.2400, 106.5200],
-  'SDA':                [-7.4478, 112.7183],
-  'TALLO':              [-5.1000, 119.4100],
-  'TAMORA':             [3.5952,  98.6722],
-  'HUB HCI':            [-6.2088, 106.8456],
-  'HUB AHI':            [-6.2200, 106.8300],
-  'HUB HCI BOGOR':      [-6.5971, 106.8060],
-  'HUB HCI TANGERANG':  [-6.1781, 106.6300],
-  'SDC BATAM':          [1.1301,  104.0529],
-  'SDC SAMARINDA':      [-0.5022, 117.1536],
-  'SDC P PINANG':       [-2.1316, 106.1169],
-  'SDC PONTIANAK':      [-0.0263, 109.3425],
-  'SDC TARAKAN':        [3.3173,  117.5780],
-  'SDC BANJARMASIN':    [-3.3186, 114.5944],
-  'SDC MANADO':         [1.4748,  124.8421],
-  'SDC MALUKU':         [-3.6954, 128.1814],
-  'SDC KENDARI':        [-3.9985, 122.5127],
-  'SDC TERNATE':        [0.7897,  127.3864],
-  'SDC SORONG':         [-0.8762, 131.2560],
-  'SDC ABEPURA':        [-2.5916, 140.6517],
-  'SDC PALU':           [-0.9003, 119.8779],
-  'SDC NAGOYA':         [1.1301,  104.0529],
-};
-
-let leafletMap = null;
-let mapMarkers = [];
-
-function toggleMap(){
-  document.getElementById('moMap').classList.add('show');
-  renderMap();
-}
-function closeMap(){
-  document.getElementById('moMap').classList.remove('show');
-  document.getElementById('sitePopup').style.display='none';
-}
-
-function renderMap(){
-  if(!loadedSites.length) return;
-  const bS=document.getElementById('bS').value,bE=document.getElementById('bE').value;
-  document.getElementById('mapPeriodLabel').textContent=`Periode B: ${fD(bS)} — ${fD(bE)}`;
-  const pA=getPx('a'),pB=getPx('b');
-
-  // Init map once
-  if(!leafletMap){
-    leafletMap = L.map('leafletMap',{zoomControl:true}).setView([-2.5,118],5);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
-      attribution:'© OpenStreetMap © CARTO',maxZoom:18
-    }).addTo(leafletMap);
-  } else {
-    mapMarkers.forEach(m=>m.remove());
-    mapMarkers=[];
-  }
-
-  loadedSites.forEach(site=>{
-    const coords=SITE_COORDS[site];
-    if(!coords) return;
-    const rows=siteData[site]||[];
-    const aggB=agg(fRows(rows,bS,bE),pA,pB);
-    const grp=grpOf(site);
-    const color=grp?grp.color:'#94a3b8';
-    const ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
-    const dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
-
-    // Custom marker
-    const icon = L.divIcon({
-      html: `<div style="width:14px;height:14px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);"></div>`,
-      iconSize:[14,14], iconAnchor:[7,7], className:''
-    });
-
-    const marker = L.marker(coords,{icon}).addTo(leafletMap);
-    marker.on('click', function(e){
-      showSitePopup(site,grp,aggB,ipB,dpB,e.originalEvent);
-    });
-
-    // Label tooltip
-    marker.bindTooltip(`<b>${site}</b><br>${fS(aggB.cA)}`,{
-      permanent:false, direction:'top', className:'bbm-tooltip'
-    });
-
-    mapMarkers.push(marker);
-  });
-
-  // Refresh map size
-  setTimeout(()=>leafletMap.invalidateSize(),200);
-}
-
-function showSitePopup(site,grp,aggB,ipB,dpB,evt){
-  const popup=document.getElementById('sitePopup');
-  document.getElementById('popupSite').textContent=site;
-  const grpEl=document.getElementById('popupGrp');
-  if(grp){
-    grpEl.textContent=grp.label;
-    grpEl.style.background=grp.color+'22';
-    grpEl.style.color=grp.color;
-  }
-  const rows=[
-    ['Total Liter', fL(aggB.tQ)],
-    ['Dexlite Volume', fL(aggB.dQ)+' ('+fP(dpB,1)+')'],
-    ['Cost After', fS(aggB.cA)],
-    ['Impact Kenaikan', fS(aggB.dImp)],
-    ['% Impact / Cost', fP(ipB)],
-  ];
-  let h='<table style="width:100%;border-collapse:collapse;">';
-  rows.forEach(([l,v])=>{
-    h+=`<tr>
-      <td style="font-size:10px;color:#64748b;padding:4px 0;font-weight:600;">${l}</td>
-      <td style="font-size:11px;font-family:JetBrains Mono,monospace;font-weight:700;text-align:right;color:#1a2035;">${v}</td>
-    </tr>`;
-  });
-  h+='</table>';
-  document.getElementById('popupContent').innerHTML=h;
-
-  // Position popup near click
-  const mapContainer=document.getElementById('mapContainer');
-  const rect=mapContainer.getBoundingClientRect();
-  let x=evt.clientX-rect.left+10;
-  let y=evt.clientY-rect.top-10;
-  if(x+240>rect.width) x=evt.clientX-rect.left-250;
-  if(y+200>rect.height) y=evt.clientY-rect.top-210;
-  popup.style.left=x+'px';
-  popup.style.top=y+'px';
-  popup.style.display='block';
-}
-
 // ============================================================
 // INIT
 // ============================================================
@@ -988,5 +870,5 @@ Chart.defaults.color='#64748b';
 Chart.defaults.font.family='Plus Jakarta Sans';
 loadAll();
 </script>
-</body></html>
-<!-- placeholder, will be replaced -->
+</body>
+</html>
