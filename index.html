@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard BBM Nasional 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root{--bg:#f0f3f9;--sur:#fff;--sur2:#f7f8fc;--brd:#e2e8f0;--nv:#0f2057;--nv2:#1a3380;--ac:#e8a020;--a2:#2563eb;--tx:#1a2035;--mu:#64748b;--sw:220px;--th:52px;}
@@ -28,6 +30,9 @@ input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.6;
 .btn:disabled{opacity:.5;cursor:not-allowed;}
 .btn-g{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.2);padding:6px 12px;border-radius:6px;font-size:11px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;}
 .btn-g:hover{background:rgba(255,255,255,.2);}
+.btn-mode{background:transparent;color:rgba(255,255,255,.6);border:none;padding:4px 10px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .2s;}
+.btn-mode.active{background:var(--ac);color:#fff;}
+
 .sdot{width:7px;height:7px;border-radius:50%;background:#475569;transition:background .3s;}
 .sdot.ok{background:#10b981;}.sdot.err{background:#ef4444;}.sdot.loading{background:#f59e0b;animation:pulse 1s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
@@ -141,6 +146,9 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--brd);border-radius:3px;}
 @media(max-width:1100px){.kg{grid-template-columns:repeat(2,1fr);}.g3,.g2,.g2b{grid-template-columns:1fr;}.tg{grid-template-columns:1fr 1fr;}.rg{grid-template-columns:1fr;}}
+
+.bbm-tooltip { background:#1a2035!important; color:#fff!important; border:none!important; border-radius:6px!important; font-family:'Plus Jakarta Sans',sans-serif!important; font-size:11px!important; padding:6px 10px!important; }
+.bbm-tooltip::before { border-top-color:#1a2035!important; }
 </style>
 </head>
 <body>
@@ -155,6 +163,34 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   ConnectOne
 </a>
+
+
+<!-- MAP MODAL -->
+<div class="mo" id="moMap" style="align-items:flex-start;padding-top:60px;">
+<div class="mdl" style="width:900px;max-width:96vw;max-height:80vh;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+    <div>
+      <div style="font-size:15px;font-weight:800;color:var(--nv);">🗺️ Sebaran Site BBM Nasional</div>
+      <div style="font-size:10px;color:var(--mu);margin-top:2px;" id="mapPeriodLabel">—</div>
+    </div>
+    <button class="btn-cn" onclick="closeMap()">✕ Tutup</button>
+  </div>
+  <div id="mapContainer" style="width:100%;height:460px;border-radius:10px;overflow:hidden;border:1px solid var(--brd);position:relative;">
+    <div id="leafletMap" style="width:100%;height:100%;"></div>
+  </div>
+  <!-- POPUP -->
+  <div id="sitePopup" style="display:none;position:absolute;z-index:9999;background:#fff;border:1px solid var(--brd);border-radius:10px;padding:14px 16px;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,.15);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div>
+        <div style="font-size:13px;font-weight:800;color:var(--nv);" id="popupSite">—</div>
+        <span id="popupGrp" style="font-size:9px;font-weight:800;padding:2px 6px;border-radius:3px;"></span>
+      </div>
+      <button onclick="document.getElementById('sitePopup').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--mu);font-size:14px;">✕</button>
+    </div>
+    <div id="popupContent"></div>
+  </div>
+</div>
+</div>
 
 <!-- LOADING -->
 <div class="lo" id="lo">
@@ -203,10 +239,15 @@ table.t tfoot td{background:var(--sur2);font-weight:700;border-top:2px solid var
       <input type="date" id="bS" value="2026-05-01"><span class="ps">—</span><input type="date" id="bE" value="2026-05-31">
     </div>
     <button class="btn" onclick="render()" id="btnRender">▶ Terapkan</button>
+    <div style="display:flex;gap:3px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:3px;">
+      <button class="btn-mode active" id="btnFull" onclick="setMode('full')">Full Month</button>
+      <button class="btn-mode" id="btnMTD" onclick="setMode('mtd')">MTD</button>
+    </div>
   </div>
   <div class="tb-r">
     <div style="display:flex;align-items:center;gap:5px;"><div class="sdot" id="sdot"></div><div class="stx" id="stx">Memuat...</div></div>
     <button class="btn-g" onclick="openMo()">⚙️ Harga BBM</button>
+    <button class="btn-g" onclick="toggleMap()" id="btnMap">🗺️ Peta</button>
     <button class="btn" onclick="loadAll()" id="btnLoad" style="background:rgba(255,255,255,.15);">↻ Reload</button>
   </div>
 </div>
@@ -765,6 +806,181 @@ function rReko(el){
   });
 }
 
+
+// ============================================================
+// MTD MODE
+// ============================================================
+function setMode(mode){
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = now.getMonth(); // 0-indexed
+  
+  document.getElementById('btnFull').classList.toggle('active', mode==='full');
+  document.getElementById('btnMTD').classList.toggle('active', mode==='mtd');
+
+  if(mode==='mtd'){
+    // Periode B = 1 bulan ini s/d hari ini
+    const bStart = `${y}-${String(m+1).padStart(2,'0')}-01`;
+    const bEnd = now.toISOString().split('T')[0];
+    // Periode A = bulan lalu full
+    const lastMonth = m===0?12:m;
+    const lastMonthYear = m===0?y-1:y;
+    const lastDayPrev = new Date(y,m,0).getDate();
+    const aStart = `${lastMonthYear}-${String(lastMonth).padStart(2,'0')}-01`;
+    const aEnd = `${lastMonthYear}-${String(lastMonth).padStart(2,'0')}-${String(lastDayPrev).padStart(2,'0')}`;
+    document.getElementById('bS').value=bStart;
+    document.getElementById('bE').value=bEnd;
+    document.getElementById('aS').value=aStart;
+    document.getElementById('aE').value=aEnd;
+  } else {
+    // Full month: bulan lalu & bulan ini full
+    const bLastDay = new Date(y,m+1,0).getDate();
+    const bStart = `${y}-${String(m+1).padStart(2,'0')}-01`;
+    const bEnd = `${y}-${String(m+1).padStart(2,'0')}-${String(bLastDay).padStart(2,'0')}`;
+    const lastMonth = m===0?12:m;
+    const lastMonthYear = m===0?y-1:y;
+    const lastDayPrev = new Date(y,m,0).getDate();
+    const aStart = `${lastMonthYear}-${String(lastMonth).padStart(2,'0')}-01`;
+    const aEnd = `${lastMonthYear}-${String(lastMonth).padStart(2,'0')}-${String(lastDayPrev).padStart(2,'0')}`;
+    document.getElementById('bS').value=bStart;
+    document.getElementById('bE').value=bEnd;
+    document.getElementById('aS').value=aStart;
+    document.getElementById('aE').value=aEnd;
+  }
+  render();
+}
+
+// ============================================================
+// MAP
+// ============================================================
+const SITE_COORDS = {
+  'AHI JABABEKA':       [-6.3200, 107.1600],
+  'HCI JABABEKA':       [-6.3250, 107.1650],
+  'KLS JABABEKA':       [-6.3300, 107.1700],
+  'HCI CIKUPA':         [-6.2400, 106.5200],
+  'SDA':                [-7.4478, 112.7183],
+  'TALLO':              [-5.1000, 119.4100],
+  'TAMORA':             [3.5952,  98.6722],
+  'HUB HCI':            [-6.2088, 106.8456],
+  'HUB AHI':            [-6.2200, 106.8300],
+  'HUB HCI BOGOR':      [-6.5971, 106.8060],
+  'HUB HCI TANGERANG':  [-6.1781, 106.6300],
+  'SDC BATAM':          [1.1301,  104.0529],
+  'SDC SAMARINDA':      [-0.5022, 117.1536],
+  'SDC P PINANG':       [-2.1316, 106.1169],
+  'SDC PONTIANAK':      [-0.0263, 109.3425],
+  'SDC TARAKAN':        [3.3173,  117.5780],
+  'SDC BANJARMASIN':    [-3.3186, 114.5944],
+  'SDC MANADO':         [1.4748,  124.8421],
+  'SDC MALUKU':         [-3.6954, 128.1814],
+  'SDC KENDARI':        [-3.9985, 122.5127],
+  'SDC TERNATE':        [0.7897,  127.3864],
+  'SDC SORONG':         [-0.8762, 131.2560],
+  'SDC ABEPURA':        [-2.5916, 140.6517],
+  'SDC PALU':           [-0.9003, 119.8779],
+  'SDC NAGOYA':         [1.1301,  104.0529],
+};
+
+let leafletMap = null;
+let mapMarkers = [];
+
+function toggleMap(){
+  document.getElementById('moMap').classList.add('show');
+  renderMap();
+}
+function closeMap(){
+  document.getElementById('moMap').classList.remove('show');
+  document.getElementById('sitePopup').style.display='none';
+}
+
+function renderMap(){
+  if(!loadedSites.length) return;
+  const bS=document.getElementById('bS').value,bE=document.getElementById('bE').value;
+  document.getElementById('mapPeriodLabel').textContent=`Periode B: ${fD(bS)} — ${fD(bE)}`;
+  const pA=getPx('a'),pB=getPx('b');
+
+  // Init map once
+  if(!leafletMap){
+    leafletMap = L.map('leafletMap',{zoomControl:true}).setView([-2.5,118],5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+      attribution:'© OpenStreetMap © CARTO',maxZoom:18
+    }).addTo(leafletMap);
+  } else {
+    mapMarkers.forEach(m=>m.remove());
+    mapMarkers=[];
+  }
+
+  loadedSites.forEach(site=>{
+    const coords=SITE_COORDS[site];
+    if(!coords) return;
+    const rows=siteData[site]||[];
+    const aggB=agg(fRows(rows,bS,bE),pA,pB);
+    const grp=grpOf(site);
+    const color=grp?grp.color:'#94a3b8';
+    const ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
+    const dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
+
+    // Custom marker
+    const icon = L.divIcon({
+      html: `<div style="width:14px;height:14px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);"></div>`,
+      iconSize:[14,14], iconAnchor:[7,7], className:''
+    });
+
+    const marker = L.marker(coords,{icon}).addTo(leafletMap);
+    marker.on('click', function(e){
+      showSitePopup(site,grp,aggB,ipB,dpB,e.originalEvent);
+    });
+
+    // Label tooltip
+    marker.bindTooltip(`<b>${site}</b><br>${fS(aggB.cA)}`,{
+      permanent:false, direction:'top', className:'bbm-tooltip'
+    });
+
+    mapMarkers.push(marker);
+  });
+
+  // Refresh map size
+  setTimeout(()=>leafletMap.invalidateSize(),200);
+}
+
+function showSitePopup(site,grp,aggB,ipB,dpB,evt){
+  const popup=document.getElementById('sitePopup');
+  document.getElementById('popupSite').textContent=site;
+  const grpEl=document.getElementById('popupGrp');
+  if(grp){
+    grpEl.textContent=grp.label;
+    grpEl.style.background=grp.color+'22';
+    grpEl.style.color=grp.color;
+  }
+  const rows=[
+    ['Total Liter', fL(aggB.tQ)],
+    ['Dexlite Volume', fL(aggB.dQ)+' ('+fP(dpB,1)+')'],
+    ['Cost After', fS(aggB.cA)],
+    ['Impact Kenaikan', fS(aggB.dImp)],
+    ['% Impact / Cost', fP(ipB)],
+  ];
+  let h='<table style="width:100%;border-collapse:collapse;">';
+  rows.forEach(([l,v])=>{
+    h+=`<tr>
+      <td style="font-size:10px;color:#64748b;padding:4px 0;font-weight:600;">${l}</td>
+      <td style="font-size:11px;font-family:JetBrains Mono,monospace;font-weight:700;text-align:right;color:#1a2035;">${v}</td>
+    </tr>`;
+  });
+  h+='</table>';
+  document.getElementById('popupContent').innerHTML=h;
+
+  // Position popup near click
+  const mapContainer=document.getElementById('mapContainer');
+  const rect=mapContainer.getBoundingClientRect();
+  let x=evt.clientX-rect.left+10;
+  let y=evt.clientY-rect.top-10;
+  if(x+240>rect.width) x=evt.clientX-rect.left-250;
+  if(y+200>rect.height) y=evt.clientY-rect.top-210;
+  popup.style.left=x+'px';
+  popup.style.top=y+'px';
+  popup.style.display='block';
+}
+
 // ============================================================
 // INIT
 // ============================================================
@@ -773,3 +989,4 @@ Chart.defaults.font.family='Plus Jakarta Sans';
 loadAll();
 </script>
 </body></html>
+<!-- placeholder, will be replaced -->
