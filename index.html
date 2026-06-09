@@ -694,7 +694,7 @@ function rInsight(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
   if(VIEW==='NASIONAL') rGrp(el,aS,aE,bS,bE,pA,pB);
   rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB);
   rTop(el,aggA,aggB,aS,aE,bS,bE,pA,pB);
-  rReko(el);
+  rReko(el,aggA,aggB,aS,aE,bS,bE,pA,pB);
 }
 
 function rExec(el,a,b){
@@ -921,18 +921,107 @@ function rTop(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
   });
 }
 
-function rReko(el){
+function rReko(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
   const sec=mSec(el,'Tindak Lanjut & Rekomendasi');
-  const g=document.createElement('div');g.className='rg';sec.appendChild(g);
-  [['Barcode & Kelangkaan Bio Solar','Lanjutkan pencarian Bio Solar di jalur/site dengan konsumsi Dexlite tinggi. Koordinasi ke Pertamina untuk barcode bermasalah. Lakukan mutasi Nopol bila dipastikan dapat mengatasi masalah kelangkaan.'],
-   ['Kelangkaan Permanen — Evaluasi EV','Daerah dengan kelangkaan Bio Solar permanen: penjajakan armada EV pengganti diesel Dexlite. Perhitungan TCO berjalan bersama distributor Foton / PT Indomobil.'],
-   ['Produktivitas & Efisiensi Rute','Perhatikan OLF — volume muat harus lebih maksimal. Akurasi routing agar tidak wasting time & jarak. Maksimalkan DO/DP per LC untuk turunkan cost per DO & DP.'],
-   ['Monitoring Konsumsi Dexlite Mingguan','Monitoring, Controlling, dan Reporting wajib dilakukan mingguan untuk mendeteksi perubahan lebih cepat dan mengambil langkah yang diperlukan lebih cepat dan tepat.']
-  ].forEach(([t,b],i)=>{
-    const d=document.createElement('div');d.className='rc';
-    d.innerHTML=`<div class="rn">0${i+1}</div><div><div class="rt">${t}</div><div class="rb">${b}</div></div>`;
+  const rekoList=[];
+
+  // Hitung per site
+  const siteStats=loadedSites.map(s=>{
+    const r=siteData[s]||[];
+    const a2=agg(fRows(r,aS,aE),pA,pA),b2=agg(fRows(r,bS,bE),pA,pB);
+    const dpA=a2.tQ>0?a2.dQ/a2.tQ:0,dpB=b2.tQ>0?b2.dQ/b2.tQ:0;
+    const ipA=a2.cA>0?a2.dImp/a2.cA:0,ipB=b2.cA>0?b2.dImp/b2.cA:0;
+    return{s,dpA,dpB,ipA,ipB,tQA:a2.tQ,tQB:b2.tQ,tripA:a2.trip,tripB:b2.trip};
+  });
+
+  // === RULE 1: Dexlite > 60% → Kelangkaan permanen → EV ===
+  const evSites=siteStats.filter(x=>x.dpB>0.6).sort((a,b)=>b.dpB-a.dpB);
+  if(evSites.length>0){
+    const names=evSites.slice(0,3).map(x=>`<b>${x.s}</b> (${fP(x.dpB,0)})`).join(', ');
+    const extra=evSites.length>3?` dan ${evSites.length-3} site lainnya`:'';
+    rekoList.push({
+      icon:'⚡',
+      title:'Kelangkaan Bio Solar Permanen — Evaluasi Armada EV',
+      body:`${names}${extra} memiliki proporsi Dexlite >60% dari total konsumsi. Bio Solar kemungkinan tidak tersedia permanen di area ini. Percepat penjajakan armada EV sebagai pengganti diesel — perhitungan TCO bersama distributor Foton / PT Indomobil perlu diprioritaskan.`,
+      level:'high'
+    });
+  }
+
+  // === RULE 2: Dexlite 20-60% → Kelangkaan sementara → Barcode/Nopol ===
+  const barcodeSites=siteStats.filter(x=>x.dpB>=0.2&&x.dpB<=0.6).sort((a,b)=>b.dpB-a.dpB);
+  if(barcodeSites.length>0){
+    const names=barcodeSites.slice(0,3).map(x=>`<b>${x.s}</b> (${fP(x.dpB,0)})`).join(', ');
+    const extra=barcodeSites.length>3?` dan ${barcodeSites.length-3} lainnya`:'';
+    rekoList.push({
+      icon:'🔍',
+      title:'Barcode & Kelangkaan Bio Solar — Tindak Lanjut',
+      body:`${names}${extra} masih menggunakan Dexlite 20–60% dari total konsumsi. Lanjutkan pencarian Bio Solar, koordinasi ke Pertamina untuk barcode bermasalah. Pertimbangkan mutasi Nopol untuk armada yang terkendala akses Bio Solar.`,
+      level:'medium'
+    });
+  }
+
+  // === RULE 3: % Impact naik MoM > 2pp ===
+  const impactNaik=siteStats.filter(x=>(x.ipB-x.ipA)*100>2).sort((a,b)=>(b.ipB-b.ipA)-(a.ipB-a.ipA));
+  if(impactNaik.length>0){
+    const names=impactNaik.slice(0,3).map(x=>`<b>${x.s}</b> (+${((x.ipB-x.ipA)*100).toFixed(1)}pp)`).join(', ');
+    rekoList.push({
+      icon:'📈',
+      title:'Monitoring Ketat — Impact Kenaikan Dexlite Meningkat',
+      body:`${names} menunjukkan kenaikan % impact Dexlite terhadap total cost >2pp dibanding periode sebelumnya. Lakukan monitoring mingguan konsumsi Dexlite dan pastikan tidak ada penambahan armada diesel baru di area dengan kelangkaan Bio Solar.`,
+      level:'medium'
+    });
+  }
+
+  // === RULE 4: Liter naik tapi Trip turun (inefisiensi) ===
+  const inefisien=siteStats.filter(x=>x.tQB>x.tQA*1.05&&x.tripB<x.tripA).sort((a,b)=>(b.tQB/b.tripB)-(a.tQB/a.tripB));
+  if(inefisien.length>0){
+    const names=inefisien.slice(0,3).map(x=>`<b>${x.s}</b>`).join(', ');
+    rekoList.push({
+      icon:'🚚',
+      title:'Efisiensi Rute & OLF Perlu Diperhatikan',
+      body:`${names} menunjukkan konsumsi BBM naik >5% sementara jumlah trip turun — indikasi inefisiensi rute atau OLF rendah. Pastikan volume muat maksimal, akurasi routing ditingkatkan, dan DO/DP per LC dimaksimalkan untuk turunkan cost per DO & DP.`,
+      level:'low'
+    });
+  }
+
+  // === RULE 5: % Impact nasional > 5% ===
+  const ipNasB=aggB.cA>0?aggB.dImp/aggB.cA:0;
+  if(ipNasB>0.05){
+    rekoList.push({
+      icon:'💰',
+      title:'Review Struktur Biaya BBM Nasional',
+      body:`Impact kenaikan Dexlite secara nasional mencapai <b>${fP(ipNasB,2)}</b> dari total cost BBM Periode B. Angka ini signifikan dan perlu menjadi perhatian manajemen. Pertimbangkan negosiasi kontrak harga Dexlite atau percepatan program diversifikasi BBM.`,
+      level:'high'
+    });
+  }
+
+  // Kalau tidak ada rekomendasi
+  if(rekoList.length===0){
+    rekoList.push({
+      icon:'✅',
+      title:'Kondisi BBM Dalam Batas Normal',
+      body:'Tidak ada anomali signifikan pada periode ini. Proporsi Dexlite terkendali dan impact kenaikan harga masih minimal. Pertahankan monitoring rutin mingguan.',
+      level:'good'
+    });
+  }
+
+  const levelColor={high:'#fee2e2',medium:'#fef3c7',low:'#dbeafe',good:'#dcfce7'};
+  const levelBorder={high:'#ef4444',medium:'#f59e0b',low:'#3b82f6',good:'#10b981'};
+
+  const g=document.createElement('div');
+  g.style.cssText='display:flex;flex-direction:column;gap:12px;';
+  rekoList.forEach((r,i)=>{
+    const d=document.createElement('div');
+    d.style.cssText=`background:${levelColor[r.level]};border:1px solid ${levelBorder[r.level]};border-left:4px solid ${levelBorder[r.level]};border-radius:10px;padding:14px 18px;display:flex;gap:12px;`;
+    d.innerHTML=`
+      <div style="font-size:22px;line-height:1;flex-shrink:0;">${r.icon}</div>
+      <div>
+        <div style="font-size:12px;font-weight:800;color:var(--nv);margin-bottom:4px;">${String(i+1).padStart(2,'0')}. ${r.title}</div>
+        <div style="font-size:11px;color:var(--mu);line-height:1.7;">${r.body}</div>
+      </div>`;
     g.appendChild(d);
   });
+  sec.appendChild(g);
 }
 
 // ============================================================
