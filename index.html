@@ -339,7 +339,23 @@ const fL=v=>Math.round(v).toLocaleString('id-ID')+' Ltr';
 const fS=v=>{const a=Math.abs(v);if(a>=1e9)return'Rp '+(v/1e9).toFixed(2)+' M';if(a>=1e6)return'Rp '+(v/1e6).toFixed(1)+' Jt';return'Rp '+Math.round(v).toLocaleString('id-ID');};
 const fP=(v,d=2)=>(v*100).toFixed(d)+'%';
 const fD=s=>{try{const d=new Date(s+'T00:00:00');return d.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;}};
-const grpOf=s=>{for(const[k,g]of Object.entries(GROUPS))if(g.sites.includes(s))return{key:k,...g};return null;};
+function grpOf(s){
+  if(!s) return null;
+  const u=s.toUpperCase();
+  // NDC
+  if(['JABABEKA','CIKUPA','SDA'].some(x=>u===x||u.includes(x+' ')||u.endsWith(x))) 
+    return{key:'NDC',label:'NDC',color:'#eab308'};
+  // RDC
+  if(u==='TALLO'||u==='TAMORA') 
+    return{key:'RDC',label:'RDC',color:'#06b6d4'};
+  // Hub — HUB AHI, HUB HCI, BKS HCI, BKS AHI
+  if(u.startsWith('HUB AHI')||u.startsWith('HUB HCI')||u.startsWith('BKS HCI')||u.startsWith('BKS AHI')) 
+    return{key:'HUB',label:'Hub',color:'#6366f1'};
+  // SDC
+  if(u.startsWith('SDC')) 
+    return{key:'SDC',label:'SDC',color:'#f97316'};
+  return null;
+}
 const getPx=p=>{const x=p==='a'?'pa':'pb';return{Solar:pn(document.getElementById(x+'_s').value)||6800,Dexlite:pn(document.getElementById(x+'_d').value)||14300,Pertalite:pn(document.getElementById(x+'_p').value)||10000,Pertamax:pn(document.getElementById(x+'_x').value)||12300};};
 const dcls=(d,lg)=>d===0?'dn':(lg?(d<0?'dg':'db2'):(d>0?'dg':'db2'));
 const dpcls=(d,lg)=>d===0?'dpn':(lg?(d<0?'dpg':'dpb'):(d>0?'dpg':'dpb'));
@@ -517,7 +533,7 @@ function buildSB(){
   </div>`;
 
   Object.entries(GROUPS).forEach(([gk,g])=>{
-    const gs=g.sites.filter(s=>siteData[s]);
+    const gs=getGroupSites(gk);
     if(!gs.length)return;
     const collapsed = collapsedGroups[gk]!==false; // default collapsed
     const arrow = collapsed ? '▶' : '▼';
@@ -711,16 +727,16 @@ function renderMapLabels(bS,bE,pA,pB){
   // Build display items — Hub HCI & Hub AHI aggregated, others individual
   const items=[];
 
-  // Aggregate Hub HCI
-  const hciSites=loadedSites.filter(s=>s.startsWith('HUB HCI'));
+  // Aggregate Hub HCI (includes BKS HCI)
+  const hciSites=loadedSites.filter(s=>s.startsWith('HUB HCI')||s.startsWith('BKS HCI'));
   if(hciSites.length>0){
     let totalCost=0;
     hciSites.forEach(s=>{ const r=siteData[s]||[]; const b2=agg(fRows(r,bS,bE),pA,pB); totalCost+=b2.cA; });
     if(totalCost>0) items.push({label:'HUB HCI',color:'#6366f1',cost:totalCost,coords:[-6.209,106.846],sites:hciSites});
   }
 
-  // Aggregate Hub AHI
-  const ahiSites=loadedSites.filter(s=>s.startsWith('HUB AHI'));
+  // Aggregate Hub AHI (includes BKS AHI)
+  const ahiSites=loadedSites.filter(s=>s.startsWith('HUB AHI')||s.startsWith('BKS AHI'));
   if(ahiSites.length>0){
     let totalCost=0;
     ahiSites.forEach(s=>{ const r=siteData[s]||[]; const b2=agg(fRows(r,bS,bE),pA,pB); totalCost+=b2.cA; });
@@ -728,7 +744,7 @@ function renderMapLabels(bS,bE,pA,pB){
   }
 
   // All other sites (non-Hub)
-  loadedSites.filter(s=>!s.startsWith('HUB')).forEach(site=>{
+  loadedSites.filter(s=>!s.startsWith('HUB')&&!s.startsWith('BKS')).forEach(site=>{
     const coords=SITE_COORDS[site]; if(!coords) return;
     const rows=siteData[site]||[];
     const b2=agg(fRows(rows,bS,bE),pA,pB);
