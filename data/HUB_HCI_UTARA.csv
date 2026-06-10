@@ -1,1210 +1,1227 @@
 LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
-260101S062,HCI,1/1/2026,Solar,4.56,Jakarta Utara,
-260101S060,HCI,1/1/2026,Solar,3.68,Jakarta Utara,
-260101S061,HCI,1/1/2026,Solar,10,Jakarta Timur,
-260101S058,HCI,1/1/2026,Solar,11.03,Jakarta Utara,
-260101S124,HCI,1/1/2026,Rechecked,,Jakarta Utara,
-260101S077,HCI,1/1/2026,Pertalite,6.9,Jakarta Utara,
-260101S059,HCI,1/1/2026,Solar,7.06,Jakarta Utara,
-260102S094,HCI,1/2/2026,Solar,11.62,Jakarta Utara,
-260102S080,HCI,1/2/2026,Solar,8.82,Jakarta Utara,
-260102S007,HCI,1/2/2026,Solar,11.47,Jakarta Utara,
-260102S075,HCI,1/2/2026,Solar,16.47,Jakarta Utara,
-260102S077,HCI,1/2/2026,Solar,16.62,Jakarta Utara,
-260102S079,HCI,1/2/2026,Solar,11.47,Jakarta Timur,
-260102S083,HCI,1/2/2026,Pertalite,11,Jakarta Utara,
-260102S078,HCI,1/2/2026,Solar,10.29,Jakarta Utara,
-260103S176,HCI,1/3/2026,Rechecked,,Jakarta Utara,
-260103S045,HCI,1/3/2026,Solar,11.03,Jakarta Timur,
-260103S043,HCI,1/3/2026,Solar,6.32,Jakarta Utara,
-260103S040,HCI,1/3/2026,Solar,14.71,Jakarta Utara,
-260103S044,HCI,1/3/2026,Solar,7.35,Jakarta Utara,
-260103S041,HCI,1/3/2026,Solar,11.03,Jakarta Utara,
-260103S046,HCI,1/3/2026,Pertalite,15.3,Jakarta Utara,
-260103S042,HCI,1/3/2026,Solar,7.35,Jakarta Utara,
-260104S045,HCI,1/4/2026,Solar,10.15,Jakarta Utara,
-260104S044,HCI,1/4/2026,Solar,7.79,Jakarta Utara,
-260104S036,HCI,1/4/2026,Solar,24.85,Jakarta Utara,
-260104S042,HCI,1/4/2026,Solar,11.18,Jakarta Timur,
-260104S068,HCI,1/4/2026,Pertalite,10.5,Jakarta Utara,
-260105S035,HCI,1/5/2026,Solar,13.24,Jakarta Utara,
-260105S080,HCI,1/5/2026,Solar,10.44,Jakarta Utara,
-260105S034,HCI,1/5/2026,Solar,11.18,Jakarta Timur,
-260105S081,HCI,1/5/2026,Solar,25.29,Jakarta Utara,
-260105S036,HCI,1/5/2026,Solar,10.29,Jakarta Utara,
-260105S037,HCI,1/5/2026,Solar,12.21,Jakarta Utara,
-260105S098,HCI,1/5/2026,Pertalite,12.6,Jakarta Utara,
-260105S038,HCI,1/5/2026,Solar,8.09,Jakarta Utara,
-260106S046,HCI,1/6/2026,Solar,7.35,Jakarta Utara,
-260106S102,HCI,1/6/2026,Solar,5.88,Jakarta Timur,
-260106S051,HCI,1/6/2026,Solar,4.41,Jakarta Utara,
-260106S042,HCI,1/6/2026,Solar,16.62,Jakarta Utara,
-260106S053,HCI,1/6/2026,Solar,8.09,Jakarta Timur,
-260106S044,HCI,1/6/2026,Solar,10.15,Jakarta Utara,
-260106S081,HCI,1/6/2026,Pertalite,6.5,Jakarta Utara,
-260106S049,HCI,1/6/2026,Solar,6.76,Jakarta Utara,
-260107S045,HCI,1/7/2026,Solar,9.12,Jakarta Utara,
-260107S048,HCI,1/7/2026,Solar,11.18,Jakarta Utara,
-260107S046,HCI,1/7/2026,Solar,7.5,Jakarta Utara,
-260107S093,HCI,1/7/2026,Rechecked,,Jakarta Utara,
-260107S047,HCI,1/7/2026,Solar,7.35,Jakarta Timur,
-260107S051,HCI,1/7/2026,Solar,11.76,Jakarta Utara,
-260107S032,HCI,1/7/2026,Pertalite,8.1,Jakarta Utara,
-260107S049,HCI,1/7/2026,Solar,13.68,Jakarta Utara,
-260108S052,HCI,1/8/2026,Solar,13.68,Jakarta Utara,
-260108S148,HCI,1/8/2026,Rechecked,,Jakarta Utara,
-260108S058,HCI,1/8/2026,Solar,15,Jakarta Utara,
-260108S054,HCI,1/8/2026,Solar,8.09,Jakarta Utara,
-260108S059,HCI,1/8/2026,Solar,10.29,Jakarta Utara,
-260108S125,HCI,1/8/2026,Pertalite,6.1,Jakarta Utara,
-260108S060,HCI,1/8/2026,Solar,13.24,Jakarta Utara,
-260109S101,HCI,1/9/2026,Rechecked,,Jakarta Utara,
-260109S079,HCI,1/9/2026,Solar,7.35,Jakarta Utara,
-260109S042,HCI,1/9/2026,Solar,6.62,Jakarta Utara,
-260109S045,HCI,1/9/2026,Solar,19.12,Jakarta Utara,
-260109S043,HCI,1/9/2026,Solar,9.41,Jakarta Timur,
-260109S046,HCI,1/9/2026,Solar,16.18,Jakarta Utara,
-260109S095,HCI,1/9/2026,Pertalite,7.8,Jakarta Utara,
-260109S044,HCI,1/9/2026,Solar,8.82,Jakarta Utara,
-260110S063,HCI,1/10/2026,Solar,5.88,Jakarta Utara,
-260110S060,HCI,1/10/2026,Solar,8.53,Jakarta Utara,
-260110S057,HCI,1/10/2026,Solar,19.12,Jakarta Utara,
-260110S062,HCI,1/10/2026,Solar,8.24,Jakarta Timur,
-260110S140,HCI,1/10/2026,Pertalite,10,Jakarta Utara,
-260110S058,HCI,1/10/2026,Solar,9.56,Jakarta Utara,
-260111S049,HCI,1/11/2026,Solar,9.71,Jakarta Utara,
-260111S052,HCI,1/11/2026,Rechecked,,Jakarta Utara,
-260111S054,HCI,1/11/2026,Solar,25.15,Jakarta Utara,
-260111S056,HCI,1/11/2026,Solar,24.71,Jakarta Utara,
-260111S047,HCI,1/11/2026,Solar,8.53,Jakarta Utara,
-260111S133,HCI,1/11/2026,Pertalite,8.6,Jakarta Utara,
-260111S051,HCI,1/11/2026,Solar,8.81,Jakarta Timur,
-260112S045,HCI,1/12/2026,Solar,15.15,Jakarta Utara,
-260112S048,HCI,1/12/2026,Solar,7.06,Jakarta Utara,
-260112S052,HCI,1/12/2026,Solar,11.03,Jakarta Timur,
-260112S066,HCI,1/12/2026,Rechecked,,Jakarta Utara,
-260112S047,HCI,1/12/2026,Solar,5.74,Jakarta Utara,
-260112S049,HCI,1/12/2026,Solar,8.97,Jakarta Utara,
-260112S065,HCI,1/12/2026,Pertalite,11.5,Jakarta Utara,
-260112S043,HCI,1/12/2026,Solar,14.71,Jakarta Utara,
-260113S059,HCI,1/13/2026,Solar,10,Jakarta Utara,
-260113S057,HCI,1/13/2026,Solar,7.35,Jakarta Utara,
-260113S056,HCI,1/13/2026,Solar,11.76,Jakarta Utara,
-260113S054,HCI,1/13/2026,Solar,17.79,Jakarta Utara,
-260113S055,HCI,1/13/2026,Solar,11.76,Jakarta Utara,
-260113S058,HCI,1/13/2026,Solar,10.59,Jakarta Utara,
-260113S053,HCI,1/13/2026,Pertalite,11,Jakarta Utara,
-260113S110,HCI,1/13/2026,Solar,9.41,Jakarta Utara,
-260114S047,HCI,1/14/2026,Solar,6.91,Jakarta Utara,
-260114S050,HCI,1/14/2026,Solar,8.38,Jakarta Timur,
-260114S145,HCI,1/14/2026,Solar,15.29,Jakarta Utara,
-260114S051,HCI,1/14/2026,Solar,19.12,Jakarta Utara,
-260114S052,HCI,1/14/2026,Solar,11.76,Jakarta Utara,
-260114S049,HCI,1/14/2026,Solar,11.76,Jakarta Utara,
-260114S083,HCI,1/14/2026,Pertalite,7.7,Jakarta Utara,
-260114S048,HCI,1/14/2026,Solar,10,Jakarta Utara,
-260115S033,HCI,1/15/2026,Solar,7.35,Jakarta Utara,
-260115S163,HCI,1/15/2026,Rechecked,,Jakarta Utara,
-260115S034,HCI,1/15/2026,Solar,7.35,Jakarta Utara,
-260115S156,HCI,1/15/2026,Solar,19.12,Jakarta Utara,
-260115S035,HCI,1/15/2026,Solar,6.91,Jakarta Utara,
-260115S036,HCI,1/15/2026,Solar,6.62,Jakarta Timur,
-260115S037,HCI,1/15/2026,Pertalite,5.8,Jakarta Utara,
-260115S155,HCI,1/15/2026,Solar,11.91,Jakarta Utara,
-260116S043,HCI,1/16/2026,Rechecked,,Jakarta Utara,
-260116S037,HCI,1/16/2026,Solar,6.62,Jakarta Utara,
-260116S035,HCI,1/16/2026,Solar,7.35,Jakarta Timur,
-260116S120,HCI,1/16/2026,Solar,15.74,Jakarta Utara,
-260116S041,HCI,1/16/2026,Solar,7.06,Jakarta Utara,
-260116S040,HCI,1/16/2026,Solar,6.91,Jakarta Timur,
-260116S044,HCI,1/16/2026,Pertalite,5.4,Jakarta Utara,
-260116S126,HCI,1/16/2026,Solar,7.35,Jakarta Utara,
-260117S034,HCI,1/17/2026,Rechecked,,Jakarta Utara,
-260117S028,HCI,1/17/2026,Solar,12.5,Jakarta Utara,
-260117S029,HCI,1/17/2026,Solar,12.21,Jakarta Utara,
-260117S031,HCI,1/17/2026,Solar,7.06,Jakarta Utara,
-260117S033,HCI,1/17/2026,Solar,9.85,Jakarta Utara,
-260117S030,HCI,1/17/2026,Solar,8.09,Jakarta Utara,
-260117S104,HCI,1/17/2026,Pertalite,7,Jakarta Utara,
-260117S032,HCI,1/17/2026,Solar,7.35,Jakarta Timur,
-260118S180,HCI,1/18/2026,Rechecked,6,Jakarta Utara,
-260118S025,HCI,1/18/2026,Solar,11.32,Jakarta Utara,
-260118S027,HCI,1/18/2026,Rechecked,,Jakarta Utara,
-260118S080,HCI,1/18/2026,Solar,19.26,Jakarta Utara,
-260118S026,HCI,1/18/2026,Solar,11.32,Jakarta Timur,
-260118S041,HCI,1/18/2026,Pertalite,10.3,Jakarta Utara,
-260119S036,HCI,1/19/2026,Rechecked,,Jakarta Utara,
-260119S034,HCI,1/19/2026,Solar,16.18,Jakarta Utara,
-260119S164,HCI,1/19/2026,Solar,7.06,Jakarta Utara,
-260119S052,HCI,1/19/2026,Solar,19.41,Jakarta Utara,
-260119S165,HCI,1/19/2026,Solar,22.35,Jakarta Utara,
-260119S035,HCI,1/19/2026,Solar,17.5,Jakarta Utara,
-260119S167,HCI,1/19/2026,Pertalite,14.7,Jakarta Utara,
-260119S033,HCI,1/19/2026,Solar,9.71,Jakarta Utara,
-260120S030,HCI,1/20/2026,Solar,4.41,Jakarta Utara,
-260120S170,HCI,1/20/2026,Solar,23.53,Jakarta Utara,
-260120S031,HCI,1/20/2026,Solar,5.44,Jakarta Utara,
-260120S168,HCI,1/20/2026,Rechecked,,Jakarta Utara,
-260120X027,HCI,1/20/2026,Solar,20,Jakarta Utara,
-260120S032,HCI,1/20/2026,Solar,6.18,Jakarta Utara,
-260120S056,HCI,1/20/2026,Pertalite,6,Jakarta Utara,
-260120S169,HCI,1/20/2026,Solar,13.97,Jakarta Utara,
-260121S041,HCI,1/21/2026,Rechecked,,Jakarta Utara,
-260121S084,HCI,1/21/2026,Solar,15.44,Jakarta Utara,
-260121S040,HCI,1/21/2026,Solar,12.5,Jakarta Timur,
-260121S038,HCI,1/21/2026,Solar,9.56,Jakarta Utara,
-260121S083,HCI,1/21/2026,Solar,15.29,Jakarta Utara,
-260121S037,HCI,1/21/2026,Solar,9.12,Jakarta Utara,
-260121S194,HCI,1/21/2026,Solar,2.65,Jakarta Timur,
-260121S085,HCI,1/21/2026,Pertalite,10,Jakarta Utara,
-260121S039,HCI,1/21/2026,Solar,13.38,Jakarta Utara,
-260122S046,HCI,1/22/2026,Rechecked,,Jakarta Utara,
-260122S086,HCI,1/22/2026,Solar,17.65,Jakarta Utara,
-260122S191,HCI,1/22/2026,Rechecked,3.1,Jakarta Utara,
-260122S044,HCI,1/22/2026,Solar,9.56,Jakarta Utara,
-260122S042,HCI,1/22/2026,Solar,8.82,Jakarta Utara,
-260122S045,HCI,1/22/2026,Solar,10.15,Jakarta Timur,
-260122S043,HCI,1/22/2026,Solar,7.35,Jakarta Utara,
-260122S051,HCI,1/22/2026,Pertalite,11.1,Jakarta Utara,
-260122S084,HCI,1/22/2026,Solar,11.54,Jakarta Utara,
-260123S038,HCI,1/23/2026,Solar,12.06,Jakarta Timur,
-260123S039,HCI,1/23/2026,Rechecked,,Jakarta Utara,
-260123S052,HCI,1/23/2026,Solar,12.65,Jakarta Utara,
-260123S036,HCI,1/23/2026,Solar,8.82,Jakarta Utara,
-260123S050,HCI,1/23/2026,Solar,15.74,Jakarta Utara,
-260123S081,HCI,1/23/2026,Pertalite,9.2,Jakarta Utara,
-260123S037,HCI,1/23/2026,Solar,7.06,Jakarta Utara,
-260124S036,HCI,1/24/2026,Solar,16.32,Jakarta Timur,
-260124S032,HCI,1/24/2026,Solar,5.15,Jakarta Utara,
-260124S035,HCI,1/24/2026,Solar,3.97,Jakarta Utara,
-260124S033,HCI,1/24/2026,Solar,13.24,Jakarta Utara,
-260124S062,HCI,1/24/2026,Pertalite,6.6,Jakarta Utara,
-260124S034,HCI,1/24/2026,Solar,6.18,Jakarta Timur,
-260125S036,HCI,1/25/2026,Solar,12.65,Jakarta Utara,
-260125S168,HCI,1/25/2026,Solar,10.29,Jakarta Utara,
-260125S037,HCI,1/25/2026,Solar,20.59,Jakarta Utara,
-260125S038,HCI,1/25/2026,Solar,17.65,Jakarta Timur,
-260125S169,HCI,1/25/2026,Rechecked,,Jakarta Utara,
-260125S167,HCI,1/25/2026,Pertalite,8.4,Jakarta Utara,
-260125S066,HCI,1/25/2026,Solar,5.29,Jakarta Utara,
-260126S045,HCI,1/26/2026,Solar,5.15,Jakarta Utara,
-260126S106,HCI,1/26/2026,Solar,19.71,Jakarta Utara,
-260126S044,HCI,1/26/2026,Solar,5.15,Jakarta Utara,
-260126S086,HCI,1/26/2026,Solar,8.24,Jakarta Utara,
-260126S046,HCI,1/26/2026,Solar,5.44,Jakarta Utara,
-260126S112,HCI,1/26/2026,Rechecked,,Jakarta Utara,
-260126S043,HCI,1/26/2026,Pertalite,7,Jakarta Utara,
-260126S047,HCI,1/26/2026,Solar,8.53,Jakarta Timur,
-260127S103,HCI,1/27/2026,Rechecked,,Jakarta Utara,
-260127S041,HCI,1/27/2026,Solar,5.88,Jakarta Utara,
-260127S043,HCI,1/27/2026,Solar,8.09,Jakarta Utara,
-260127S096,HCI,1/27/2026,Solar,11.32,Jakarta Utara,
-260127S040,HCI,1/27/2026,Solar,7.65,Jakarta Utara,
-260127S042,HCI,1/27/2026,Solar,8.09,Jakarta Utara,
-260127S044,HCI,1/27/2026,Pertalite,6.2,Jakarta Utara,
-260127S083,HCI,1/27/2026,Solar,10,Jakarta Utara,
-260128S117,HCI,1/28/2026,Rechecked,,Jakarta Utara,
-260128S034,HCI,1/28/2026,Solar,8.53,Jakarta Utara,
-260128S033,HCI,1/28/2026,Solar,7.06,Jakarta Utara,
-260128S035,HCI,1/28/2026,Solar,4.71,Jakarta Utara,
-260128S104,HCI,1/28/2026,Solar,17.35,Jakarta Utara,
-260128S048,HCI,1/28/2026,Pertalite,7,Jakarta Utara,
-260128S036,HCI,1/28/2026,Solar,8.97,Jakarta Timur,
-260129S054,HCI,1/29/2026,Solar,6.32,Jakarta Utara,
-260129S174,HCI,1/29/2026,Solar,13.24,Jakarta Utara,
-260129S058,HCI,1/29/2026,Solar,15.15,Jakarta Utara,
-260129S055,HCI,1/29/2026,Solar,9.12,Jakarta Utara,
-260129S057,HCI,1/29/2026,Solar,8.97,Jakarta Timur,
-260129S188,HCI,1/29/2026,Rechecked,,Jakarta Utara,
-260129S162,HCI,1/29/2026,Pertalite,7.8,Jakarta Utara,
-260129S056,HCI,1/29/2026,Solar,6.32,Jakarta Utara,
-260130S070,HCI,1/30/2026,Solar,9.12,Jakarta Utara,
-260130S072,HCI,1/30/2026,Solar,8.24,Jakarta Utara,
-260130S071,HCI,1/30/2026,Solar,7.35,Jakarta Utara,
-260130S069,HCI,1/30/2026,Solar,10.15,Jakarta Timur,
-260130S074,HCI,1/30/2026,Rechecked,,Jakarta Utara,
-260130S075,HCI,1/30/2026,Pertalite,10.9,Jakarta Utara,
-260130S073,HCI,1/30/2026,Solar,14.71,Jakarta Utara,
-260131S069,HCI,1/31/2026,Solar,13.38,Jakarta Utara,
-260131S062,HCI,1/31/2026,Solar,8.24,Jakarta Utara,
-260131S059,HCI,1/31/2026,Solar,11.18,Jakarta Utara,
-260131S064,HCI,1/31/2026,Solar,9.56,Jakarta Timur,
-260131S158,HCI,1/31/2026,Rechecked,,Jakarta Utara,
-260131S046,HCI,1/31/2026,Pertalite,11.7,Jakarta Utara,
-260201S014,HCI,2/1/2026,Rechecked,,Jakarta Utara,
-260201S012,HCI,2/1/2026,Solar,8.82,Jakarta Utara,
-260201S140,HCI,2/1/2026,Solar,19.56,Jakarta Utara,
-260201S013,HCI,2/1/2026,Solar,8.82,Jakarta Timur,
-260201S142,HCI,2/1/2026,Pertalite,11,Jakarta Utara,
-260201S141,HCI,2/1/2026,Solar,10.59,Jakarta Utara,
-260202S046,HCI,2/2/2026,Solar,6.18,Jakarta Utara,
-260202S136,HCI,2/2/2026,Rechecked,,Jakarta Utara,
-260202S045,HCI,2/2/2026,Solar,8.82,Jakarta Timur,
-260202S047,HCI,2/2/2026,Solar,8.24,Jakarta Utara,
-260202S116,HCI,2/2/2026,Solar,9.12,Jakarta Utara,
-260202S112,HCI,2/2/2026,Solar,11.03,Jakarta Utara,
-260202S049,HCI,2/2/2026,Solar,20,Jakarta Utara,
-260202S044,HCI,2/2/2026,Pertalite,8.9,Jakarta Utara,
-260202S048,HCI,2/2/2026,Solar,11.03,Jakarta Utara,
-260203S043,HCI,2/3/2026,Solar,9.26,Jakarta Utara,
-260203S046,HCI,2/3/2026,Solar,8.82,Jakarta Utara,
-260203S045,HCI,2/3/2026,Solar,11.47,Jakarta Utara,
-260203S150,HCI,2/3/2026,Rechecked,,Jakarta Utara,
-260203S044,HCI,2/3/2026,Solar,6.76,Jakarta Utara,
-260203S047,HCI,2/3/2026,Solar,10,Jakarta Timur,
-260203S042,HCI,2/3/2026,Solar,11.76,Jakarta Utara,
-260203S048,HCI,2/3/2026,Pertalite,8.1,Jakarta Utara,
-260203S041,HCI,2/3/2026,Solar,22.5,Jakarta Utara,
-260204S046,HCI,2/4/2026,Solar,13.97,Jakarta Timur,
-260204S045,HCI,2/4/2026,Solar,12.06,Jakarta Utara,
-260204S043,HCI,2/4/2026,Solar,9.12,Jakarta Utara,
-260204S075,HCI,2/4/2026,Solar,15.29,Jakarta Utara,
-260204S044,HCI,2/4/2026,Solar,13.53,Jakarta Utara,
-260204S047,HCI,2/4/2026,Rechecked,,Jakarta Utara,
-260204S086,HCI,2/4/2026,Pertalite,9.6,Jakarta Utara,
-260204S072,HCI,2/4/2026,Solar,16.03,Jakarta Utara,
-260205S062,HCI,2/5/2026,Solar,3.82,Jakarta Timur,
-260205S061,HCI,2/5/2026,Solar,13.24,Jakarta Timur,
-260205S047,HCI,2/5/2026,Solar,11.18,Jakarta Utara,
-260205S043,HCI,2/5/2026,Solar,26.76,Jakarta Utara,
-260205S046,HCI,2/5/2026,Solar,9.41,Jakarta Utara,
-260205S060,HCI,2/5/2026,Pertalite,11.1,Jakarta Utara,
-260205S045,HCI,2/5/2026,Solar,16.91,Jakarta Utara,
-260206S061,HCI,2/6/2026,Solar,9.34,Jakarta Timur,
-260206S059,HCI,2/6/2026,Solar,7.65,Jakarta Utara,
-260206S060,HCI,2/6/2026,Solar,9.12,Jakarta Utara,
-260206S062,HCI,2/6/2026,Solar,12.06,Jakarta Utara,
-260206S053,HCI,2/6/2026,Solar,15.74,Jakarta Utara,
-260206S184,HCI,2/6/2026,Rechecked,,Jakarta Utara,
-260206S086,HCI,2/6/2026,Pertalite,6.6,Jakarta Utara,
-260206S058,HCI,2/6/2026,Solar,7.35,Jakarta Utara,
-260207S081,HCI,2/7/2026,Solar,9.12,Jakarta Timur,
-260207S001,HCI,2/7/2026,Solar,16.18,Jakarta Utara,
-260207S083,HCI,2/7/2026,Solar,25,Jakarta Utara,
-260207S079,HCI,2/7/2026,Solar,5.88,Jakarta Utara,
-260207S080,HCI,2/7/2026,Solar,8.68,Jakarta Utara,
-260208S019,HCI,2/8/2026,Solar,7.35,Jakarta Timur,
-260208S038,HCI,2/8/2026,Solar,11.03,Jakarta Utara,
-260208S036,HCI,2/8/2026,Rechecked,,Jakarta Utara,
-260208S034,HCI,2/8/2026,Solar,6.76,Jakarta Utara,
-260208S035,HCI,2/8/2026,Solar,11.18,Jakarta Utara,
-260208S061,HCI,2/8/2026,Pertalite,9.5,Jakarta Utara,
-260208S183,HCI,2/8/2026,Solar,12.06,Jakarta Utara,
-260209S028,HCI,2/9/2026,Solar,10.88,Jakarta Utara,
-260209S031,HCI,2/9/2026,Solar,9.71,Jakarta Timur,
-260209S032,HCI,2/9/2026,Solar,11.76,Jakarta Utara,
-260209S082,HCI,2/9/2026,Solar,12.65,Jakarta Utara,
-260209S090,HCI,2/9/2026,Solar,15.44,Jakarta Utara,
-260209S029,HCI,2/9/2026,Solar,17.5,Jakarta Utara,
-260209S034,HCI,2/9/2026,Pertalite,9.5,Jakarta Utara,
-260209S030,HCI,2/9/2026,Solar,12.06,Jakarta Utara,
-260210S049,HCI,2/10/2026,Solar,12.79,Jakarta Utara,
-260210S239,HCI,2/10/2026,Solar,21.32,Jakarta Utara,
-260210S050,HCI,2/10/2026,Solar,11.91,Jakarta Utara,
-260210S051,HCI,2/10/2026,Rechecked,,Jakarta Utara,
-260210S244,HCI,2/10/2026,Pertalite,7.8,Jakarta Utara,
-260210S047,HCI,2/10/2026,Solar,10,Jakarta Utara,
-260210S102,HCI,2/10/2026,Solar,20,Jakarta Utara,
-260210S273,HCI,2/10/2026,Pertalite,4.3,Jakarta Utara,
-260210S048,HCI,2/10/2026,Solar,17.5,Jakarta Utara,
-260210S101,HCI,2/10/2026,Pertalite,20.5,Jakarta Utara,
-260210S103,HCI,2/10/2026,Solar,12.06,Jakarta Utara,
-260211S055,HCI,2/11/2026,Solar,17.65,Jakarta Utara,
-260211S068,HCI,2/11/2026,Solar,9.56,Jakarta Utara,
-260211S158,HCI,2/11/2026,Rechecked,,Jakarta Utara,
-260211S058,HCI,2/11/2026,Solar,14.71,Jakarta Utara,
-260211S071,HCI,2/11/2026,Solar,16.18,Jakarta Utara,
-260211S065,HCI,2/11/2026,Solar,12.21,Jakarta Timur,
-260211S050,HCI,2/11/2026,Pertalite,11,Jakarta Utara,
-260211S061,HCI,2/11/2026,Solar,8.53,Jakarta Utara,
-260212S031,HCI,2/12/2026,Rechecked,,Jakarta Utara,
-260212S029,HCI,2/12/2026,Solar,12.5,Jakarta Utara,
-260212S030,HCI,2/12/2026,Solar,11.47,Jakarta Timur,
-260212S193,HCI,2/12/2026,Solar,12.21,Jakarta Utara,
-260212S032,HCI,2/12/2026,Solar,6.62,Jakarta Utara,
-260212S195,HCI,2/12/2026,Pertalite,11.5,Jakarta Utara,
-260212S028,HCI,2/12/2026,Solar,7.35,Jakarta Utara,
-260213S071,HCI,2/13/2026,Rechecked,,Jakarta Utara,
-260213S059,HCI,2/13/2026,Solar,11.32,Jakarta Timur,
-260213S057,HCI,2/13/2026,Solar,7.5,Jakarta Utara,
-260213S056,HCI,2/13/2026,Solar,8.82,Jakarta Utara,
-260213S061,HCI,2/13/2026,Solar,17.94,Jakarta Utara,
-260213S058,HCI,2/13/2026,Solar,8.09,Jakarta Utara,
-260213S055,HCI,2/13/2026,Pertalite,12.1,Jakarta Utara,
-260213S060,HCI,2/13/2026,Solar,16.91,Jakarta Utara,
-260214S071,HCI,2/14/2026,Rechecked,,Jakarta Utara,
-260214S068,HCI,2/14/2026,Solar,13.38,Jakarta Utara,
-260214S069,HCI,2/14/2026,Solar,9.56,Jakarta Utara,
-260214S070,HCI,2/14/2026,Solar,8.24,Jakarta Timur,
-260214S072,HCI,2/14/2026,Solar,18.82,Jakarta Utara,
-260214S127,HCI,2/14/2026,Pertalite,11.5,Jakarta Utara,
-260214S110,HCI,2/14/2026,Pertalite,8.9,Jakarta Timur,
-260214S073,HCI,2/14/2026,Solar,18.82,Jakarta Utara,
-260215S055,HCI,2/15/2026,Solar,5.88,Jakarta Utara,
-260215S080,HCI,2/15/2026,Solar,7.65,Jakarta Utara,
-260215S056,HCI,2/15/2026,Solar,11.32,Jakarta Utara,
-260215S059,HCI,2/15/2026,Solar,12.5,Jakarta Utara,
-260215S057,HCI,2/15/2026,Solar,6.32,Jakarta Timur,
-260215S078,HCI,2/15/2026,Pertalite,7.2,Jakarta Utara,
-260215S058,HCI,2/15/2026,Solar,16.32,Jakarta Utara,
-260216S046,HCI,2/16/2026,Solar,8.82,Jakarta Utara,
-260216S045,HCI,2/16/2026,Solar,11.03,Jakarta Timur,
-260216S044,HCI,2/16/2026,Solar,5.29,Jakarta Utara,
-260216S144,HCI,2/16/2026,Solar,31.76,Jakarta Utara,
-260216S032,HCI,2/16/2026,Solar,9.71,Jakarta Utara,
-260216S034,HCI,2/16/2026,Solar,23.38,Jakarta Utara,
-260216S141,HCI,2/16/2026,Pertalite,8,Jakarta Utara,
-260216S136,HCI,2/16/2026,Solar,19.12,Jakarta Utara,
-260217S053,HCI,2/17/2026,Solar,15.44,Jakarta Timur,
-260217S103,HCI,2/17/2026,Rechecked,,Jakarta Utara,
-260217S049,HCI,2/17/2026,Solar,8.09,Jakarta Utara,
-260217S104,HCI,2/17/2026,Solar,21.03,Jakarta Timur,
-260217S051,HCI,2/17/2026,Solar,22.65,Jakarta Utara,
-260217S050,HCI,2/17/2026,Solar,6.76,Jakarta Timur,
-260217S048,HCI,2/17/2026,Pertalite,5.3,Jakarta Utara,
-260217S052,HCI,2/17/2026,Solar,8.01,Jakarta Utara,
-260218S117,HCI,2/18/2026,Solar,7.65,Jakarta Utara,
-260218X010,HCI,2/18/2026,Solar,14.85,Jakarta Utara,
-260218S114,HCI,2/18/2026,Solar,9.85,Jakarta Utara,
-260218S247,HCI,2/18/2026,Solar,5.59,Jakarta Utara,
-260218S121,HCI,2/18/2026,Rechecked,,Jakarta Utara,
-260218S118,HCI,2/18/2026,Solar,8.82,Jakarta Timur,
-260218S119,HCI,2/18/2026,Solar,8.24,Jakarta Utara,
-260218S104,HCI,2/18/2026,Solar,6.62,Jakarta Utara,
-260218S254,HCI,2/18/2026,Pertalite,3.4,Jakarta Utara,
-260218S115,HCI,2/18/2026,Pertalite,9.7,Jakarta Utara,
-260218S111,HCI,2/18/2026,Solar,12.5,Jakarta Utara,
-260219S041,HCI,2/19/2026,Solar,12.65,Jakarta Utara,
-260219S037,HCI,2/19/2026,Solar,8.53,Jakarta Utara,
-260219S111,HCI,2/19/2026,Rechecked,,Jakarta Utara,
-260219S039,HCI,2/19/2026,Solar,11.03,Jakarta Timur,
-260219S103,HCI,2/19/2026,Solar,15.59,Jakarta Utara,
-260219S042,HCI,2/19/2026,Pertalite,15,Jakarta Utara,
-260219S038,HCI,2/19/2026,Solar,8.01,Jakarta Utara,
-260220S056,HCI,2/20/2026,Solar,6.32,Jakarta Utara,
-260220S128,HCI,2/20/2026,Solar,17.65,Jakarta Utara,
-260220S130,HCI,2/20/2026,Solar,11.76,Jakarta Utara,
-260220S058,HCI,2/20/2026,Solar,10.29,Jakarta Timur,
-260220S235,HCI,2/20/2026,Solar,5.15,Jakarta Utara,
-260220S059,HCI,2/20/2026,Rechecked,,Jakarta Utara,
-260220S131,HCI,2/20/2026,Pertalite,6.7,Jakarta Utara,
-260220S057,HCI,2/20/2026,Solar,6.62,Jakarta Utara,
-260221S041,HCI,2/21/2026,Solar,8.38,Jakarta Utara,
-260221S043,HCI,2/21/2026,Solar,8.38,Jakarta Timur,
-260221S225,HCI,2/21/2026,Solar,22.06,Jakarta Utara,
-260221S226,HCI,2/21/2026,Solar,9.56,Jakarta Utara,
-260221S044,HCI,2/21/2026,Rechecked,,Jakarta Utara,
-260221S045,HCI,2/21/2026,Pertalite,11.3,Jakarta Utara,
-260221S040,HCI,2/21/2026,Solar,8.09,Jakarta Utara,
-260222S046,HCI,2/22/2026,Solar,5.88,Jakarta Utara,
-260222S048,HCI,2/22/2026,Solar,13.09,Jakarta Utara,
-260222S045,HCI,2/22/2026,Solar,18.53,Jakarta Utara,
-260222S203,HCI,2/22/2026,Solar,10.59,Jakarta Utara,
-260222S205,HCI,2/22/2026,Solar,14.85,Jakarta Utara,
-260222S204,HCI,2/22/2026,Pertalite,4.5,Jakarta Utara,
-260222S047,HCI,2/22/2026,Solar,8.82,Jakarta Timur,
-260223S098,HCI,2/23/2026,Solar,12.21,Jakarta Utara,
-260223S099,HCI,2/23/2026,Solar,9.56,Jakarta Utara,
-260223S048,HCI,2/23/2026,Solar,6.62,Jakarta Utara,
-260223S047,HCI,2/23/2026,Solar,6.32,Jakarta Utara,
-260223S046,HCI,2/23/2026,Solar,6.76,Jakarta Utara,
-260223S049,HCI,2/23/2026,Solar,10.29,Jakarta Timur,
-260223S100,HCI,2/23/2026,Pertalite,8.55,Jakarta Utara,
-260223S050,HCI,2/23/2026,Solar,4.71,Jakarta Utara,
-260224S045,HCI,2/24/2026,Solar,7.06,Jakarta Timur,
-260224S044,HCI,2/24/2026,Solar,4.49,Jakarta Utara,
-260224S206,HCI,2/24/2026,Solar,6.32,Jakarta Utara,
-260224S056,HCI,2/24/2026,Solar,6.32,Jakarta Utara,
-260224S202,HCI,2/24/2026,Solar,13.53,Jakarta Utara,
-260224S043,HCI,2/24/2026,Solar,7.35,Jakarta Utara,
-260224S204,HCI,2/24/2026,Pertalite,6.5,Jakarta Utara,
-260224S042,HCI,2/24/2026,Solar,4.56,Jakarta Utara,
-260225S127,HCI,2/25/2026,Solar,13.24,Jakarta Utara,
-260225S128,HCI,2/25/2026,Solar,8.82,Jakarta Utara,
-260225S045,HCI,2/25/2026,Solar,10,Jakarta Utara,
-260225S047,HCI,2/25/2026,Solar,6.62,Jakarta Utara,
-260225S048,HCI,2/25/2026,Solar,7.65,Jakarta Timur,
-260225S046,HCI,2/25/2026,Solar,14.12,Jakarta Utara,
-260225S129,HCI,2/25/2026,Pertalite,5.7,Jakarta Utara,
-260225S141,HCI,2/25/2026,Solar,14.85,Jakarta Utara,
-260226S038,HCI,2/26/2026,Solar,7.06,Jakarta Utara,
-260226S041,HCI,2/26/2026,Solar,8.09,Jakarta Timur,
-260226S042,HCI,2/26/2026,Solar,5.88,Jakarta Timur,
-260226S040,HCI,2/26/2026,Solar,7.06,Jakarta Utara,
-260226S039,HCI,2/26/2026,Solar,6.62,Jakarta Utara,
-260226S208,HCI,2/26/2026,Rechecked,,Jakarta Utara,
-260226S124,HCI,2/26/2026,Pertalite,5.3,Jakarta Utara,
-260226S207,HCI,2/26/2026,Solar,9.85,Jakarta Utara,
-260227S060,HCI,2/27/2026,Solar,8.68,Jakarta Utara,
-260227S059,HCI,2/27/2026,Solar,8.68,Jakarta Utara,
-260227S063,HCI,2/27/2026,Solar,11.32,Jakarta Utara,
-260227S058,HCI,2/27/2026,Solar,7.94,Jakarta Utara,
-260227S061,HCI,2/27/2026,Solar,8.97,Jakarta Timur,
-260227S091,HCI,2/27/2026,Rechecked,,Jakarta Utara,
-260227X023,HCI,2/27/2026,Pertalite,5,Jakarta Timur,
-260227S062,HCI,2/27/2026,Solar,14.63,Jakarta Utara,
-260228S052,HCI,2/28/2026,Solar,8.82,Jakarta Utara,
-260228S053,HCI,2/28/2026,Solar,6.18,Jakarta Timur,
-260228S055,HCI,2/28/2026,Rechecked,,Jakarta Utara,
-260228S171,HCI,2/28/2026,Solar,19.56,Jakarta Utara,
-260228S050,HCI,2/28/2026,Solar,6.47,Jakarta Utara,
-260228S170,HCI,2/28/2026,Pertalite,7.3,Jakarta Utara,
-260228S051,HCI,2/28/2026,Solar,6.32,Jakarta Utara,
-260301S177,HCI,3/1/2026,Solar,16.18,Jakarta Utara,
-260301S041,HCI,3/1/2026,Solar,7.06,Jakarta Utara,
-260301S179,HCI,3/1/2026,Rechecked,,Jakarta Utara,
-260301S043,HCI,3/1/2026,Solar,5.59,Jakarta Utara,
-260301S176,HCI,3/1/2026,Solar,27.35,Jakarta Utara,
-260301S178,HCI,3/1/2026,Pertalite,5.5,Jakarta Utara,
-260301S040,HCI,3/1/2026,Solar,7.5,Jakarta Utara,
-260302S042,HCI,3/2/2026,Solar,5.59,Jakarta Timur,
-260302S048,HCI,3/2/2026,Rechecked,,Jakarta Utara,
-260302S041,HCI,3/2/2026,Solar,12.79,Jakarta Timur,
-260302S040,HCI,3/2/2026,Solar,4.12,Jakarta Utara,
-260302S039,HCI,3/2/2026,Solar,10.74,Jakarta Utara,
-260302S038,HCI,3/2/2026,Solar,11.18,Jakarta Utara,
-260302S167,HCI,3/2/2026,Pertalite,8.8,Jakarta Utara,
-260302S165,HCI,3/2/2026,Solar,16.91,Jakarta Utara,
-260303S047,HCI,3/3/2026,Solar,5.59,Jakarta Utara,
-260303S050,HCI,3/3/2026,Solar,6.62,Jakarta Timur,
-260303S048,HCI,3/3/2026,Solar,6.76,Jakarta Utara,
-260303S051,HCI,3/3/2026,Solar,10,Jakarta Timur,
-260303S049,HCI,3/3/2026,Solar,6.76,Jakarta Utara,
-260303S240,HCI,3/3/2026,Rechecked,,Jakarta Utara,
-260303S170,HCI,3/3/2026,Pertalite,8.6,Jakarta Utara,
-260303S227,HCI,3/3/2026,Solar,14.71,Jakarta Utara,
-260304S091,HCI,3/4/2026,Solar,16.62,Jakarta Utara,
-260304S084,HCI,3/4/2026,Solar,14.71,Jakarta Utara,
-260304S083,HCI,3/4/2026,Solar,5.51,Jakarta Utara,
-260304S087,HCI,3/4/2026,Solar,8.53,Jakarta Utara,
-260304S086,HCI,3/4/2026,Solar,7.21,Jakarta Timur,
-260304S085,HCI,3/4/2026,Solar,6.76,Jakarta Utara,
-260304S092,HCI,3/4/2026,Pertalite,10.3,Jakarta Utara,
-260304S236,HCI,3/4/2026,Solar,4.12,Jakarta Timur,
-260304X029,HCI,3/4/2026,Solar,5.88,Jakarta Timur,
-260305S053,HCI,3/5/2026,Solar,10,Jakarta Utara,
-260305S239,HCI,3/5/2026,Pertalite,1.6,Jakarta Utara,
-260305S231,HCI,3/5/2026,Rechecked,,Jakarta Timur,
-260305S094,HCI,3/5/2026,Rechecked,,Jakarta Utara,
-260305S057,HCI,3/5/2026,Solar,17.21,Jakarta Utara,
-260305S056,HCI,3/5/2026,Solar,8.53,Jakarta Timur,
-260305S055,HCI,3/5/2026,Solar,6.47,Jakarta Utara,
-260305S087,HCI,3/5/2026,Pertalite,7.3,Jakarta Utara,
-260305S054,HCI,3/5/2026,Solar,9.56,Jakarta Utara,
-260306S097,HCI,3/6/2026,Pertalite,5,Jakarta Timur,
-260306S190,HCI,3/6/2026,Solar,9.56,Jakarta Utara,
-260306S043,HCI,3/6/2026,Solar,5.88,Jakarta Utara,
-260306S004,HCI,3/6/2026,Solar,14.71,Jakarta Utara,
-260306S044,HCI,3/6/2026,Solar,13.24,Jakarta Timur,
-260306S045,HCI,3/6/2026,Pertalite,6.1,Jakarta Utara,
-260306S042,HCI,3/6/2026,Solar,7.65,Jakarta Utara,
-260307S058,HCI,3/7/2026,Solar,15.15,Jakarta Utara,
-260307S059,HCI,3/7/2026,Solar,7.06,Jakarta Utara,
-260307S140,HCI,3/7/2026,Rechecked,,Jakarta Utara,
-260307S076,HCI,3/7/2026,Solar,6.91,Jakarta Utara,
-260307S071,HCI,3/7/2026,Solar,6.03,Jakarta Utara,
-260307S128,HCI,3/7/2026,Pertalite,7.6,Jakarta Utara,
-260307S073,HCI,3/7/2026,Solar,7.06,Jakarta Timur,
-260308S093,HCI,3/8/2026,Rechecked,,Jakarta Utara,
-260308S064,HCI,3/8/2026,Solar,5.15,Jakarta Utara,
-260308S063,HCI,3/8/2026,Solar,7.94,Jakarta Utara,
-260308S065,HCI,3/8/2026,Solar,19.12,Jakarta Utara,
-260308S127,HCI,3/8/2026,Pertalite,2.3,Jakarta Utara,
-260308S062,HCI,3/8/2026,Solar,6.62,Jakarta Utara,
-260309S227,HCI,3/9/2026,Solar,8.82,Jakarta Utara,
-260309S061,HCI,3/9/2026,Solar,5.88,Jakarta Utara,
-260309S209,HCI,3/9/2026,Rechecked,,Jakarta Utara,
-260309S045,HCI,3/9/2026,Solar,5.88,Jakarta Utara,
-260309S062,HCI,3/9/2026,Solar,6.18,Jakarta Timur,
-260309S063,HCI,3/9/2026,Solar,10.29,Jakarta Timur,
-260309S064,HCI,3/9/2026,Solar,12.94,Jakarta Utara,
-260309S228,HCI,3/9/2026,Pertalite,10.2,Jakarta Utara,
-260309S226,HCI,3/9/2026,Solar,16.91,Jakarta Utara,
-260310S034,HCI,3/10/2026,Solar,13.24,Jakarta Utara,
-260310S035,HCI,3/10/2026,Solar,5.88,Jakarta Utara,
-260310S033,HCI,3/10/2026,Solar,8.24,Jakarta Utara,
-260310S055,HCI,3/10/2026,Solar,17.94,Jakarta Timur,
-260310S036,HCI,3/10/2026,Solar,11.47,Jakarta Timur,
-260310S080,HCI,3/10/2026,Rechecked,,Jakarta Utara,
-260310S220,HCI,3/10/2026,Rechecked,15,Jakarta Utara,
-260310S219,HCI,3/10/2026,Solar,18.97,Jakarta Utara,
-260311S051,HCI,3/11/2026,Solar,11.47,Jakarta Timur,
-260311S049,HCI,3/11/2026,Solar,5,Jakarta Timur,
-260311S124,HCI,3/11/2026,Solar,8.09,Jakarta Utara,
-260311S047,HCI,3/11/2026,Solar,10.29,Jakarta Utara,
-260311S048,HCI,3/11/2026,Solar,8.97,Jakarta Utara,
-260311S050,HCI,3/11/2026,Solar,7.79,Jakarta Timur,
-260311S125,HCI,3/11/2026,Pertalite,8.7,Jakarta Utara,
-260311S101,HCI,3/11/2026,Solar,18.09,Jakarta Utara,
-260312S050,HCI,3/12/2026,Solar,7.79,Jakarta Timur,
-260312S199,HCI,3/12/2026,Solar,12.5,Jakarta Utara,
-260312S141,HCI,3/12/2026,Rechecked,,Jakarta Utara,
-260312S049,HCI,3/12/2026,Solar,7.06,Jakarta Utara,
-260312S051,HCI,3/12/2026,Solar,9.85,Jakarta Utara,
-260312S047,HCI,3/12/2026,Solar,4.85,Jakarta Utara,
-260312S103,HCI,3/12/2026,Pertalite,7.7,Jakarta Utara,
-260312S048,HCI,3/12/2026,Solar,8.24,Jakarta Utara,
-260313S072,HCI,3/13/2026,Solar,10,Jakarta Timur,
-260313S188,HCI,3/13/2026,Pertalite,8,Jakarta Utara,
-260313S066,HCI,3/13/2026,Solar,14.85,Jakarta Utara,
-260313S186,HCI,3/13/2026,Solar,21.32,Jakarta Utara,
-260313S070,HCI,3/13/2026,Solar,12.06,Jakarta Utara,
-260313S073,HCI,3/13/2026,Rechecked,,Jakarta Utara,
-260313S075,HCI,3/13/2026,Pertalite,6.1,Jakarta Utara,
-260313S068,HCI,3/13/2026,Solar,9.56,Jakarta Utara,
-260314S076,HCI,3/14/2026,Solar,10.44,Jakarta Timur,
-260314S077,HCI,3/14/2026,Solar,19.56,Jakarta Utara,
-260314S119,HCI,3/14/2026,Rechecked,,Jakarta Utara,
-260314S216,HCI,3/14/2026,Solar,6.03,Jakarta Utara,
-260314S075,HCI,3/14/2026,Solar,18.38,Jakarta Timur,
-260314S074,HCI,3/14/2026,Solar,13.24,Jakarta Utara,
-260314S078,HCI,3/14/2026,Solar,14.41,Jakarta Utara,
-260314S072,HCI,3/14/2026,Pertalite,10.8,Jakarta Utara,
-260314S073,HCI,3/14/2026,Solar,9.41,Jakarta Utara,
-260315S140,HCI,3/15/2026,Solar,5.88,Jakarta Timur,
-260315S064,HCI,3/15/2026,Solar,4.12,Jakarta Utara,
-260315S062,HCI,3/15/2026,Solar,5.59,Jakarta Utara,
-260315S065,HCI,3/15/2026,Solar,16.91,Jakarta Utara,
-260315S209,HCI,3/15/2026,Rechecked,,Jakarta Utara,
-260315S137,HCI,3/15/2026,Pertalite,10.3,Jakarta Utara,
-260315S063,HCI,3/15/2026,Solar,10.59,Jakarta Utara,
-260316S114,HCI,3/16/2026,Solar,10.29,Jakarta Utara,
-260316S086,HCI,3/16/2026,Solar,19.56,Jakarta Utara,
-260316S253,HCI,3/16/2026,Rechecked,,Jakarta Utara,
-260316S085,HCI,3/16/2026,Solar,9.26,Jakarta Timur,
-260316S083,HCI,3/16/2026,Solar,10,Jakarta Timur,
-260316S081,HCI,3/16/2026,Solar,14.26,Jakarta Utara,
-260316S039,HCI,3/16/2026,Solar,7.35,Jakarta Utara,
-260316S059,HCI,3/16/2026,Pertalite,13.1,Jakarta Utara,
-260316S087,HCI,3/16/2026,Solar,12.5,Jakarta Utara,
-260317S085,HCI,3/17/2026,Solar,9.03,Jakarta Timur,
-260317S094,HCI,3/17/2026,Solar,10.29,Jakarta Utara,
-260317S109,HCI,3/17/2026,Solar,19.26,Jakarta Utara,
-260317S034,HCI,3/17/2026,Solar,13.68,Jakarta Timur,
-260317S035,HCI,3/17/2026,Solar,12.21,Jakarta Utara,
-260317S174,HCI,3/17/2026,Rechecked,,Jakarta Utara,
-260317S038,HCI,3/17/2026,Pertalite,11.7,Jakarta Utara,
-260317S036,HCI,3/17/2026,Solar,7.65,Jakarta Utara,
-260318S074,HCI,3/18/2026,Solar,4.41,Jakarta Utara,
-260318S125,HCI,3/18/2026,Rechecked,,Jakarta Utara,
-260318S079,HCI,3/18/2026,Solar,9.56,Jakarta Timur,
-260318S081,HCI,3/18/2026,Solar,7.5,Jakarta Utara,
-260318S109,HCI,3/18/2026,Solar,19.85,Jakarta Utara,
-260318S077,HCI,3/18/2026,Solar,12.21,Jakarta Utara,
-260318S108,HCI,3/18/2026,Solar,10,Jakarta Utara,
-260318S080,HCI,3/18/2026,Pertalite,7.85,Jakarta Utara,
-260318S075,HCI,3/18/2026,Solar,7.35,Jakarta Utara,
-260319S058,HCI,3/19/2026,Solar,6.62,Jakarta Timur,
-260319S077,HCI,3/19/2026,Rechecked,,Jakarta Utara,
-260319S056,HCI,3/19/2026,Solar,8.09,Jakarta Utara,
-260319S214,HCI,3/19/2026,Solar,20.59,Jakarta Timur,
-260319S057,HCI,3/19/2026,Solar,11.32,Jakarta Utara,
-260319S069,HCI,3/19/2026,Solar,17.65,Jakarta Utara,
-260319S075,HCI,3/19/2026,Pertalite,13,Jakarta Utara,
-260319S059,HCI,3/19/2026,Solar,6.32,Jakarta Timur,
-260320S111,HCI,3/20/2026,Solar,6.47,Jakarta Utara,
-260320S154,HCI,3/20/2026,Rechecked,,Jakarta Utara,
-260320S014,HCI,3/20/2026,Solar,6.62,Jakarta Timur,
-260320S153,HCI,3/20/2026,Solar,8.53,Jakarta Utara,
-260320S110,HCI,3/20/2026,Solar,5.44,Jakarta Utara,
-260320S150,HCI,3/20/2026,Solar,17.35,Jakarta Utara,
-260320S132,HCI,3/20/2026,Pertalite,3.8,Jakarta Utara,
-260320S131,HCI,3/20/2026,Solar,3.53,Jakarta Utara,
-260323S015,HCI,3/23/2026,Solar,6.76,Jakarta Utara,
-260323S120,HCI,3/23/2026,Rechecked,,Jakarta Utara,
-260323S014,HCI,3/23/2026,Solar,6.62,Jakarta Timur,
-260323S013,HCI,3/23/2026,Solar,6.18,Jakarta Utara,
-260323X015,HCI,3/23/2026,Solar,16.91,Jakarta Timur,
-260323S012,HCI,3/23/2026,Solar,9.56,Jakarta Utara,
-260323S052,HCI,3/23/2026,Pertalite,6.1,Jakarta Timur,
-260323S051,HCI,3/23/2026,Pertalite,5.65,Jakarta Utara,
-260323S108,HCI,3/23/2026,Solar,10.15,Jakarta Timur,
-260324S062,HCI,3/24/2026,Solar,6.18,Jakarta Timur,
-260324S058,HCI,3/24/2026,Solar,8.09,Jakarta Utara,
-260324S057,HCI,3/24/2026,Solar,11.84,Jakarta Timur,
-260324S111,HCI,3/24/2026,Solar,7.35,Jakarta Utara,
-260324S061,HCI,3/24/2026,Solar,6.32,Jakarta Utara,
-260324S141,HCI,3/24/2026,Rechecked,,Jakarta Utara,
-260324S059,HCI,3/24/2026,Pertalite,5.8,Jakarta Utara,
-260324S056,HCI,3/24/2026,Solar,16.91,Jakarta Utara,
-260325S106,HCI,3/25/2026,Solar,9.12,Jakarta Utara,
-260325S109,HCI,3/25/2026,Solar,7.65,Jakarta Utara,
-260325S104,HCI,3/25/2026,Solar,13.24,Jakarta Utara,
-260325S110,HCI,3/25/2026,Solar,9.26,Jakarta Timur,
-260325S108,HCI,3/25/2026,Solar,6.32,Jakarta Utara,
-260325S168,HCI,3/25/2026,Rechecked,,Jakarta Utara,
-260325S107,HCI,3/25/2026,Pertalite,7,Jakarta Utara,
-260325S105,HCI,3/25/2026,Solar,6.62,Jakarta Utara,
-260326S032,HCI,3/26/2026,Solar,7.94,Jakarta Utara,
-260326S030,HCI,3/26/2026,Solar,17.35,Jakarta Utara,
-260326S031,HCI,3/26/2026,Solar,8.68,Jakarta Utara,
-260326S033,HCI,3/26/2026,Solar,8.97,Jakarta Timur,
-260326S026,HCI,3/26/2026,Solar,13.24,Jakarta Utara,
-260326S097,HCI,3/26/2026,Rechecked,,Jakarta Utara,
-260326S098,HCI,3/26/2026,Pertalite,9.6,Jakarta Utara,
-260326S034,HCI,3/26/2026,Solar,7.65,Jakarta Timur,
-260327S050,HCI,3/27/2026,Solar,5.74,Jakarta Utara,
-260327S048,HCI,3/27/2026,Solar,7.35,Jakarta Utara,
-260327S046,HCI,3/27/2026,Solar,7.94,Jakarta Utara,
-260327S118,HCI,3/27/2026,Rechecked,,Jakarta Utara,
-260327S047,HCI,3/27/2026,Solar,6.62,Jakarta Utara,
-260327S045,HCI,3/27/2026,Solar,10.88,Jakarta Utara,
-260327S049,HCI,3/27/2026,Solar,7.79,Jakarta Timur,
-260327S119,HCI,3/27/2026,Pertalite,18.6,Jakarta Utara,
-260327S044,HCI,3/27/2026,Solar,14.71,Jakarta Utara,
-260328S093,HCI,3/28/2026,Solar,8.82,Jakarta Utara,
-260328S096,HCI,3/28/2026,Solar,6.62,Jakarta Utara,
-260328S095,HCI,3/28/2026,Solar,9.56,Jakarta Timur,
-260328S097,HCI,3/28/2026,Solar,15.29,Jakarta Utara,
-260328S084,HCI,3/28/2026,Pertalite,6.6,Jakarta Utara,
-260328S094,HCI,3/28/2026,Solar,8.09,Jakarta Utara,
-260329S161,HCI,3/29/2026,Solar,9.56,Jakarta Utara,
-260329S053,HCI,3/29/2026,Solar,5.15,Jakarta Utara,
-260329S055,HCI,3/29/2026,Solar,7.21,Jakarta Utara,
-260329S110,HCI,3/29/2026,Solar,16.91,Jakarta Utara,
-260329S054,HCI,3/29/2026,Solar,8.09,Jakarta Utara,
-260329S057,HCI,3/29/2026,Rechecked,,Jakarta Utara,
-260329S157,HCI,3/29/2026,Pertalite,9.1,Jakarta Utara,
-260329S056,HCI,3/29/2026,Solar,10.88,Jakarta Timur,
-260330S080,HCI,3/30/2026,Solar,9.71,Jakarta Utara,
-260330S053,HCI,3/30/2026,Solar,9.71,Jakarta Utara,
-260330S079,HCI,3/30/2026,Solar,13.53,Jakarta Utara,
-260330S100,HCI,3/30/2026,Rechecked,,Jakarta Utara,
-260330S055,HCI,3/30/2026,Solar,18.31,Jakarta Utara,
-260330S054,HCI,3/30/2026,Solar,8.38,Jakarta Timur,
-260330S051,HCI,3/30/2026,Solar,7.35,Jakarta Utara,
-260330S101,HCI,3/30/2026,Pertalite,16.2,Jakarta Utara,
-260330S052,HCI,3/30/2026,Solar,9.56,Jakarta Utara,
-260331S053,HCI,3/31/2026,Solar,12.94,Jakarta Utara,
-260331S055,HCI,3/31/2026,Solar,8.09,Jakarta Utara,
-260331S056,HCI,3/31/2026,Solar,7.28,Jakarta Utara,
-260331S058,HCI,3/31/2026,Solar,12.35,Jakarta Timur,
-260331S057,HCI,3/31/2026,Solar,8.53,Jakarta Utara,
-260331S157,HCI,3/31/2026,Solar,11.76,Jakarta Utara,
-260331S169,HCI,3/31/2026,Pertalite,10.9,Jakarta Utara,
-260331S054,HCI,3/31/2026,Solar,18.38,Jakarta Utara,
-260401S046,HCI,4/1/2026,Solar,11.76,Jakarta Utara,
-260401S085,HCI,4/1/2026,Solar,17.94,Jakarta Utara,
-260401S086,HCI,4/1/2026,Solar,10.59,Jakarta Utara,
-260401S048,HCI,4/1/2026,Solar,10.29,Jakarta Utara,
-260401S049,HCI,4/1/2026,Solar,10.59,Jakarta Timur,
-260401S084,HCI,4/1/2026,Pertalite,7.3,Jakarta Utara,
-260401S047,HCI,4/1/2026,Solar,6.03,Jakarta Timur,
-260402S074,HCI,4/2/2026,Solar,6.62,Jakarta Utara,
-260402S072,HCI,4/2/2026,Solar,7.5,Jakarta Utara,
-260402S073,HCI,4/2/2026,Solar,10.29,Jakarta Utara,
-260402S078,HCI,4/2/2026,Solar,19.41,Jakarta Utara,
-260402S079,HCI,4/2/2026,Solar,12.65,Jakarta Utara,
-260402S076,HCI,4/2/2026,Pertalite,14.4,Jakarta Utara,
-260402S075,HCI,4/2/2026,Solar,9.56,Jakarta Timur,
-260403S184,HCI,4/3/2026,Rechecked,,Jakarta Utara,
-260403S076,HCI,4/3/2026,Solar,8.24,Jakarta Utara,
-260403S070,HCI,4/3/2026,Solar,6.47,Jakarta Utara,
-260403S073,HCI,4/3/2026,Solar,7.79,Jakarta Timur,
-260403S071,HCI,4/3/2026,Solar,9.26,Jakarta Utara,
-260403S183,HCI,4/3/2026,Pertalite,7.5,Jakarta Utara,
-260403S075,HCI,4/3/2026,Solar,14.26,Jakarta Utara,
-260404S068,HCI,4/4/2026,Solar,15,Jakarta Timur,
-260404S065,HCI,4/4/2026,Solar,4.85,Jakarta Utara,
-260404S066,HCI,4/4/2026,Solar,14.56,Jakarta Utara,
-260404S177,HCI,4/4/2026,Rechecked,,Jakarta Utara,
-260404S174,HCI,4/4/2026,Solar,21.47,Jakarta Utara,
-260404S067,HCI,4/4/2026,Solar,17.94,Jakarta Utara,
-260404S121,HCI,4/4/2026,Pertalite,6.9,Jakarta Utara,
-260404S175,HCI,4/4/2026,Solar,20.29,Jakarta Utara,
-260405S044,HCI,4/5/2026,Solar,5.74,Jakarta Utara,
-260405S043,HCI,4/5/2026,Solar,7.65,Jakarta Timur,
-260405S079,HCI,4/5/2026,Solar,13.97,Jakarta Utara,
-260405S080,HCI,4/5/2026,Solar,8.09,Jakarta Utara,
-260405S144,HCI,4/5/2026,Pertalite,5,Jakarta Utara,
-260405S042,HCI,4/5/2026,Solar,8.53,Jakarta Timur,
-260406S050,HCI,4/6/2026,Solar,12.35,Jakarta Utara,
-260406S088,HCI,4/6/2026,Solar,20.44,Jakarta Utara,
-260406S049,HCI,4/6/2026,Solar,8.82,Jakarta Utara,
-260406S051,HCI,4/6/2026,Solar,8.82,Jakarta Utara,
-260406S052,HCI,4/6/2026,Solar,10.59,Jakarta Timur,
-260406S149,HCI,4/6/2026,Rechecked,,Jakarta Utara,
-260406S148,HCI,4/6/2026,Pertalite,9.9,Jakarta Utara,
-260406S089,HCI,4/6/2026,Solar,9.56,Jakarta Utara,
-260407S044,HCI,4/7/2026,Solar,8.09,Jakarta Utara,
-260407S045,HCI,4/7/2026,Solar,6.32,Jakarta Utara,
-260407S042,HCI,4/7/2026,Solar,11.18,Jakarta Utara,
-260407S106,HCI,4/7/2026,Rechecked,,Jakarta Utara,
-260407S043,HCI,4/7/2026,Solar,8.38,Jakarta Utara,
-260407S105,HCI,4/7/2026,Solar,15.44,Jakarta Utara,
-260407S114,HCI,4/7/2026,Solar,8.82,Jakarta Utara,
-260407S110,HCI,4/7/2026,Pertalite,9.9,Jakarta Utara,
-260407S046,HCI,4/7/2026,Solar,10.29,Jakarta Timur,
-260408S039,HCI,4/8/2026,Solar,8.68,Jakarta Utara,
-260408S041,HCI,4/8/2026,Solar,10.59,Jakarta Utara,
-260408S061,HCI,4/8/2026,Solar,13.24,Jakarta Utara,
-260408S059,HCI,4/8/2026,Solar,15,Jakarta Utara,
-260408S060,HCI,4/8/2026,Solar,9.56,Jakarta Utara,
-260408S040,HCI,4/8/2026,Solar,11.32,Jakarta Utara,
-260408S203,HCI,4/8/2026,Pertalite,7.4,Jakarta Utara,
-260408S202,HCI,4/8/2026,Rechecked,,Jakarta Utara,
-260409S067,HCI,4/9/2026,Solar,12.79,Jakarta Utara,
-260409S100,HCI,4/9/2026,Pertalite,7.5,Jakarta Utara,
-260409S066,HCI,4/9/2026,Solar,8.01,Jakarta Utara,
-260409S068,HCI,4/9/2026,Solar,22.06,Jakarta Utara,
-260409S065,HCI,4/9/2026,Solar,11.76,Jakarta Utara,
-260409S208,HCI,4/9/2026,Pertalite,8.5,Jakarta Utara,
-260409S225,HCI,4/9/2026,Rechecked,,Jakarta Utara,
-260409S069,HCI,4/9/2026,Solar,10.29,Jakarta Utara,
-260410S078,HCI,4/10/2026,Solar,8.53,Jakarta Utara,
-260410S079,HCI,4/10/2026,Solar,5.88,Jakarta Utara,
-260410S081,HCI,4/10/2026,Solar,9.41,Jakarta Timur,
-260410S082,HCI,4/10/2026,Solar,11.03,Jakarta Utara,
-260410S092,HCI,4/10/2026,Rechecked,,Jakarta Utara,
-260410S093,HCI,4/10/2026,Pertalite,11.1,Jakarta Utara,
-260410S091,HCI,4/10/2026,Solar,19.85,Jakarta Utara,
-260411S058,HCI,4/11/2026,Solar,7.94,Jakarta Utara,
-260411S059,HCI,4/11/2026,Solar,15.88,Jakarta Utara,
-260411S060,HCI,4/11/2026,Solar,13.24,Jakarta Utara,
-260411S057,HCI,4/11/2026,Solar,10.29,Jakarta Utara,
-260411S196,HCI,4/11/2026,Solar,10.44,Jakarta Utara,
-260411S197,HCI,4/11/2026,Pertalite,6.8,Jakarta Utara,
-260411S195,HCI,4/11/2026,Solar,13.24,Jakarta Utara,
-260412S065,HCI,4/12/2026,Solar,8.53,Jakarta Utara,
-260412S067,HCI,4/12/2026,Solar,15.59,Jakarta Utara,
-260412S066,HCI,4/12/2026,Solar,7.79,Jakarta Utara,
-260412S064,HCI,4/12/2026,Solar,5.88,Jakarta Utara,
-260412S197,HCI,4/12/2026,Rechecked,,Jakarta Utara,
-260412S163,HCI,4/12/2026,Pertalite,6.5,Jakarta Utara,
-260412S161,HCI,4/12/2026,Solar,5.59,Jakarta Timur,
-260413S084,HCI,4/13/2026,Solar,8.82,Jakarta Utara,
-260413S081,HCI,4/13/2026,Solar,12.5,Jakarta Timur,
-260413S125,HCI,4/13/2026,Solar,24.41,Jakarta Utara,
-260413S128,HCI,4/13/2026,Rechecked,,Jakarta Utara,
-260413S080,HCI,4/13/2026,Solar,9.56,Jakarta Utara,
-260413S083,HCI,4/13/2026,Solar,5.88,Jakarta Utara,
-260413S122,HCI,4/13/2026,Solar,11.03,Jakarta Utara,
-260413S127,HCI,4/13/2026,Pertalite,9.5,Jakarta Utara,
-260413S082,HCI,4/13/2026,Solar,8.82,Jakarta Utara,
-260414S055,HCI,4/14/2026,Solar,6.18,Jakarta Utara,
-260414S058,HCI,4/14/2026,Solar,6.32,Jakarta Utara,
-260414S056,HCI,4/14/2026,Solar,5.15,Jakarta Utara,
-260414S154,HCI,4/14/2026,Rechecked,,Jakarta Utara,
-260414S057,HCI,4/14/2026,Solar,9.56,Jakarta Timur,
-260414S054,HCI,4/14/2026,Solar,7.79,Jakarta Utara,
-260414S108,HCI,4/14/2026,Solar,22.65,Jakarta Utara,
-260414S110,HCI,4/14/2026,Pertalite,10,Jakarta Utara,
-260414S109,HCI,4/14/2026,Solar,9.26,Jakarta Utara,
-260415S045,HCI,4/15/2026,Solar,6.62,Jakarta Utara,
-260415S044,HCI,4/15/2026,Solar,5.15,Jakarta Utara,
-260415S046,HCI,4/15/2026,Solar,5.88,Jakarta Utara,
-260415S199,HCI,4/15/2026,Solar,9.26,Jakarta Utara,
-260415S201,HCI,4/15/2026,Solar,15.44,Jakarta Utara,
-260415S047,HCI,4/15/2026,Solar,7.79,Jakarta Timur,
-260415S200,HCI,4/15/2026,Pertalite,5,Jakarta Utara,
-260415S198,HCI,4/15/2026,Solar,11.03,Jakarta Utara,
-260416S052,HCI,4/16/2026,Solar,5.88,Jakarta Timur,
-260416S140,HCI,4/16/2026,Solar,9.85,Jakarta Utara,
-260416S048,HCI,4/16/2026,Solar,7.06,Jakarta Utara,
-260416S050,HCI,4/16/2026,Solar,16.91,Jakarta Timur,
-260416S139,HCI,4/16/2026,Solar,10.59,Jakarta Utara,
-260416S142,HCI,4/16/2026,Rechecked,,Jakarta Utara,
-260416S141,HCI,4/16/2026,Pertalite,6.7,Jakarta Utara,
-260416S044,HCI,4/16/2026,Solar,4.41,Jakarta Utara,
-260417S080,HCI,4/17/2026,Solar,5.88,Jakarta Utara,
-260417S077,HCI,4/17/2026,Solar,5,Jakarta Utara,
-260417S078,HCI,4/17/2026,Solar,4.41,Jakarta Utara,
-260417S079,HCI,4/17/2026,Solar,10.59,Jakarta Timur,
-260417S095,HCI,4/17/2026,Solar,14.71,Jakarta Utara,
-260417S096,HCI,4/17/2026,Solar,7.06,Jakarta Utara,
-260417S097,HCI,4/17/2026,Pertalite,4.8,Jakarta Utara,
-260417S094,HCI,4/17/2026,Solar,18.38,Jakarta Utara,
-260418S111,HCI,4/18/2026,Solar,7.79,Jakarta Utara,
-260418S045,HCI,4/18/2026,Solar,6.03,Jakarta Utara,
-260418S047,HCI,4/18/2026,Solar,6.32,Jakarta Utara,
-260418S048,HCI,4/18/2026,Solar,5.88,Jakarta Utara,
-260418S046,HCI,4/18/2026,Solar,9.71,Jakarta Timur,
-260418S110,HCI,4/18/2026,Rechecked,,Jakarta Utara,
-260418S112,HCI,4/18/2026,Pertalite,11.3,Jakarta Utara,
-260418S109,HCI,4/18/2026,Solar,10.88,Jakarta Utara,
-260419S040,HCI,4/19/2026,Solar,7.35,Jakarta Timur,
-260419S042,HCI,4/19/2026,Solar,9.12,Jakarta Utara,
-260419S041,HCI,4/19/2026,Solar,3.38,Jakarta Utara,
-260419S124,HCI,4/19/2026,Solar,14.71,Jakarta Utara,
-260419S122,HCI,4/19/2026,Solar,3.38,Jakarta Utara,
-260419S091,HCI,4/19/2026,Pertalite,9.5,Jakarta Utara,
-260419S123,HCI,4/19/2026,Rechecked,,#N/A,
-260420S046,HCI,4/20/2026,Solar,8.09,Jakarta Utara,
-260420S086,HCI,4/20/2026,Solar,15.15,Jakarta Utara,
-260420S045,HCI,4/20/2026,Solar,7.94,Jakarta Utara,
-260420S176,HCI,4/20/2026,Rechecked,,Jakarta Utara,
-260420S048,HCI,4/20/2026,Solar,8.82,Jakarta Utara,
-260420S044,HCI,4/20/2026,Solar,7.35,Jakarta Utara,
-260420S047,HCI,4/20/2026,Solar,9.56,Jakarta Timur,
-260420S173,HCI,4/20/2026,Pertalite,10.75,Jakarta Utara,
-260420S171,HCI,4/20/2026,Solar,15.15,Jakarta Utara,
-260421S047,HCI,4/21/2026,Solar,10.44,Jakarta Timur,
-260421S092,HCI,4/21/2026,Solar,11.18,Jakarta Utara,
-260421S100,HCI,4/21/2026,Rechecked,,Jakarta Utara,
-260421S048,HCI,4/21/2026,Solar,12.21,Jakarta Utara,
-260421S044,HCI,4/21/2026,Solar,7.94,Jakarta Utara,
-260421S045,HCI,4/21/2026,Solar,8.53,Jakarta Utara,
-260421S093,HCI,4/21/2026,Pertalite,9.4,Jakarta Utara,
-260421S091,HCI,4/21/2026,Solar,15.15,Jakarta Utara,
-260422S050,HCI,4/22/2026,Solar,7.35,Jakarta Utara,
-260422S052,HCI,4/22/2026,Solar,7.35,Jakarta Timur,
-260422S100,HCI,4/22/2026,Solar,12.79,Jakarta Utara,
-260422S051,HCI,4/22/2026,Solar,7.35,Jakarta Utara,
-260422S049,HCI,4/22/2026,Solar,6.47,Jakarta Utara,
-260422S101,HCI,4/22/2026,Rechecked,,Jakarta Utara,
-260422S047,HCI,4/22/2026,Pertalite,10.1,Jakarta Utara,
-260422S099,HCI,4/22/2026,Solar,11.91,Jakarta Utara,
-260423S049,HCI,4/23/2026,Solar,5.88,Jakarta Utara,
-260423S174,HCI,4/23/2026,Solar,11.76,Jakarta Utara,
-260423S048,HCI,4/23/2026,Solar,6.91,Jakarta Utara,
-260423S077,HCI,4/23/2026,Solar,14.41,Jakarta Utara,
-260423S050,HCI,4/23/2026,Solar,7.21,Jakarta Timur,
-260423S078,HCI,4/23/2026,Rechecked,,Jakarta Utara,
-260423S131,HCI,4/23/2026,Pertalite,4.7,Jakarta Utara,
-260423S047,HCI,4/23/2026,Solar,6.62,Jakarta Utara,
-260424S047,HCI,4/24/2026,Solar,8.68,Jakarta Timur,
-260424S088,HCI,4/24/2026,Solar,11.03,Jakarta Utara,
-260424S046,HCI,4/24/2026,Solar,7.79,Jakarta Utara,
-260424S044,HCI,4/24/2026,Solar,8.82,Jakarta Utara,
-260424S045,HCI,4/24/2026,Solar,7.65,Jakarta Utara,
-260424S090,HCI,4/24/2026,Rechecked,,Jakarta Utara,
-260424S089,HCI,4/24/2026,Pertalite,6.9,Jakarta Utara,
-260424X010,HCI,4/24/2026,Solar,11.03,Jakarta Utara,
-260425S051,HCI,4/25/2026,Solar,5.88,Jakarta Utara,
-260425S053,HCI,4/25/2026,Solar,7.21,Jakarta Utara,
-260425S052,HCI,4/25/2026,Solar,7.65,Jakarta Utara,
-260425S101,HCI,4/25/2026,Solar,11.47,Jakarta Utara,
-260425S104,HCI,4/25/2026,Rechecked,,#N/A,
-260425S103,HCI,4/25/2026,Pertalite,14.15,Jakarta Utara,
-260425S100,HCI,4/25/2026,Solar,13.09,Jakarta Utara,
-260426S055,HCI,4/26/2026,Solar,4.41,Jakarta Utara,
-260426S054,HCI,4/26/2026,Solar,5.15,Jakarta Utara,
-260426S053,HCI,4/26/2026,Solar,5.66,Jakarta Utara,
-260426S056,HCI,4/26/2026,Solar,6.62,Jakarta Timur,
-260426S185,HCI,4/26/2026,Rechecked,,Jakarta Utara,
-260426S184,HCI,4/26/2026,Pertalite,4,Jakarta Utara,
-260426S177,HCI,4/26/2026,Solar,16.32,Jakarta Utara,
-260427S130,HCI,4/27/2026,Solar,11.03,Jakarta Utara,
-260427S009,HCI,4/27/2026,Solar,14.12,Jakarta Utara,
-260427S050,HCI,4/27/2026,Solar,9.04,Jakarta Utara,
-260427S134,HCI,4/27/2026,Rechecked,,Jakarta Utara,
-260427S048,HCI,4/27/2026,Solar,10.29,Jakarta Utara,
-260427S049,HCI,4/27/2026,Solar,11.76,Jakarta Timur,
-260427S052,HCI,4/27/2026,Solar,10.59,Jakarta Utara,
-260427S131,HCI,4/27/2026,Pertalite,15,Jakarta Utara,
-260427S051,HCI,4/27/2026,Solar,10.29,Jakarta Utara,
-260428S043,HCI,4/28/2026,Solar,9.41,Jakarta Utara,
-260428S038,HCI,4/28/2026,Solar,4.85,Jakarta Utara,
-260428S042,HCI,4/28/2026,Solar,8.82,Jakarta Utara,
-260428S118,HCI,4/28/2026,Rechecked,,Jakarta Utara,
-260428S041,HCI,4/28/2026,Solar,10.29,Jakarta Timur,
-260428S209,HCI,4/28/2026,Solar,3.24,Jakarta Utara,
-260428S039,HCI,4/28/2026,Solar,7.43,Jakarta Utara,
-260428S089,HCI,4/28/2026,Pertalite,8.5,Jakarta Utara,
-260428S040,HCI,4/28/2026,Solar,7.79,Jakarta Utara,
-260429S056,HCI,4/29/2026,Solar,7.06,Jakarta Utara,
-260429S057,HCI,4/29/2026,Solar,9.93,Jakarta Utara,
-260429S060,HCI,4/29/2026,Solar,11.47,Jakarta Utara,
-260429S099,HCI,4/29/2026,Rechecked,,Jakarta Utara,
-260429S055,HCI,4/29/2026,Solar,8.82,Jakarta Utara,
-260429S058,HCI,4/29/2026,Solar,9.56,Jakarta Timur,
-260429S100,HCI,4/29/2026,Rechecked,9.2,Jakarta Utara,
-260429S059,HCI,4/29/2026,Solar,12.94,Jakarta Utara,
-260430S040,HCI,4/30/2026,Solar,4.71,Jakarta Utara,
-260430S066,HCI,4/30/2026,Solar,5.15,Jakarta Utara,
-260430S042,HCI,4/30/2026,Solar,8.97,Jakarta Timur,
-260430S101,HCI,4/30/2026,Rechecked,,Jakarta Utara,
-260430S041,HCI,4/30/2026,Solar,8.24,Jakarta Utara,
-260430S043,HCI,4/30/2026,Solar,17.65,Jakarta Utara,
-260430S039,HCI,4/30/2026,Solar,4.41,Jakarta Utara,
-260430S098,HCI,4/30/2026,Pertalite,11.7,Jakarta Utara,
-260430S044,HCI,4/30/2026,Solar,10.88,Jakarta Utara,
-260502S020,HCI,5/2/2026,Solar,9.56,Jakarta Timur,
-260502S022,HCI,5/2/2026,Solar,11.76,Jakarta Utara,
-260502S018,HCI,5/2/2026,Solar,8.97,Jakarta Utara,
-260502S019,HCI,5/2/2026,Solar,14.12,Jakarta Utara,
-260502S017,HCI,5/2/2026,Solar,8.53,Jakarta Utara,
-260502S116,HCI,5/2/2026,Rechecked,,Jakarta Utara,
-260502S112,HCI,5/2/2026,Pertalite,11.4,Jakarta Utara,
-260502S021,HCI,5/2/2026,Solar,14.26,Jakarta Utara,
-260503S067,HCI,5/3/2026,Solar,6.91,Jakarta Utara,
-260503S071,HCI,5/3/2026,Solar,20.15,Jakarta Utara,
-260503S096,HCI,5/3/2026,Rechecked,,Jakarta Utara,
-260503S066,HCI,5/3/2026,Solar,11.47,Jakarta Utara,
-260503S069,HCI,5/3/2026,Solar,8.82,Jakarta Timur,
-260503S103,HCI,5/3/2026,Pertalite,7.9,Jakarta Utara,
-260503S072,HCI,5/3/2026,Solar,12.79,Jakarta Utara,
-260504S054,HCI,5/4/2026,Solar,8.38,Jakarta Utara,
-260504S056,HCI,5/4/2026,Solar,9.56,Jakarta Utara,
-260504S053,HCI,5/4/2026,Solar,11.47,Jakarta Utara,
-260504S186,HCI,5/4/2026,Rechecked,,Jakarta Utara,
-260504S187,HCI,5/4/2026,Solar,6.62,Jakarta Utara,
-260504S055,HCI,5/4/2026,Solar,10,Jakarta Utara,
-260504S057,HCI,5/4/2026,Solar,8.09,Jakarta Timur,
-260504S179,HCI,5/4/2026,Pertalite,13.7,Jakarta Utara,
-260504S052,HCI,5/4/2026,Solar,19.12,Jakarta Utara,
-260505S037,HCI,5/5/2026,Solar,8.82,Jakarta Utara,
-260505S036,HCI,5/5/2026,Solar,5.59,Jakarta Utara,
-260505S038,HCI,5/5/2026,Solar,8.68,Jakarta Utara,
-260505S201,HCI,5/5/2026,Rechecked,,Jakarta Utara,
-260505S040,HCI,5/5/2026,Solar,22.06,Jakarta Utara,
-260505S039,HCI,5/5/2026,Solar,9.34,Jakarta Timur,
-260505S200,HCI,5/5/2026,Pertalite,10.4,Jakarta Utara,
-260505S041,HCI,5/5/2026,Solar,8.82,Jakarta Utara,
-260506S044,HCI,5/6/2026,Solar,6.18,Jakarta Utara,
-260506S048,HCI,5/6/2026,Solar,10.44,Jakarta Utara,
-260506S094,HCI,5/6/2026,Rechecked,,Jakarta Utara,
-260506S045,HCI,5/6/2026,Solar,7.79,Jakarta Utara,
-260506S047,HCI,5/6/2026,Solar,12.5,Jakarta Utara,
-260506S049,HCI,5/6/2026,Solar,11.91,Jakarta Utara,
-260506S092,HCI,5/6/2026,Pertalite,7.25,Jakarta Utara,
-260506S046,HCI,5/6/2026,Solar,10.88,Jakarta Timur,
-260507S064,HCI,5/7/2026,Solar,8.53,Jakarta Timur,
-260507S061,HCI,5/7/2026,Solar,5.59,Jakarta Utara,
-260507S066,HCI,5/7/2026,Rechecked,,Jakarta Utara,
-260507S080,HCI,5/7/2026,Solar,8.82,Jakarta Utara,
-260507S190,HCI,5/7/2026,Solar,7.21,Jakarta Utara,
-260507S065,HCI,5/7/2026,Solar,20.59,Jakarta Utara,
-260507S078,HCI,5/7/2026,Pertalite,7.7,Jakarta Utara,
-260507S062,HCI,5/7/2026,Solar,6.03,Jakarta Utara,
-260508S041,HCI,5/8/2026,Solar,12.94,Jakarta Utara,
-260508S037,HCI,5/8/2026,Solar,6.18,Jakarta Utara,
-260508S036,HCI,5/8/2026,Solar,6.47,Jakarta Utara,
-260508S100,HCI,5/8/2026,Rechecked,,Jakarta Utara,
-260508S038,HCI,5/8/2026,Solar,11.76,Jakarta Utara,
-260508S039,HCI,5/8/2026,Solar,10.29,Jakarta Timur,
-260508S080,HCI,5/8/2026,Pertalite,11.8,Jakarta Utara,
-260508S040,HCI,5/8/2026,Solar,19.85,Jakarta Utara,
-260509S059,HCI,5/9/2026,Rechecked,,Jakarta Utara,
-260509S055,HCI,5/9/2026,Solar,6.76,Jakarta Utara,
-260509S054,HCI,5/9/2026,Solar,9.26,Jakarta Utara,
-260509S057,HCI,5/9/2026,Solar,14.12,Jakarta Utara,
-260509S053,HCI,5/9/2026,Solar,7.79,Jakarta Timur,
-260509S058,HCI,5/9/2026,Solar,12.21,Jakarta Utara,
-260509S148,HCI,5/9/2026,Pertalite,8.7,Jakarta Utara,
-260509S056,HCI,5/9/2026,Solar,6.32,Jakarta Utara,
-260510S039,HCI,5/10/2026,Solar,3.68,Jakarta Utara,
-260510S041,HCI,5/10/2026,Solar,20.59,Jakarta Utara,
-260510S057,HCI,5/10/2026,Solar,7.06,Jakarta Timur,
-260510S042,HCI,5/10/2026,Solar,9.12,Jakarta Utara,
-260510S180,HCI,5/10/2026,Rechecked,,Jakarta Utara,
-260510S179,HCI,5/10/2026,Pertalite,7.8,Jakarta Utara,
-260510S040,HCI,5/10/2026,Solar,5.15,Jakarta Utara,
-260511S070,HCI,5/11/2026,Solar,9.85,Jakarta Utara,
-260511S063,HCI,5/11/2026,Solar,11.76,Jakarta Utara,
-260511S059,HCI,5/11/2026,Solar,9.85,Jakarta Utara,
-260511S062,HCI,5/11/2026,Solar,21.76,Jakarta Utara,
-260511S060,HCI,5/11/2026,Solar,7.65,Jakarta Utara,
-260511S182,HCI,5/11/2026,Rechecked,,Jakarta Utara,
-260511S061,HCI,5/11/2026,Solar,14.41,Jakarta Timur,
-260511S178,HCI,5/11/2026,Pertalite,11.2,Jakarta Utara,
-260511S058,HCI,5/11/2026,Solar,7.79,Jakarta Utara,
-260512S056,HCI,5/12/2026,Solar,11.91,Jakarta Utara,
-260512S052,HCI,5/12/2026,Solar,7.35,Jakarta Utara,
-260512S193,HCI,5/12/2026,Rechecked,,Jakarta Utara,
-260512S055,HCI,5/12/2026,Solar,15.15,Jakarta Utara,
-260512S053,HCI,5/12/2026,Solar,8.53,Jakarta Utara,
-260512S051,HCI,5/12/2026,Solar,7.5,Jakarta Utara,
-260512S190,HCI,5/12/2026,Pertalite,8.3,Jakarta Utara,
-260512S054,HCI,5/12/2026,Solar,11.76,Jakarta Timur,
-260513S064,HCI,5/13/2026,Solar,12.65,Jakarta Timur,
-260513S061,HCI,5/13/2026,Solar,11.03,Jakarta Utara,
-260513S065,HCI,5/13/2026,Solar,13.38,Jakarta Utara,
-260513S066,HCI,5/13/2026,Solar,9.85,Jakarta Utara,
-260513S062,HCI,5/13/2026,Solar,5.74,Jakarta Utara,
-260513S099,HCI,5/13/2026,Pertalite,8.2,Jakarta Utara,
-260513S094,HCI,5/13/2026,Solar,12.5,Jakarta Utara,
-260514S046,HCI,5/14/2026,Solar,12.65,Jakarta Utara,
-260514S044,HCI,5/14/2026,Solar,5.88,Jakarta Utara,
-260514S043,HCI,5/14/2026,Solar,5.15,Jakarta Utara,
-260514S151,HCI,5/14/2026,Rechecked,,#N/A,
-260514S042,HCI,5/14/2026,Solar,26.47,Jakarta Utara,
-260514S135,HCI,5/14/2026,Solar,10.74,Jakarta Utara,
-260514S074,HCI,5/14/2026,Pertalite,7,Jakarta Utara,
-260514S045,HCI,5/14/2026,Solar,6.47,Jakarta Timur,
-260515S054,HCI,5/15/2026,Solar,21.62,Jakarta Utara,
-260515S055,HCI,5/15/2026,Solar,20,Jakarta Utara,
-260515S056,HCI,5/15/2026,Solar,6.62,Jakarta Utara,
-260515S057,HCI,5/15/2026,Solar,7.06,Jakarta Utara,
-260515S058,HCI,5/15/2026,Solar,11.76,Jakarta Utara,
-260515S059,HCI,5/15/2026,Solar,10,Jakarta Timur,
-260515S060,HCI,5/15/2026,Rechecked,,Jakarta Utara,
-260515S176,HCI,5/15/2026,Pertalite,7.8,Jakarta Utara,
-260516S057,HCI,5/16/2026,Solar,9.12,Jakarta Utara,
-260516S058,HCI,5/16/2026,Solar,12.79,Jakarta Utara,
-260516S059,HCI,5/16/2026,Solar,11.03,Jakarta Timur,
-260516S061,HCI,5/16/2026,Solar,17.28,Jakarta Utara,
-260516S062,HCI,5/16/2026,Solar,16.18,Jakarta Utara,
-260516S095,HCI,5/16/2026,Pertalite,7.7,Jakarta Utara,
-260516S099,HCI,5/16/2026,Rechecked,,Jakarta Utara,
-260517S060,HCI,5/17/2026,Solar,4.41,Jakarta Utara,
-260517S061,HCI,5/17/2026,Solar,6.76,Jakarta Utara,
-260517S062,HCI,5/17/2026,Solar,6.91,Jakarta Utara,
-260517S063,HCI,5/17/2026,Solar,21.32,Jakarta Timur,
-260517S064,HCI,5/17/2026,Solar,27.5,Jakarta Utara,
-260517S098,HCI,5/17/2026,Pertalite,6.7,Jakarta Utara,
-260518S061,HCI,5/18/2026,Solar,6.62,Jakarta Utara,
-260518S060,HCI,5/18/2026,Solar,7.35,Jakarta Timur,
-260518S058,HCI,5/18/2026,Solar,10.29,Jakarta Utara,
-260518S057,HCI,5/18/2026,Solar,13.38,Jakarta Utara,
-260518S059,HCI,5/18/2026,Solar,10.29,Jakarta Utara,
-260518S200,HCI,5/18/2026,Solar,5.44,Jakarta Utara,
-260518S199,HCI,5/18/2026,Pertalite,9.4,Jakarta Utara,
-260518S089,HCI,5/18/2026,Solar,8.97,Jakarta Utara,
-260518S203,HCI,5/18/2026,Rechecked,,Jakarta Utara,
-260519S046,HCI,5/19/2026,Solar,9.85,Jakarta Utara,
-260519S089,HCI,5/19/2026,Rechecked,,Jakarta Utara,
-260519S047,HCI,5/19/2026,Solar,10.88,Jakarta Utara,
-260519S050,HCI,5/19/2026,Solar,23.53,Jakarta Utara,
-260519S049,HCI,5/19/2026,Solar,10,Jakarta Timur,
-260519S170,HCI,5/19/2026,Solar,12.5,Jakarta Utara,
-260519S088,HCI,5/19/2026,Pertalite,10,Jakarta Utara,
-260519S051,HCI,5/19/2026,Solar,11.03,Jakarta Utara,
-260520S051,HCI,5/20/2026,Solar,3.68,Jakarta Utara,
-260520S050,HCI,5/20/2026,Solar,11.03,Jakarta Timur,
-260520S088,HCI,5/20/2026,Rechecked,,Jakarta Utara,
-260520S052,HCI,5/20/2026,Solar,18.24,Jakarta Utara,
-260520S049,HCI,5/20/2026,Solar,10.29,#N/A,
-260520S048,HCI,5/20/2026,Solar,5,Jakarta Utara,
-260520S087,HCI,5/20/2026,Pertalite,5.1,Jakarta Utara,
-260520S054,HCI,5/20/2026,Solar,8.82,Jakarta Utara,
-260521S058,HCI,5/21/2026,Solar,8.09,Jakarta Timur,
-260521S057,HCI,5/21/2026,Solar,7.21,Jakarta Utara,
-260521S055,HCI,5/21/2026,Solar,6.91,Jakarta Utara,
-260521S095,HCI,5/21/2026,Rechecked,,Jakarta Utara,
-260521S075,HCI,5/21/2026,Solar,16.91,Jakarta Utara,
-260521S059,HCI,5/21/2026,Solar,10.29,Jakarta Utara,
-260521S054,HCI,5/21/2026,Pertalite,8.5,Jakarta Utara,
-260521S056,HCI,5/21/2026,Solar,7.06,Jakarta Utara,
-260522S056,HCI,5/22/2026,Solar,15.29,Jakarta Utara,
-260522S057,HCI,5/22/2026,Solar,6.32,Jakarta Utara,
-260522S058,HCI,5/22/2026,Solar,12.79,Jakarta Utara,
-260522S059,HCI,5/22/2026,Solar,13.24,Jakarta Utara,
-260522S182,HCI,5/22/2026,Solar,30.15,Jakarta Utara,
-260522S183,HCI,5/22/2026,Solar,11.76,Jakarta Utara,
-260522S184,HCI,5/22/2026,Rechecked,,Jakarta Utara,
-260522S185,HCI,5/22/2026,Pertalite,7.1,Jakarta Utara,
-260523S058,HCI,5/23/2026,Pertalite,6.1,Jakarta Utara,
-260523S059,HCI,5/23/2026,Solar,10.59,Jakarta Utara,
-260523S060,HCI,5/23/2026,Solar,8.68,Jakarta Utara,
-260523S062,HCI,5/23/2026,Solar,6.62,Jakarta Timur,
-260523S087,HCI,5/23/2026,Solar,19.71,Jakarta Utara,
-260523S088,HCI,5/23/2026,Solar,13.53,Jakarta Utara,
-260523S089,HCI,5/23/2026,Rechecked,,#N/A,
-260524S034,HCI,5/24/2026,Solar,4.41,Jakarta Utara,
-260524S035,HCI,5/24/2026,Solar,5.15,Jakarta Utara,
-260524S037,HCI,5/24/2026,Solar,6.18,Jakarta Timur,
-260524S038,HCI,5/24/2026,Solar,17.79,Jakarta Utara,
-260524S039,HCI,5/24/2026,Solar,11.03,Jakarta Utara,
-260524S177,HCI,5/24/2026,Pertalite,7.2,Jakarta Utara,
-260524S185,HCI,5/24/2026,Rechecked,,Jakarta Utara,
-260525S036,HCI,5/25/2026,Solar,7.21,Jakarta Utara,
-260525S037,HCI,5/25/2026,Solar,8.82,Jakarta Utara,
-260525S038,HCI,5/25/2026,Solar,10.29,Jakarta Utara,
-260525S039,HCI,5/25/2026,Solar,10.59,Jakarta Timur,
-260525S040,HCI,5/25/2026,Solar,21.47,Jakarta Utara,
-260525S041,HCI,5/25/2026,Solar,12.06,Jakarta Utara,
-260525S049,HCI,5/25/2026,Pertalite,14,Jakarta Utara,
-260525S110,HCI,5/25/2026,Rechecked,,#N/A,
-260525S111,HCI,5/25/2026,Solar,14.85,Jakarta Utara,
-260526S031,HCI,5/26/2026,Pertalite,6.05,Jakarta Utara,
-260526S032,HCI,5/26/2026,Solar,6.62,Jakarta Utara,
-260526S034,HCI,5/26/2026,Solar,6.18,Jakarta Timur,
-260526S063,HCI,5/26/2026,Solar,13.82,Jakarta Utara,
-260526S064,HCI,5/26/2026,Solar,10.29,Jakarta Utara,
-260526S072,HCI,5/26/2026,Solar,7.06,Jakarta Utara,
-260526S169,HCI,5/26/2026,Solar,4.26,Jakarta Utara,
-260526S209,HCI,5/26/2026,Rechecked,,#N/A,
-260527S041,HCI,5/27/2026,Solar,20,Jakarta Utara,
-260527S043,HCI,5/27/2026,Solar,11.76,#N/A,
-260527S044,HCI,5/27/2026,Solar,19.12,Jakarta Timur,
-260527S180,HCI,5/27/2026,Pertalite,4.1,Jakarta Utara,
-260527S188,HCI,5/27/2026,Solar,23.82,Jakarta Utara,
-260527S189,HCI,5/27/2026,Solar,24.26,Jakarta Utara,
-260527S190,HCI,5/27/2026,Rechecked,,Jakarta Utara,
-260528S043,HCI,5/28/2026,Solar,8.09,Jakarta Utara,
-260528S044,HCI,5/28/2026,Solar,7.79,Jakarta Utara,
-260528S045,HCI,5/28/2026,Solar,9.12,Jakarta Timur,
-260528S047,HCI,5/28/2026,Solar,11.76,Jakarta Timur,
-260528S079,HCI,5/28/2026,Solar,17.65,Jakarta Utara,
-260528S080,HCI,5/28/2026,Solar,9.56,Jakarta Utara,
-260528S081,HCI,5/28/2026,Pertalite,7.1,Jakarta Utara,
-260528S084,HCI,5/28/2026,Rechecked,,Jakarta Utara,
-260529S045,HCI,5/29/2026,Solar,7.65,Jakarta Utara,
-260529S046,HCI,5/29/2026,Solar,10.44,Jakarta Utara,
-260529S047,HCI,5/29/2026,Solar,9.56,Jakarta Timur,
-260529S048,HCI,5/29/2026,Solar,5.15,Jakarta Utara,
-260529S086,HCI,5/29/2026,Rechecked,,Jakarta Utara,
-260529S090,HCI,5/29/2026,Solar,17.06,Jakarta Utara,
-260529S093,HCI,5/29/2026,Solar,11.03,Jakarta Utara,
-260529S094,HCI,5/29/2026,Pertalite,11.2,Jakarta Utara,
-260529S235,HCI,5/29/2026,Solar,11.32,Jakarta Utara,
-260530S035,HCI,5/30/2026,Solar,8.24,Jakarta Utara,
-260530S088,HCI,5/30/2026,Rechecked,,Jakarta Utara,
-260530S039,HCI,5/30/2026,Solar,13.38,Jakarta Utara,
-260530S037,HCI,5/30/2026,Solar,12.94,Jakarta Timur,
-260530S036,HCI,5/30/2026,Solar,10.29,Jakarta Utara,
-260530S092,HCI,5/30/2026,Pertalite,9,Jakarta Utara,
-260530S040,HCI,5/30/2026,Solar,10.15,Jakarta Utara,
-260531S046,HCI,5/31/2026,Solar,7.06,Jakarta Utara,
-260531S048,HCI,5/31/2026,Solar,11.47,Jakarta Timur,
-260531S090,HCI,5/31/2026,Rechecked,,Jakarta Utara,
-260531S047,HCI,5/31/2026,Solar,8.82,Jakarta Utara,
-260531S050,HCI,5/31/2026,Solar,15.44,Jakarta Utara,
-260531S091,HCI,5/31/2026,Pertalite,6.3,Jakarta Utara,
-260531S051,HCI,5/31/2026,Solar,9.56,Jakarta Utara,
-260601S040,HCI,6/1/2026,Solar,6.03,Jakarta Utara,
-260601S041,HCI,6/1/2026,Solar,3.97,Jakarta Utara,
-260601S042,HCI,6/1/2026,Solar,5.88,Jakarta Utara,
-260601S043,HCI,6/1/2026,Solar,8.53,Jakarta Timur,
-260601S044,HCI,6/1/2026,Solar,16.91,Jakarta Utara,
-260601S045,HCI,6/1/2026,Solar,8.53,Jakarta Utara,
-260601S203,HCI,6/1/2026,Pertalite,7.9,Jakarta Utara,
-260601S204,HCI,6/1/2026,Rechecked,,Jakarta Utara,
-260601S206,HCI,6/1/2026,Rechecked,,#N/A,
-260602S056,HCI,6/2/2026,Solar,22.06,Jakarta Utara,
-260602S057,HCI,6/2/2026,Solar,11.32,Jakarta Utara,
-260602S058,HCI,6/2/2026,Solar,8.82,Jakarta Utara,
-260602S059,HCI,6/2/2026,Solar,5.59,Jakarta Utara,
-260602S060,HCI,6/2/2026,Solar,11.32,Jakarta Utara,
-260602S061,HCI,6/2/2026,Solar,15.29,Jakarta Utara,
-260602S062,HCI,6/2/2026,Solar,14.26,Jakarta Timur,
-260602S096,HCI,6/2/2026,Pertalite,8.2,Jakarta Utara,
-260602S209,HCI,6/2/2026,Rechecked,,Jakarta Utara,
-260603S061,HCI,6/3/2026,Solar,17.06,Jakarta Utara,
-260603S056,HCI,6/3/2026,Solar,8.53,Jakarta Utara,
-260603S208,HCI,6/3/2026,Rechecked,,#N/A,
-260603S060,HCI,6/3/2026,Solar,15.88,Jakarta Utara,
-260603S059,HCI,6/3/2026,Solar,14.41,Jakarta Timur,
-260603S058,HCI,6/3/2026,Solar,8.38,Jakarta Utara,
-260603S207,HCI,6/3/2026,Pertalite,12.85,Jakarta Utara,
-260603S057,HCI,6/3/2026,Solar,12.21,Jakarta Utara,
-260604S038,HCI,6/4/2026,Solar,6.62,Jakarta Utara,
-260604S039,HCI,6/4/2026,Solar,6.76,Jakarta Utara,
-260604S040,HCI,6/4/2026,Solar,7.35,Jakarta Utara,
-260604S041,HCI,6/4/2026,Solar,14.56,Jakarta Timur,
-260604S042,HCI,6/4/2026,Solar,16.76,Jakarta Utara,
-260604S043,HCI,6/4/2026,Solar,14.71,Jakarta Utara,
-260604S184,HCI,6/4/2026,Pertalite,7,Jakarta Utara,
-260604S185,HCI,6/4/2026,Rechecked,,Jakarta Utara,
-260605S047,HCI,6/5/2026,Solar,5.66,Jakarta Utara,
-260605S048,HCI,6/5/2026,Solar,7.35,Jakarta Utara,
-260605S049,HCI,6/5/2026,Solar,20.15,Jakarta Utara,
-260605S050,HCI,6/5/2026,Solar,8.38,Jakarta Timur,
-260605S051,HCI,6/5/2026,Solar,16.91,Jakarta Utara,
-260605S052,HCI,6/5/2026,Solar,8.53,Jakarta Utara,
-260605S082,HCI,6/5/2026,Solar,6.62,Jakarta Utara,
-260605S083,HCI,6/5/2026,Pertalite,7.8,Jakarta Utara,
-260606S051,HCI,6/6/2026,Solar,6.62,Jakarta Utara,
-260606S052,HCI,6/6/2026,Solar,7.35,Jakarta Utara,
-260606S053,HCI,6/6/2026,Solar,7.35,Jakarta Timur,
-260606S055,HCI,6/6/2026,Solar,20.59,Jakarta Utara,
-260606S056,HCI,6/6/2026,Solar,10.88,Jakarta Utara,
-260606S091,HCI,6/6/2026,Rechecked,,Jakarta Utara,
-260606S092,HCI,6/6/2026,Pertalite,6.7,Jakarta Utara,
-260607S032,HCI,6/7/2026,Solar,17.79,Jakarta Utara,
-260607S035,HCI,6/7/2026,Solar,21.14,Jakarta Utara,
-260607S036,HCI,6/7/2026,Solar,12.65,Jakarta Utara,
-260607S069,HCI,6/7/2026,Rechecked,,Jakarta Utara,
-260607S070,HCI,6/7/2026,Pertalite,7.8,Jakarta Utara,
-260607S153,HCI,6/7/2026,Solar,18.38,Jakarta Timur,
+260101S062,HCI,1/1/2026,Solar,4.56,Kelapa Gading,31000
+260101S060,HCI,1/1/2026,Solar,3.68,Tanjung Priuk,25000
+260101S061,HCI,1/1/2026,Solar,10,Jakarta Timur,68000
+260101S058,HCI,1/1/2026,Solar,11.03,Penjaringan,75000
+260101S124,HCI,1/1/2026,Rechecked,,Kelapa Gading,
+260101S077,HCI,1/1/2026,Pertalite,6.9,Tanjung Priuk,69000
+260101S059,HCI,1/1/2026,Solar,7.06,Kemayoran,48000
+260102S094,HCI,1/2/2026,Solar,11.62,Kelapa Gading,79000
+260102S080,HCI,1/2/2026,Solar,8.82,Tanjung Priuk,60000
+260102S007,HCI,1/2/2026,Solar,11.47,Kemayoran,78000
+260102S075,HCI,1/2/2026,Solar,16.47,PIK,112000
+260102S077,HCI,1/2/2026,Solar,16.62,Penjaringan,113000
+260102S079,HCI,1/2/2026,Solar,11.47,Jakarta Timur,78000
+260102S083,HCI,1/2/2026,Pertalite,11,Tanjung Priuk,110000
+260102S078,HCI,1/2/2026,Solar,10.29,Kelapa Gading,70000
+260103S176,HCI,1/3/2026,Rechecked,,Kelapa Gading,
+260103S045,HCI,1/3/2026,Solar,11.03,Jakarta Timur,75000
+260103S043,HCI,1/3/2026,Solar,6.32,Kelapa Gading,43000
+260103S040,HCI,1/3/2026,Solar,14.71,PIK,100000
+260103S044,HCI,1/3/2026,Solar,7.35,Kemayoran,50000
+260103S041,HCI,1/3/2026,Solar,11.03,Penjaringan,75000
+260103S046,HCI,1/3/2026,Pertalite,15.3,Cempaka Putih,153000
+260103S042,HCI,1/3/2026,Solar,7.35,Tanjung Priuk,50000
+260104S045,HCI,1/4/2026,Solar,10.15,Cempaka Putih,69000
+260104S044,HCI,1/4/2026,Solar,7.79,Kemayoran,53000
+260104S036,HCI,1/4/2026,Solar,24.85,PIK,169000
+260104S042,HCI,1/4/2026,Solar,11.18,Jakarta Timur,76000
+260104S068,HCI,1/4/2026,Pertalite,10.5,Tanjung Priuk,105000
+260105S035,HCI,1/5/2026,Solar,13.24,Kelapa Gading,90000
+260105S080,HCI,1/5/2026,Solar,10.44,Penjaringan,71000
+260105S034,HCI,1/5/2026,Solar,11.18,Jakarta Timur,76000
+260105S081,HCI,1/5/2026,Solar,25.29,PIK,172000
+260105S036,HCI,1/5/2026,Solar,10.29,Tanjung Priuk,70000
+260105S037,HCI,1/5/2026,Solar,12.21,Kemayoran,83000
+260105S098,HCI,1/5/2026,Pertalite,12.6,Cempaka Putih,126000
+260105S038,HCI,1/5/2026,Solar,8.09,Tanjung Priuk,55000
+260106S046,HCI,1/6/2026,Solar,7.35,Tanjung Priuk,50000
+260106S102,HCI,1/6/2026,Solar,5.88,Jakarta Timur,40000
+260106S051,HCI,1/6/2026,Solar,4.41,Kelapa Gading,30000
+260106S042,HCI,1/6/2026,Solar,16.62,PIK,113000
+260106S053,HCI,1/6/2026,Solar,8.09,Jakarta Timur,55000
+260106S044,HCI,1/6/2026,Solar,10.15,Penjaringan,69000
+260106S081,HCI,1/6/2026,Pertalite,6.5,Cempaka Putih,65000
+260106S049,HCI,1/6/2026,Solar,6.76,Kemayoran,46000
+260107S045,HCI,1/7/2026,Solar,9.12,Kemayoran,62000
+260107S048,HCI,1/7/2026,Solar,11.18,Kelapa Gading,76000
+260107S046,HCI,1/7/2026,Solar,7.5,Cempaka Putih,51000
+260107S093,HCI,1/7/2026,Rechecked,,Kelapa Gading,
+260107S047,HCI,1/7/2026,Solar,7.35,Jakarta Timur,50000
+260107S051,HCI,1/7/2026,Solar,11.76,Penjaringan,80000
+260107S032,HCI,1/7/2026,Pertalite,8.1,Tanjung Priuk,81000
+260107S049,HCI,1/7/2026,Solar,13.68,PIK,93000
+260108S052,HCI,1/8/2026,Solar,13.68,Kemayoran,93000
+260108S148,HCI,1/8/2026,Rechecked,,Kelapa Gading,
+260108S058,HCI,1/8/2026,Solar,15,PIK,102000
+260108S054,HCI,1/8/2026,Solar,8.09,Cempaka Putih,55000
+260108S059,HCI,1/8/2026,Solar,10.29,Penjaringan,70000
+260108S125,HCI,1/8/2026,Pertalite,6.1,Tanjung Priuk,61000
+260108S060,HCI,1/8/2026,Solar,13.24,Kelapa Gading,90000
+260109S101,HCI,1/9/2026,Rechecked,,Kelapa Gading,
+260109S079,HCI,1/9/2026,Solar,7.35,Cempaka Putih,50000
+260109S042,HCI,1/9/2026,Solar,6.62,Penjaringan,45000
+260109S045,HCI,1/9/2026,Solar,19.12,PIK,130000
+260109S043,HCI,1/9/2026,Solar,9.41,Jakarta Timur,64000
+260109S046,HCI,1/9/2026,Solar,16.18,Penjaringan,110000
+260109S095,HCI,1/9/2026,Pertalite,7.8,Tanjung Priuk,78000
+260109S044,HCI,1/9/2026,Solar,8.82,Koja,60000
+260110S063,HCI,1/10/2026,Solar,5.88,Kelapa Gading,40000
+260110S060,HCI,1/10/2026,Solar,8.53,Kemayoran,58000
+260110S057,HCI,1/10/2026,Solar,19.12,PIK,130000
+260110S062,HCI,1/10/2026,Solar,8.24,Jakarta Timur,56000
+260110S140,HCI,1/10/2026,Pertalite,10,Tanjung Priuk,100000
+260110S058,HCI,1/10/2026,Solar,9.56,Penjaringan,65000
+260111S049,HCI,1/11/2026,Solar,9.71,Kemayoran,66000
+260111S052,HCI,1/11/2026,Rechecked,,Kelapa Gading,
+260111S054,HCI,1/11/2026,Solar,25.15,PIK,171000
+260111S056,HCI,1/11/2026,Solar,24.71,Penjaringan,168000
+260111S047,HCI,1/11/2026,Solar,8.53,Kelapa Gading,58000
+260111S133,HCI,1/11/2026,Pertalite,8.6,Tanjung Priuk,86000
+260111S051,HCI,1/11/2026,Solar,8.81,Jakarta Timur,60000
+260112S045,HCI,1/12/2026,Solar,15.15,Penjaringan,103000
+260112S048,HCI,1/12/2026,Solar,7.06,Cempaka Putih,48000
+260112S052,HCI,1/12/2026,Solar,11.03,Jakarta Timur,75000
+260112S066,HCI,1/12/2026,Rechecked,,Kelapa Gading,
+260112S047,HCI,1/12/2026,Solar,5.74,Kemayoran,39000
+260112S049,HCI,1/12/2026,Solar,8.97,Kelapa Gading,61000
+260112S065,HCI,1/12/2026,Pertalite,11.5,Tanjung Priuk,115000
+260112S043,HCI,1/12/2026,Solar,14.71,PIK,100000
+260113S059,HCI,1/13/2026,Solar,10,Tanjung Priuk,68000
+260113S057,HCI,1/13/2026,Solar,7.35,Kelapa Gading,50000
+260113S056,HCI,1/13/2026,Solar,11.76,Kemayoran,80000
+260113S054,HCI,1/13/2026,Solar,17.79,PIK,121000
+260113S055,HCI,1/13/2026,Solar,11.76,Penjaringan,80000
+260113S058,HCI,1/13/2026,Solar,10.59,Cempaka Putih,72000
+260113S053,HCI,1/13/2026,Pertalite,11,Tanjung Priuk,110000
+260113S110,HCI,1/13/2026,Solar,9.41,Kelapa Gading,64000
+260114S047,HCI,1/14/2026,Solar,6.91,Kelapa Gading,47000
+260114S050,HCI,1/14/2026,Solar,8.38,Jakarta Timur,57000
+260114S145,HCI,1/14/2026,Solar,15.29,Kelapa Gading,104000
+260114S051,HCI,1/14/2026,Solar,19.12,PIK,130000
+260114S052,HCI,1/14/2026,Solar,11.76,Penjaringan,80000
+260114S049,HCI,1/14/2026,Solar,11.76,Kemayoran,80000
+260114S083,HCI,1/14/2026,Pertalite,7.7,Tanjung Priuk,77000
+260114S048,HCI,1/14/2026,Solar,10,Tanjung Priuk,68000
+260115S033,HCI,1/15/2026,Solar,7.35,Kelapa Gading,50000
+260115S163,HCI,1/15/2026,Rechecked,,Kelapa Gading,
+260115S034,HCI,1/15/2026,Solar,7.35,Kemayoran,50000
+260115S156,HCI,1/15/2026,Solar,19.12,PIK,130000
+260115S035,HCI,1/15/2026,Solar,6.91,Tanjung Priuk,47000
+260115S036,HCI,1/15/2026,Solar,6.62,Jakarta Timur,45000
+260115S037,HCI,1/15/2026,Pertalite,5.8,Cempaka Putih,58000
+260115S155,HCI,1/15/2026,Solar,11.91,Penjaringan,81000
+260116S043,HCI,1/16/2026,Rechecked,,Kelapa Gading,
+260116S037,HCI,1/16/2026,Solar,6.62,Kemayoran,45000
+260116S035,HCI,1/16/2026,Solar,7.35,Jakarta Timur,50000
+260116S120,HCI,1/16/2026,Solar,15.74,PIK,107000
+260116S041,HCI,1/16/2026,Solar,7.06,Kelapa Gading,48000
+260116S040,HCI,1/16/2026,Solar,6.91,Jakarta Timur,47000
+260116S044,HCI,1/16/2026,Pertalite,5.4,Tanjung Priuk,54000
+260116S126,HCI,1/16/2026,Solar,7.35,Penjaringan,50000
+260117S034,HCI,1/17/2026,Rechecked,,Kelapa Gading,
+260117S028,HCI,1/17/2026,Solar,12.5,PIK,85000
+260117S029,HCI,1/17/2026,Solar,12.21,Penjaringan,83000
+260117S031,HCI,1/17/2026,Solar,7.06,Tanjung Priuk,48000
+260117S033,HCI,1/17/2026,Solar,9.85,Kelapa Gading,67000
+260117S030,HCI,1/17/2026,Solar,8.09,Kemayoran,55000
+260117S104,HCI,1/17/2026,Pertalite,7,Cempaka Putih,70000
+260117S032,HCI,1/17/2026,Solar,7.35,Jakarta Timur,50000
+260118S180,HCI,1/18/2026,Rechecked,6,Koja,60000
+260118S025,HCI,1/18/2026,Solar,11.32,Kelapa Gading,77000
+260118S027,HCI,1/18/2026,Rechecked,,Koja,
+260118S080,HCI,1/18/2026,Solar,19.26,PIK,131000
+260118S026,HCI,1/18/2026,Solar,11.32,Jakarta Timur,77000
+260118S041,HCI,1/18/2026,Pertalite,10.3,Tanjung Priuk,103000
+260119S036,HCI,1/19/2026,Rechecked,,Kelapa Gading,
+260119S034,HCI,1/19/2026,Solar,16.18,Kemayoran,110000
+260119S164,HCI,1/19/2026,Solar,7.06,Kelapa Gading,48000
+260119S052,HCI,1/19/2026,Solar,19.41,Penjaringan,132000
+260119S165,HCI,1/19/2026,Solar,22.35,PIK,152000
+260119S035,HCI,1/19/2026,Solar,17.5,Cempaka Putih,119000
+260119S167,HCI,1/19/2026,Pertalite,14.7,Kemayoran,147000
+260119S033,HCI,1/19/2026,Solar,9.71,Kelapa Gading,66000
+260120S030,HCI,1/20/2026,Solar,4.41,Kelapa Gading,30000
+260120S170,HCI,1/20/2026,Solar,23.53,PIK,160000
+260120S031,HCI,1/20/2026,Solar,5.44,Kemayoran,37000
+260120S168,HCI,1/20/2026,Rechecked,,Kelapa Gading,
+260120X027,HCI,1/20/2026,Solar,20,Koja,136000
+260120S032,HCI,1/20/2026,Solar,6.18,Kelapa Gading,42000
+260120S056,HCI,1/20/2026,Pertalite,6,Tanjung Priuk,60000
+260120S169,HCI,1/20/2026,Solar,13.97,Penjaringan,95000
+260121S041,HCI,1/21/2026,Rechecked,,Kelapa Gading,
+260121S084,HCI,1/21/2026,Solar,15.44,Penjaringan,105000
+260121S040,HCI,1/21/2026,Solar,12.5,Jakarta Timur,85000
+260121S038,HCI,1/21/2026,Solar,9.56,Kemayoran,65000
+260121S083,HCI,1/21/2026,Solar,15.29,PIK,104000
+260121S037,HCI,1/21/2026,Solar,9.12,Kelapa Gading,62000
+260121S194,HCI,1/21/2026,Solar,2.65,Jakarta Timur,18000
+260121S085,HCI,1/21/2026,Pertalite,10,Tanjung Priuk,100000
+260121S039,HCI,1/21/2026,Solar,13.38,Penjaringan,91000
+260122S046,HCI,1/22/2026,Rechecked,,Kelapa Gading,
+260122S086,HCI,1/22/2026,Solar,17.65,Kemayoran,120000
+260122S191,HCI,1/22/2026,Rechecked,3.1,Cempaka Putih,31000
+260122S044,HCI,1/22/2026,Solar,9.56,Cempaka Putih,65000
+260122S042,HCI,1/22/2026,Solar,8.82,Kelapa Gading,60000
+260122S045,HCI,1/22/2026,Solar,10.15,Jakarta Timur,69000
+260122S043,HCI,1/22/2026,Solar,7.35,Kemayoran,50000
+260122S051,HCI,1/22/2026,Pertalite,11.1,Penjaringan,111000
+260122S084,HCI,1/22/2026,Solar,11.54,Penjaringan,78500
+260123S038,HCI,1/23/2026,Solar,12.06,Jakarta Timur,82000
+260123S039,HCI,1/23/2026,Rechecked,,Kelapa Gading,
+260123S052,HCI,1/23/2026,Solar,12.65,Penjaringan,86000
+260123S036,HCI,1/23/2026,Solar,8.82,Kelapa Gading,60000
+260123S050,HCI,1/23/2026,Solar,15.74,PIK,107000
+260123S081,HCI,1/23/2026,Pertalite,9.2,Tanjung Priuk,92000
+260123S037,HCI,1/23/2026,Solar,7.06,Kemayoran,48000
+260124S036,HCI,1/24/2026,Solar,16.32,Jakarta Timur,111000
+260124S032,HCI,1/24/2026,Solar,5.15,Tanjung Priuk,35000
+260124S035,HCI,1/24/2026,Solar,3.97,Kelapa Gading,27000
+260124S033,HCI,1/24/2026,Solar,13.24,Kemayoran,90000
+260124S062,HCI,1/24/2026,Pertalite,6.6,Cempaka Putih,66000
+260124S034,HCI,1/24/2026,Solar,6.18,Jakarta Timur,42000
+260125S036,HCI,1/25/2026,Solar,12.65,Cempaka Putih,86000
+260125S168,HCI,1/25/2026,Solar,10.29,Kemayoran,70000
+260125S037,HCI,1/25/2026,Solar,20.59,Kelapa Gading,140000
+260125S038,HCI,1/25/2026,Solar,17.65,Jakarta Timur,120000
+260125S169,HCI,1/25/2026,Rechecked,,Kelapa Gading,
+260125S167,HCI,1/25/2026,Pertalite,8.4,Tanjung Priuk,84000
+260125S066,HCI,1/25/2026,Solar,5.29,Kelapa Gading,36000
+260126S045,HCI,1/26/2026,Solar,5.15,Kemayoran,35000
+260126S106,HCI,1/26/2026,Solar,19.71,Penjaringan,134000
+260126S044,HCI,1/26/2026,Solar,5.15,Kelapa Gading,35000
+260126S086,HCI,1/26/2026,Solar,8.24,Tanjung Priuk,56000
+260126S046,HCI,1/26/2026,Solar,5.44,Tanjung Priuk,37000
+260126S112,HCI,1/26/2026,Rechecked,,Kelapa Gading,
+260126S043,HCI,1/26/2026,Pertalite,7,Cempaka Putih,70000
+260126S047,HCI,1/26/2026,Solar,8.53,Jakarta Timur,58000
+260127S103,HCI,1/27/2026,Rechecked,,Kelapa Gading,
+260127S041,HCI,1/27/2026,Solar,5.88,Kemayoran,40000
+260127S043,HCI,1/27/2026,Solar,8.09,Kelapa Gading,55000
+260127S096,HCI,1/27/2026,Solar,11.32,Penjaringan,77000
+260127S040,HCI,1/27/2026,Solar,7.65,Kelapa Gading,52000
+260127S042,HCI,1/27/2026,Solar,8.09,Cempaka Putih,55000
+260127S044,HCI,1/27/2026,Pertalite,6.2,Tanjung Priuk,62000
+260127S083,HCI,1/27/2026,Solar,10,Kelapa Gading,68000
+260128S117,HCI,1/28/2026,Rechecked,,Kelapa Gading,
+260128S034,HCI,1/28/2026,Solar,8.53,Kemayoran,58000
+260128S033,HCI,1/28/2026,Solar,7.06,Tanjung Priuk,48000
+260128S035,HCI,1/28/2026,Solar,4.71,Cempaka Putih,32000
+260128S104,HCI,1/28/2026,Solar,17.35,Penjaringan,118000
+260128S048,HCI,1/28/2026,Pertalite,7,Kelapa Gading,70000
+260128S036,HCI,1/28/2026,Solar,8.97,Jakarta Timur,61000
+260129S054,HCI,1/29/2026,Solar,6.32,Kelapa Gading,43000
+260129S174,HCI,1/29/2026,Solar,13.24,Penjaringan,90000
+260129S058,HCI,1/29/2026,Solar,15.15,Kelapa Gading,103000
+260129S055,HCI,1/29/2026,Solar,9.12,Kemayoran,62000
+260129S057,HCI,1/29/2026,Solar,8.97,Jakarta Timur,61000
+260129S188,HCI,1/29/2026,Rechecked,,Kelapa Gading,
+260129S162,HCI,1/29/2026,Pertalite,7.8,Tanjung Priuk,78000
+260129S056,HCI,1/29/2026,Solar,6.32,Cempaka Putih,43000
+260130S070,HCI,1/30/2026,Solar,9.12,Kelapa Gading,62000
+260130S072,HCI,1/30/2026,Solar,8.24,Kemayoran,56000
+260130S071,HCI,1/30/2026,Solar,7.35,Kelapa Gading,50000
+260130S069,HCI,1/30/2026,Solar,10.15,Jakarta Timur,69000
+260130S074,HCI,1/30/2026,Rechecked,,Kelapa Gading,
+260130S075,HCI,1/30/2026,Pertalite,10.9,Tanjung Priuk,109000
+260130S073,HCI,1/30/2026,Solar,14.71,Penjaringan,100000
+260131S069,HCI,1/31/2026,Solar,13.38,Penjaringan,91000
+260131S062,HCI,1/31/2026,Solar,8.24,Kemayoran,56000
+260131S059,HCI,1/31/2026,Solar,11.18,Kelapa Gading,76000
+260131S064,HCI,1/31/2026,Solar,9.56,Jakarta Timur,65000
+260131S158,HCI,1/31/2026,Rechecked,,Kelapa Gading,
+260131S046,HCI,1/31/2026,Pertalite,11.7,Tanjung Priuk,117000
+260201S014,HCI,2/1/2026,Rechecked,,Kelapa Gading,
+260201S012,HCI,2/1/2026,Solar,8.82,Kelapa Gading,60000
+260201S140,HCI,2/1/2026,Solar,19.56,PIK,133000
+260201S013,HCI,2/1/2026,Solar,8.82,Jakarta Timur,60000
+260201S142,HCI,2/1/2026,Pertalite,11,Kemayoran,110000
+260201S141,HCI,2/1/2026,Solar,10.59,Penjaringan,72000
+260202S046,HCI,2/2/2026,Solar,6.18,Kelapa Gading,42000
+260202S136,HCI,2/2/2026,Rechecked,,Kelapa Gading,
+260202S045,HCI,2/2/2026,Solar,8.82,Jakarta Timur,60000
+260202S047,HCI,2/2/2026,Solar,8.24,Kemayoran,46000
+260202S116,HCI,2/2/2026,Solar,9.12,Kelapa Gading,62000
+260202S112,HCI,2/2/2026,Solar,11.03,Tanjung Priuk,75000
+260202S049,HCI,2/2/2026,Solar,20,PIK,136000
+260202S044,HCI,2/2/2026,Pertalite,8.9,Cempaka Putih,89000
+260202S048,HCI,2/2/2026,Solar,11.03,Penjaringan,75000
+260203S043,HCI,2/3/2026,Solar,9.26,Kelapa Gading,63000
+260203S046,HCI,2/3/2026,Solar,8.82,Cempaka Putih,60000
+260203S045,HCI,2/3/2026,Solar,11.47,Tanjung Priuk,78000
+260203S150,HCI,2/3/2026,Rechecked,,Kelapa Gading,
+260203S044,HCI,2/3/2026,Solar,6.76,Kemayoran,46000
+260203S047,HCI,2/3/2026,Solar,10,Jakarta Timur,68000
+260203S042,HCI,2/3/2026,Solar,11.76,Penjaringan,80000
+260203S048,HCI,2/3/2026,Pertalite,8.1,Tanjung Priuk,81000
+260203S041,HCI,2/3/2026,Solar,22.5,PIK,153000
+260204S046,HCI,2/4/2026,Solar,13.97,Jakarta Timur,95000
+260204S045,HCI,2/4/2026,Solar,12.06,Kemayoran,82000
+260204S043,HCI,2/4/2026,Solar,9.12,Kelapa Gading,62000
+260204S075,HCI,2/4/2026,Solar,15.29,Penjaringan,105000
+260204S044,HCI,2/4/2026,Solar,13.53,Kemayoran,62000
+260204S047,HCI,2/4/2026,Rechecked,,Kelapa Gading,
+260204S086,HCI,2/4/2026,Pertalite,9.6,Tanjung Priuk,96000
+260204S072,HCI,2/4/2026,Solar,16.03,PIK,109000
+260205S062,HCI,2/5/2026,Solar,3.82,Jakarta Timur,26000
+260205S061,HCI,2/5/2026,Solar,13.24,Jakarta Timur,90000
+260205S047,HCI,2/5/2026,Solar,11.18,Tanjung Priuk,76000
+260205S043,HCI,2/5/2026,Solar,26.76,PIK,182000
+260205S046,HCI,2/5/2026,Solar,9.41,Kelapa Gading,64000
+260205S060,HCI,2/5/2026,Pertalite,11.1,Cempaka Putih,111000
+260205S045,HCI,2/5/2026,Solar,16.91,Penjaringan,116000
+260206S061,HCI,2/6/2026,Solar,9.34,Jakarta Timur,63500
+260206S059,HCI,2/6/2026,Solar,7.65,Kemayoran,52000
+260206S060,HCI,2/6/2026,Solar,9.12,Cempaka Putih,62000
+260206S062,HCI,2/6/2026,Solar,12.06,Penjaringan,82000
+260206S053,HCI,2/6/2026,Solar,15.74,PIK,107000
+260206S184,HCI,2/6/2026,Rechecked,,Kelapa Gading,
+260206S086,HCI,2/6/2026,Pertalite,6.6,Tanjung Priuk,66000
+260206S058,HCI,2/6/2026,Solar,7.35,Kelapa Gading,50000
+260207S081,HCI,2/7/2026,Solar,9.12,Jakarta Timur,62000
+260207S001,HCI,2/7/2026,Solar,16.18,Penjaringan,110000
+260207S083,HCI,2/7/2026,Solar,25,PIK,170000
+260207S079,HCI,2/7/2026,Solar,5.88,Kemayoran,40000
+260207S080,HCI,2/7/2026,Solar,8.68,Tanjung Priuk,59000
+260208S019,HCI,2/8/2026,Solar,7.35,Jakarta Timur,50000
+260208S038,HCI,2/8/2026,Solar,11.03,Penjaringan,75000
+260208S036,HCI,2/8/2026,Rechecked,,Kelapa Gading,
+260208S034,HCI,2/8/2026,Solar,6.76,Kemayoran,46000
+260208S035,HCI,2/8/2026,Solar,11.18,Kelapa Gading,76000
+260208S061,HCI,2/8/2026,Pertalite,9.5,Tanjung Priuk,95000
+260208S183,HCI,2/8/2026,Solar,12.06,PIK,82000
+260209S028,HCI,2/9/2026,Solar,10.88,Tanjung Priuk,74000
+260209S031,HCI,2/9/2026,Solar,9.71,Jakarta Timur,66000
+260209S032,HCI,2/9/2026,Solar,11.76,Kelapa Gading,80000
+260209S082,HCI,2/9/2026,Solar,12.65,PIK,86000
+260209S090,HCI,2/9/2026,Solar,15.44,Penjaringan,105000
+260209S029,HCI,2/9/2026,Solar,17.5,PIK,119000
+260209S034,HCI,2/9/2026,Pertalite,9.5,Cempaka Putih,95000
+260209S030,HCI,2/9/2026,Solar,12.06,Kemayoran,82000
+260210S049,HCI,2/10/2026,Solar,12.79,Kemayoran,87000
+260210S239,HCI,2/10/2026,Solar,21.32,Penjaringan,145000
+260210S050,HCI,2/10/2026,Solar,11.91,Tanjung Priuk,81000
+260210S051,HCI,2/10/2026,Rechecked,,Kelapa Gading,
+260210S244,HCI,2/10/2026,Pertalite,7.8,Kemayoran,78000
+260210S047,HCI,2/10/2026,Solar,10,Kelapa Gading,68000
+260210S102,HCI,2/10/2026,Solar,20,PIK,136000
+260210S273,HCI,2/10/2026,Pertalite,4.3,Tanjung Priuk,43000
+260210S048,HCI,2/10/2026,Solar,17.5,Penjaringan,119000
+260210S101,HCI,2/10/2026,Pertalite,20.5,Tanjung Priuk,205000
+260210S103,HCI,2/10/2026,Solar,12.06,Penjaringan,82000
+260211S055,HCI,2/11/2026,Solar,17.65,PIK,120000
+260211S068,HCI,2/11/2026,Solar,9.56,Kelapa Gading,65000
+260211S158,HCI,2/11/2026,Rechecked,,Kelapa Gading,
+260211S058,HCI,2/11/2026,Solar,14.71,Penjaringan,100000
+260211S071,HCI,2/11/2026,Solar,16.18,Penjaringan,110000
+260211S065,HCI,2/11/2026,Solar,12.21,Jakarta Timur,83000
+260211S050,HCI,2/11/2026,Pertalite,11,Tanjung Priuk,110000
+260211S061,HCI,2/11/2026,Solar,8.53,Kemayoran,58000
+260212S031,HCI,2/12/2026,Rechecked,,Kelapa Gading,
+260212S029,HCI,2/12/2026,Solar,12.5,PIK,85000
+260212S030,HCI,2/12/2026,Solar,11.47,Jakarta Timur,78000
+260212S193,HCI,2/12/2026,Solar,12.21,Penjaringan,83000
+260212S032,HCI,2/12/2026,Solar,6.62,Kemayoran,45000
+260212S195,HCI,2/12/2026,Pertalite,11.5,Cempaka Putih,115000
+260212S028,HCI,2/12/2026,Solar,7.35,Kelapa Gading,50000
+260213S071,HCI,2/13/2026,Rechecked,,Kelapa Gading,
+260213S059,HCI,2/13/2026,Solar,11.32,Jakarta Timur,77000
+260213S057,HCI,2/13/2026,Solar,7.5,Kemayoran,51000
+260213S056,HCI,2/13/2026,Solar,8.82,Tanjung Priuk,60000
+260213S061,HCI,2/13/2026,Solar,17.94,Penjaringan,122000
+260213S058,HCI,2/13/2026,Solar,8.09,Kelapa Gading,55000
+260213S055,HCI,2/13/2026,Pertalite,12.1,Kelapa Gading,121000
+260213S060,HCI,2/13/2026,Solar,16.91,PIK,115000
+260214S071,HCI,2/14/2026,Rechecked,,Kelapa Gading,
+260214S068,HCI,2/14/2026,Solar,13.38,Kemayoran,91000
+260214S069,HCI,2/14/2026,Solar,9.56,Kelapa Gading,65000
+260214S070,HCI,2/14/2026,Solar,8.24,Jakarta Timur,56000
+260214S072,HCI,2/14/2026,Solar,18.82,PIK,128000
+260214S127,HCI,2/14/2026,Pertalite,11.5,Tanjung Priuk,115000
+260214S110,HCI,2/14/2026,Pertalite,8.9,Jakarta Timur,89000
+260214S073,HCI,2/14/2026,Solar,18.82,Penjaringan,128000
+260215S055,HCI,2/15/2026,Solar,5.88,Kelapa Gading,40000
+260215S080,HCI,2/15/2026,Solar,7.65,Cempaka Putih,52000
+260215S056,HCI,2/15/2026,Solar,11.32,Kemayoran,77000
+260215S059,HCI,2/15/2026,Solar,12.5,Penjaringan,85000
+260215S057,HCI,2/15/2026,Solar,6.32,Jakarta Timur,43000
+260215S078,HCI,2/15/2026,Pertalite,7.2,Tanjung Priuk,72000
+260215S058,HCI,2/15/2026,Solar,16.32,PIK,111000
+260216S046,HCI,2/16/2026,Solar,8.82,Tanjung Priuk,60000
+260216S045,HCI,2/16/2026,Solar,11.03,Jakarta Timur,75000
+260216S044,HCI,2/16/2026,Solar,5.29,Cempaka Putih,36000
+260216S144,HCI,2/16/2026,Solar,31.76,PIK,216000
+260216S032,HCI,2/16/2026,Solar,9.71,Kelapa Gading,66000
+260216S034,HCI,2/16/2026,Solar,23.38,Kemayoran,159000
+260216S141,HCI,2/16/2026,Pertalite,8,Tanjung Priuk,80000
+260216S136,HCI,2/16/2026,Solar,19.12,Penjaringan,130000
+260217S053,HCI,2/17/2026,Solar,15.44,Jakarta Timur,105000
+260217S103,HCI,2/17/2026,Rechecked,,Kelapa Gading,
+260217S049,HCI,2/17/2026,Solar,8.09,Kelapa Gading,55000
+260217S104,HCI,2/17/2026,Solar,21.03,Jakarta Timur,143000
+260217S051,HCI,2/17/2026,Solar,22.65,PIK,154000
+260217S050,HCI,2/17/2026,Solar,6.76,Jakarta Timur,46000
+260217S048,HCI,2/17/2026,Pertalite,5.3,Tanjung Priuk,53000
+260217S052,HCI,2/17/2026,Solar,8.01,Penjaringan,55000
+260218S117,HCI,2/18/2026,Solar,7.65,Kemayoran,52000
+260218X010,HCI,2/18/2026,Solar,14.85,Koja,101000
+260218S114,HCI,2/18/2026,Solar,9.85,Penjaringan,67000
+260218S247,HCI,2/18/2026,Solar,5.59,Cempaka Putih,38000
+260218S121,HCI,2/18/2026,Rechecked,,Kelapa Gading,
+260218S118,HCI,2/18/2026,Solar,8.82,Jakarta Timur,60000
+260218S119,HCI,2/18/2026,Solar,8.24,Tanjung Priuk,56000
+260218S104,HCI,2/18/2026,Solar,6.62,Kelapa Gading,45000
+260218S254,HCI,2/18/2026,Pertalite,3.4,Koja,34000
+260218S115,HCI,2/18/2026,Pertalite,9.7,Tanjung Priuk,97000
+260218S111,HCI,2/18/2026,Solar,12.5,PIK,85000
+260219S041,HCI,2/19/2026,Solar,12.65,PIK,86000
+260219S037,HCI,2/19/2026,Solar,8.53,Kelapa Gading,58000
+260219S111,HCI,2/19/2026,Rechecked,,Kelapa Gading,
+260219S039,HCI,2/19/2026,Solar,11.03,Jakarta Timur,75000
+260219S103,HCI,2/19/2026,Solar,15.59,Penjaringan,106000
+260219S042,HCI,2/19/2026,Pertalite,15,Cempaka Putih,150000
+260219S038,HCI,2/19/2026,Solar,8.01,Kemayoran,54500
+260220S056,HCI,2/20/2026,Solar,6.32,Kelapa Gading,43000
+260220S128,HCI,2/20/2026,Solar,17.65,PIK,120000
+260220S130,HCI,2/20/2026,Solar,11.76,Penjaringan,80000
+260220S058,HCI,2/20/2026,Solar,10.29,Jakarta Timur,70000
+260220S235,HCI,2/20/2026,Solar,5.15,Cempaka Putih,35000
+260220S059,HCI,2/20/2026,Rechecked,,Kelapa Gading,
+260220S131,HCI,2/20/2026,Pertalite,6.7,Tanjung Priuk,67000
+260220S057,HCI,2/20/2026,Solar,6.62,Kemayoran,45000
+260221S041,HCI,2/21/2026,Solar,8.38,Kemayoran,57000
+260221S043,HCI,2/21/2026,Solar,8.38,Jakarta Timur,57000
+260221S225,HCI,2/21/2026,Solar,22.06,PIK,150000
+260221S226,HCI,2/21/2026,Solar,9.56,Penjaringan,65000
+260221S044,HCI,2/21/2026,Rechecked,,Kelapa Gading,
+260221S045,HCI,2/21/2026,Pertalite,11.3,Tanjung Priuk,113000
+260221S040,HCI,2/21/2026,Solar,8.09,Kelapa Gading,55000
+260222S046,HCI,2/22/2026,Solar,5.88,Kemayoran,40000
+260222S048,HCI,2/22/2026,Solar,13.09,Kelapa Gading,89000
+260222S045,HCI,2/22/2026,Solar,18.53,Kelapa Gading,126000
+260222S203,HCI,2/22/2026,Solar,10.59,Penjaringan,72000
+260222S205,HCI,2/22/2026,Solar,14.85,PIK,101000
+260222S204,HCI,2/22/2026,Pertalite,4.5,Tanjung Priuk,45000
+260222S047,HCI,2/22/2026,Solar,8.82,Jakarta Timur,60000
+260223S098,HCI,2/23/2026,Solar,12.21,PIK,83000
+260223S099,HCI,2/23/2026,Solar,9.56,Penjaringan,65000
+260223S048,HCI,2/23/2026,Solar,6.62,Kemayoran,45000
+260223S047,HCI,2/23/2026,Solar,6.32,Tanjung Priuk,43000
+260223S046,HCI,2/23/2026,Solar,6.76,Kelapa Gading,46000
+260223S049,HCI,2/23/2026,Solar,10.29,Jakarta Timur,70000
+260223S100,HCI,2/23/2026,Pertalite,8.55,Tanjung Priuk,85500
+260223S050,HCI,2/23/2026,Solar,4.71,Tanjung Priuk,32000
+260224S045,HCI,2/24/2026,Solar,7.06,Jakarta Timur,48000
+260224S044,HCI,2/24/2026,Solar,4.49,Cempaka Putih,30500
+260224S206,HCI,2/24/2026,Solar,6.32,Kelapa Gading,43000
+260224S056,HCI,2/24/2026,Solar,6.32,Penjaringan,43000
+260224S202,HCI,2/24/2026,Solar,13.53,PIK,92000
+260224S043,HCI,2/24/2026,Solar,7.35,Kemayoran,50000
+260224S204,HCI,2/24/2026,Pertalite,6.5,Cempaka Putih,65000
+260224S042,HCI,2/24/2026,Solar,4.56,Kelapa Gading,31000
+260225S127,HCI,2/25/2026,Solar,13.24,Penjaringan,90000
+260225S128,HCI,2/25/2026,Solar,8.82,Cempaka Putih,60000
+260225S045,HCI,2/25/2026,Solar,10,Kelapa Gading,68000
+260225S047,HCI,2/25/2026,Solar,6.62,Kemayoran,45000
+260225S048,HCI,2/25/2026,Solar,7.65,Jakarta Timur,52000
+260225S046,HCI,2/25/2026,Solar,14.12,Tanjung Priuk,96000
+260225S129,HCI,2/25/2026,Pertalite,5.7,Tanjung Priuk,57000
+260225S141,HCI,2/25/2026,Solar,14.85,Kelapa Gading,101000
+260226S038,HCI,2/26/2026,Solar,7.06,Kelapa Gading,48000
+260226S041,HCI,2/26/2026,Solar,8.09,Jakarta Timur,55000
+260226S042,HCI,2/26/2026,Solar,5.88,Jakarta Timur,40000
+260226S040,HCI,2/26/2026,Solar,7.06,Cempaka Putih,48000
+260226S039,HCI,2/26/2026,Solar,6.62,Kemayoran,45000
+260226S208,HCI,2/26/2026,Rechecked,,Kelapa Gading,
+260226S124,HCI,2/26/2026,Pertalite,5.3,Tanjung Priuk,53000
+260226S207,HCI,2/26/2026,Solar,9.85,Penjaringan,67000
+260227S060,HCI,2/27/2026,Solar,8.68,Tanjung Priuk,59000
+260227S059,HCI,2/27/2026,Solar,8.68,Kemayoran,59000
+260227S063,HCI,2/27/2026,Solar,11.32,Penjaringan,77000
+260227S058,HCI,2/27/2026,Solar,7.94,Kelapa Gading,54000
+260227S061,HCI,2/27/2026,Solar,8.97,Jakarta Timur,61000
+260227S091,HCI,2/27/2026,Rechecked,,Kelapa Gading,
+260227X023,HCI,2/27/2026,Pertalite,5,Jakarta Timur,50000
+260227S062,HCI,2/27/2026,Solar,14.63,PIK,100000
+260228S052,HCI,2/28/2026,Solar,8.82,Cempaka Putih,60000
+260228S053,HCI,2/28/2026,Solar,6.18,Jakarta Timur,42000
+260228S055,HCI,2/28/2026,Rechecked,,Kelapa Gading,
+260228S171,HCI,2/28/2026,Solar,19.56,Penjaringan,133000
+260228S050,HCI,2/28/2026,Solar,6.47,Kelapa Gading,44000
+260228S170,HCI,2/28/2026,Pertalite,7.3,Tanjung Priuk,73000
+260228S051,HCI,2/28/2026,Solar,6.32,Kemayoran,43000
+260301S177,HCI,3/1/2026 12:00:00 AM,Solar,16.18,Penjaringan,110000
+260301S041,HCI,3/1/2026 12:00:00 AM,Solar,7.06,Kemayoran,48000
+260301S179,HCI,3/1/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260301S043,HCI,3/1/2026 12:00:00 AM,Solar,5.59,Cempaka Putih,38000
+260301S176,HCI,3/1/2026 12:00:00 AM,Solar,27.35,PIK,186000
+260301S178,HCI,3/1/2026 12:00:00 AM,Pertalite,5.5,Tanjung Priuk,55000
+260301S040,HCI,3/1/2026 12:00:00 AM,Solar,7.5,Kelapa Gading,51000
+260302S042,HCI,3/2/2026 12:00:00 AM,Solar,5.59,Jakarta Timur,38000
+260302S048,HCI,3/2/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260302S041,HCI,3/2/2026 12:00:00 AM,Solar,12.79,Jakarta Timur,87000
+260302S040,HCI,3/2/2026 12:00:00 AM,Solar,4.12,Cempaka Putih,28000
+260302S039,HCI,3/2/2026 12:00:00 AM,Solar,10.74,Kemayoran,73000
+260302S038,HCI,3/2/2026 12:00:00 AM,Solar,11.18,Kelapa Gading,76000
+260302S167,HCI,3/2/2026 12:00:00 AM,Pertalite,8.8,Tanjung Priuk,88000
+260302S165,HCI,3/2/2026 12:00:00 AM,Solar,16.91,PIK,115000
+260303S047,HCI,3/3/2026 12:00:00 AM,Solar,5.59,Kelapa Gading,38000
+260303S050,HCI,3/3/2026 12:00:00 AM,Solar,6.62,Jakarta Timur,45000
+260303S048,HCI,3/3/2026 12:00:00 AM,Solar,6.76,Kemayoran,46000
+260303S051,HCI,3/3/2026 12:00:00 AM,Solar,10,Jakarta Timur,68000
+260303S049,HCI,3/3/2026 12:00:00 AM,Solar,6.76,Kelapa Gading,46000
+260303S240,HCI,3/3/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260303S170,HCI,3/3/2026 12:00:00 AM,Pertalite,8.6,Tanjung Priuk,86000
+260303S227,HCI,3/3/2026 12:00:00 AM,Solar,14.71,Penjaringan,100000
+260304S091,HCI,3/4/2026 12:00:00 AM,Solar,16.62,Penjaringan,113000
+260304S084,HCI,3/4/2026 12:00:00 AM,Solar,14.71,Cempaka Putih,100000
+260304S083,HCI,3/4/2026 12:00:00 AM,Solar,5.51,Kelapa Gading,37500
+260304S087,HCI,3/4/2026 12:00:00 AM,Solar,8.53,Kelapa Gading,58000
+260304S086,HCI,3/4/2026 12:00:00 AM,Solar,7.21,Jakarta Timur,49000
+260304S085,HCI,3/4/2026 12:00:00 AM,Solar,6.76,Kemayoran,46000
+260304S092,HCI,3/4/2026 12:00:00 AM,Pertalite,10.3,Tanjung Priuk,103000
+260304S236,HCI,3/4/2026 12:00:00 AM,Solar,4.12,Jakarta Timur,28000
+260304X029,HCI,3/4/2026 12:00:00 AM,Solar,5.88,Jakarta Timur,40000
+260305S053,HCI,3/5/2026 12:00:00 AM,Solar,10,Kelapa Gading,68000
+260305S239,HCI,3/5/2026 12:00:00 AM,Pertalite,1.6,Kemayoran,16000
+260305S231,HCI,3/5/2026 12:00:00 AM,Rechecked,,Jakarta Timur,
+260305S094,HCI,3/5/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260305S057,HCI,3/5/2026 12:00:00 AM,Solar,17.21,PIK,117000
+260305S056,HCI,3/5/2026 12:00:00 AM,Solar,8.53,Jakarta Timur,58000
+260305S055,HCI,3/5/2026 12:00:00 AM,Solar,6.47,Tanjung Priuk,44000
+260305S087,HCI,3/5/2026 12:00:00 AM,Pertalite,7.3,Cempaka Putih,73000
+260305S054,HCI,3/5/2026 12:00:00 AM,Solar,9.56,Kemayoran,65000
+260306S097,HCI,3/6/2026 12:00:00 AM,Pertalite,5,Jakarta Timur,50000
+260306S190,HCI,3/6/2026 12:00:00 AM,Solar,9.56,Penjaringan,65000
+260306S043,HCI,3/6/2026 12:00:00 AM,Solar,5.88,Kemayoran,40000
+260306S004,HCI,3/6/2026 12:00:00 AM,Solar,14.71,PIK,100000
+260306S044,HCI,3/6/2026 12:00:00 AM,Solar,13.24,Jakarta Timur,90000
+260306S045,HCI,3/6/2026 12:00:00 AM,Pertalite,6.1,Kelapa Gading,61000
+260306S042,HCI,3/6/2026 12:00:00 AM,Solar,7.65,Kelapa Gading,52000
+260307S058,HCI,3/7/2026 12:00:00 AM,Solar,15.15,Penjaringan,103000
+260307S059,HCI,3/7/2026 12:00:00 AM,Solar,7.06,Kemayoran,48000
+260307S140,HCI,3/7/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260307S076,HCI,3/7/2026 12:00:00 AM,Solar,6.91,Kelapa Gading,47000
+260307S071,HCI,3/7/2026 12:00:00 AM,Solar,6.03,Cempaka Putih,41000
+260307S128,HCI,3/7/2026 12:00:00 AM,Pertalite,7.6,Tanjung Priuk,76000
+260307S073,HCI,3/7/2026 12:00:00 AM,Solar,7.06,Jakarta Timur,48000
+260308S093,HCI,3/8/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260308S064,HCI,3/8/2026 12:00:00 AM,Solar,5.15,Cempaka Putih,35000
+260308S063,HCI,3/8/2026 12:00:00 AM,Solar,7.94,Kemayoran,54000
+260308S065,HCI,3/8/2026 12:00:00 AM,Solar,19.12,Penjaringan,130000
+260308S127,HCI,3/8/2026 12:00:00 AM,Pertalite,2.3,Koja,23000
+260308S062,HCI,3/8/2026 12:00:00 AM,Solar,6.62,Kelapa Gading,45000
+260309S227,HCI,3/9/2026 12:00:00 AM,Solar,8.82,Penjaringan,60000
+260309S061,HCI,3/9/2026 12:00:00 AM,Solar,5.88,Kemayoran,40000
+260309S209,HCI,3/9/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260309S045,HCI,3/9/2026 12:00:00 AM,Solar,5.88,Kelapa Gading,40000
+260309S062,HCI,3/9/2026 12:00:00 AM,Solar,6.18,Jakarta Timur,42000
+260309S063,HCI,3/9/2026 12:00:00 AM,Solar,10.29,Jakarta Timur,70000
+260309S064,HCI,3/9/2026 12:00:00 AM,Solar,12.94,Tanjung Priuk,88000
+260309S228,HCI,3/9/2026 12:00:00 AM,Pertalite,10.2,Tanjung Priuk,102000
+260309S226,HCI,3/9/2026 12:00:00 AM,Solar,16.91,PIK,115000
+260310S034,HCI,3/10/2026 12:00:00 AM,Solar,13.24,Penjaringan,90000
+260310S035,HCI,3/10/2026 12:00:00 AM,Solar,5.88,Kelapa Gading,40000
+260310S033,HCI,3/10/2026 12:00:00 AM,Solar,8.24,Tanjung Priuk,56000
+260310S055,HCI,3/10/2026 12:00:00 AM,Solar,17.94,Jakarta Timur,122000
+260310S036,HCI,3/10/2026 12:00:00 AM,Solar,11.47,Jakarta Timur,78000
+260310S080,HCI,3/10/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260310S220,HCI,3/10/2026 12:00:00 AM,Rechecked,15,Tanjung Priuk,150000
+260310S219,HCI,3/10/2026 12:00:00 AM,Solar,18.97,PIK,129000
+260311S051,HCI,3/11/2026 12:00:00 AM,Solar,11.47,Jakarta Timur,78000
+260311S049,HCI,3/11/2026 12:00:00 AM,Solar,5,Jakarta Timur,34000
+260311S124,HCI,3/11/2026 12:00:00 AM,Solar,8.09,Penjaringan,55000
+260311S047,HCI,3/11/2026 12:00:00 AM,Solar,10.29,Kelapa Gading,70000
+260311S048,HCI,3/11/2026 12:00:00 AM,Solar,8.97,Kemayoran,61000
+260311S050,HCI,3/11/2026 12:00:00 AM,Solar,7.79,Jakarta Timur,53000
+260311S125,HCI,3/11/2026 12:00:00 AM,Pertalite,8.7,Cempaka Putih,87000
+260311S101,HCI,3/11/2026 12:00:00 AM,Solar,18.09,PIK,123000
+260312S050,HCI,3/12/2026 12:00:00 AM,Solar,7.79,Jakarta Timur,53000
+260312S199,HCI,3/12/2026 12:00:00 AM,Solar,12.5,PIK,85000
+260312S141,HCI,3/12/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260312S049,HCI,3/12/2026 12:00:00 AM,Solar,7.06,Kelapa Gading,48000
+260312S051,HCI,3/12/2026 12:00:00 AM,Solar,9.85,Penjaringan,67000
+260312S047,HCI,3/12/2026 12:00:00 AM,Solar,4.85,Kemayoran,33000
+260312S103,HCI,3/12/2026 12:00:00 AM,Pertalite,7.7,Tanjung Priuk,77000
+260312S048,HCI,3/12/2026 12:00:00 AM,Solar,8.24,Kemayoran,56000
+260313S072,HCI,3/13/2026 12:00:00 AM,Solar,10,Jakarta Timur,68000
+260313S188,HCI,3/13/2026 12:00:00 AM,Pertalite,8,Tanjung Priuk,80000
+260313S066,HCI,3/13/2026 12:00:00 AM,Solar,14.85,Kelapa Gading,101000
+260313S186,HCI,3/13/2026 12:00:00 AM,Solar,21.32,PIK,145000
+260313S070,HCI,3/13/2026 12:00:00 AM,Solar,12.06,Tanjung Priuk,82000
+260313S073,HCI,3/13/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260313S075,HCI,3/13/2026 12:00:00 AM,Pertalite,6.1,Penjaringan,61000
+260313S068,HCI,3/13/2026 12:00:00 AM,Solar,9.56,Kemayoran,65000
+260314S076,HCI,3/14/2026 12:00:00 AM,Solar,10.44,Jakarta Timur,71000
+260314S077,HCI,3/14/2026 12:00:00 AM,Solar,19.56,PIK,133000
+260314S119,HCI,3/14/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260314S216,HCI,3/14/2026 12:00:00 AM,Solar,6.03,Cempaka Putih,41000
+260314S075,HCI,3/14/2026 12:00:00 AM,Solar,18.38,Jakarta Timur,125000
+260314S074,HCI,3/14/2026 12:00:00 AM,Solar,13.24,Kemayoran,90000
+260314S078,HCI,3/14/2026 12:00:00 AM,Solar,14.41,Penjaringan,98000
+260314S072,HCI,3/14/2026 12:00:00 AM,Pertalite,10.8,Koja,108000
+260314S073,HCI,3/14/2026 12:00:00 AM,Solar,9.41,Kelapa Gading,64000
+260315S140,HCI,3/15/2026 12:00:00 AM,Solar,5.88,Jakarta Timur,40000
+260315S064,HCI,3/15/2026 12:00:00 AM,Solar,4.12,Kelapa Gading,28000
+260315S062,HCI,3/15/2026 12:00:00 AM,Solar,5.59,Tanjung Priuk,38000
+260315S065,HCI,3/15/2026 12:00:00 AM,Solar,16.91,PIK,115000
+260315S209,HCI,3/15/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260315S137,HCI,3/15/2026 12:00:00 AM,Pertalite,10.3,Cempaka Putih,103000
+260315S063,HCI,3/15/2026 12:00:00 AM,Solar,10.59,Kemayoran,72000
+260316S114,HCI,3/16/2026 12:00:00 AM,Solar,10.29,Kemayoran,70000
+260316S086,HCI,3/16/2026 12:00:00 AM,Solar,19.56,PIK,133000
+260316S253,HCI,3/16/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260316S085,HCI,3/16/2026 12:00:00 AM,Solar,9.26,Jakarta Timur,63000
+260316S083,HCI,3/16/2026 12:00:00 AM,Solar,10,Jakarta Timur,68000
+260316S081,HCI,3/16/2026 12:00:00 AM,Solar,14.26,Kemayoran,97000
+260316S039,HCI,3/16/2026 12:00:00 AM,Solar,7.35,Kelapa Gading,50000
+260316S059,HCI,3/16/2026 12:00:00 AM,Pertalite,13.1,Tanjung Priuk,131000
+260316S087,HCI,3/16/2026 12:00:00 AM,Solar,12.5,Penjaringan,85000
+260317S085,HCI,3/17/2026 12:00:00 AM,Solar,9.03,Jakarta Timur,61400
+260317S094,HCI,3/17/2026 12:00:00 AM,Solar,10.29,Penjaringan,70000
+260317S109,HCI,3/17/2026 12:00:00 AM,Solar,19.26,PIK,131000
+260317S034,HCI,3/17/2026 12:00:00 AM,Solar,13.68,Jakarta Timur,93000
+260317S035,HCI,3/17/2026 12:00:00 AM,Solar,12.21,Kemayoran,83000
+260317S174,HCI,3/17/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260317S038,HCI,3/17/2026 12:00:00 AM,Pertalite,11.7,Cempaka Putih,117000
+260317S036,HCI,3/17/2026 12:00:00 AM,Solar,7.65,Kelapa Gading,52000
+260318S074,HCI,3/18/2026 12:00:00 AM,Solar,4.41,Kelapa Gading,30000
+260318S125,HCI,3/18/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260318S079,HCI,3/18/2026 12:00:00 AM,Solar,9.56,Jakarta Timur,65000
+260318S081,HCI,3/18/2026 12:00:00 AM,Solar,7.5,Cempaka Putih,51000
+260318S109,HCI,3/18/2026 12:00:00 AM,Solar,19.85,PIK,135000
+260318S077,HCI,3/18/2026 12:00:00 AM,Solar,12.21,Tanjung Priuk,83000
+260318S108,HCI,3/18/2026 12:00:00 AM,Solar,10,Penjaringan,68000
+260318S080,HCI,3/18/2026 12:00:00 AM,Pertalite,7.85,Tanjung Priuk,78500
+260318S075,HCI,3/18/2026 12:00:00 AM,Solar,7.35,Kemayoran,50000
+260319S058,HCI,3/19/2026 12:00:00 AM,Solar,6.62,Jakarta Timur,45000
+260319S077,HCI,3/19/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260319S056,HCI,3/19/2026 12:00:00 AM,Solar,8.09,Kelapa Gading,55000
+260319S214,HCI,3/19/2026 12:00:00 AM,Solar,20.59,Jakarta Timur,140000
+260319S057,HCI,3/19/2026 12:00:00 AM,Solar,11.32,Kemayoran,77000
+260319S069,HCI,3/19/2026 12:00:00 AM,Solar,17.65,Penjaringan,120000
+260319S075,HCI,3/19/2026 12:00:00 AM,Pertalite,13,Koja,130000
+260319S059,HCI,3/19/2026 12:00:00 AM,Solar,6.32,Jakarta Timur,43000
+260320S111,HCI,3/20/2026 12:00:00 AM,Solar,6.47,Kelapa Gading,44000
+260320S154,HCI,3/20/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260320S014,HCI,3/20/2026 12:00:00 AM,Solar,6.62,Jakarta Timur,45000
+260320S153,HCI,3/20/2026 12:00:00 AM,Solar,8.53,Cempaka Putih,58000
+260320S110,HCI,3/20/2026 12:00:00 AM,Solar,5.44,Kemayoran,37000
+260320S150,HCI,3/20/2026 12:00:00 AM,Solar,17.35,PIK,118000
+260320S132,HCI,3/20/2026 12:00:00 AM,Pertalite,3.8,Tanjung Priuk,38000
+260320S131,HCI,3/20/2026 12:00:00 AM,Solar,3.53,Kelapa Gading,24000
+260323S015,HCI,3/23/2026 12:00:00 AM,Solar,6.76,Kelapa Gading,46000
+260323S120,HCI,3/23/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260323S014,HCI,3/23/2026 12:00:00 AM,Solar,6.62,Jakarta Timur,45000
+260323S013,HCI,3/23/2026 12:00:00 AM,Solar,6.18,Kemayoran,42000
+260323X015,HCI,3/23/2026 12:00:00 AM,Solar,16.91,Jakarta Timur,115000
+260323S012,HCI,3/23/2026 12:00:00 AM,Solar,9.56,Penjaringan,65000
+260323S052,HCI,3/23/2026 12:00:00 AM,Pertalite,6.1,Jakarta Timur,61000
+260323S051,HCI,3/23/2026 12:00:00 AM,Pertalite,5.65,Tanjung Priuk,56500
+260323S108,HCI,3/23/2026 12:00:00 AM,Solar,10.15,Jakarta Timur,69000
+260324S062,HCI,3/24/2026 12:00:00 AM,Solar,6.18,Jakarta Timur,42000
+260324S058,HCI,3/24/2026 12:00:00 AM,Solar,8.09,Penjaringan,55000
+260324S057,HCI,3/24/2026 12:00:00 AM,Solar,11.84,Jakarta Timur,80500
+260324S111,HCI,3/24/2026 12:00:00 AM,Solar,7.35,Tanjung Priuk,50000
+260324S061,HCI,3/24/2026 12:00:00 AM,Solar,6.32,Kemayoran,43000
+260324S141,HCI,3/24/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260324S059,HCI,3/24/2026 12:00:00 AM,Pertalite,5.8,Kemayoran,58000
+260324S056,HCI,3/24/2026 12:00:00 AM,Solar,16.91,PIK,115000
+260325S106,HCI,3/25/2026 12:00:00 AM,Solar,9.12,Penjaringan,62000
+260325S109,HCI,3/25/2026 12:00:00 AM,Solar,7.65,Tanjung Priuk,52000
+260325S104,HCI,3/25/2026 12:00:00 AM,Solar,13.24,PIK,90000
+260325S110,HCI,3/25/2026 12:00:00 AM,Solar,9.26,Jakarta Timur,63000
+260325S108,HCI,3/25/2026 12:00:00 AM,Solar,6.32,Kelapa Gading,43000
+260325S168,HCI,3/25/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260325S107,HCI,3/25/2026 12:00:00 AM,Pertalite,7,Cempaka Putih,70000
+260325S105,HCI,3/25/2026 12:00:00 AM,Solar,6.62,Kemayoran,45000
+260326S032,HCI,3/26/2026 12:00:00 AM,Solar,7.94,Kemayoran,54000
+260326S030,HCI,3/26/2026 12:00:00 AM,Solar,17.35,PIK,118000
+260326S031,HCI,3/26/2026 12:00:00 AM,Solar,8.68,Kelapa Gading,59000
+260326S033,HCI,3/26/2026 12:00:00 AM,Solar,8.97,Jakarta Timur,61000
+260326S026,HCI,3/26/2026 12:00:00 AM,Solar,13.24,Penjaringan,90000
+260326S097,HCI,3/26/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260326S098,HCI,3/26/2026 12:00:00 AM,Pertalite,9.6,Cempaka Putih,96000
+260326S034,HCI,3/26/2026 12:00:00 AM,Solar,7.65,Jakarta Timur,52000
+260327S050,HCI,3/27/2026 12:00:00 AM,Solar,5.74,Kelapa Gading,39000
+260327S048,HCI,3/27/2026 12:00:00 AM,Solar,7.35,Cempaka Putih,50000
+260327S046,HCI,3/27/2026 12:00:00 AM,Solar,7.94,Kelapa Gading,54000
+260327S118,HCI,3/27/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260327S047,HCI,3/27/2026 12:00:00 AM,Solar,6.62,Kemayoran,45000
+260327S045,HCI,3/27/2026 12:00:00 AM,Solar,10.88,Penjaringan,74000
+260327S049,HCI,3/27/2026 12:00:00 AM,Solar,7.79,Jakarta Timur,53000
+260327S119,HCI,3/27/2026 12:00:00 AM,Pertalite,18.6,Cempaka Putih,186000
+260327S044,HCI,3/27/2026 12:00:00 AM,Solar,14.71,PIK,100000
+260328S093,HCI,3/28/2026 12:00:00 AM,Solar,8.82,Kemayoran,60000
+260328S096,HCI,3/28/2026 12:00:00 AM,Solar,6.62,Kelapa Gading,45000
+260328S095,HCI,3/28/2026 12:00:00 AM,Solar,9.56,Jakarta Timur,65000
+260328S097,HCI,3/28/2026 12:00:00 AM,Solar,15.29,Penjaringan,104000
+260328S084,HCI,3/28/2026 12:00:00 AM,Pertalite,6.6,Tanjung Priuk,66000
+260328S094,HCI,3/28/2026 12:00:00 AM,Solar,8.09,Cempaka Putih,55000
+260329S161,HCI,3/29/2026 12:00:00 AM,Solar,9.56,Penjaringan,65000
+260329S053,HCI,3/29/2026 12:00:00 AM,Solar,5.15,Kelapa Gading,35000
+260329S055,HCI,3/29/2026 12:00:00 AM,Solar,7.21,Kemayoran,49000
+260329S110,HCI,3/29/2026 12:00:00 AM,Solar,16.91,PIK,115000
+260329S054,HCI,3/29/2026 12:00:00 AM,Solar,8.09,Tanjung Priuk,55000
+260329S057,HCI,3/29/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260329S157,HCI,3/29/2026 12:00:00 AM,Pertalite,9.1,Cempaka Putih,91000
+260329S056,HCI,3/29/2026 12:00:00 AM,Solar,10.88,Jakarta Timur,74000
+260330S080,HCI,3/30/2026 12:00:00 AM,Solar,9.71,Penjaringan,66000
+260330S053,HCI,3/30/2026 12:00:00 AM,Solar,9.71,Cempaka Putih,66000
+260330S079,HCI,3/30/2026 12:00:00 AM,Solar,13.53,PIK,92000
+260330S100,HCI,3/30/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260330S055,HCI,3/30/2026 12:00:00 AM,Solar,18.31,PIK,124500
+260330S054,HCI,3/30/2026 12:00:00 AM,Solar,8.38,Jakarta Timur,57000
+260330S051,HCI,3/30/2026 12:00:00 AM,Solar,7.35,Kelapa Gading,50000
+260330S101,HCI,3/30/2026 12:00:00 AM,Pertalite,16.2,Tanjung Priuk,162000
+260330S052,HCI,3/30/2026 12:00:00 AM,Solar,9.56,Kemayoran,65000
+260331S053,HCI,3/31/2026 12:00:00 AM,Solar,12.94,PIK,88000
+260331S055,HCI,3/31/2026 12:00:00 AM,Solar,8.09,Kelapa Gading,55000
+260331S056,HCI,3/31/2026 12:00:00 AM,Solar,7.28,Kemayoran,49500
+260331S058,HCI,3/31/2026 12:00:00 AM,Solar,12.35,Jakarta Timur,84000
+260331S057,HCI,3/31/2026 12:00:00 AM,Solar,8.53,Tanjung Priuk,58000
+260331S157,HCI,3/31/2026 12:00:00 AM,Solar,11.76,Kelapa Gading,80000
+260331S169,HCI,3/31/2026 12:00:00 AM,Pertalite,10.9,Cempaka Putih,109000
+260331S054,HCI,3/31/2026 12:00:00 AM,Solar,18.38,Penjaringan,125000
+260401S046,HCI,4/1/2026 12:00:00 AM,Solar,11.76,Kelapa Gading,80000
+260401S085,HCI,4/1/2026 12:00:00 AM,Solar,17.94,PIK,122000
+260401S086,HCI,4/1/2026 12:00:00 AM,Solar,10.59,Penjaringan,72000
+260401S048,HCI,4/1/2026 12:00:00 AM,Solar,10.29,Cempaka Putih,70000
+260401S049,HCI,4/1/2026 12:00:00 AM,Solar,10.59,Jakarta Timur,72000
+260401S084,HCI,4/1/2026 12:00:00 AM,Pertalite,7.3,Tanjung Priuk,73000
+260401S047,HCI,4/1/2026 12:00:00 AM,Solar,6.03,Jakarta Timur,41000
+260402S074,HCI,4/2/2026 12:00:00 AM,Solar,6.62,Kemayoran,45000
+260402S072,HCI,4/2/2026 12:00:00 AM,Solar,7.5,Koja,51000
+260402S073,HCI,4/2/2026 12:00:00 AM,Solar,10.29,Kemayoran,70000
+260402S078,HCI,4/2/2026 12:00:00 AM,Solar,19.41,PIK,132000
+260402S079,HCI,4/2/2026 12:00:00 AM,Solar,12.65,Penjaringan,86000
+260402S076,HCI,4/2/2026 12:00:00 AM,Pertalite,14.4,Tanjung Priuk,144000
+260402S075,HCI,4/2/2026 12:00:00 AM,Solar,9.56,Jakarta Timur,65000
+260403S184,HCI,4/3/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260403S076,HCI,4/3/2026 12:00:00 AM,Solar,8.24,Penjaringan,56000
+260403S070,HCI,4/3/2026 12:00:00 AM,Solar,6.47,Kelapa Gading,44000
+260403S073,HCI,4/3/2026 12:00:00 AM,Solar,7.79,Jakarta Timur,53000
+260403S071,HCI,4/3/2026 12:00:00 AM,Solar,9.26,Kemayoran,63000
+260403S183,HCI,4/3/2026 12:00:00 AM,Pertalite,7.5,Tanjung Priuk,75000
+260403S075,HCI,4/3/2026 12:00:00 AM,Solar,14.26,PIK,97000
+260404S068,HCI,4/4/2026 12:00:00 AM,Solar,15,Jakarta Timur,102000
+260404S065,HCI,4/4/2026 12:00:00 AM,Solar,4.85,Kelapa Gading,33000
+260404S066,HCI,4/4/2026 12:00:00 AM,Solar,14.56,Kemayoran,99000
+260404S177,HCI,4/4/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260404S174,HCI,4/4/2026 12:00:00 AM,Solar,21.47,PIK,146000
+260404S067,HCI,4/4/2026 12:00:00 AM,Solar,17.94,Kelapa Gading,122000
+260404S121,HCI,4/4/2026 12:00:00 AM,Pertalite,6.9,Tanjung Priuk,69000
+260404S175,HCI,4/4/2026 12:00:00 AM,Solar,20.29,Penjaringan,138000
+260405S044,HCI,4/5/2026 12:00:00 AM,Solar,5.74,Kemayoran,39000
+260405S043,HCI,4/5/2026 12:00:00 AM,Solar,7.65,Jakarta Timur,52000
+260405S079,HCI,4/5/2026 12:00:00 AM,Solar,13.97,PIK,95000
+260405S080,HCI,4/5/2026 12:00:00 AM,Solar,8.09,Penjaringan,55000
+260405S144,HCI,4/5/2026 12:00:00 AM,Pertalite,5,Cempaka Putih,50000
+260405S042,HCI,4/5/2026 12:00:00 AM,Solar,8.53,Jakarta Timur,58000
+260406S050,HCI,4/6/2026 12:00:00 AM,Solar,12.35,Kemayoran,84000
+260406S088,HCI,4/6/2026 12:00:00 AM,Solar,20.44,PIK,139000
+260406S049,HCI,4/6/2026 12:00:00 AM,Solar,8.82,Kelapa Gading,60000
+260406S051,HCI,4/6/2026 12:00:00 AM,Solar,8.82,Kelapa Gading,60000
+260406S052,HCI,4/6/2026 12:00:00 AM,Solar,10.59,Jakarta Timur,72000
+260406S149,HCI,4/6/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260406S148,HCI,4/6/2026 12:00:00 AM,Pertalite,9.9,Tanjung Priuk,99000
+260406S089,HCI,4/6/2026 12:00:00 AM,Solar,9.56,Penjaringan,65000
+260407S044,HCI,4/7/2026 12:00:00 AM,Solar,8.09,Cempaka Putih,55000
+260407S045,HCI,4/7/2026 12:00:00 AM,Solar,6.32,Kemayoran,43000
+260407S042,HCI,4/7/2026 12:00:00 AM,Solar,11.18,Penjaringan,76000
+260407S106,HCI,4/7/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260407S043,HCI,4/7/2026 12:00:00 AM,Solar,8.38,Kelapa Gading,57000
+260407S105,HCI,4/7/2026 12:00:00 AM,Solar,15.44,PIK,105000
+260407S114,HCI,4/7/2026 12:00:00 AM,Solar,8.82,Kelapa Gading,60000
+260407S110,HCI,4/7/2026 12:00:00 AM,Pertalite,9.9,Cempaka Putih,99000
+260407S046,HCI,4/7/2026 12:00:00 AM,Solar,10.29,Jakarta Timur,70000
+260408S039,HCI,4/8/2026 12:00:00 AM,Solar,8.68,Kelapa Gading,59000
+260408S041,HCI,4/8/2026 12:00:00 AM,Solar,10.59,Kelapa Gading,72000
+260408S061,HCI,4/8/2026 12:00:00 AM,Solar,13.24,Kelapa Gading,90000
+260408S059,HCI,4/8/2026 12:00:00 AM,Solar,15,PIK,102000
+260408S060,HCI,4/8/2026 12:00:00 AM,Solar,9.56,Penjaringan,65000
+260408S040,HCI,4/8/2026 12:00:00 AM,Solar,11.32,Cempaka Putih,77000
+260408S203,HCI,4/8/2026 12:00:00 AM,Pertalite,7.4,Tanjung Priuk,74000
+260408S202,HCI,4/8/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260409S067,HCI,4/9/2026 12:00:00 AM,Solar,12.79,Cempaka Putih,87000
+260409S100,HCI,4/9/2026 12:00:00 AM,Pertalite,7.5,Tanjung Priuk,75000
+260409S066,HCI,4/9/2026 12:00:00 AM,Solar,8.01,Kemayoran,54500
+260409S068,HCI,4/9/2026 12:00:00 AM,Solar,22.06,PIK,150000
+260409S065,HCI,4/9/2026 12:00:00 AM,Solar,11.76,Kelapa Gading,80000
+260409S208,HCI,4/9/2026 12:00:00 AM,Pertalite,8.5,Kemayoran,85000
+260409S225,HCI,4/9/2026 12:00:00 AM,Rechecked,,Kemayoran,
+260409S069,HCI,4/9/2026 12:00:00 AM,Solar,10.29,Penjaringan,70000
+260410S078,HCI,4/10/2026 12:00:00 AM,Solar,8.53,Kelapa Gading,58000
+260410S079,HCI,4/10/2026 12:00:00 AM,Solar,5.88,Kemayoran,40000
+260410S081,HCI,4/10/2026 12:00:00 AM,Solar,9.41,Jakarta Timur,64000
+260410S082,HCI,4/10/2026 12:00:00 AM,Solar,11.03,Penjaringan,75000
+260410S092,HCI,4/10/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260410S093,HCI,4/10/2026 12:00:00 AM,Pertalite,11.1,Tanjung Priuk,111000
+260410S091,HCI,4/10/2026 12:00:00 AM,Solar,19.85,PIK,135000
+260411S058,HCI,4/11/2026 12:00:00 AM,Solar,7.94,Kemayoran,54000
+260411S059,HCI,4/11/2026 12:00:00 AM,Solar,15.88,Kelapa Gading,108000
+260411S060,HCI,4/11/2026 12:00:00 AM,Solar,13.24,Cempaka Putih,90000
+260411S057,HCI,4/11/2026 12:00:00 AM,Solar,10.29,Kelapa Gading,70000
+260411S196,HCI,4/11/2026 12:00:00 AM,Solar,10.44,Penjaringan,71000
+260411S197,HCI,4/11/2026 12:00:00 AM,Pertalite,6.8,Tanjung Priuk,68000
+260411S195,HCI,4/11/2026 12:00:00 AM,Solar,13.24,PIK,90000
+260412S065,HCI,4/12/2026 12:00:00 AM,Solar,8.53,Cempaka Putih,58000
+260412S067,HCI,4/12/2026 12:00:00 AM,Solar,15.59,Penjaringan,106000
+260412S066,HCI,4/12/2026 12:00:00 AM,Solar,7.79,Kemayoran,53000
+260412S064,HCI,4/12/2026 12:00:00 AM,Solar,5.88,Kelapa Gading,40000
+260412S197,HCI,4/12/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260412S163,HCI,4/12/2026 12:00:00 AM,Pertalite,6.5,Tanjung Priuk,65000
+260412S161,HCI,4/12/2026 12:00:00 AM,Solar,5.59,Jakarta Timur,38000
+260413S084,HCI,4/13/2026 12:00:00 AM,Solar,8.82,Tanjung Priuk,60000
+260413S081,HCI,4/13/2026 12:00:00 AM,Solar,12.5,Jakarta Timur,85000
+260413S125,HCI,4/13/2026 12:00:00 AM,Solar,24.41,PIK,166000
+260413S128,HCI,4/13/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260413S080,HCI,4/13/2026 12:00:00 AM,Solar,9.56,Kelapa Gading,65000
+260413S083,HCI,4/13/2026 12:00:00 AM,Solar,5.88,Cempaka Putih,40000
+260413S122,HCI,4/13/2026 12:00:00 AM,Solar,11.03,Penjaringan,75000
+260413S127,HCI,4/13/2026 12:00:00 AM,Pertalite,9.5,Tanjung Priuk,95000
+260413S082,HCI,4/13/2026 12:00:00 AM,Solar,8.82,Kemayoran,60000
+260414S055,HCI,4/14/2026 12:00:00 AM,Solar,6.18,Kemayoran,42000
+260414S058,HCI,4/14/2026 12:00:00 AM,Solar,6.32,Kelapa Gading,43000
+260414S056,HCI,4/14/2026 12:00:00 AM,Solar,5.15,Cempaka Putih,35000
+260414S154,HCI,4/14/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260414S057,HCI,4/14/2026 12:00:00 AM,Solar,9.56,Jakarta Timur,65000
+260414S054,HCI,4/14/2026 12:00:00 AM,Solar,7.79,Kelapa Gading,53000
+260414S108,HCI,4/14/2026 12:00:00 AM,Solar,22.65,PIK,154000
+260414S110,HCI,4/14/2026 12:00:00 AM,Pertalite,10,Tanjung Priuk,100000
+260414S109,HCI,4/14/2026 12:00:00 AM,Solar,9.26,Penjaringan,63000
+260415S045,HCI,4/15/2026 12:00:00 AM,Solar,6.62,Kemayoran,45000
+260415S044,HCI,4/15/2026 12:00:00 AM,Solar,5.15,Cempaka Putih,35000
+260415S046,HCI,4/15/2026 12:00:00 AM,Solar,5.88,Kelapa Gading,40000
+260415S199,HCI,4/15/2026 12:00:00 AM,Solar,9.26,Penjaringan,63000
+260415S201,HCI,4/15/2026 12:00:00 AM,Solar,15.44,Kelapa Gading,105000
+260415S047,HCI,4/15/2026 12:00:00 AM,Solar,7.79,Jakarta Timur,53000
+260415S200,HCI,4/15/2026 12:00:00 AM,Pertalite,5,Tanjung Priuk,50000
+260415S198,HCI,4/15/2026 12:00:00 AM,Solar,11.03,PIK,75000
+260416S052,HCI,4/16/2026 12:00:00 AM,Solar,5.88,Jakarta Timur,40000
+260416S140,HCI,4/16/2026 12:00:00 AM,Solar,9.85,Penjaringan,67000
+260416S048,HCI,4/16/2026 12:00:00 AM,Solar,7.06,Kemayoran,48000
+260416S050,HCI,4/16/2026 12:00:00 AM,Solar,16.91,Jakarta Timur,115000
+260416S139,HCI,4/16/2026 12:00:00 AM,Solar,10.59,PIK,72000
+260416S142,HCI,4/16/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260416S141,HCI,4/16/2026 12:00:00 AM,Pertalite,6.7,Tanjung Priuk,67000
+260416S044,HCI,4/16/2026 12:00:00 AM,Solar,4.41,Kelapa Gading,30000
+260417S080,HCI,4/17/2026 12:00:00 AM,Solar,5.88,Kemayoran,40000
+260417S077,HCI,4/17/2026 12:00:00 AM,Solar,5,Kelapa Gading,34000
+260417S078,HCI,4/17/2026 12:00:00 AM,Solar,4.41,Kemayoran,30000
+260417S079,HCI,4/17/2026 12:00:00 AM,Solar,10.59,Jakarta Timur,72000
+260417S095,HCI,4/17/2026 12:00:00 AM,Solar,14.71,Penjaringan,100000
+260417S096,HCI,4/17/2026 12:00:00 AM,Solar,7.06,Kelapa Gading,48000
+260417S097,HCI,4/17/2026 12:00:00 AM,Pertalite,4.8,Cempaka Putih,48000
+260417S094,HCI,4/17/2026 12:00:00 AM,Solar,18.38,PIK,125000
+260418S111,HCI,4/18/2026 12:00:00 AM,Solar,7.79,Penjaringan,53000
+260418S045,HCI,4/18/2026 12:00:00 AM,Solar,6.03,Kelapa Gading,41000
+260418S047,HCI,4/18/2026 12:00:00 AM,Solar,6.32,Kemayoran,43000
+260418S048,HCI,4/18/2026 12:00:00 AM,Solar,5.88,Cempaka Putih,40000
+260418S046,HCI,4/18/2026 12:00:00 AM,Solar,9.71,Jakarta Timur,66000
+260418S110,HCI,4/18/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260418S112,HCI,4/18/2026 12:00:00 AM,Pertalite,11.3,Tanjung Priuk,113000
+260418S109,HCI,4/18/2026 12:00:00 AM,Solar,10.88,PIK,74000
+260419S040,HCI,4/19/2026 12:00:00 AM,Solar,7.35,Jakarta Timur,50000
+260419S042,HCI,4/19/2026 12:00:00 AM,Solar,9.12,Cempaka Putih,62000
+260419S041,HCI,4/19/2026 12:00:00 AM,Solar,3.38,Kelapa Gading,23000
+260419S124,HCI,4/19/2026 12:00:00 AM,Solar,14.71,Penjaringan,100000
+260419S122,HCI,4/19/2026 12:00:00 AM,Solar,3.38,Kemayoran,23000
+260419S091,HCI,4/19/2026 12:00:00 AM,Pertalite,9.5,Tanjung Priuk,95000
+260419S123,HCI,4/19/2026 12:00:00 AM,Rechecked,,-,
+260420S046,HCI,4/20/2026 12:00:00 AM,Solar,8.09,Tanjung Priuk,55000
+260420S086,HCI,4/20/2026 12:00:00 AM,Solar,15.15,PIK,103000
+260420S045,HCI,4/20/2026 12:00:00 AM,Solar,7.94,Kemayoran,54000
+260420S176,HCI,4/20/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260420S048,HCI,4/20/2026 12:00:00 AM,Solar,8.82,Cempaka Putih,60000
+260420S044,HCI,4/20/2026 12:00:00 AM,Solar,7.35,Kelapa Gading,50000
+260420S047,HCI,4/20/2026 12:00:00 AM,Solar,9.56,Jakarta Timur,65000
+260420S173,HCI,4/20/2026 12:00:00 AM,Pertalite,10.75,Tanjung Priuk,107500
+260420S171,HCI,4/20/2026 12:00:00 AM,Solar,15.15,Penjaringan,103000
+260421S047,HCI,4/21/2026 12:00:00 AM,Solar,10.44,Jakarta Timur,71000
+260421S092,HCI,4/21/2026 12:00:00 AM,Solar,11.18,Penjaringan,76000
+260421S100,HCI,4/21/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260421S048,HCI,4/21/2026 12:00:00 AM,Solar,12.21,Penjaringan,83000
+260421S044,HCI,4/21/2026 12:00:00 AM,Solar,7.94,Kelapa Gading,54000
+260421S045,HCI,4/21/2026 12:00:00 AM,Solar,8.53,Kemayoran,58000
+260421S093,HCI,4/21/2026 12:00:00 AM,Pertalite,9.4,Tanjung Priuk,94000
+260421S091,HCI,4/21/2026 12:00:00 AM,Solar,15.15,PIK,103000
+260422S050,HCI,4/22/2026 12:00:00 AM,Solar,7.35,Kemayoran,50000
+260422S052,HCI,4/22/2026 12:00:00 AM,Solar,7.35,Jakarta Timur,50000
+260422S100,HCI,4/22/2026 12:00:00 AM,Solar,12.79,Penjaringan,87000
+260422S051,HCI,4/22/2026 12:00:00 AM,Solar,7.35,Tanjung Priuk,50000
+260422S049,HCI,4/22/2026 12:00:00 AM,Solar,6.47,Kelapa Gading,44000
+260422S101,HCI,4/22/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260422S047,HCI,4/22/2026 12:00:00 AM,Pertalite,10.1,Cempaka Putih,101000
+260422S099,HCI,4/22/2026 12:00:00 AM,Solar,11.91,PIK,81000
+260423S049,HCI,4/23/2026 12:00:00 AM,Solar,5.88,Kemayoran,40000
+260423S174,HCI,4/23/2026 12:00:00 AM,Solar,11.76,Penjaringan,80000
+260423S048,HCI,4/23/2026 12:00:00 AM,Solar,6.91,Cempaka Putih,47000
+260423S077,HCI,4/23/2026 12:00:00 AM,Solar,14.41,PIK,98000
+260423S050,HCI,4/23/2026 12:00:00 AM,Solar,7.21,Jakarta Timur,49000
+260423S078,HCI,4/23/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260423S131,HCI,4/23/2026 12:00:00 AM,Pertalite,4.7,Tanjung Priuk,47000
+260423S047,HCI,4/23/2026 12:00:00 AM,Solar,6.62,Kelapa Gading,45000
+260424S047,HCI,4/24/2026 12:00:00 AM,Solar,8.68,Jakarta Timur,59000
+260424S088,HCI,4/24/2026 12:00:00 AM,Solar,11.03,PIK,75000
+260424S046,HCI,4/24/2026 12:00:00 AM,Solar,7.79,Kelapa Gading,53000
+260424S044,HCI,4/24/2026 12:00:00 AM,Solar,8.82,Kelapa Gading,60000
+260424S045,HCI,4/24/2026 12:00:00 AM,Solar,7.65,Kemayoran,52000
+260424S090,HCI,4/24/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260424S089,HCI,4/24/2026 12:00:00 AM,Pertalite,6.9,Cempaka Putih,69000
+260424X010,HCI,4/24/2026 12:00:00 AM,Solar,11.03,Penjaringan,75000
+260425S051,HCI,4/25/2026 12:00:00 AM,Solar,5.88,Kelapa Gading,40000
+260425S053,HCI,4/25/2026 12:00:00 AM,Solar,7.21,Kelapa Gading,49000
+260425S052,HCI,4/25/2026 12:00:00 AM,Solar,7.65,Cempaka Putih,52000
+260425S101,HCI,4/25/2026 12:00:00 AM,Solar,11.47,Penjaringan,78000
+260425S104,HCI,4/25/2026 12:00:00 AM,Rechecked,,-,
+260425S103,HCI,4/25/2026 12:00:00 AM,Pertalite,14.15,Tanjung Priuk,141500
+260425S100,HCI,4/25/2026 12:00:00 AM,Solar,13.09,PIK,89000
+260426S055,HCI,4/26/2026 12:00:00 AM,Solar,4.41,Cempaka Putih,30000
+260426S054,HCI,4/26/2026 12:00:00 AM,Solar,5.15,Kemayoran,35000
+260426S053,HCI,4/26/2026 12:00:00 AM,Solar,5.66,Kelapa Gading,38500
+260426S056,HCI,4/26/2026 12:00:00 AM,Solar,6.62,Jakarta Timur,45000
+260426S185,HCI,4/26/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260426S184,HCI,4/26/2026 12:00:00 AM,Pertalite,4,Tanjung Priuk,40000
+260426S177,HCI,4/26/2026 12:00:00 AM,Solar,16.32,PIK,111000
+260427S130,HCI,4/27/2026 12:00:00 AM,Solar,11.03,Penjaringan,75000
+260427S009,HCI,4/27/2026 12:00:00 AM,Solar,14.12,PIK,96000
+260427S050,HCI,4/27/2026 12:00:00 AM,Solar,9.04,Kemayoran,61500
+260427S134,HCI,4/27/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260427S048,HCI,4/27/2026 12:00:00 AM,Solar,10.29,Kelapa Gading,70000
+260427S049,HCI,4/27/2026 12:00:00 AM,Solar,11.76,Jakarta Timur,80000
+260427S052,HCI,4/27/2026 12:00:00 AM,Solar,10.59,Kemayoran,72000
+260427S131,HCI,4/27/2026 12:00:00 AM,Pertalite,15,Tanjung Priuk,150000
+260427S051,HCI,4/27/2026 12:00:00 AM,Solar,10.29,Cempaka Putih,70000
+260428S043,HCI,4/28/2026 12:00:00 AM,Solar,9.41,Penjaringan,64000
+260428S038,HCI,4/28/2026 12:00:00 AM,Solar,4.85,Cempaka Putih,33000
+260428S042,HCI,4/28/2026 12:00:00 AM,Solar,8.82,PIK,60000
+260428S118,HCI,4/28/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260428S041,HCI,4/28/2026 12:00:00 AM,Solar,10.29,Jakarta Timur,70000
+260428S209,HCI,4/28/2026 12:00:00 AM,Solar,3.24,Koja,22000
+260428S039,HCI,4/28/2026 12:00:00 AM,Solar,7.43,Kemayoran,50500
+260428S089,HCI,4/28/2026 12:00:00 AM,Pertalite,8.5,Tanjung Priuk,85000
+260428S040,HCI,4/28/2026 12:00:00 AM,Solar,7.79,Kelapa Gading,53000
+260429S056,HCI,4/29/2026 12:00:00 AM,Solar,7.06,Kemayoran,48000
+260429S057,HCI,4/29/2026 12:00:00 AM,Solar,9.93,Kelapa Gading,67500
+260429S060,HCI,4/29/2026 12:00:00 AM,Solar,11.47,Penjaringan,78000
+260429S099,HCI,4/29/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260429S055,HCI,4/29/2026 12:00:00 AM,Solar,8.82,Kelapa Gading,60000
+260429S058,HCI,4/29/2026 12:00:00 AM,Solar,9.56,Jakarta Timur,65000
+260429S100,HCI,4/29/2026 12:00:00 AM,Rechecked,9.2,Cempaka Putih,92000
+260429S059,HCI,4/29/2026 12:00:00 AM,Solar,12.94,PIK,88000
+260430S040,HCI,4/30/2026 12:00:00 AM,Solar,4.71,Tanjung Priuk,32000
+260430S066,HCI,4/30/2026 12:00:00 AM,Solar,5.15,Kemayoran,35000
+260430S042,HCI,4/30/2026 12:00:00 AM,Solar,8.97,Jakarta Timur,61000
+260430S101,HCI,4/30/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260430S041,HCI,4/30/2026 12:00:00 AM,Solar,8.24,Cempaka Putih,56000
+260430S043,HCI,4/30/2026 12:00:00 AM,Solar,17.65,PIK,120000
+260430S039,HCI,4/30/2026 12:00:00 AM,Solar,4.41,Kelapa Gading,30000
+260430S098,HCI,4/30/2026 12:00:00 AM,Pertalite,11.7,Tanjung Priuk,117000
+260430S044,HCI,4/30/2026 12:00:00 AM,Solar,10.88,Penjaringan,74000
+260502S020,HCI,5/2/2026 12:00:00 AM,Solar,9.56,Jakarta Timur,65000
+260502S022,HCI,5/2/2026 12:00:00 AM,Solar,11.76,Penjaringan,80000
+260502S018,HCI,5/2/2026 12:00:00 AM,Solar,8.97,Tanjung Priuk,61000
+260502S019,HCI,5/2/2026 12:00:00 AM,Solar,14.12,Kemayoran,96000
+260502S017,HCI,5/2/2026 12:00:00 AM,Solar,8.53,Kelapa Gading,58000
+260502S116,HCI,5/2/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260502S112,HCI,5/2/2026 12:00:00 AM,Pertalite,11.4,Cempaka Putih,114000
+260502S021,HCI,5/2/2026 12:00:00 AM,Solar,14.26,PIK,97000
+260503S067,HCI,5/3/2026 12:00:00 AM,Solar,6.91,Kemayoran,47000
+260503S071,HCI,5/3/2026 12:00:00 AM,Solar,20.15,PIK,137000
+260503S096,HCI,5/3/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260503S066,HCI,5/3/2026 12:00:00 AM,Solar,11.47,Kelapa Gading,78000
+260503S069,HCI,5/3/2026 12:00:00 AM,Solar,8.82,Jakarta Timur,60000
+260503S103,HCI,5/3/2026 12:00:00 AM,Pertalite,7.9,Tanjung Priuk,79000
+260503S072,HCI,5/3/2026 12:00:00 AM,Solar,12.79,Penjaringan,87000
+260504S054,HCI,5/4/2026 12:00:00 AM,Solar,8.38,Kelapa Gading,57000
+260504S056,HCI,5/4/2026 12:00:00 AM,Solar,9.56,Cempaka Putih,65000
+260504S053,HCI,5/4/2026 12:00:00 AM,Solar,11.47,Penjaringan,78000
+260504S186,HCI,5/4/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260504S187,HCI,5/4/2026 12:00:00 AM,Solar,6.62,Tanjung Priuk,45000
+260504S055,HCI,5/4/2026 12:00:00 AM,Solar,10,Kemayoran,68000
+260504S057,HCI,5/4/2026 12:00:00 AM,Solar,8.09,Jakarta Timur,55000
+260504S179,HCI,5/4/2026 12:00:00 AM,Pertalite,13.7,Tanjung Priuk,137000
+260504S052,HCI,5/4/2026 12:00:00 AM,Solar,19.12,PIK,130000
+260505S037,HCI,5/5/2026 12:00:00 AM,Solar,8.82,Cempaka Putih,60000
+260505S036,HCI,5/5/2026 12:00:00 AM,Solar,5.59,Kelapa Gading,38000
+260505S038,HCI,5/5/2026 12:00:00 AM,Solar,8.68,Kemayoran,59000
+260505S201,HCI,5/5/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260505S040,HCI,5/5/2026 12:00:00 AM,Solar,22.06,PIK,150000
+260505S039,HCI,5/5/2026 12:00:00 AM,Solar,9.34,Jakarta Timur,63500
+260505S200,HCI,5/5/2026 12:00:00 AM,Pertalite,10.4,Tanjung Priuk,104000
+260505S041,HCI,5/5/2026 12:00:00 AM,Solar,8.82,Penjaringan,60000
+260506S044,HCI,5/6/2026 12:00:00 AM,Solar,6.18,Kelapa Gading,42000
+260506S048,HCI,5/6/2026 12:00:00 AM,Solar,10.44,PIK,71000
+260506S094,HCI,5/6/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260506S045,HCI,5/6/2026 12:00:00 AM,Solar,7.79,Kemayoran,53000
+260506S047,HCI,5/6/2026 12:00:00 AM,Solar,12.5,Kelapa Gading,85000
+260506S049,HCI,5/6/2026 12:00:00 AM,Solar,11.91,Penjaringan,81000
+260506S092,HCI,5/6/2026 12:00:00 AM,Pertalite,7.25,Tanjung Priuk,72500
+260506S046,HCI,5/6/2026 12:00:00 AM,Solar,10.88,Jakarta Timur,74000
+260507S064,HCI,5/7/2026 12:00:00 AM,Solar,8.53,Jakarta Timur,58000
+260507S061,HCI,5/7/2026 12:00:00 AM,Solar,5.59,Kelapa Gading,38000
+260507S066,HCI,5/7/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260507S080,HCI,5/7/2026 12:00:00 AM,Solar,8.82,Penjaringan,60000
+260507S190,HCI,5/7/2026 12:00:00 AM,Solar,7.21,Kelapa Gading,49000
+260507S065,HCI,5/7/2026 12:00:00 AM,Solar,20.59,PIK,140000
+260507S078,HCI,5/7/2026 12:00:00 AM,Pertalite,7.7,Tanjung Priuk,77000
+260507S062,HCI,5/7/2026 12:00:00 AM,Solar,6.03,Tanjung Priuk,41000
+260508S041,HCI,5/8/2026 12:00:00 AM,Solar,12.94,Penjaringan,88000
+260508S037,HCI,5/8/2026 12:00:00 AM,Solar,6.18,Kemayoran,42000
+260508S036,HCI,5/8/2026 12:00:00 AM,Solar,6.47,Kemayoran,44000
+260508S100,HCI,5/8/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260508S038,HCI,5/8/2026 12:00:00 AM,Solar,11.76,PIK,80000
+260508S039,HCI,5/8/2026 12:00:00 AM,Solar,10.29,Jakarta Timur,70000
+260508S080,HCI,5/8/2026 12:00:00 AM,Pertalite,11.8,Tanjung Priuk,118000
+260508S040,HCI,5/8/2026 12:00:00 AM,Solar,19.85,PIK,135000
+260509S059,HCI,5/9/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260509S055,HCI,5/9/2026 12:00:00 AM,Solar,6.76,Kemayoran,46000
+260509S054,HCI,5/9/2026 12:00:00 AM,Solar,9.26,Kelapa Gading,63000
+260509S057,HCI,5/9/2026 12:00:00 AM,Solar,14.12,PIK,96000
+260509S053,HCI,5/9/2026 12:00:00 AM,Solar,7.79,Jakarta Timur,53000
+260509S058,HCI,5/9/2026 12:00:00 AM,Solar,12.21,Penjaringan,83000
+260509S148,HCI,5/9/2026 12:00:00 AM,Pertalite,8.7,Tanjung Priuk,87000
+260509S056,HCI,5/9/2026 12:00:00 AM,Solar,6.32,Cempaka Putih,43000
+260510S039,HCI,5/10/2026 12:00:00 AM,Solar,3.68,Kelapa Gading,25000
+260510S041,HCI,5/10/2026 12:00:00 AM,Solar,20.59,PIK,140000
+260510S057,HCI,5/10/2026 12:00:00 AM,Solar,7.06,Jakarta Timur,48000
+260510S042,HCI,5/10/2026 12:00:00 AM,Solar,9.12,Penjaringan,62000
+260510S180,HCI,5/10/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260510S179,HCI,5/10/2026 12:00:00 AM,Pertalite,7.8,Tanjung Priuk,78000
+260510S040,HCI,5/10/2026 12:00:00 AM,Solar,5.15,Kemayoran,35000
+260511S070,HCI,5/11/2026 12:00:00 AM,Solar,9.85,Tanjung Priuk,67000
+260511S063,HCI,5/11/2026 12:00:00 AM,Solar,11.76,Penjaringan,80000
+260511S059,HCI,5/11/2026 12:00:00 AM,Solar,9.85,Cempaka Putih,67000
+260511S062,HCI,5/11/2026 12:00:00 AM,Solar,21.76,PIK,148000
+260511S060,HCI,5/11/2026 12:00:00 AM,Solar,7.65,Kemayoran,52000
+260511S182,HCI,5/11/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260511S061,HCI,5/11/2026 12:00:00 AM,Solar,14.41,Jakarta Timur,98000
+260511S178,HCI,5/11/2026 12:00:00 AM,Pertalite,11.2,Tanjung Priuk,112000
+260511S058,HCI,5/11/2026 12:00:00 AM,Solar,7.79,Kelapa Gading,53000
+260512S056,HCI,5/12/2026 12:00:00 AM,Solar,11.91,Penjaringan,81000
+260512S052,HCI,5/12/2026 12:00:00 AM,Solar,7.35,Kemayoran,50000
+260512S193,HCI,5/12/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260512S055,HCI,5/12/2026 12:00:00 AM,Solar,15.15,PIK,103000
+260512S053,HCI,5/12/2026 12:00:00 AM,Solar,8.53,Cempaka Putih,58000
+260512S051,HCI,5/12/2026 12:00:00 AM,Solar,7.5,Kelapa Gading,51000
+260512S190,HCI,5/12/2026 12:00:00 AM,Pertalite,8.3,Tanjung Priuk,83000
+260512S054,HCI,5/12/2026 12:00:00 AM,Solar,11.76,Jakarta Timur,80000
+260513S064,HCI,5/13/2026 12:00:00 AM,Solar,12.65,Jakarta Timur,86000
+260513S061,HCI,5/13/2026 12:00:00 AM,Solar,11.03,Kelapa Gading,75000
+260513S065,HCI,5/13/2026 12:00:00 AM,Solar,13.38,PIK,91000
+260513S066,HCI,5/13/2026 12:00:00 AM,Solar,9.85,Penjaringan,67000
+260513S062,HCI,5/13/2026 12:00:00 AM,Solar,5.74,Kemayoran,39000
+260513S099,HCI,5/13/2026 12:00:00 AM,Pertalite,8.2,Tanjung Priuk,82000
+260513S094,HCI,5/13/2026 12:00:00 AM,Solar,12.5,Kelapa Gading,85000
+260514S046,HCI,5/14/2026 12:00:00 AM,Solar,12.65,Cempaka Putih,86000
+260514S044,HCI,5/14/2026 12:00:00 AM,Solar,5.88,Kemayoran,40000
+260514S043,HCI,5/14/2026 12:00:00 AM,Solar,5.15,Kelapa Gading,35000
+260514S151,HCI,5/14/2026 12:00:00 AM,Rechecked,,-,
+260514S042,HCI,5/14/2026 12:00:00 AM,Solar,26.47,PIK,180000
+260514S135,HCI,5/14/2026 12:00:00 AM,Solar,10.74,Penjaringan,73000
+260514S074,HCI,5/14/2026 12:00:00 AM,Pertalite,7,Tanjung Priuk,70000
+260514S045,HCI,5/14/2026 12:00:00 AM,Solar,6.47,Jakarta Timur,44000
+260515S054,HCI,5/15/2026 12:00:00 AM,Solar,21.62,PIK,147000
+260515S055,HCI,5/15/2026 12:00:00 AM,Solar,20,Penjaringan,136500
+260515S056,HCI,5/15/2026 12:00:00 AM,Solar,6.62,Kelapa Gading,45000
+260515S057,HCI,5/15/2026 12:00:00 AM,Solar,7.06,Kemayoran,48000
+260515S058,HCI,5/15/2026 12:00:00 AM,Solar,11.76,Penjaringan,80000
+260515S059,HCI,5/15/2026 12:00:00 AM,Solar,10,Jakarta Timur,68000
+260515S060,HCI,5/15/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260515S176,HCI,5/15/2026 12:00:00 AM,Pertalite,7.8,Tanjung Priuk,78000
+260516S057,HCI,5/16/2026 12:00:00 AM,Solar,9.12,Kelapa Gading,62000
+260516S058,HCI,5/16/2026 12:00:00 AM,Solar,12.79,Kemayoran,87000
+260516S059,HCI,5/16/2026 12:00:00 AM,Solar,11.03,Jakarta Timur,75000
+260516S061,HCI,5/16/2026 12:00:00 AM,Solar,17.28,PIK,117500
+260516S062,HCI,5/16/2026 12:00:00 AM,Solar,16.18,Penjaringan,110000
+260516S095,HCI,5/16/2026 12:00:00 AM,Pertalite,7.7,Tanjung Priuk,77000
+260516S099,HCI,5/16/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260517S060,HCI,5/17/2026 12:00:00 AM,Solar,4.41,Kelapa Gading,30000
+260517S061,HCI,5/17/2026 12:00:00 AM,Solar,6.76,Kemayoran,46000
+260517S062,HCI,5/17/2026 12:00:00 AM,Solar,6.91,Cempaka Putih,47000
+260517S063,HCI,5/17/2026 12:00:00 AM,Solar,21.32,Jakarta Timur,145000
+260517S064,HCI,5/17/2026 12:00:00 AM,Solar,27.5,PIK,187000
+260517S098,HCI,5/17/2026 12:00:00 AM,Pertalite,6.7,Tanjung Priuk,67000
+260518S061,HCI,5/18/2026 12:00:00 AM,Solar,6.62,Kelapa Gading,45000
+260518S060,HCI,5/18/2026 12:00:00 AM,Solar,7.35,Jakarta Timur,50000
+260518S058,HCI,5/18/2026 12:00:00 AM,Solar,10.29,Kemayoran,70000
+260518S057,HCI,5/18/2026 12:00:00 AM,Solar,13.38,PIK,91000
+260518S059,HCI,5/18/2026 12:00:00 AM,Solar,10.29,Cempaka Putih,70000
+260518S200,HCI,5/18/2026 12:00:00 AM,Solar,5.44,Kelapa Gading,37000
+260518S199,HCI,5/18/2026 12:00:00 AM,Pertalite,9.4,Tanjung Priuk,94000
+260518S089,HCI,5/18/2026 12:00:00 AM,Solar,8.97,Penjaringan,61000
+260518S203,HCI,5/18/2026 12:00:00 AM,Rechecked,,Koja,
+260519S046,HCI,5/19/2026 12:00:00 AM,Solar,9.85,Kelapa Gading,67000
+260519S089,HCI,5/19/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260519S047,HCI,5/19/2026 12:00:00 AM,Solar,10.88,Kemayoran,74000
+260519S050,HCI,5/19/2026 12:00:00 AM,Solar,23.53,PIK,160000
+260519S049,HCI,5/19/2026 12:00:00 AM,Solar,10,Jakarta Timur,68000
+260519S170,HCI,5/19/2026 12:00:00 AM,Solar,12.5,Penjaringan,85000
+260519S088,HCI,5/19/2026 12:00:00 AM,Pertalite,10,Tanjung Priuk,100000
+260519S051,HCI,5/19/2026 12:00:00 AM,Solar,11.03,Penjaringan,75000
+260520S051,HCI,5/20/2026 12:00:00 AM,Solar,3.68,Kelapa Gading,25000
+260520S050,HCI,5/20/2026 12:00:00 AM,Solar,11.03,Jakarta Timur,75000
+260520S088,HCI,5/20/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260520S052,HCI,5/20/2026 12:00:00 AM,Solar,18.24,PIK,124000
+260520S049,HCI,5/20/2026 12:00:00 AM,Solar,10.29,-,70000
+260520S048,HCI,5/20/2026 12:00:00 AM,Solar,5,Kelapa Gading,34000
+260520S087,HCI,5/20/2026 12:00:00 AM,Pertalite,5.1,Tanjung Priuk,51000
+260520S054,HCI,5/20/2026 12:00:00 AM,Solar,8.82,Penjaringan,60000
+260521S058,HCI,5/21/2026 12:00:00 AM,Solar,8.09,Jakarta Timur,55000
+260521S057,HCI,5/21/2026 12:00:00 AM,Solar,7.21,Cempaka Putih,49000
+260521S055,HCI,5/21/2026 12:00:00 AM,Solar,6.91,Kelapa Gading,47000
+260521S095,HCI,5/21/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260521S075,HCI,5/21/2026 12:00:00 AM,Solar,16.91,PIK,115000
+260521S059,HCI,5/21/2026 12:00:00 AM,Solar,10.29,Tanjung Priuk,70000
+260521S054,HCI,5/21/2026 12:00:00 AM,Pertalite,8.5,Tanjung Priuk,85000
+260521S056,HCI,5/21/2026 12:00:00 AM,Solar,7.06,Kemayoran,48000
+260522S056,HCI,5/22/2026 12:00:00 AM,Solar,15.29,Kelapa Gading,104000
+260522S057,HCI,5/22/2026 12:00:00 AM,Solar,6.32,Kemayoran,43000
+260522S058,HCI,5/22/2026 12:00:00 AM,Solar,12.79,Tanjung Priuk,87000
+260522S059,HCI,5/22/2026 12:00:00 AM,Solar,13.24,Tanjung Priuk,90000
+260522S182,HCI,5/22/2026 12:00:00 AM,Solar,30.15,PIK,205000
+260522S183,HCI,5/22/2026 12:00:00 AM,Solar,11.76,Penjaringan,80000
+260522S184,HCI,5/22/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260522S185,HCI,5/22/2026 12:00:00 AM,Pertalite,7.1,Tanjung Priuk,71000
+260523S058,HCI,5/23/2026 12:00:00 AM,Pertalite,6.1,Tanjung Priuk,61000
+260523S059,HCI,5/23/2026 12:00:00 AM,Solar,10.59,Kelapa Gading,72000
+260523S060,HCI,5/23/2026 12:00:00 AM,Solar,8.68,Kemayoran,59000
+260523S062,HCI,5/23/2026 12:00:00 AM,Solar,6.62,Jakarta Timur,45000
+260523S087,HCI,5/23/2026 12:00:00 AM,Solar,19.71,PIK,134000
+260523S088,HCI,5/23/2026 12:00:00 AM,Solar,13.53,Penjaringan,92000
+260523S089,HCI,5/23/2026 12:00:00 AM,Rechecked,,-,
+260524S034,HCI,5/24/2026 12:00:00 AM,Solar,4.41,Kelapa Gading,30000
+260524S035,HCI,5/24/2026 12:00:00 AM,Solar,5.15,Kemayoran,35000
+260524S037,HCI,5/24/2026 12:00:00 AM,Solar,6.18,Jakarta Timur,42000
+260524S038,HCI,5/24/2026 12:00:00 AM,Solar,17.79,PIK,121000
+260524S039,HCI,5/24/2026 12:00:00 AM,Solar,11.03,Penjaringan,75000
+260524S177,HCI,5/24/2026 12:00:00 AM,Pertalite,7.2,Tanjung Priuk,72000
+260524S185,HCI,5/24/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260525S036,HCI,5/25/2026 12:00:00 AM,Solar,7.21,Kelapa Gading,49000
+260525S037,HCI,5/25/2026 12:00:00 AM,Solar,8.82,Kemayoran,60000
+260525S038,HCI,5/25/2026 12:00:00 AM,Solar,10.29,Cempaka Putih,70000
+260525S039,HCI,5/25/2026 12:00:00 AM,Solar,10.59,Jakarta Timur,72000
+260525S040,HCI,5/25/2026 12:00:00 AM,Solar,21.47,Koja,146000
+260525S041,HCI,5/25/2026 12:00:00 AM,Solar,12.06,Penjaringan,82000
+260525S049,HCI,5/25/2026 12:00:00 AM,Pertalite,14,Tanjung Priuk,140000
+260525S110,HCI,5/25/2026 12:00:00 AM,Rechecked,,-,
+260525S111,HCI,5/25/2026 12:00:00 AM,Solar,14.85,Tanjung Priuk,101000
+260526S031,HCI,5/26/2026 12:00:00 AM,Pertalite,6.05,Tanjung Priuk,60500
+260526S032,HCI,5/26/2026 12:00:00 AM,Solar,6.62,Kemayoran,45000
+260526S034,HCI,5/26/2026 12:00:00 AM,Solar,6.18,Jakarta Timur,42000
+260526S063,HCI,5/26/2026 12:00:00 AM,Solar,13.82,PIK,94000
+260526S064,HCI,5/26/2026 12:00:00 AM,Solar,10.29,Penjaringan,70000
+260526S072,HCI,5/26/2026 12:00:00 AM,Solar,7.06,Kelapa Gading,48000
+260526S169,HCI,5/26/2026 12:00:00 AM,Solar,4.26,Kelapa Gading,29000
+260526S209,HCI,5/26/2026 12:00:00 AM,Rechecked,,-,
+260527S041,HCI,5/27/2026 12:00:00 AM,Solar,20,Kelapa Gading,136000
+260527S043,HCI,5/27/2026 12:00:00 AM,Solar,11.76,-,80000
+260527S044,HCI,5/27/2026 12:00:00 AM,Solar,19.12,Jakarta Timur,130000
+260527S180,HCI,5/27/2026 12:00:00 AM,Pertalite,4.1,Kemayoran,41000
+260527S188,HCI,5/27/2026 12:00:00 AM,Solar,23.82,PIK,162000
+260527S189,HCI,5/27/2026 12:00:00 AM,Solar,24.26,Penjaringan,165000
+260527S190,HCI,5/27/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260528S043,HCI,5/28/2026 12:00:00 AM,Solar,8.09,Kelapa Gading,55000
+260528S044,HCI,5/28/2026 12:00:00 AM,Solar,7.79,Kemayoran,53000
+260528S045,HCI,5/28/2026 12:00:00 AM,Solar,9.12,Jakarta Timur,62000
+260528S047,HCI,5/28/2026 12:00:00 AM,Solar,11.76,Jakarta Timur,80000
+260528S079,HCI,5/28/2026 12:00:00 AM,Solar,17.65,PIK,120000
+260528S080,HCI,5/28/2026 12:00:00 AM,Solar,9.56,Penjaringan,65000
+260528S081,HCI,5/28/2026 12:00:00 AM,Pertalite,7.1,Tanjung Priuk,71000
+260528S084,HCI,5/28/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260529S045,HCI,5/29/2026 12:00:00 AM,Solar,7.65,Kelapa Gading,52000
+260529S046,HCI,5/29/2026 12:00:00 AM,Solar,10.44,Kemayoran,71000
+260529S047,HCI,5/29/2026 12:00:00 AM,Solar,9.56,Jakarta Timur,65000
+260529S048,HCI,5/29/2026 12:00:00 AM,Solar,5.15,Cempaka Putih,35000
+260529S086,HCI,5/29/2026 12:00:00 AM,Rechecked,,Kelapa Gading,0
+260529S090,HCI,5/29/2026 12:00:00 AM,Solar,17.06,Koja,116000
+260529S093,HCI,5/29/2026 12:00:00 AM,Solar,11.03,Penjaringan,75000
+260529S094,HCI,5/29/2026 12:00:00 AM,Pertalite,11.2,Tanjung Priuk,112000
+260529S235,HCI,5/29/2026 12:00:00 AM,Solar,11.32,Kemayoran,77000
+260530S035,HCI,5/30/2026 12:00:00 AM,Solar,8.24,Kelapa Gading,56000
+260530S088,HCI,5/30/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260530S039,HCI,5/30/2026 12:00:00 AM,Solar,13.38,PIK,91000
+260530S037,HCI,5/30/2026 12:00:00 AM,Solar,12.94,Jakarta Timur,82000
+260530S036,HCI,5/30/2026 12:00:00 AM,Solar,10.29,Kemayoran,70000
+260530S092,HCI,5/30/2026 12:00:00 AM,Pertalite,9,Cempaka Putih,90000
+260530S040,HCI,5/30/2026 12:00:00 AM,Solar,10.15,Penjaringan,69000
+260531S046,HCI,5/31/2026 12:00:00 AM,Solar,7.06,Kelapa Gading,48000
+260531S048,HCI,5/31/2026 12:00:00 AM,Solar,11.47,Jakarta Timur,78000
+260531S090,HCI,5/31/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260531S047,HCI,5/31/2026 12:00:00 AM,Solar,8.82,Kemayoran,60000
+260531S050,HCI,5/31/2026 12:00:00 AM,Solar,15.44,PIK,105000
+260531S091,HCI,5/31/2026 12:00:00 AM,Pertalite,6.3,Tanjung Priuk,63000
+260531S051,HCI,5/31/2026 12:00:00 AM,Solar,9.56,Penjaringan,65000
+260601S040,HCI,6/1/2026 12:00:00 AM,Solar,6.03,Kelapa Gading,41000
+260601S041,HCI,6/1/2026 12:00:00 AM,Solar,3.97,Kemayoran,27000
+260601S042,HCI,6/1/2026 12:00:00 AM,Solar,5.88,Cempaka Putih,40000
+260601S043,HCI,6/1/2026 12:00:00 AM,Solar,8.53,Jakarta Timur,58000
+260601S044,HCI,6/1/2026 12:00:00 AM,Solar,16.91,PIK,115000
+260601S045,HCI,6/1/2026 12:00:00 AM,Solar,8.53,Penjaringan,58000
+260601S203,HCI,6/1/2026 12:00:00 AM,Pertalite,7.9,Tanjung Priuk,79000
+260601S204,HCI,6/1/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260601S206,HCI,6/1/2026 12:00:00 AM,Rechecked,,-,
+260602S056,HCI,6/2/2026 12:00:00 AM,Solar,22.06,PIK,150000
+260602S057,HCI,6/2/2026 12:00:00 AM,Solar,11.32,Penjaringan,77000
+260602S058,HCI,6/2/2026 12:00:00 AM,Solar,8.82,Kelapa Gading,60000
+260602S059,HCI,6/2/2026 12:00:00 AM,Solar,5.59,Kelapa Gading,38000
+260602S060,HCI,6/2/2026 12:00:00 AM,Solar,11.32,Kemayoran,77000
+260602S061,HCI,6/2/2026 12:00:00 AM,Solar,15.29,Penjaringan,104000
+260602S062,HCI,6/2/2026 12:00:00 AM,Solar,14.26,Jakarta Timur,97000
+260602S096,HCI,6/2/2026 12:00:00 AM,Pertalite,8.2,Tanjung Priuk,82000
+260602S209,HCI,6/2/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260603S061,HCI,6/3/2026 12:00:00 AM,Solar,17.06,Penjaringan,116000
+260603S056,HCI,6/3/2026 12:00:00 AM,Solar,8.53,Kelapa Gading,58000
+260603S208,HCI,6/3/2026 12:00:00 AM,Rechecked,,-,
+260603S060,HCI,6/3/2026 12:00:00 AM,Solar,15.88,PIK,108000
+260603S059,HCI,6/3/2026 12:00:00 AM,Solar,14.41,Jakarta Timur,98000
+260603S058,HCI,6/3/2026 12:00:00 AM,Solar,8.38,Cempaka Putih,57000
+260603S207,HCI,6/3/2026 12:00:00 AM,Pertalite,12.85,Tanjung Priuk,128500
+260603S057,HCI,6/3/2026 12:00:00 AM,Solar,12.21,Kemayoran,83000
+260604S038,HCI,6/4/2026 12:00:00 AM,Solar,6.62,Kelapa Gading,45000
+260604S039,HCI,6/4/2026 12:00:00 AM,Solar,6.76,Kemayoran,46000
+260604S040,HCI,6/4/2026 12:00:00 AM,Solar,7.35,Tanjung Priuk,50000
+260604S041,HCI,6/4/2026 12:00:00 AM,Solar,14.56,Jakarta Timur,99000
+260604S042,HCI,6/4/2026 12:00:00 AM,Solar,16.76,PIK,114000
+260604S043,HCI,6/4/2026 12:00:00 AM,Solar,14.71,Penjaringan,100000
+260604S184,HCI,6/4/2026 12:00:00 AM,Pertalite,7,Cempaka Putih,70000
+260604S185,HCI,6/4/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260605S047,HCI,6/5/2026 12:00:00 AM,Solar,5.66,Kelapa Gading,38500
+260605S048,HCI,6/5/2026 12:00:00 AM,Solar,7.35,Kemayoran,50000
+260605S049,HCI,6/5/2026 12:00:00 AM,Solar,20.15,Tanjung Priuk,137000
+260605S050,HCI,6/5/2026 12:00:00 AM,Solar,8.38,Jakarta Timur,57000
+260605S051,HCI,6/5/2026 12:00:00 AM,Solar,16.91,PIK,115000
+260605S052,HCI,6/5/2026 12:00:00 AM,Solar,8.53,Penjaringan,58000
+260605S082,HCI,6/5/2026 12:00:00 AM,Solar,6.62,Kelapa Gading,45000
+260605S083,HCI,6/5/2026 12:00:00 AM,Pertalite,7.8,Tanjung Priuk,78000
+260606S051,HCI,6/6/2026 12:00:00 AM,Solar,6.62,Kelapa Gading,45000
+260606S052,HCI,6/6/2026 12:00:00 AM,Solar,7.35,Kemayoran,50000
+260606S053,HCI,6/6/2026 12:00:00 AM,Solar,7.35,Jakarta Timur,50000
+260606S055,HCI,6/6/2026 12:00:00 AM,Solar,20.59,PIK,140000
+260606S056,HCI,6/6/2026 12:00:00 AM,Solar,10.88,Penjaringan,74000
+260606S091,HCI,6/6/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260606S092,HCI,6/6/2026 12:00:00 AM,Pertalite,6.7,Tanjung Priuk,67000
+260607S032,HCI,6/7/2026 12:00:00 AM,Solar,17.79,Kelapa Gading,121000
+260607S035,HCI,6/7/2026 12:00:00 AM,Solar,21.14,PIK,143750
+260607S036,HCI,6/7/2026 12:00:00 AM,Solar,12.65,Koja,86000
+260607S069,HCI,6/7/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260607S070,HCI,6/7/2026 12:00:00 AM,Pertalite,7.8,Tanjung Priuk,78000
+260607S153,HCI,6/7/2026 12:00:00 AM,Solar,18.38,Jakarta Timur,125000
+260608S029,HCI,6/8/2026 12:00:00 AM,Pertalite,9.5,Cempaka Putih,95000
+260608S030,HCI,6/8/2026 12:00:00 AM,Solar,7.94,Kelapa Gading,54000
+260608S031,HCI,6/8/2026 12:00:00 AM,Solar,8.53,Kemayoran,58000
+260608S032,HCI,6/8/2026 12:00:00 AM,Solar,6.62,Tanjung Priuk,45000
+260608S033,HCI,6/8/2026 12:00:00 AM,Solar,13.24,Jakarta Timur,90000
+260608S034,HCI,6/8/2026 12:00:00 AM,Solar,7.79,Cempaka Putih,53000
+260608S198,HCI,6/8/2026 12:00:00 AM,Solar,23.53,PIK,160000
+260608S199,HCI,6/8/2026 12:00:00 AM,Solar,10.44,Penjaringan,71000
+260608S202,HCI,6/8/2026 12:00:00 AM,Rechecked,,Kelapa Gading,
+260609S040,HCI,6/9/2026 12:00:00 AM,Pertalite,7.15,Tanjung Priuk,71500
+260609S041,HCI,6/9/2026 12:00:00 AM,Solar,5.88,Kelapa Gading,40000
+260609S042,HCI,6/9/2026 12:00:00 AM,Solar,8.68,Kemayoran,59000
+260609S043,HCI,6/9/2026 12:00:00 AM,Solar,8.82,Kemayoran,60000
+260609S044,HCI,6/9/2026 12:00:00 AM,Solar,6.62,Jakarta Timur,45000
+260609S204,HCI,6/9/2026 12:00:00 AM,Solar,22.21,PIK,151000
+260609S205,HCI,6/9/2026 12:00:00 AM,Solar,12.06,Penjaringan,82000
+260609S206,HCI,6/9/2026 12:00:00 AM,Rechecked,,Kelapa Gading,

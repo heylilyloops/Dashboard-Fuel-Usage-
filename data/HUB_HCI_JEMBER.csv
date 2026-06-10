@@ -1,0 +1,324 @@
+LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
+260101S001,HCI,1-Jan-2026,Solar,58.82,Jember Timur,400000
+260101S016,HCI,1-Jan-2026,Rechecked,0.0,Jember Selatan,0
+260102S024,HCI,2-Jan-2026,Rechecked,0.0,Bondowoso,0
+260102S025,HCI,2-Jan-2026,Rechecked,0.0,Lumajang,0
+260103S005,HCI,3-Jan-2026,Solar,58.82,Jember Barat,"Rp400,000.00"
+260103S012,HCI,3-Jan-2026,Pertalite,39.2,Jember Utara,392000
+260104S018,HCI,4-Jan-2026,Rechecked,0.0,Lumajang,0
+260104S019,HCI,4-Jan-2026,Pertalite,40.0,Bondowoso,"Rp400,000.00"
+260105S042,HCI,5-Jan-2026,Rechecked,0.0,bondowoso,0
+260105S043,HCI,5-Jan-2026,Rechecked,0.0,Lumajang,0
+260106S012,HCI,6-Jan-2026,Rechecked,0.0,jember barat,0
+260106S013,HCI,6-Jan-2026,Pertalite,37.8,jember timur,"Rp378,000.00"
+260107S045,HCI,7-Jan-2026,Solar,58.82,Lumajang,"Rp400,000.00"
+260107S046,HCI,7-Jan-2026,Rechecked,0.0,Lumajang,0
+260108S022,HCI,8-Jan-2026,Rechecked,0.0,jember barat,0
+260108S023,HCI,8-Jan-2026,Rechecked,0.0,jember utara,0
+260109S003,HCI,9-Jan-2026,Solar,58.82,lumajang,"Rp400,000.00"
+260109S048,HCI,9-Jan-2026,Pertalite,34.0,bondowoso,"Rp340,000.00"
+260110S001,HCI,10-Jan-2026,Rechecked,0.0,Jember Timur,0
+260110S032,HCI,10-Jan-2026,Rechecked,0.0,Jember Selatan,0
+260111S044,HCI,11-Jan-2026,Solar,58.82,situbondo,"Rp400,000.00"
+260111S045,HCI,11-Jan-2026,Rechecked,0.0,lumajang,0
+260112S052,HCI,12-Jan-2026,Rechecked,0.0,bondowoso,0
+260112S015,HCI,12-Jan-2026,Pertalite,37.48,jember timur,"Rp374,800.00"
+260113S012,HCI,13-Jan-2026,Rechecked,0.0,jember barat,0
+260113S014,HCI,13-Jan-2026,Rechecked,0.0,jember utara,0
+260114S018,HCI,14-Jan-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260114S016,HCI,14-Jan-2026,Rechecked,0.0,Jember Selatan,0
+260115S016,HCI,15-Jan-2026,Rechecked,0.0,Jember Utara,0
+260115S014,HCI,15-Jan-2026,Rechecked,0.0,Jember Timur,0
+260116S042,HCI,16-Jan-2026,Rechecked,0.0,Lumajang,0
+260116S043,HCI,16-Jan-2026,Pertalite,38.99,Bondowoso,"Rp389,900.00"
+260117S040,HCI,17-Jan-2026,Solar,58.82,Jember Timur,"Rp400,000.00"
+260117S041,HCI,17-Jan-2026,Rechecked,0.0,Jember Selatan,0
+260118S035,HCI,18-Jan-2026,Rechecked,0.0,Lumajang,0
+260118S036,HCI,18-Jan-2026,Pertalite,30.0,Jember Utara,"Rp300,000.00"
+1,HCI,19-Jan-2026,Rechecked,0.0,Bondowoso,0
+260119S043,HCI,19-Jan-2026,Rechecked,0.0,Jember Timur,0
+260120S026,HCI,20-Jan-2026,Rechecked,0.0,Jember Utara,0
+260120S028,HCI,20-Jan-2026,Rechecked,0.0,Jember Timur,0
+260121S013,HCI,21-Jan-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260121S016,HCI,21-Jan-2026,Pertalite,35.0,Lumajang,"Rp350,000.00"
+260122S014,HCI,22-Jan-2026,Rechecked,0.0,Jember Timur,0
+260122S016,HCI,22-Jan-2026,Rechecked,0.0,Jember Selatan,0
+260123S040,HCI,23-Jan-2026,Rechecked,0.0,Bondowoso,0
+260123S041,HCI,23-Jan-2026,Pertalite,33.65,Bondowoso,"Rp336,500.00"
+260124S028,HCI,24-Jan-2026,Rechecked,0.0,Jember Timur,0
+260124S044,HCI,24-Jan-2026,Rechecked,0.0,Jember Selatan,0
+260125S042,HCI,25-Jan-2026,Solar,58.82,Lumajang,"Rp400,000.00"
+260125S043,HCI,25-Jan-2026,Pertalite,35.2,Jember Utara,"Rp352,000.00"
+260126S051,HCI,26-Jan-2026,Rechecked,0.0,Jember Selatan,0
+260126S054,HCI,26-Jan-2026,Rechecked,0.0,Jember Utara,0
+260127S009,HCI,27-Jan-2026,Rechecked,0.0,Jember Selatan,0
+260127S020,HCI,27-Jan-2026,Rechecked,0.0,Jember Barat,0
+260128S004,HCI,28-Jan-2026,Rechecked,0.0,Lumajang,0
+260128S029,HCI,28-Jan-2026,Rechecked,0.0,Jember Timur,0
+260129S029,HCI,29-Jan-2026,Solar,58.82,Jember Timur,"Rp400,000.00"
+260129S031,HCI,29-Jan-2026,Pertalite,39.05,Jember Barat,"Rp390,500.00"
+260130S043,HCI,30-Jan-2026,Rechecked,0.0,Bondowoso,0
+260130S047,HCI,30-Jan-2026,Rechecked,0.0,Lumajang,0
+260131S021,HCI,31-Jan-2026,Rechecked,0.0,Jember Utara,0
+260131S023,HCI,31-Jan-2026,Pertalite,39.77,Jember Timur,"Rp397,700.00"
+260201S037,HCI,1-Feb-2026,Rechecked,0.0,Lumajang,0
+260201S036,HCI,1-Feb-2026,Rechecked,0.0,Jember Timur,0
+,,2-Feb-2026,Solar,58.82,Lumajang,"Rp400,000.00"
+,,2-Feb-2026,Rechecked,0.0,Jember Timur,0
+260203S025,HCI,3-Feb-2026,Rechecked,0.0,Jember Timur,0
+260203S028,HCI,3-Feb-2026,Rechecked,0.0,Jember Utara,0
+260204S214,HCI,4-Feb-2026,Rechecked,0.0,Lumajang,0
+260204S215,HCI,4-Feb-2026,Pertalite,33.07,Bondowoso,"Rp330,700.00"
+260205S098,HCI,5-Feb-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260205S101,HCI,5-Feb-2026,Rechecked,0.0,Lumajang,0
+260206S094,HCI,6-Feb-2026,Rechecked,0.0,Jember Barat,0
+260206S093,HCI,6-Feb-2026,Pertalite,38.0,Lumajang,"Rp380,000.00"
+260207S125,HCI,7-Feb-2026,Rechecked,0.0,Jember Utara,0
+260207S121,HCI,7-Feb-2026,Rechecked,0.0,Jember Timur,0
+260208S189,HCI,8-Feb-2026,Rechecked,0.0,Jember Selatan,0
+260208S188,HCI,8-Feb-2026,Rechecked,0.0,Jember Barat,0
+260209S140,HCI,9-Feb-2026,Solar,56.0,Jember Barat,"Rp380,800.00"
+260209S142,HCI,9-Feb-2026,Rechecked,0.0,Jember Timur,0
+260210S119,HCI,10-Feb-2026,Rechecked,0.0,Jember Selatan,0
+260210S121,HCI,10-Feb-2026,Rechecked,0.0,Jember Utara,0
+260211S215,HCI,11-Feb-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260211S213,HCI,11-Feb-2026,Rechecked,#VALUE!,Lumajang,Rp.328.900
+260212S149,HCI,12-Feb-2026,Solar,58.82,Jember Timur,"Rp400,000.00"
+260212S144,HCI,12-Feb-2026,Rechecked,0.0,Jember Barat,0
+260213S096,HCI,13-Feb-2026,Rechecked,0.0,Jember Barat,0
+260213S094,HCI,13-Feb-2026,Rechecked,0.0,Bondowoso,0
+260214S098,HCI,14-Feb-2026,Rechecked,0.0,Jember Timur,0
+260214S097,HCI,14-Feb-2026,Pertalite,38.3,Jember Barat,"Rp383,000.00"
+260215S120,HCI,15-Feb-2026,Solar,58.82,Lumajang,"Rp400,000.00"
+260215S132,HCI,15-Feb-2026,Rechecked,0.0,Bondowoso,0
+260216S202,HCI,16-Feb-2026,Rechecked,0.0,Bondowoso,0
+260216S216,HCI,16-Feb-2026,Rechecked,0.0,Jember Barat,0
+260217S121,HCI,17-Feb-2026,Rechecked,0.0,Jember Selatan,0
+260217S120,HCI,17-Feb-2026,Rechecked,57.18,Jember Timur,"Rp388,800.00"
+260218S233,HCI,18-Feb-2026,Rechecked,0.0,Bondowoso,0
+260218S232,HCI,18-Feb-2026,Rechecked,0.0,Lumajang,0
+260219S119,HCI,19-Feb-2026,Rechecked,0.0,Bondowoso,0
+260219S123,HCI,19-Feb-2026,Pertalite,35.88,Jember Selatan,"Rp358,800.00"
+260220S226,HCI,20-Feb-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260220S227,HCI,20-Feb-2026,Rechecked,0.0,Lumajang,0
+260221S112,HCI,21-Feb-2026,Rechecked,0.0,Jember Timur,0
+260221S115,HCI,21-Feb-2026,Rechecked,0.0,Jember Selatan,0
+260222S182,HCI,22-Feb-2026,Rechecked,0.0,Jember Barat,0
+260222S134,HCI,22-Feb-2026,Pertalite,39.22,Bondowoso,"Rp392,200.00"
+260223S161,HCI,23-Feb-2026,Rechecked,0.0,Jember Barat,0
+260223S161,HCI,23-Feb-2026,Rechecked,0.0,Jember Timur,0
+260224S132,HCI,24-Feb-2026,Solar,58.82,Jember Barat,"Rp400,000.00"
+260224S164,HCI,24-Feb-2026,Rechecked,0.0,Jember Timur,0
+260225S130,HCI,25-Feb-2026,Rechecked,0.0,Lumajang,0
+260225S132,HCI,25-Feb-2026,Pertalite,35.2,Situbondo,"Rp352,000.00"
+260226S153,HCI,26-Feb-2026,Rechecked,0.0,Jember Barat,0
+260226S155,HCI,26-Feb-2026,Rechecked,0.0,Jember Selatan,0
+260227S112,HCI,27-Feb-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260227S112,HCI,27-Feb-2026,Pertalite,38.18,Bondowoso,"Rp381,800.00"
+260228S218,HCI,28-Feb-2026,Rechecked,0.0,Jember Selatan,0
+260228S216,HCI,28-Feb-2026,Rechecked,0.0,Jember Utara,0
+260301S090,HCI,1-Mar-2026,Rechecked,0.0,Lumajang,0
+260301S032,HCI,1-Mar-2026,Rechecked,0.0,Bondowoso,0
+260302S226,HCI,2-Mar-2026,Solar,58.82,Jember Utara,"Rp400,000.00"
+260302S226,HCI,2-Mar-2026,Pertalite,26.8,Jember Utara,"Rp268,000.00"
+260303S172,HCI,3-Mar-2026,Rechecked,0.0,Jember Timur,0
+260303S169,HCI,3-Mar-2026,Rechecked,0.0,Jember Utara,0
+260304S197,HCI,4-Mar-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260304S198,HCI,4-Mar-2026,Rechecked,0.0,Lumajang,0
+260305S102,HCI,5-Mar-2026,Rechecked,0.0,Jember Utara,0
+260305S112,HCI,5-Mar-2026,Pertalite,39.57,Jember Timur,"Rp395,700.00"
+260306S176,HCI,6-Mar-2026,Rechecked,0.0,Bondowoso,0
+260306S177,HCI,6-Mar-2026,Rechecked,0.0,Lumajang,0
+260307S173,HCI,7-Mar-2026,Solar,58.82,Jember Utara,"Rp400,000.00"
+260307S179,HCI,7-Mar-2026,Rechecked,0.0,Jember Selatan,0
+260308S178,HCI,8-Mar-2026,Rechecked,0.0,Lumajang,0
+260308S177,HCI,8-Mar-2026,Rechecked,51.0,Bondowoso,"Rp346,800.00"
+260309S205,HCI,9-Mar-2026,Rechecked,0.0,Bondowoso,0
+260309S208,HCI,9-Mar-2026,Rechecked,0.0,Jember Barat,0
+260310S105,HCI,10-Mar-2026,Rechecked,0.0,Jember Utara,0
+260310S135,HCI,10-Mar-2026,Rechecked,0.0,Jember Barat,0
+260311S149,HCI,11-Mar-2026,Rechecked,0.0,Lumajang,0
+260311S148,HCI,11-Mar-2026,Pertalite,38.37,Bondowoso,"Rp383,700.00"
+260312S127,HCI,12-Mar-2026,Solar,58.82,Jember Barat,"Rp400,000.00"
+260312S135,HCI,12-Mar-2026,Rechecked,0.0,Jember Selatan,0
+260313S126,HCI,13-Mar-2026,Rechecked,0.0,Lumajang,0
+260313S127,HCI,13-Mar-2026,Pertalite,33.0,Bondowoso,"Rp330,000.00"
+260314S188,HCI,14-Mar-2026,Rechecked,0.0,Jember Selatan,0
+260314S190,HCI,14-Mar-2026,Pertalite,35.87,Jember Utara,"Rp358,700.00"
+260315S190,HCI,15-Mar-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260315S195,HCI,15-Mar-2026,Rechecked,0.0,Lumajang,0
+260316S132,HCI,16-Mar-2026,Rechecked,0.0,Bondowoso,0
+260316S134,HCI,16-Mar-2026,Pertalite,38.72,Lumajang,"Rp387,200.00"
+260317S118,HCI,17-Mar-2026,Rechecked,0.0,Jember Barat,0
+260317S119,HCI,17-Mar-2026,Rechecked,0.0,Jember Selatan,0
+260318S122,HCI,18-Mar-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260318S123,HCI,18-Mar-2026,Pertalite,33.0,Lumajang,"Rp330,000.00"
+260319S129,HCI,19-Mar-2026,Rechecked,0.0,Jember Barat,0
+260320S054,HCI,19-Mar-2026,Pertalite,40.0,Jember Selatan,"Rp400,000.00"
+260320S190,HCI,20-Mar-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260320S180,HCI,20-Mar-2026,Rechecked,0.0,Jember Barat,0
+260324S157,HCI,24-Mar-2026,Rechecked,0.0,Jember Barat,0
+260324S144,HCI,24-Mar-2026,Rechecked,0.0,Jember Timur,0
+260325S123,HCI,25-Mar-2026,Rechecked,0.0,Jember Utara,0
+260325S124,HCI,25-Mar-2026,Pertalite,37.41,Lumajang,"Rp374,100.00"
+260326S210,HCI,26-Mar-2026,Solar,58.82,Jember Barat,"Rp400,000.00"
+260324S157,HCI,26-Mar-2026,Pertalite,57.37,Jember Utara,"Rp390,100.00"
+260327S201,HCI,27-Mar-2026,Rechecked,0.0,Jember Barat,0
+260327S203,HCI,27-Mar-2026,Rechecked,0.0,Jember Selatan,0
+260328S126,HCI,28-Mar-2026,Rechecked,0.0,Jember Selatan,0
+260328S231,HCI,28-Mar-2026,Rechecked,0.0,Jember Timur,0
+260329S114,HCI,29-Mar-2026,Rechecked,0.0,Bondowoso,0
+260329S117,HCI,29-Mar-2026,Pertalite,54.81,Jember Barat,"Rp372,700.00"
+260330S148,HCI,30-Mar-2026,Rechecked,0.0,Jember Barat,0
+260330S145,HCI,30-Mar-2026,Rechecked,0.0,Jember Utara,0
+260331S090,HCI,31-Mar-2026,Rechecked,0.0,Jember Utara,Rp0.00
+260331S091,HCI,31-Mar-2026,Rechecked,0.0,Jember Timur,0
+260401S180,HCI,1-Apr-2026,Rechecked,0.0,Jember Barat,0
+260401S182,HCI,1-Apr-2026,Rechecked,0.0,Bondowoso,0
+260402S110,HCI,2-Apr-2026,Rechecked,0.0,Jember Timur,0
+260402S111,HCI,2-Apr-2026,Pertalite,58.82,Jember Barat,"Rp400,000.00"
+260403S105,HCI,3-Apr-2026,Rechecked,0.0,Jember Barat,0
+260403S106,HCI,3-Apr-2026,Pertalite,36.0,Lumajang,"Rp360,000.00"
+260404S126,HCI,4-Apr-2026,Rechecked,0.0,Jember Selatan,0
+260404S134,HCI,4-Apr-2026,Rechecked,0.0,Jember Timur,0
+260405S087,HCI,5-Apr-2026,Rechecked,0.0,Lumajang,0
+260405S187,HCI,5-Apr-2026,Rechecked,0.0,Situbondo,0
+260406S212,HCI,6-Apr-2026,Rechecked,0.0,Jember Barat,0
+260406S091,HCI,6-Apr-2026,Rechecked,0.0,Jember Utara,0
+260407S115,HCI,7-Apr-2026,Rechecked,0.0,Jember Utara,0
+260407S116,HCI,7-Apr-2026,Rechecked,0.0,Jember Timur,0
+260408S127,HCI,8-Apr-2026,Solar,58.82,Lumajang,"Rp400,000.00"
+260408S121,HCI,8-Apr-2026,Rechecked,0.0,Bondowoso,0
+260409S106,HCI,9-Apr-2026,Rechecked,0.0,Jember Timur,0
+260409S108,HCI,9-Apr-2026,Rechecked,0.0,Jember Barat,0
+260410S127,HCI,10-Apr-2026,Rechecked,0.0,Bondowoso,0
+260410S128,HCI,10-Apr-2026,Pertalite,51.47,Lumajang,"Rp350,000.00"
+260411S101,HCI,11-Apr-2026,Rechecked,0.0,Jember Utara,0
+260411S105,HCI,11-Apr-2026,Rechecked,0.0,Jember Selatan,0
+260412S136,HCI,12-Apr-2026,Rechecked,0.0,Bondowoso,0
+260412S146,HCI,12-Apr-2026,Rechecked,0.0,Jember Timur,0
+260413S203,HCI,13-Apr-2026,Rechecked,0.0,Bondowoso,0
+260413S202,HCI,13-Apr-2026,Pertalite,56.62,Jember Timur,"Rp385,000.00"
+260414S138,HCI,14-Apr-2026,Rechecked,0.0,Jember Timur,0
+260414S136,HCI,14-Apr-2026,Rechecked,0.0,Jember Utara,0
+260415S131,HCI,15-Apr-2026,Solar,58.82,situbondo,"Rp400,000.00"
+260415S129,HCI,15-Apr-2026,Rechecked,0.0,lumajang,0
+260416S147,HCI,16-Apr-2026,Rechecked,0.0,Jember Timur,0
+260416S207,HCI,16-Apr-2026,Pertalite,51.32,Jember Selatan,"Rp349,000.00"
+260417S140,HCI,17-Apr-2026,Rechecked,0.0,Bondowoso,0
+260417S138,HCI,17-Apr-2026,Rechecked,0.0,lumajang,0
+260418S119,HCI,18-Apr-2026,Solar,58.82,Jember Timur,"Rp400,000.00"
+260418S120,HCI,18-Apr-2026,Pertalite,50.0,Jember Selatan,"Rp340,000.00"
+260419S104,HCI,19-Apr-2026,Rechecked,0.0,Lumajang,0
+260419S183,HCI,19-Apr-2026,Rechecked,0.0,Bondowoso,0
+260420S136,HCI,20-Apr-2026,Rechecked,0.0,Bondowoso,0
+260420S137,HCI,20-Apr-2026,Rechecked,0.0,Jember Barat,0
+260421S129,HCI,21-Apr-2026,Rechecked,0.0,Jember Timur,0
+260421S131,HCI,21-Apr-2026,Rechecked,0.0,Jember Utara,0
+260422S166,HCI,22-Apr-2026,Rechecked,0.0,Lumajang,0
+260422S095,HCI,22-Apr-2026,Rechecked,0.0,Jember Timur,0
+260423S173,HCI,23-Apr-2026,Solar,57.35,Jember Utara,"Rp390,000.00"
+260423S172,HCI,23-Apr-2026,Rechecked,56.47,Jember Barat,"Rp384,000.00"
+260424S169,HCI,24-Apr-2026,Rechecked,0.0,Jember Selatan,0
+260424S172,HCI,24-Apr-2026,Rechecked,0.0,Bondowoso,0
+260425S162,HCI,25-Apr-2026,Rechecked,0.0,Jember Utara,0
+260425S164,HCI,25-Apr-2026,Rechecked,0.0,Jember Barat,0
+260426S107,HCI,26-Apr-2026,Rechecked,0.0,Jember Barat,0
+260426S105,HCI,26-Apr-2026,Rechecked,0.0,Jember Selatan,0
+260427S221,HCI,27-Apr-2026,Rechecked,0.0,Jember Barat,0
+260427S219,HCI,27-Apr-2026,Pertalite,46.62,Jember Selatan,"Rp317,000.00"
+260428S191,HCI,28-Apr-2026,Rechecked,0.0,Jember Timur,0
+260428S193,HCI,28-Apr-2026,Rechecked,0.0,Jember Selatan,0
+260429S136,HCI,29-Apr-2026,Rechecked,0.0,Jember Barat,0
+260429S135,HCI,29-Apr-2026,Rechecked,0.0,Bondowoso,0
+260430S146,HCI,30-Apr-2026,Rechecked,0.0,Jember Barat,0
+260430S144,HCI,30-Apr-2026,Rechecked,0.0,Bondowoso,0
+260502S199,HCI,2-May-2026,Rechecked,0.0,Jember Selatan,0
+260502S194,HCI,2-May-2026,Pertalite,58.38,Jember Timur,"Rp397,000.00"
+260503S163,HCI,3-May-2026,Rechecked,0.0,Lumajang,0
+260503S164,HCI,3-May-2026,Rechecked,0.0,Bondowoso,0
+260504S220,HCI,4-May-2026,Solar,58.82,Jember Timur,"Rp400,000.00"
+260504S221,HCI,4-May-2026,Rechecked,0.0,Jember Utara,0
+260505S123,HCI,5-May-2026,Rechecked,0.0,Jember Timur,0
+260505S124,HCI,5-May-2026,Rechecked,0.0,Jember Utara,0
+260506S096,HCI,6-May-2026,Rechecked,0.0,Jember Selatan,0
+260506S040,HCI,6-May-2026,Rechecked,0.0,Jember Utara,0
+260507S096,HCI,7-May-2026,Rechecked,0.0,Jember Utara,0
+260507S097,HCI,7-May-2026,Rechecked,0.0,Jember Barat,0
+260508S099,HCI,8-May-2026,Rechecked,0.0,Bondowoso,0
+260508S101,HCI,8-May-2026,Rechecked,0.0,Lumajang,0
+260509S184,HCI,9-May-2026,Solar,58.82,Jember Barat,"Rp400,000.00"
+260509S185,HCI,9-May-2026,Rechecked,58.24,Jember Utara,"Rp396,000.00"
+260510S154,HCI,10-May-2026,Rechecked,0.0,Jember Selatan,0
+260510S156,HCI,10-May-2026,Rechecked,0.0,Bondowoso,0
+260511S097,HCI,11-May-2026,Rechecked,0.0,Jember Selatan,0
+260511S129,HCI,11-May-2026,Rechecked,0.0,Jember Barat,0
+260512S111,HCI,12-May-2026,Rechecked,0.0,Jember Selatan,Rp0.00
+260512S110,HCI,12-May-2026,Rechecked,0.0,Situbondo,Rp0.00
+260513S143,HCI,13-May-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260513S156,HCI,13-May-2026,Rechecked,56.62,Jember Barat,"Rp385,000.00"
+260514S106,HCI,14-May-2026,Rechecked,0.0,Bondowoso,0
+260514S107,HCI,14-May-2026,Rechecked,0.0,Jember Selatan,0
+260515S099,HCI,15-May-2026,Rechecked,0.0,Bondowoso,0
+260515S100,HCI,15-May-2026,Rechecked,0.0,Lumajang,0
+260516S111,HCI,16-May-2026,Solar,58.82,Jember Utara,"Rp400,000.00"
+260516S112,HCI,16-May-2026,Rechecked,53.68,Jember Timur,"Rp365,000.00"
+260517S174,HCI,17-May-2026,Rechecked,0.0,Lumajang,0
+260517S175,HCI,17-May-2026,Rechecked,0.0,Bondowoso,0
+260518S119,HCI,18-May-2026,Rechecked,0.0,Lumajang,0
+260518S120,HCI,18-May-2026,Rechecked,0.0,Bondowoso,0
+260519S105,HCI,19-May-2026,Solar,58.82,Jember Utara,"Rp400,000.00"
+260519S106,HCI,19-May-2026,Rechecked,55.15,Bondowoso,"Rp375,000.00"
+260520S026,HCI,20-May-2026,Rechecked,0.0,Bondowoso,0
+260520S025,HCI,20-May-2026,Rechecked,0.0,Jember Utara,0
+260521S125,HCI,21-May-2026,Rechecked,0.0,Jember Barat,0
+260521S126,HCI,21-May-2026,Rechecked,0.0,Jember Selatan,0
+260521S127,HCI,22-May-2026,Rechecked,0.0,Jember Barat,0
+260523S159,HCI,23-May-2026,Rechecked,0.0,Jember Utara,0
+260524S195,HCI,24-May-2026,Rechecked,0.0,Jember Utara,0
+260525S158,HCI,25-May-2026,Rechecked,0.0,Lumajang,0
+260525S159,HCI,25-May-2026,Rechecked,0.0,Bondowoso,0
+260526S190,HCI,26-May-2026,Solar,58.82,Jember Barat,"Rp400,000.00"
+260526S188,HCI,26-May-2026,Rechecked,56.62,Jember Utara,"Rp385,000.00"
+260527S062,HCI,27-May-2026,Rechecked,0.0,Situbondo,0
+260527S120,HCI,27-May-2026,Rechecked,0.0,Jember Utara,0
+260528S131,HCI,28-May-2026,Rechecked,0.0,Lumajang,0
+260528S132,HCI,28-May-2026,Rechecked,0.0,Jember Timur,0
+260529S199,HCI,29-May-2026,Solar,58.82,Lumajang,"Rp400,000.00"
+260529S198,HCI,29-May-2026,Rechecked,0.0,Bondowoso,0
+260530S131,HCI,30-May-2026,Rechecked,0.0,Jember Barat,0
+260530S132,HCI,30-May-2026,Rechecked,0.0,Jember Utara,0
+260531S114,HCI,31-May-2026,Rechecked,0.0,Lumajang,0
+260531S115,HCI,31-May-2026,Rechecked,0.06,KAlisat,Rp375.00
+260601S100,HCI,1-Jun-2026,Rechecked,0.0,Jember Barat,0
+260601S101,HCI,1-Jun-2026,Rechecked,0.0,Jember Selatan,0
+260602S123,HCI,2-Jun-2026,Solar,0.05,Jember Selatan,Rp345.00
+260602S126,HCI,2-Jun-2026,Rechecked,0.0,Bondowoso,0
+260603S032,HCI,3-Jun-2026,Rechecked,0.0,Jember Timur,0
+260603S085,HCI,3-Jun-2026,Rechecked,0.0,Lumajang,0
+260604S087,HCI,4-Jun-2026,Rechecked,0.0,Jember Barat,0
+260604S093,HCI,4-Jun-2026,Rechecked,0.0,Jember Selatan,0
+260605S097,HCI,5-Jun-2026,Rechecked,0.0,Bondowoso,0
+260605S101,HCI,5-Jun-2026,Rechecked,0.0,Bondowoso,0
+260606S086,HCI,6-Jun-2026,Rechecked,0.0,Jember Barat,0
+260606S102,HCI,6-Jun-2026,Rechecked,0.0,Jember Selatan,0
+260607S117,HCI,7-Jun-2026,Rechecked,0.0,Bondowoso,0
+260607S118,HCI,7-Jun-2026,Rechecked,0.0,Jember Timur,0
+260608S106,HCI,8-Jun-2026,Rechecked,0.0,Jember Barat,0
+260608S105,HCI,8-Jun-2026,Rechecked,0.0,Bondowoso,0
+260609S109,HCI,9-Jun-2026,Rechecked,0.0,Jember Utara,0
+260609S110,HCI,9-Jun-2026,Rechecked,0.0,Jember Barat,0
+260610S099,HCI,10-Jun-2026,Rechecked,0.0,Bondowoso,0
+260610S101,HCI,10-Jun-2026,Rechecked,0.0,Jember Selatan,0
+,,,Rechecked,0.0,,0
+,,,Rechecked,0.0,,0
+,,,Rechecked,0.0,,0
+,,,Rechecked,0.0,,0
+,,,Rechecked,0.0,,
+,,,Rechecked,0.0,,
+,,,Rechecked,0.0,,
+,,,Rechecked,0.0,,
+,,,Rechecked,0.0,,
+,,,,0.0,,
+,,,,0.0,,
+,,,,0.0,,
