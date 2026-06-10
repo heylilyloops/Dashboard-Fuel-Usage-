@@ -339,6 +339,10 @@ const fL=v=>Math.round(v).toLocaleString('id-ID')+' Ltr';
 const fS=v=>{const a=Math.abs(v);if(a>=1e9)return'Rp '+(v/1e9).toFixed(2)+' M';if(a>=1e6)return'Rp '+(v/1e6).toFixed(1)+' Jt';return'Rp '+Math.round(v).toLocaleString('id-ID');};
 const fP=(v,d=2)=>(v*100).toFixed(d)+'%';
 const fD=s=>{try{const d=new Date(s+'T00:00:00');return d.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;}};
+function getGroupSites(gk){
+  return loadedSites.filter(s=>{ const g=grpOf(s); return g&&g.key===gk; });
+}
+
 function grpOf(s){
   if(!s) return null;
   const u=s.toUpperCase().trim();
