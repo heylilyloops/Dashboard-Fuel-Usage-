@@ -369,7 +369,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260606S135,HCI,6/6/2026 12:00:00 AM,Solar,44.12,Kota Tasik Timur,300000
 260607S211,HCI,6/7/2026 12:00:00 AM,Rechecked,,Kota Banjar,
 260607S210,HCI,6/7/2026 12:00:00 AM,Rechecked,,Ciamis Utara,
-260608S096,HCI,6/8/2026 12:00:00 AM,,24.32,Kabupaten Tasik Sela,243200
-260608S095,HCI,6/8/2026 12:00:00 AM,,,Kota Tasik Timur,
-260609S230,HCI,6/9/2026 12:00:00 AM,,,Kota Tasik Selatan,
-260609S229,HCI,6/9/2026 12:00:00 AM,,,Kota Tasik Timur,
+260608S096,HCI,6/8/2026 12:00:00 AM,Pertalite,24.32,Kabupaten Tasik Sela,243200
+260608S095,HCI,6/8/2026 12:00:00 AM,Rechecked,,Kota Tasik Timur,
+260609S230,HCI,6/9/2026 12:00:00 AM,Rechecked,,Kota Tasik Selatan,
+260609S229,HCI,6/9/2026 12:00:00 AM,Rechecked,,Kota Tasik Timur,
