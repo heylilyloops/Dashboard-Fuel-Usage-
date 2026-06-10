@@ -78,7 +78,7 @@ input[type=number]{background:var(--sur2);border:1px solid var(--brd);color:var(
 .sb::-webkit-scrollbar{width:3px;}.sb::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);}
 .sb-section{padding:10px 14px 4px;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);}
 .sg{padding:2px 0;}
-.sg-l{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:6px 14px 3px;display:flex;align-items:center;gap:6px;}
+.sg-l{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);padding:6px 14px 3px;display:flex;align-items:center;gap:6px;transition:color .15s;}.sg-l:hover{color:rgba(255,255,255,.5);}
 .sg-l::before{content:'';width:3px;height:10px;border-radius:2px;background:var(--gc,rgba(255,255,255,.2));}
 .si{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;transition:all .15s;border-left:3px solid transparent;}
 .si:hover{background:rgba(255,255,255,.06);}
@@ -271,7 +271,7 @@ const GROUPS = {
   NDC:{label:'NDC',color:'#eab308',sites:['AHI JABABEKA','HCI JABABEKA','KLS JABABEKA','HCI CIKUPA','SDA']},
   RDC:{label:'RDC',color:'#06b6d4',sites:['TALLO','TAMORA']},
   HUB:{label:'Hub',color:'#6366f1',sites:['HUB HCI','HUB AHI','HUB HCI BOGOR','HUB HCI TANGERANG','HUB HCI UTARA','HUB HCI BANDUNG','HUB HCI TASIK','HUB HCI SEMARANG','HUB HCI YOGYA','HUB HCI LAMPUNG','HUB HCI PALEMBANG']},
-  SDC:{label:'SDC',color:'#f97316',sites:['SDC BATAM','SDC SAMARINDA','SDC P PINANG','SDC PONTIANAK','SDC TARAKAN','SDC BANJARMASIN','SDC MANADO','SDC MALUKU','SDC KENDARI','SDC TERNATE','SDC SORONG','SDC ABEPURA','SDC PALU','SDC NAGOYA']}
+  SDC:{label:'SDC',color:'#f97316',sites:['SDC BATAM','SDC SAMARINDA','SDC PANGKALPINANG','SDC PONTIANAK','SDC TARAKAN','SDC BANJARMASIN','SDC MANADO','SDC MALUKU','SDC KENDARI','SDC TERNATE','SDC SORONG','SDC ABEPURA','SDC PALU','SDC NAGOYA']}
 };
 
 const GITHUB_API = 'https://api.github.com/repos/heylilyloops/Dashboard-Fuel-Usage-/contents/data';
@@ -314,7 +314,7 @@ const SITE_COORDS = {
   'HUB HCI YOGYA':[-7.795,110.369],'HUB HCI LAMPUNG':[-5.452,105.261],
   'HUB HCI PALEMBANG':[-2.916,104.745],
   'SDC BATAM':[1.130,104.053],'SDC SAMARINDA':[-0.502,117.154],
-  'SDC P PINANG':[-2.132,106.117],'SDC PONTIANAK':[-0.026,109.343],
+  'SDC PANGKALPINANG':[-2.132,106.117],'SDC PONTIANAK':[-0.026,109.343],
   'SDC TARAKAN':[3.317,117.578],'SDC BANJARMASIN':[-3.319,114.594],
   'SDC MANADO':[1.475,124.842],'SDC MALUKU':[-3.695,128.181],
   'SDC KENDARI':[-3.999,122.513],'SDC TERNATE':[0.790,127.386],
@@ -492,6 +492,14 @@ function saveMo(){closeMo();render();}
 // ============================================================
 // SIDEBAR
 // ============================================================
+// Track collapsed groups
+const collapsedGroups = {};
+
+function toggleGroup(gk){
+  collapsedGroups[gk] = !collapsedGroups[gk];
+  buildSB();
+}
+
 function buildSB(){
   let h=`<div class="sb-section">Menu</div>
   <div class="si ${PAGE==='overview'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','overview')">
@@ -507,29 +515,55 @@ function buildSB(){
     <div class="si-n">Semua Site</div>
     <div class="si-c">${loadedSites.length}</div>
   </div>`;
+
   Object.entries(GROUPS).forEach(([gk,g])=>{
     const gs=g.sites.filter(s=>siteData[s]);
     if(!gs.length)return;
-    h+=`<div class="sg"><div class="sg-l" style="--gc:${g.color}">${g.label} (${gs.length})</div>`;
-    gs.forEach(s=>{
-      h+=`<div class="si ${VIEW===s?'active':''}" onclick="setView('${s}','insight')">
-        <div class="si-d" style="background:${g.color};"></div>
-        <div class="si-n">${s}</div>
+    const collapsed = collapsedGroups[gk]!==false; // default collapsed
+    const arrow = collapsed ? '▶' : '▼';
+    h+=`<div class="sg">
+      <div class="sg-l" style="--gc:${g.color};cursor:pointer;user-select:none;" onclick="toggleGroup('${gk}')">
+        ${g.label} (${gs.length})
+        <span style="margin-left:auto;font-size:8px;opacity:.6;">${arrow}</span>
       </div>`;
-    });
+    if(!collapsed){
+      gs.forEach(s=>{
+        h+=`<div class="si ${VIEW===s?'active':''}" onclick="setView('${s}','insight')">
+          <div class="si-d" style="background:${g.color};"></div>
+          <div class="si-n">${s}</div>
+        </div>`;
+      });
+    }
     h+='</div>';
   });
+
   // Ungrouped
   const ug=loadedSites.filter(s=>!grpOf(s));
   if(ug.length){
-    h+=`<div class="sg"><div class="sg-l">Lainnya</div>`;
-    ug.forEach(s=>{h+=`<div class="si ${VIEW===s?'active':''}" onclick="setView('${s}','insight')"><div class="si-d" style="background:#94a3b8;"></div><div class="si-n">${s}</div></div>`;});
+    const collapsed = collapsedGroups['_other']!==false;
+    h+=`<div class="sg">
+      <div class="sg-l" style="cursor:pointer;user-select:none;" onclick="toggleGroup('_other')">
+        Lainnya (${ug.length})
+        <span style="margin-left:auto;font-size:8px;opacity:.6;">${collapsed?'▶':'▼'}</span>
+      </div>`;
+    if(!collapsed){
+      ug.forEach(s=>{h+=`<div class="si ${VIEW===s?'active':''}" onclick="setView('${s}','insight')"><div class="si-d" style="background:#94a3b8;"></div><div class="si-n">${s}</div></div>`;});
+    }
     h+='</div>';
   }
+
   document.getElementById('sb').innerHTML=h;
 }
 
-function setView(v,p){VIEW=v;PAGE=p||'overview';buildSB();render();}
+function setView(v,p){
+  VIEW=v;PAGE=p||'overview';
+  // Auto-expand group yang berisi site aktif
+  if(v!=='NASIONAL'){
+    const grp=grpOf(v);
+    if(grp) collapsedGroups[grp.key]=false;
+  }
+  buildSB();render();
+}
 
 // ============================================================
 // RENDER
