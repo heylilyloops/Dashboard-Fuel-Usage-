@@ -341,19 +341,19 @@ const fP=(v,d=2)=>(v*100).toFixed(d)+'%';
 const fD=s=>{try{const d=new Date(s+'T00:00:00');return d.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;}};
 function grpOf(s){
   if(!s) return null;
-  const u=s.toUpperCase();
-  // NDC
-  if(['JABABEKA','CIKUPA','SDA'].some(x=>u===x||u.includes(x+' ')||u.endsWith(x))) 
-    return{key:'NDC',label:'NDC',color:'#eab308'};
-  // RDC
-  if(u==='TALLO'||u==='TAMORA') 
+  const u=s.toUpperCase().trim();
+  // RDC — cek dulu sebelum NDC
+  if(u==='TALLO'||u==='TAMORA')
     return{key:'RDC',label:'RDC',color:'#06b6d4'};
   // Hub — HUB AHI, HUB HCI, BKS HCI, BKS AHI
-  if(u.startsWith('HUB AHI')||u.startsWith('HUB HCI')||u.startsWith('BKS HCI')||u.startsWith('BKS AHI')) 
+  if(u.startsWith('HUB AHI')||u.startsWith('HUB HCI')||u.startsWith('BKS HCI')||u.startsWith('BKS AHI'))
     return{key:'HUB',label:'Hub',color:'#6366f1'};
   // SDC
-  if(u.startsWith('SDC')) 
+  if(u.startsWith('SDC'))
     return{key:'SDC',label:'SDC',color:'#f97316'};
+  // NDC — semua yang mengandung JABABEKA, CIKUPA, atau adalah SDA
+  if(u.includes('JABABEKA')||u.includes('CIKUPA')||u==='SDA')
+    return{key:'NDC',label:'NDC',color:'#eab308'};
   return null;
 }
 const getPx=p=>{const x=p==='a'?'pa':'pb';return{Solar:pn(document.getElementById(x+'_s').value)||6800,Dexlite:pn(document.getElementById(x+'_d').value)||14300,Pertalite:pn(document.getElementById(x+'_p').value)||10000,Pertamax:pn(document.getElementById(x+'_x').value)||12300};};
@@ -535,7 +535,7 @@ function buildSB(){
   Object.entries(GROUPS).forEach(([gk,g])=>{
     const gs=getGroupSites(gk);
     if(!gs.length)return;
-    const collapsed = collapsedGroups[gk]!==false; // default collapsed
+    const collapsed = collapsedGroups[gk]===true; // default expanded
     const arrow = collapsed ? '▶' : '▼';
     h+=`<div class="sg">
       <div class="sg-l" style="--gc:${g.color};cursor:pointer;user-select:none;" onclick="toggleGroup('${gk}')">
@@ -556,7 +556,7 @@ function buildSB(){
   // Ungrouped
   const ug=loadedSites.filter(s=>!grpOf(s));
   if(ug.length){
-    const collapsed = collapsedGroups['_other']!==false;
+    const collapsed = collapsedGroups['_other']===true;
     h+=`<div class="sg">
       <div class="sg-l" style="cursor:pointer;user-select:none;" onclick="toggleGroup('_other')">
         Lainnya (${ug.length})
@@ -927,7 +927,7 @@ function rGrp(el,aS,aE,bS,bE,pA,pB){
   const gRows=[];
   Object.entries(GROUPS).forEach(([gk,g])=>{
     let rA=[],rB=[];
-    g.sites.forEach(s=>{if(siteData[s]){rA=[...rA,...fRows(siteData[s],aS,aE)];rB=[...rB,...fRows(siteData[s],bS,bE)];}});
+    getGroupSites(gk).forEach(s=>{if(siteData[s]){rA=[...rA,...fRows(siteData[s],aS,aE)];rB=[...rB,...fRows(siteData[s],bS,bE)];}});
     if(!rA.length&&!rB.length)return;
     const aggA=agg(rA,pA,pA),aggB=agg(rB,pA,pB);
     const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0,ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
