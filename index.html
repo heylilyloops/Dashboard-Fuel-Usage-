@@ -322,6 +322,120 @@ const SITE_COORDS = {
   'SDC PALU':[-0.900,119.878],'SDC NAGOYA':[1.135,104.058],
 };
 
+
+// ============================================================
+// HARGA BBM AKTUAL PER PERIODE & WILAYAH
+// ============================================================
+
+// Periode harga
+const PRICE_PERIODS = [
+  { from: '2026-01-01', to: '2026-04-17', key: 'P1' }, // Masa Murah
+  { from: '2026-04-18', to: '2026-05-03', key: 'P2' }, // Mulai Naik
+  { from: '2026-05-04', to: '2026-05-31', key: 'P3' }, // Puncak Tertinggi
+  { from: '2026-06-01', to: '2099-12-31', key: 'P4' }, // Turun & Stabil
+];
+
+// Harga Dexlite per periode per wilayah (Rp/Liter)
+const DEXLITE_PRICES = {
+  FTZ_BATAM:    { P1: 13450, P2: 22450, P3: 24850, P4: 21850 },
+  JAWA:         { P1: 14200, P2: 23600, P3: 26000, P4: 23000 },
+  SUMUT_ETAL:   { P1: 14500, P2: 24150, P3: 26550, P4: 23500 },
+  SUMBAR_RIAU:  { P1: 14800, P2: 24650, P3: 27050, P4: 24000 },
+};
+
+// Harga Pertamax per periode per wilayah
+const PERTAMAX_PRICES = {
+  FTZ_BATAM:    { P1: 11700, P2: 11700, P3: 11700, P4: 15500 },
+  JAWA:         { P1: 12300, P2: 12300, P3: 12300, P4: 16250 },
+  SUMUT_ETAL:   { P1: 12600, P2: 12600, P3: 12600, P4: 16650 },
+  SUMBAR_RIAU:  { P1: 12900, P2: 12900, P3: 12900, P4: 17000 },
+};
+
+// Harga stabil
+const SOLAR_PRICE = 6800;
+const PERTALITE_PRICE = 10000;
+
+// City → Region mapping
+const CITY_REGION = {
+  'JAKARTA':'JAWA','BOGOR':'JAWA','DEPOK':'JAWA','TANGERANG':'JAWA',
+  'BEKASI':'JAWA','BANDUNG':'JAWA','CIKUPA':'JAWA','JABABEKA':'JAWA',
+  'CIREBON':'JAWA','TASIK':'JAWA','GARUT':'JAWA','SEMARANG':'JAWA',
+  'YOGYA':'JAWA','SOLO':'JAWA','TEGAL':'JAWA','MALANG':'JAWA',
+  'SURABAYA':'JAWA','JEMBER':'JAWA','BANYUWANGI':'JAWA','KEDIRI':'JAWA',
+  'BALI':'JAWA','KUTA':'JAWA','DENPASAR':'JAWA','BANYUMAS':'JAWA',
+  'UTARA':'JAWA','BINTARO':'JAWA','GANDARIA':'JAWA','IBCC':'JAWA',
+  'CIBUBUR':'JAWA','AYB':'JAWA','PURI':'JAWA','PASKAL':'JAWA',
+  'KASABLANKA':'JAWA','TERASUTERA':'JAWA','ALSUT':'JAWA','MAG':'JAWA','DEBOK':'JAWA',
+  'MEDAN':'SUMUT_ETAL','SIANTAR':'SUMUT_ETAL','ACEH':'SUMUT_ETAL',
+  'JAMBI':'SUMUT_ETAL','BENGKULU':'SUMUT_ETAL','PALEMBANG':'SUMUT_ETAL',
+  'LAMPUNG':'SUMUT_ETAL','BALIKPAPAN':'SUMUT_ETAL','SAMARINDA':'SUMUT_ETAL',
+  'TARAKAN':'SUMUT_ETAL','BANJARMASIN':'SUMUT_ETAL','PONTIANAK':'SUMUT_ETAL',
+  'MAKASSAR':'SUMUT_ETAL','TALLO':'SUMUT_ETAL','MANADO':'SUMUT_ETAL',
+  'KENDARI':'SUMUT_ETAL','PALU':'SUMUT_ETAL','TERNATE':'SUMUT_ETAL',
+  'SORONG':'SUMUT_ETAL','ABEPURA':'SUMUT_ETAL','MALUKU':'SUMUT_ETAL',
+  'PANGKALPINANG':'SUMUT_ETAL','TAMORA':'SUMUT_ETAL',
+  'BATAM':'FTZ_BATAM','NAGOYA':'FTZ_BATAM',
+  'PADANG':'SUMBAR_RIAU','PEKANBARU':'SUMBAR_RIAU','DUMAI':'SUMBAR_RIAU',
+};
+
+function getSiteRegion(site){
+  const parts=(site||'').toUpperCase().split(' ');
+  for(let i=parts.length-1;i>=0;i--){
+    if(CITY_REGION[parts[i]]) return CITY_REGION[parts[i]];
+  }
+  if(site.toUpperCase()==='SDA') return 'JAWA';
+  return 'JAWA'; // default
+}
+
+function getPricePeriodKey(dateStr){
+  const d=new Date(dateStr+'T00:00:00');
+  for(const p of PRICE_PERIODS){
+    const from=new Date(p.from+'T00:00:00');
+    const to=new Date(p.to+'T00:00:00');
+    if(d>=from&&d<=to) return p.key;
+  }
+  return 'P4';
+}
+
+function getRefPrice(fuel, site, dateStr){
+  const region=getSiteRegion(site);
+  const pk=getPricePeriodKey(dateStr);
+  const f=(fuel||'').toLowerCase();
+  if(f==='solar'||f==='bio solar') return SOLAR_PRICE;
+  if(f==='pertalite') return PERTALITE_PRICE;
+  if(f==='dexlite') return (DEXLITE_PRICES[region]||DEXLITE_PRICES.JAWA)[pk];
+  if(f==='pertamax') return (PERTAMAX_PRICES[region]||PERTAMAX_PRICES.JAWA)[pk];
+  return 6800;
+}
+
+// Valid price range per fuel
+const VALID_PPL = {
+  'solar': [5500,8500], 'bio solar': [5500,8500],
+  'dexlite': [12000,30000],
+  'pertalite': [8500,12000],
+  'pertamax': [10000,20000],
+};
+
+function getActualPrice(fuel, qty, idr, site, dateStr){
+  if(!qty||qty<=0) return getRefPrice(fuel,site,dateStr);
+  const ppl=idr/qty;
+  const f=(fuel||'').toLowerCase();
+  const range=VALID_PPL[f];
+  if(range&&ppl>=range[0]&&ppl<=range[1]) return ppl; // valid actual
+  return getRefPrice(fuel,site,dateStr); // fallback to reference
+}
+
+// ============================================================
+// FORMAT ANGKA: Rb / Jt / Mil
+// ============================================================
+function fS(v){
+  const a=Math.abs(v);
+  if(a>=1e9) return 'Rp '+(v/1e9).toFixed(2)+' Mil';
+  if(a>=1e6) return 'Rp '+(v/1e6).toFixed(1)+' Jt';
+  if(a>=1e3) return 'Rp '+(v/1e3).toFixed(0)+' Rb';
+  return 'Rp '+Math.round(v).toLocaleString('id-ID');
+}
+
 const FUELS=['Solar','Dexlite','Pertalite','Pertamax'];
 const FC={Solar:'#f59e0b',Dexlite:'#ef4444',Pertalite:'#3b82f6',Pertamax:'#8b5cf6'};
 const FMAP={'bio solar':'Solar','solar':'Solar','biosolar':'Solar','dexlite':'Dexlite','pertalite':'Pertalite','pertamax':'Pertamax'};
@@ -336,7 +450,7 @@ let CH={}, leafletMap=null, mapMarkers=[];
 // ============================================================
 const pn=v=>{const n=parseFloat(String(v||0).replace(',','.'));return isNaN(n)?0:n;};
 const fL=v=>Math.round(v).toLocaleString('id-ID')+' Ltr';
-const fS=v=>{const a=Math.abs(v);if(a>=1e9)return'Rp '+(v/1e9).toFixed(2)+' M';if(a>=1e6)return'Rp '+(v/1e6).toFixed(1)+' Jt';return'Rp '+Math.round(v).toLocaleString('id-ID');};
+// fS defined above with Rb/Jt/Mil format
 const fP=(v,d=2)=>(v*100).toFixed(d)+'%';
 const fD=s=>{try{const d=new Date(s+'T00:00:00');return d.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;}};
 function getGroupSites(gk){
@@ -398,11 +512,14 @@ function fRows(rows,s,e){
   const sd=new Date(s+'T00:00:00'),ed=new Date(e+'T00:00:00');ed.setHours(23,59,59,999);
   return rows.filter(r=>{const d=parseDate(r.d);return d&&d>=sd&&d<=ed;});
 }
-function agg(rows,pOld,pNew){
+function agg(rows,pOld,pNew,site){
+  // site param optional — used for actual price lookup
   const bF={},bJ={};let tQ=0,cB=0,cA=0,dQ=0,dcA=0;
   rows.forEach(r=>{
     const f=normF(r.f),q=pn(r.q),j=(r.j||'').trim()||'—';
-    const po=pOld[f]||0,pn2=pNew[f]||0;
+    // Use actual price if valid, else reference price
+    const po = site ? getActualPrice(f,q,pn(r.i),site,r.d) : (pOld[f]||0);
+    const pn2 = site ? getActualPrice(f,q,pn(r.i),site,r.d) : (pNew[f]||0);
     tQ+=q;cB+=q*po;cA+=q*pn2;
     if(f==='Dexlite'){dQ+=q;dcA+=q*pn2;}
     if(!bF[f])bF[f]={q:0,cB:0,cA:0};
@@ -411,7 +528,8 @@ function agg(rows,pOld,pNew){
     if(!bJ[j][f])bJ[j][f]={q:0,cB:0,cA:0};
     bJ[j][f].q+=q;bJ[j][f].cB+=q*po;bJ[j][f].cA+=q*pn2;
   });
-  const dcB=dQ*(pOld['Dexlite']||0);
+  const dexRefOld=pOld['Dexlite']||0;
+  const dcB=dQ*dexRefOld;
   return{bF,bJ,tQ,cB,cA,imp:cA-cB,dQ,dImp:dcA-dcB,dcA,trip:rows.length};
 }
 
@@ -845,6 +963,7 @@ function rInsight(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
   if(VIEW==='NASIONAL') rGrp(el,aS,aE,bS,bE,pA,pB);
   rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB);
   rTop(el,aggA,aggB,aS,aE,bS,bE,pA,pB);
+  rTrend(el,aS,aE,bS,bE,pA,pB);
   rReko(el,aggA,aggB,aS,aE,bS,bE,pA,pB);
 }
 
@@ -1069,6 +1188,99 @@ function rTop(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
       <div class="tde" style="color:${d>=0?'#dc2626':'#059669'}">${d>=0?'▲ +':'▼ '}${Math.abs(d).toFixed(2)}pp vs Periode A</div>
       <div class="tbb"><div class="tbf" style="width:${Math.min(r.pB*100,100)}%"></div></div>`;
     g.appendChild(div);
+  });
+}
+
+
+function rTrend(el,aS,aE,bS,bE,pA,pB){
+  const sec=mSec(el,'Trend Bulanan — Cost BBM & Volume');
+
+  // Kumpulkan semua bulan dari data
+  const allMonths={};
+  const sites = VIEW==='NASIONAL' ? loadedSites : [VIEW];
+
+  sites.forEach(site=>{
+    const rows=siteData[site]||[];
+    rows.forEach(r=>{
+      const d=parseDate(r.d);
+      if(!d) return;
+      const key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+      if(!allMonths[key]) allMonths[key]={qty:0,cost:0,dexQty:0,dexCost:0};
+      const f=normF(r.f),q=pn(r.q);
+      // Pakai actual/reference price
+      const price=getActualPrice(f,q,pn(r.i),site,r.d);
+      allMonths[key].qty+=q;
+      allMonths[key].cost+=q*price;
+      if(f==='Dexlite'){
+        allMonths[key].dexQty+=q;
+        allMonths[key].dexCost+=q*price;
+      }
+    });
+  });
+
+  const months=Object.keys(allMonths).sort();
+  if(!months.length) return;
+
+  const labels=months.map(m=>{
+    const [y,mo]=m.split('-');
+    const names=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
+    return names[parseInt(mo)-1]+' '+y;
+  });
+
+  const row=document.createElement('div');row.className='g2';sec.appendChild(row);
+
+  // Chart 1: Cost BBM per bulan
+  const c1=mCard(row,'Trend Cost BBM Bulanan','Total biaya BBM aktual per bulan (Rp)');
+  c1.innerHTML+=`<canvas id="cv_trend_cost"></canvas>`;
+
+  // Chart 2: Volume BBM per bulan
+  const c2=mCard(row,'Trend Volume BBM Bulanan','Total konsumsi BBM per bulan (Liter)');
+  c2.innerHTML+=`<canvas id="cv_trend_qty"></canvas>`;
+
+  requestAnimationFrame(()=>{
+    mkC('cv_trend_cost',{
+      type:'bar',
+      data:{
+        labels,
+        datasets:[
+          {label:'Total Cost',data:months.map(m=>allMonths[m].cost),backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:5,order:2},
+          {label:'Cost Dexlite',data:months.map(m=>allMonths[m].dexCost),backgroundColor:'#ef444466',borderColor:'#ef4444',borderWidth:1.5,borderRadius:5,order:1,type:'line',yAxisID:'y',fill:false,pointRadius:4,pointBackgroundColor:'#ef4444'}
+        ]
+      },
+      options:{
+        responsive:true,
+        plugins:{
+          legend:{labels:{color:'#64748b',font:{size:10}}},
+          tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+fS(c.raw)}}
+        },
+        scales:{
+          x:{grid:{display:false},ticks:{color:'#64748b',font:{size:10}}},
+          y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>fS(v)}}
+        }
+      }
+    });
+
+    mkC('cv_trend_qty',{
+      type:'bar',
+      data:{
+        labels,
+        datasets:[
+          {label:'Total Volume',data:months.map(m=>allMonths[m].qty),backgroundColor:'#059669441',borderColor:'#059669',borderWidth:1.5,borderRadius:5,order:2},
+          {label:'Volume Dexlite',data:months.map(m=>allMonths[m].dexQty),backgroundColor:'#f59e0b66',borderColor:'#f59e0b',borderWidth:1.5,borderRadius:5,order:1,type:'line',yAxisID:'y',fill:false,pointRadius:4,pointBackgroundColor:'#f59e0b'}
+        ]
+      },
+      options:{
+        responsive:true,
+        plugins:{
+          legend:{labels:{color:'#64748b',font:{size:10}}},
+          tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.raw.toLocaleString('id-ID',{maximumFractionDigits:0})+' L'}}
+        },
+        scales:{
+          x:{grid:{display:false},ticks:{color:'#64748b',font:{size:10}}},
+          y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID',{maximumFractionDigits:0})+'L'}}
+        }
+      }
+    });
   });
 }
 
