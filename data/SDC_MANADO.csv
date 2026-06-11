@@ -300,11 +300,11 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 ,,08 Jun 2026,Dexlite,22.58,,"Rp 530,660"
 ,,08 Jun 2026,Dexlite,24.46,,"Rp 575,000"
 ,,08 Jun 2026,Pertalite,13.7,,"Rp 137,000"
-,,09 Jun 2026,Dexlite,,,"Rp 183,700"
-,,09 Jun 2026,Pertalite,,,"Rp 114,000"
-,,09 Jun 2026,Dexlite,,,"Rp 167,000"
-,,09 Jun 2026,Pertalite,,,"Rp 110,000"
-,,09 Jun 2026,Dexlite,,,"Rp 150,920"
+,,09 Jun 2026,Dexlite,7.82,,"Rp 183,700"
+,,09 Jun 2026,Pertalite,11.4,,"Rp 114,000"
+,,09 Jun 2026,Dexlite,7.11,,"Rp 167,000"
+,,09 Jun 2026,Pertalite,11.0,,"Rp 110,000"
+,,09 Jun 2026,Dexlite,5.99,,"Rp 150,920"
 ,,10 Jun 2026,Pertalite,10.0,,"Rp 100,000"
 ,,10 Jun 2026,Dexlite,8.09,,"Rp 190,121"
 ,,10 Jun 2026,Dexlite,16.6,,"Rp 390,000"
@@ -313,4 +313,10 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 ,,10 Jun 2026,Dexlite,13.66,,"Rp 321,000"
 ,,10 Jun 2026,Dexlite,14.98,,"Rp 351,913"
 ,,10 Jun 2026,Dexlite,5.45,,"Rp 128,260"
+,,11 Jun 2026,Pertalite,9.7,,"Rp 97,000"
+,,11 Jun 2026,,,,
+,,11 Jun 2026,,,,
+,,11 Jun 2026,,,,
+,,11 Jun 2026,,,,
+,,11 Jun 2026,,,,
 ,,11 Jun 2026,,,,
