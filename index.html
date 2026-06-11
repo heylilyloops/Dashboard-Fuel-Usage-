@@ -1204,10 +1204,12 @@ function rTrend(el,aS,aE,bS,bE,pA,pB){
     rows.forEach(r=>{
       const d=parseDate(r.d);
       if(!d) return;
-      const key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+      if(d.getFullYear()!==2026) return; // YTD 2026 only
+      const key='2026-'+String(d.getMonth()+1).padStart(2,'0');
       if(!allMonths[key]) allMonths[key]={qty:0,cost:0,dexQty:0,dexCost:0};
-      const f=normF(r.f),q=pn(r.q);
-      // Pakai actual/reference price
+      const f=normF(r.f);
+      let q=pn(r.q);
+      if(q>500) return; // cap outlier qty per trip
       const price=getActualPrice(f,q,pn(r.i),site,r.d);
       allMonths[key].qty+=q;
       allMonths[key].cost+=q*price;
