@@ -250,7 +250,7 @@ table.t tr:hover td{background:var(--sur2);}
   </div>
   <div class="tb-r">
     <div style="display:flex;align-items:center;gap:5px;"><div class="sdot" id="sdot"></div><div class="stx" id="stx">Memuat...</div></div>
-    <button class="btn-g" onclick="openMo()">⚙️ Harga BBM</button>
+    <button class="btn-g" onclick="openMo()" title="Override harga manual (opsional)">⚙️ Override Harga</button>
     <button class="btn-g" onclick="loadAll()" id="btnLoad">↻ Reload</button>
   </div>
 </div>
@@ -513,24 +513,36 @@ function fRows(rows,s,e){
   return rows.filter(r=>{const d=parseDate(r.d);return d&&d>=sd&&d<=ed;});
 }
 function agg(rows,pOld,pNew,site){
-  // site param optional — used for actual price lookup
-  const bF={},bJ={};let tQ=0,cB=0,cA=0,dQ=0,dcA=0;
+  // pOld/pNew kept for compatibility but actual price per row always used
+  const bF={},bJ={};let tQ=0,cB=0,cA=0,dQ=0,dcA=0,dcB=0;
   rows.forEach(r=>{
     const f=normF(r.f),q=pn(r.q),j=(r.j||'').trim()||'—';
-    // Use actual price if valid, else reference price
-    const po = site ? getActualPrice(f,q,pn(r.i),site,r.d) : (pOld[f]||0);
-    const pn2 = site ? getActualPrice(f,q,pn(r.i),site,r.d) : (pNew[f]||0);
-    tQ+=q;cB+=q*po;cA+=q*pn2;
-    if(f==='Dexlite'){dQ+=q;dcA+=q*pn2;}
+    // Actual price = hybrid (actual if valid, ref if anomali)
+    const actualP=getActualPrice(f,q,pn(r.i),site||'',r.d);
+    // Cost Before = harga subsidi baseline (Solar/Pertalite stabil, non-subsidi pakai harga P1 Jan sebagai baseline)
+    const baseP=getBasePrice(f,site||'');
+    tQ+=q;
+    cB+=q*baseP;
+    cA+=q*actualP;
+    if(f==='Dexlite'){dQ+=q;dcA+=q*actualP;dcB+=q*baseP;}
     if(!bF[f])bF[f]={q:0,cB:0,cA:0};
-    bF[f].q+=q;bF[f].cB+=q*po;bF[f].cA+=q*pn2;
+    bF[f].q+=q;bF[f].cB+=q*baseP;bF[f].cA+=q*actualP;
     if(!bJ[j])bJ[j]={};
     if(!bJ[j][f])bJ[j][f]={q:0,cB:0,cA:0};
-    bJ[j][f].q+=q;bJ[j][f].cB+=q*po;bJ[j][f].cA+=q*pn2;
+    bJ[j][f].q+=q;bJ[j][f].cB+=q*baseP;bJ[j][f].cA+=q*actualP;
   });
-  const dexRefOld=pOld['Dexlite']||0;
-  const dcB=dQ*dexRefOld;
   return{bF,bJ,tQ,cB,cA,imp:cA-cB,dQ,dImp:dcA-dcB,dcA,trip:rows.length};
+}
+
+// Base price = harga terendah / masa murah (P1) — sebagai baseline Cost Before
+function getBasePrice(fuel,site){
+  const region=getSiteRegion(site);
+  const f=(fuel||'').toLowerCase();
+  if(f==='solar'||f==='bio solar') return SOLAR_PRICE;
+  if(f==='pertalite') return PERTALITE_PRICE;
+  if(f==='dexlite') return (DEXLITE_PRICES[region]||DEXLITE_PRICES.JAWA)['P1'];
+  if(f==='pertamax') return (PERTAMAX_PRICES[region]||PERTAMAX_PRICES.JAWA)['P1'];
+  return 6800;
 }
 
 // CSV
@@ -560,7 +572,11 @@ function csvToRows(text){
     q:cleanNum(r['Qty Fuel']),
     j:r['Jalur']||'',
     i:cleanNum(r['BBM IDR'])
-  })).filter(r=>r.q>0||r.i>0);
+  })).filter(r=>{
+    if(r.q<=0&&r.i<=0) return false;
+    if(r.q>500) return false; // cap outlier qty per trip
+    return true;
+  });
 }
 
 // ============================================================
@@ -712,9 +728,10 @@ function render(){
   const bS=document.getElementById('bS').value,bE=document.getElementById('bE').value;
   const pA=getPx('a'),pB=getPx('b');
   let rA=[],rB=[];
+  const currentSite=VIEW==='NASIONAL'?'':VIEW;
   if(VIEW==='NASIONAL'){loadedSites.forEach(s=>{const r=siteData[s]||[];rA=[...rA,...fRows(r,aS,aE)];rB=[...rB,...fRows(r,bS,bE)];});}
   else{const r=siteData[VIEW]||[];rA=fRows(r,aS,aE);rB=fRows(r,bS,bE);}
-  const aggA=agg(rA,pA,pA),aggB=agg(rB,pA,pB);
+  const aggA=agg(rA,{},{},currentSite),aggB=agg(rB,{},{},currentSite);
   Object.values(CH).forEach(c=>{try{c.destroy();}catch(e){}});CH={};
   const m=document.getElementById('main');m.innerHTML='';
   // Page title
@@ -812,7 +829,7 @@ function rMap(el,bS,bE,pA,pB){
     loadedSites.forEach(site=>{
       const coords=SITE_COORDS[site];if(!coords)return;
       const rows=siteData[site]||[];
-      const b2=agg(fRows(rows,bS,bE),pA,pB);
+      const b2=agg(fRows(rows,bS,bE),{},{},site);
       const grp=grpOf(site);
       const color=grp?grp.color:'#94a3b8';
       const icon=L.divIcon({html:`<div style="width:12px;height:12px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);"></div>`,iconSize:[12,12],iconAnchor:[6,6],className:''});
@@ -1052,7 +1069,7 @@ function rGrp(el,aS,aE,bS,bE,pA,pB){
     let rA=[],rB=[];
     getGroupSites(gk).forEach(s=>{if(siteData[s]){rA=[...rA,...fRows(siteData[s],aS,aE)];rB=[...rB,...fRows(siteData[s],bS,bE)];}});
     if(!rA.length&&!rB.length)return;
-    const aggA=agg(rA,pA,pA),aggB=agg(rB,pA,pB);
+    const aggA=agg(rA,{},{},gk),aggB=agg(rB,{},{},gk);
     const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0,ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
     gRows.push({g,gk,aggA,aggB,ipA,ipB});
   });
@@ -1100,7 +1117,7 @@ function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
     const sRows=[];
     loadedSites.forEach(s=>{
       const r=siteData[s]||[];
-      const a2=agg(fRows(r,aS,aE),pA,pA),b2=agg(fRows(r,bS,bE),pA,pB);
+      const a2=agg(fRows(r,aS,aE),{},{},s),b2=agg(fRows(r,bS,bE),{},{},s);
       const grp=grpOf(s);
       sRows.push({s,grp,a:a2,b:b2,ipA:a2.cA>0?a2.dImp/a2.cA:0,ipB:b2.cA>0?b2.dImp/b2.cA:0});
     });
@@ -1158,7 +1175,7 @@ function rTop(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
   if(VIEW==='NASIONAL'){
     loadedSites.forEach(s=>{
       const r=siteData[s]||[];
-      const a2=agg(fRows(r,aS,aE),pA,pA),b2=agg(fRows(r,bS,bE),pA,pB);
+      const a2=agg(fRows(r,aS,aE),{},{},s),b2=agg(fRows(r,bS,bE),{},{},s);
       const grp=grpOf(s);
       items.push({n:s,grp,pA:a2.cA>0?a2.dImp/a2.cA:0,pB:b2.cA>0?b2.dImp/b2.cA:0,dQB:b2.dQ,iB:b2.dImp,iA:a2.dImp});
     });
@@ -1209,14 +1226,14 @@ function rTrend(el,aS,aE,bS,bE,pA,pB){
       if(!allMonths[key]) allMonths[key]={qty:0,cost:0,dexQty:0,dexCost:0};
       const f=normF(r.f);
       let q=pn(r.q);
-      if(q>500) return; // cap outlier qty per trip
       const price=getActualPrice(f,q,pn(r.i),site,r.d);
+      const cost=q*price;
       allMonths[key].qty+=q;
-      allMonths[key].cost+=q*price;
-      if(f==='Dexlite'){
-        allMonths[key].dexQty+=q;
-        allMonths[key].dexCost+=q*price;
-      }
+      allMonths[key].cost+=cost;
+      if(f==='Solar'||f==='Bio Solar') { allMonths[key].solarQty=(allMonths[key].solarQty||0)+q; allMonths[key].solarCost=(allMonths[key].solarCost||0)+cost; }
+      if(f==='Dexlite') { allMonths[key].dexQty=(allMonths[key].dexQty||0)+q; allMonths[key].dexCost=(allMonths[key].dexCost||0)+cost; }
+      if(f==='Pertalite') { allMonths[key].perQty=(allMonths[key].perQty||0)+q; allMonths[key].perCost=(allMonths[key].perCost||0)+cost; }
+      if(f==='Pertamax') { allMonths[key].maxQty=(allMonths[key].maxQty||0)+q; allMonths[key].maxCost=(allMonths[key].maxCost||0)+cost; }
     });
   });
 
@@ -1240,48 +1257,56 @@ function rTrend(el,aS,aE,bS,bE,pA,pB){
   c2.innerHTML+=`<canvas id="cv_trend_qty"></canvas>`;
 
   requestAnimationFrame(()=>{
+    const stackOpts={
+      responsive:true,
+      plugins:{
+        legend:{labels:{color:'#64748b',font:{size:10}}},
+        tooltip:{mode:'index',intersect:false}
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{color:'#64748b',font:{size:10}},stacked:true},
+        y:{grid:{color:'#e2e8f0'},stacked:true,ticks:{color:'#64748b',font:{size:10},callback:v=>fS(v)}}
+      }
+    };
+
     mkC('cv_trend_cost',{
       type:'bar',
       data:{
         labels,
         datasets:[
-          {label:'Total Cost',data:months.map(m=>allMonths[m].cost),backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:5,order:2},
-          {label:'Cost Dexlite',data:months.map(m=>allMonths[m].dexCost),backgroundColor:'#ef444466',borderColor:'#ef4444',borderWidth:1.5,borderRadius:5,order:1,type:'line',yAxisID:'y',fill:false,pointRadius:4,pointBackgroundColor:'#ef4444'}
+          {label:'Solar',data:months.map(m=>allMonths[m].solarCost||0),backgroundColor:'#f59e0b99',borderColor:'#f59e0b',borderWidth:1,stack:'cost'},
+          {label:'Dexlite',data:months.map(m=>allMonths[m].dexCost||0),backgroundColor:'#ef444499',borderColor:'#ef4444',borderWidth:1,stack:'cost'},
+          {label:'Pertalite',data:months.map(m=>allMonths[m].perCost||0),backgroundColor:'#3b82f699',borderColor:'#3b82f6',borderWidth:1,stack:'cost'},
+          {label:'Pertamax',data:months.map(m=>allMonths[m].maxCost||0),backgroundColor:'#8b5cf699',borderColor:'#8b5cf6',borderWidth:1,stack:'cost'},
         ]
       },
-      options:{
-        responsive:true,
-        plugins:{
-          legend:{labels:{color:'#64748b',font:{size:10}}},
-          tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+fS(c.raw)}}
-        },
-        scales:{
-          x:{grid:{display:false},ticks:{color:'#64748b',font:{size:10}}},
-          y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>fS(v)}}
-        }
-      }
+      options:{...stackOpts,plugins:{...stackOpts.plugins,tooltip:{mode:'index',intersect:false,callbacks:{label:c=>' '+c.dataset.label+': '+fS(c.raw)}}}}
     });
+
+    const qtyOpts={
+      responsive:true,
+      plugins:{
+        legend:{labels:{color:'#64748b',font:{size:10}}},
+        tooltip:{mode:'index',intersect:false}
+      },
+      scales:{
+        x:{grid:{display:false},ticks:{color:'#64748b',font:{size:10}},stacked:true},
+        y:{grid:{color:'#e2e8f0'},stacked:true,ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID',{maximumFractionDigits:0})+'L'}}
+      }
+    };
 
     mkC('cv_trend_qty',{
       type:'bar',
       data:{
         labels,
         datasets:[
-          {label:'Total Volume',data:months.map(m=>allMonths[m].qty),backgroundColor:'#059669441',borderColor:'#059669',borderWidth:1.5,borderRadius:5,order:2},
-          {label:'Volume Dexlite',data:months.map(m=>allMonths[m].dexQty),backgroundColor:'#f59e0b66',borderColor:'#f59e0b',borderWidth:1.5,borderRadius:5,order:1,type:'line',yAxisID:'y',fill:false,pointRadius:4,pointBackgroundColor:'#f59e0b'}
+          {label:'Solar',data:months.map(m=>allMonths[m].solarQty||0),backgroundColor:'#f59e0b99',borderColor:'#f59e0b',borderWidth:1,stack:'qty'},
+          {label:'Dexlite',data:months.map(m=>allMonths[m].dexQty||0),backgroundColor:'#ef444499',borderColor:'#ef4444',borderWidth:1,stack:'qty'},
+          {label:'Pertalite',data:months.map(m=>allMonths[m].perQty||0),backgroundColor:'#3b82f699',borderColor:'#3b82f6',borderWidth:1,stack:'qty'},
+          {label:'Pertamax',data:months.map(m=>allMonths[m].maxQty||0),backgroundColor:'#8b5cf699',borderColor:'#8b5cf6',borderWidth:1,stack:'qty'},
         ]
       },
-      options:{
-        responsive:true,
-        plugins:{
-          legend:{labels:{color:'#64748b',font:{size:10}}},
-          tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.raw.toLocaleString('id-ID',{maximumFractionDigits:0})+' L'}}
-        },
-        scales:{
-          x:{grid:{display:false},ticks:{color:'#64748b',font:{size:10}}},
-          y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID',{maximumFractionDigits:0})+'L'}}
-        }
-      }
+      options:{...qtyOpts,plugins:{...qtyOpts.plugins,tooltip:{mode:'index',intersect:false,callbacks:{label:c=>' '+c.dataset.label+': '+c.raw.toLocaleString('id-ID',{maximumFractionDigits:0})+' L'}}}}
     });
   });
 }
@@ -1293,7 +1318,7 @@ function rReko(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
   // Hitung per site
   const siteStats=loadedSites.map(s=>{
     const r=siteData[s]||[];
-    const a2=agg(fRows(r,aS,aE),pA,pA),b2=agg(fRows(r,bS,bE),pA,pB);
+    const a2=agg(fRows(r,aS,aE),{},{},s),b2=agg(fRows(r,bS,bE),{},{},s);
     const dpA=a2.tQ>0?a2.dQ/a2.tQ:0,dpB=b2.tQ>0?b2.dQ/b2.tQ:0;
     const ipA=a2.cA>0?a2.dImp/a2.cA:0,ipB=b2.cA>0?b2.dImp/b2.cA:0;
     return{s,dpA,dpB,ipA,ipB,tQA:a2.tQ,tQB:b2.tQ,tripA:a2.trip,tripB:b2.trip};
