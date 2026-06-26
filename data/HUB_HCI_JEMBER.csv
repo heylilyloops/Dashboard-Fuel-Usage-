@@ -289,17 +289,17 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260530S131,HCI,30-May-2026,Rechecked,0.0,Jember Barat,0
 260530S132,HCI,30-May-2026,Rechecked,0.0,Jember Utara,0
 260531S114,HCI,31-May-2026,Rechecked,0.0,Lumajang,0
-260531S115,HCI,31-May-2026,Rechecked,0.06,KAlisat,Rp375.00
+260531S115,HCI,31-May-2026,Rechecked,55.15,KAlisat,"Rp375,000.00"
 260601S100,HCI,1-Jun-2026,Rechecked,0.0,Jember Barat,0
 260601S101,HCI,1-Jun-2026,Rechecked,0.0,Jember Selatan,0
-260602S123,HCI,2-Jun-2026,Solar,0.05,Jember Selatan,Rp345.00
+260602S123,HCI,2-Jun-2026,Solar,58.82,Jember Selatan,"Rp400,000.00"
 260602S126,HCI,2-Jun-2026,Rechecked,0.0,Bondowoso,0
 260603S032,HCI,3-Jun-2026,Rechecked,0.0,Jember Timur,0
 260603S085,HCI,3-Jun-2026,Rechecked,0.0,Lumajang,0
 260604S087,HCI,4-Jun-2026,Rechecked,0.0,Jember Barat,0
 260604S093,HCI,4-Jun-2026,Rechecked,0.0,Jember Selatan,0
 260605S097,HCI,5-Jun-2026,Rechecked,0.0,Bondowoso,0
-260605S101,HCI,5-Jun-2026,Rechecked,0.0,Bondowoso,0
+260605S101,HCI,5-Jun-2026,Rechecked,51.47,Bondowoso,"Rp350,000.00"
 260606S086,HCI,6-Jun-2026,Rechecked,0.0,Jember Barat,0
 260606S102,HCI,6-Jun-2026,Rechecked,0.0,Jember Selatan,0
 260607S117,HCI,7-Jun-2026,Rechecked,0.0,Bondowoso,0
@@ -309,39 +309,39 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260609S109,HCI,9-Jun-2026,Rechecked,0.0,Jember Utara,0
 260609S110,HCI,9-Jun-2026,Rechecked,0.0,Jember Barat,0
 260610S099,HCI,10-Jun-2026,Rechecked,0.0,Bondowoso,0
-260610S101,HCI,10-Jun-2026,Rechecked,0.0,Jember Selatan,0
+260610S101,HCI,10-Jun-2026,Rechecked,48.53,Jember Selatan,"Rp330,000.00"
 260611S081,HCI,11-Jun-2026,Rechecked,0.0,Jember Utara,0
 260611S082,HCI,11-Jun-2026,Rechecked,0.0,Jember Barat,0
 260612S145,HCI,12-Jun-2026,Rechecked,0.0,Lumajang ,0
 260612S152,HCI,12-Jun-2026,Rechecked,0.0,Bondowoso,0
-260613S206,HCI,13-Jun-2026,Rechecked,0.0,Jember Selatan,0
+260613S206,HCI,13-Jun-2026,Solar,58.82,Jember Selatan,"Rp400,000.00"
 260613S204,HCI,13-Jun-2026,Rechecked,0.0,Jember Barat,0
 260614S123,HCI,14-Jun-2026,Rechecked,0.0,Bondowoso,0
-260614S126,HCI,14-Jun-2026,Rechecked,0.0,Jember Barat,0
+260614S126,HCI,14-Jun-2026,Rechecked,51.44,Jember Barat,"Rp349,800.00"
 260615S171,HCI,15-Jun-2026,Rechecked,0.0,Jember Timur,0
 260615S173,HCI,15-Jun-2026,Rechecked,0.0,Jember Barat,0
 260616S221,HCI,6/16/2026,#REF!,0.0,Jember Timur,0
 260616S223,HCI,6/16/2026,#REF!,0.0,Jember Barat,0
-260617S125,HCI,17-Jun-2026,Rechecked,0.0,Bondowoso,0
-260617S128,HCI,17-Jun-2026,Rechecked,0.0,Jember Barat,0
+260617S125,HCI,17-Jun-2026,Solar,58.82,Bondowoso,"Rp400,000.00"
+260617S128,HCI,17-Jun-2026,Rechecked,54.59,Jember Barat,"Rp371,200.00"
 260618S124,HCI,18-Jun-2026,,0.0,Jember Utara,0
 260618S126,HCI,18-Jun-2026,,0.0,Jember Selatan,0
 260619S115,HCI,19-Jun-2026,,0.0,Jember Utara,0
-260619S116,HCI,19-Jun-2026,,0.0,Bondowoso,0
+260619S116,HCI,19-Jun-2026,,53.4,Bondowoso,"Rp363,100.00"
 260620S096,HCI,20-Jun-2026,,0.0,Jember Timur,0
 260620S095,HCI,20-Jun-2026,,0.0,Jember Selatan,0
-260621S095,HCI,21-Jun-2026,,0.0,Lumajang,0
+260621S095,HCI,21-Jun-2026,,58.82,Lumajang,"Rp400,000.00"
 260621S096,HCI,21-Jun-2026,,0.0,Jember Utara,0
 260622S192,HCI,22-Jun-2026,,0.0,Jember Utara,0
 260622S193,HCI,22-Jun-2026,,0.0,Jember Selatan,0
 260623S215,HCI,23-Jun-2026,,0.0,Jember Utara,0
-260623S216,HCI,23-Jun-2026,,0.0,Jember Timur,0
+260623S216,HCI,23-Jun-2026,,550.0,Jember Timur,"Rp3,740,000.00"
 260624S175,HCI,24-Jun-2026,,0.0,Lumajang,0
 260624S184,HCI,24-Jun-2026,,0.0,Bondowoso,0
-260625S101,HCI,25-Jun-2026,,0.0,Jember Utara,0
+260625S101,HCI,25-Jun-2026,,58.82,Jember Utara,"Rp400,000.00"
 260625S102,HCI,25-Jun-2026,,,Jember Barat,0
-,,,,,,0
-,,,,,,0
+260626S128,HCI,26-Jun-2026,,,Lumajang,0
+260626S129,HCI,26-Jun-2026,,,Bondowoso,0
 ,,,,,,0
 ,,,,,,0
 ,,,,,,0
