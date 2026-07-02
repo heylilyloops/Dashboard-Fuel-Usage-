@@ -332,26 +332,27 @@ const PRICE_PERIODS = [
   { from: '2026-01-01', to: '2026-04-17', key: 'P1' }, // Masa Murah
   { from: '2026-04-18', to: '2026-05-03', key: 'P2' }, // Mulai Naik
   { from: '2026-05-04', to: '2026-05-31', key: 'P3' }, // Puncak Tertinggi
-  { from: '2026-06-01', to: '2099-12-31', key: 'P4' }, // Turun & Stabil
+  { from: '2026-06-01', to: '2026-06-30', key: 'P4' }, // Turun & Stabil Juni
+  { from: '2026-07-01', to: '2099-12-31', key: 'P5' }, // Update 1 Juli 2026
 ];
 
 // Harga Dexlite per periode per wilayah (Rp/Liter)
 const DEXLITE_PRICES = {
-  FTZ_BATAM:    { P1: 13450, P2: 22450, P3: 24850, P4: 21850 },
-  JAWA:         { P1: 14200, P2: 23600, P3: 26000, P4: 23000 },
-  SUMUT_ETAL:   { P1: 14500, P2: 24150, P3: 26550, P4: 23500 },
-  SUMBAR_RIAU:  { P1: 14800, P2: 24650, P3: 27050, P4: 24000 },
+  FTZ_BATAM:    { P1: 13450, P2: 22450, P3: 24850, P4: 21850, P5: 17550 },
+  JAWA:         { P1: 14200, P2: 23600, P3: 26000, P4: 23000, P5: 19700 },
+  SUMUT_ETAL:   { P1: 14500, P2: 24150, P3: 26550, P4: 23500, P5: 20150 },
+  SUMBAR_RIAU:  { P1: 14800, P2: 24650, P3: 27050, P4: 24000, P5: 20550 },
 };
 
-// Harga Pertamax per periode per wilayah
+// Harga Pertamax (RON 92) per periode per wilayah
 const PERTAMAX_PRICES = {
-  FTZ_BATAM:    { P1: 11700, P2: 11700, P3: 11700, P4: 15500 },
-  JAWA:         { P1: 12300, P2: 12300, P3: 12300, P4: 16250 },
-  SUMUT_ETAL:   { P1: 12600, P2: 12600, P3: 12600, P4: 16650 },
-  SUMBAR_RIAU:  { P1: 12900, P2: 12900, P3: 12900, P4: 17000 },
+  FTZ_BATAM:    { P1: 11700, P2: 11700, P3: 11700, P4: 15500, P5: 12850 },
+  JAWA:         { P1: 12300, P2: 12300, P3: 12300, P4: 16250, P5: 16250 },
+  SUMUT_ETAL:   { P1: 12600, P2: 12600, P3: 12600, P4: 16650, P5: 16650 },
+  SUMBAR_RIAU:  { P1: 12900, P2: 12900, P3: 12900, P4: 17000, P5: 17000 },
 };
 
-// Harga stabil
+// Harga stabil (subsidi)
 const SOLAR_PRICE = 6800;
 const PERTALITE_PRICE = 10000;
 
