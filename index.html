@@ -431,9 +431,9 @@ function getActualPrice(fuel, qty, idr, site, dateStr){
 // ============================================================
 function fS(v){
   const a=Math.abs(v);
-  if(a>=1e9) return 'Rp '+(v/1e9).toFixed(2)+' Mil';
-  if(a>=1e6) return 'Rp '+(v/1e6).toFixed(1)+' Jt';
-  if(a>=1e3) return 'Rp '+(v/1e3).toFixed(0)+' Rb';
+  if(a>=1e9) return 'Rp '+(v/1e9).toFixed(2)+' M'; // Miliar
+  if(a>=1e6) return 'Rp '+(v/1e6).toFixed(1)+' Jt'; // Juta
+  if(a>=1e3) return 'Rp '+(v/1e3).toFixed(0)+' Rb'; // Ribu
   return 'Rp '+Math.round(v).toLocaleString('id-ID');
 }
 
