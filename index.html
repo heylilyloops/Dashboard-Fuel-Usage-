@@ -487,10 +487,17 @@ function parseDate(raw){
   if(!raw||!raw.trim()) return null;
   const s=raw.trim();
 
-  // Format M/D/YYYY (NDC, Hub)
+  // Format M/D/YYYY atau MM/DD/YYYY (NDC, Hub)
   if(s.includes('/')){
     const p=s.split('/');
-    if(p.length===3){const d=new Date(parseInt(p[2]),parseInt(p[0])-1,parseInt(p[1]));if(!isNaN(d))return d;}
+    if(p.length===3){
+      const month=parseInt(p[0]),day=parseInt(p[1]),year=parseInt(p[2]);
+      // Validasi: month 1-12, day 1-31
+      if(month>=1&&month<=12&&day>=1&&day<=31&&year>=2020){
+        const d=new Date(year,month-1,day);
+        if(!isNaN(d))return d;
+      }
+    }
   }
 
   // Format "D Mon YYYY" atau "DD Mon YYYY" (TALLO, SDC) atau "D-Mon-YYYY" (TAMORA)
