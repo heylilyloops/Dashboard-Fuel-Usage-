@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- v20260706 -->
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -593,47 +592,20 @@ function splitLine(line){
   res.push(cur.trim().replace(/^"|"$/g,''));return res;
 }
 function cleanNum(v){
-  // Generic: handles both qty (dot=decimal) and IDR (dot=thousand)
   if(!v) return 0;
-  let s=String(v).replace(/Rp\s*/gi,'').trim();
-  if(s.includes(',')&&s.includes('.')){
-    s=s.replace(/\./g,'').replace(',','.');
-  } else if(s.includes(',')&&!s.includes('.')){
-    const parts=s.split(',');
-    if(parts.length===2&&parts[1].length<=2) s=s.replace(',','.');
-    else s=s.replace(/,/g,'');
-  }
-  return parseFloat(s)||0;
-}
-
-function cleanQty(v){
-  // Qty Fuel: dot always = decimal (e.g. 45.7 = 45.7 liters)
-  if(!v) return 0;
-  const s=String(v).replace(/,/g,'.').trim();
-  return parseFloat(s)||0;
-}
-
-function cleanIDR(v){
-  // BBM IDR: dot = thousand separator, comma = decimal (e.g. "310.556" = 310556)
-  if(!v) return 0;
-  let s=String(v).replace(/Rp\s*/gi,'').trim();
-  if(s.includes(',')&&s.includes('.')){
-    s=s.replace(/\./g,'').replace(',','.');
-  } else if(s.includes('.')&&!s.includes(',')){
-    // dot only: if last group has 3 digits = thousand, else decimal
-    const parts=s.split('.');
-    if(parts[parts.length-1].length===3) s=s.replace(/\./g,'');
-  }
-  return parseFloat(s)||0;
+  // Remove "Rp ", spaces, dots as thousand sep, then parse
+  const s=String(v).replace(/Rp\s*/gi,'').replace(/\./g,'').replace(/,/g,'.').trim();
+  const n=parseFloat(s);
+  return isNaN(n)?0:n;
 }
 
 function csvToRows(text){
   return parseCSV(text).map(r=>({
     d:r['Delivery Date']||'',
     f:r["Fuel's Type"]||r["Fuels Type"]||'Solar',
-    q:cleanQty(r['Qty Fuel']),
+    q:cleanNum(r['Qty Fuel']),
     j:r['Jalur']||'',
-    i:cleanIDR(r['BBM IDR'])
+    i:cleanNum(r['BBM IDR'])
   })).filter(r=>{
     if(r.q<=0&&r.i<=0) return false;
     if(r.q>500) return false; // cap outlier qty per trip
@@ -1199,13 +1171,7 @@ function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
       const grp=grpOf(s);
       sRows.push({s,grp,a:a2,b:b2,ipA:a2.cA>0?a2.dImp/a2.cA:0,ipB:b2.cA>0?b2.dImp/b2.cA:0});
     });
-    const grpOrder={'NDC':0,'RDC':1,'SDC':2,'HUB':3};
-    sRows.sort((x,y)=>{
-      const gx=grpOrder[x.grp?x.grp.key:'']??9;
-      const gy=grpOrder[y.grp?y.grp.key:'']??9;
-      if(gx!==gy) return gx-gy;
-      return y.b.cA-x.b.cA;
-    });
+    sRows.sort((x,y)=>y.b.cA-x.b.cA);
     let h=`<div class="tw"><table class="t"><thead><tr><th>#</th><th>Site</th><th>Grp</th><th>Liter A</th><th>Liter B</th><th>Δ</th><th>Dex A</th><th>Dex B</th><th>Cost After A</th><th>Cost After B</th><th>Impact A</th><th>Impact B</th><th>Δ Impact</th><th>% Dex A</th><th>% Dex B</th></tr></thead><tbody>`;
     sRows.forEach((r,i)=>{
       const dL=r.b.tQ-r.a.tQ,dI=r.b.dImp-r.a.dImp,gc=r.grp?r.grp.color:'#888';
@@ -1507,4 +1473,3 @@ loadAll();
 </script>
 </body>
 </html>
-<!-- build 1783305167 -->
