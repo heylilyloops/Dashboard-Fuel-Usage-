@@ -593,20 +593,47 @@ function splitLine(line){
   res.push(cur.trim().replace(/^"|"$/g,''));return res;
 }
 function cleanNum(v){
+  // Generic: handles both qty (dot=decimal) and IDR (dot=thousand)
   if(!v) return 0;
-  // Remove "Rp ", spaces, dots as thousand sep, then parse
-  const s=String(v).replace(/Rp\s*/gi,'').replace(/\./g,'').replace(/,/g,'.').trim();
-  const n=parseFloat(s);
-  return isNaN(n)?0:n;
+  let s=String(v).replace(/Rp\s*/gi,'').trim();
+  if(s.includes(',')&&s.includes('.')){
+    s=s.replace(/\./g,'').replace(',','.');
+  } else if(s.includes(',')&&!s.includes('.')){
+    const parts=s.split(',');
+    if(parts.length===2&&parts[1].length<=2) s=s.replace(',','.');
+    else s=s.replace(/,/g,'');
+  }
+  return parseFloat(s)||0;
+}
+
+function cleanQty(v){
+  // Qty Fuel: dot always = decimal (e.g. 45.7 = 45.7 liters)
+  if(!v) return 0;
+  const s=String(v).replace(/,/g,'.').trim();
+  return parseFloat(s)||0;
+}
+
+function cleanIDR(v){
+  // BBM IDR: dot = thousand separator, comma = decimal (e.g. "310.556" = 310556)
+  if(!v) return 0;
+  let s=String(v).replace(/Rp\s*/gi,'').trim();
+  if(s.includes(',')&&s.includes('.')){
+    s=s.replace(/\./g,'').replace(',','.');
+  } else if(s.includes('.')&&!s.includes(',')){
+    // dot only: if last group has 3 digits = thousand, else decimal
+    const parts=s.split('.');
+    if(parts[parts.length-1].length===3) s=s.replace(/\./g,'');
+  }
+  return parseFloat(s)||0;
 }
 
 function csvToRows(text){
   return parseCSV(text).map(r=>({
     d:r['Delivery Date']||'',
     f:r["Fuel's Type"]||r["Fuels Type"]||'Solar',
-    q:cleanNum(r['Qty Fuel']),
+    q:cleanQty(r['Qty Fuel']),
     j:r['Jalur']||'',
-    i:cleanNum(r['BBM IDR'])
+    i:cleanIDR(r['BBM IDR'])
   })).filter(r=>{
     if(r.q<=0&&r.i<=0) return false;
     if(r.q>500) return false; // cap outlier qty per trip
