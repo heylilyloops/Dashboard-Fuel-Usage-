@@ -1199,7 +1199,13 @@ function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
       const grp=grpOf(s);
       sRows.push({s,grp,a:a2,b:b2,ipA:a2.cA>0?a2.dImp/a2.cA:0,ipB:b2.cA>0?b2.dImp/b2.cA:0});
     });
-    sRows.sort((x,y)=>y.b.cA-x.b.cA);
+    const grpOrder={'NDC':0,'RDC':1,'SDC':2,'HUB':3};
+    sRows.sort((x,y)=>{
+      const gx=grpOrder[x.grp?x.grp.key:'']??9;
+      const gy=grpOrder[y.grp?y.grp.key:'']??9;
+      if(gx!==gy) return gx-gy;
+      return y.b.cA-x.b.cA;
+    });
     let h=`<div class="tw"><table class="t"><thead><tr><th>#</th><th>Site</th><th>Grp</th><th>Liter A</th><th>Liter B</th><th>Δ</th><th>Dex A</th><th>Dex B</th><th>Cost After A</th><th>Cost After B</th><th>Impact A</th><th>Impact B</th><th>Δ Impact</th><th>% Dex A</th><th>% Dex B</th></tr></thead><tbody>`;
     sRows.forEach((r,i)=>{
       const dL=r.b.tQ-r.a.tQ,dI=r.b.dImp-r.a.dImp,gc=r.grp?r.grp.color:'#888';
