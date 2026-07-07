@@ -599,6 +599,20 @@ function cleanNum(v){
   return isNaN(n)?0:n;
 }
 
+function cleanQty(v){
+  if(!v) return 0;
+  const s=String(v).replace(/,/g,'.').trim();
+  return parseFloat(s)||0;
+}
+
+function cleanIDR(v){
+  if(!v) return 0;
+  let s=String(v).replace(/Rp\s*/gi,'').trim();
+  if(s.includes(',')&&s.includes('.')){s=s.replace(/\./g,'').replace(',','.');}
+  else if(s.includes('.')&&!s.includes(',')){const p=s.split('.');if(p[p.length-1].length===3)s=s.replace(/\./g,'');}
+  return parseFloat(s)||0;
+}
+
 function csvToRows(text){
   return parseCSV(text).map(r=>({
     d:r['Delivery Date']||'',
