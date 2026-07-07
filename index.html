@@ -603,12 +603,13 @@ function csvToRows(text){
   return parseCSV(text).map(r=>({
     d:r['Delivery Date']||'',
     f:r["Fuel's Type"]||r["Fuels Type"]||'Solar',
-    q:cleanNum(r['Qty Fuel']),
+    q:cleanQty(r['Qty Fuel']),
     j:r['Jalur']||'',
-    i:cleanNum(r['BBM IDR'])
+    i:cleanIDR(r['BBM IDR']),
+    o:r['OWNER']||''
   })).filter(r=>{
     if(r.q<=0&&r.i<=0) return false;
-    if(r.q>500) return false; // cap outlier qty per trip
+    if(r.q>500) return false;
     return true;
   });
 }
