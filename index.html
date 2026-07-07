@@ -458,6 +458,23 @@ function getGroupSites(gk){
   return loadedSites.filter(s=>{ const g=grpOf(s); return g&&g.key===gk; });
 }
 
+// BU Mapping — berdasarkan kolom OWNER di CSV
+const BU_MAP = {
+  'HCI': { label:'HCI', color:'#2563eb', owners:['HCI','HCI CDP','GPC'] },
+  'AHI': { label:'AHI', color:'#059669', owners:['AHI','TGI','NKA'] },
+  'FBI': { label:'FBI', color:'#7c3aed', owners:['FBI','MLY'] },
+  'KLS': { label:'KLS', color:'#dc2626', owners:['KLS','KI','KRS'] },
+};
+
+function getBUofRow(owner){
+  if(!owner) return null;
+  const o=(owner||'').trim().toUpperCase();
+  for(const[k,bu] of Object.entries(BU_MAP)){
+    if(bu.owners.some(x=>x.toUpperCase()===o)) return k;
+  }
+  return null;
+}
+
 function grpOf(s){
   if(!s) return null;
   const u=s.toUpperCase().trim();
