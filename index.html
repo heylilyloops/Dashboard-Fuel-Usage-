@@ -1434,39 +1434,59 @@ function rInsightBU(el,aS,aE,bS,bE){
     buData[bk]={bu,rA,rB,aggA:agg(rA,{},{},''),aggB:agg(rB,{},{},'')};
   });
 
-  // Executive Summary per BU
-  const sec=mSec(el,'Executive Summary per BU');
-  const card=mCard(sec,'Perbandingan Metrik per BU — A vs B','');
-
-  let h=`<div class="tw"><table class="t"><thead><tr>
-    <th>BU</th><th>Liter A</th><th>Liter B</th><th>Δ Liter</th>
-    <th>Cost Before A</th><th>Cost Before B</th>
-    <th>Cost After A</th><th>Cost After B</th>
-    <th>Impact A</th><th>Impact B</th>
-    <th>% Dex A</th><th>% Dex B</th>
-  </tr></thead><tbody>`;
+  // Executive Summary per BU — same style as rExec
+  const FUELS_EXEC2=[
+    {f:'Solar',chip:'fcs'},{f:'Dexlite',chip:'fcd'},
+    {f:'Pertalite',chip:'fcp'},{f:'Pertamax',chip:'fcx'},
+  ];
 
   Object.entries(buData).forEach(([bk,{bu,aggA,aggB}])=>{
-    const dL=aggB.tQ-aggA.tQ;
-    const dI=aggB.dImp-aggA.dImp;
+    const sec=mSec(el,'Executive Summary — '+bu.label);
+    const card=mCard(sec,'Perbandingan Metrik A vs B','');
     const dpA=aggA.tQ>0?aggA.dQ/aggA.tQ:0,dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
-    h+=`<tr>
-      <td><span class="gb" style="background:${bu.color}22;color:${bu.color}">${bu.label}</span></td>
-      <td class="mn" style="color:#2563eb">${fL(aggA.tQ)}</td>
-      <td class="mn" style="color:#f59e0b">${fL(aggB.tQ)}</td>
-      <td><span class="dp ${dpcls(dL,true)}">${dL>=0?'+':'−'}${fL(Math.abs(dL))}</span></td>
-      <td class="mn" style="color:#2563eb">${fS(aggA.cB)}</td>
-      <td class="mn" style="color:#f59e0b">${fS(aggB.cB)}</td>
-      <td class="mn" style="color:#2563eb">${fS(aggA.cA)}</td>
-      <td class="mn" style="color:#f59e0b">${fS(aggB.cA)}</td>
-      <td class="mn" style="color:#2563eb">${fS(aggA.dImp)}</td>
-      <td class="mn" style="color:#f59e0b">${fS(aggB.dImp)}</td>
-      <td><span class="dp ${dpA>0.3?'dpb':'dpn'}">${fP(dpA)}</span></td>
-      <td><span class="dp ${dpB>0.3?'dpb':'dpn'}">${fP(dpB)}</span></td>
-    </tr>`;
+    const dcpA=aggA.cA>0?aggA.dcA/aggA.cA:0,dcpB=aggB.cA>0?aggB.dcA/aggB.cA:0;
+    const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0,ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
+
+    let h=`<table class="et"><thead><tr>
+      <th>Metrik</th>
+      <th style="color:#2563eb">Periode A</th>
+      <th style="color:#f59e0b">Periode B</th>
+      <th>Selisih MoM</th>
+    </tr></thead><tbody>`;
+
+    // Total Liter
+    const dTot=aggB.tQ-aggA.tQ;
+    h+=`<tr><td class="em">Total Liter</td><td class="ea">${fL(aggA.tQ)}</td><td class="eb">${fL(aggB.tQ)}</td>
+      <td><span class="dp ${dpcls(dTot,true)}">${dTot>=0?'+':'−'}${fL(Math.abs(dTot))}</span></td></tr>`;
+
+    // Per jenis BBM
+    FUELS_EXEC2.forEach(({f,chip})=>{
+      const fa=aggA.bF[f]||{q:0},fb=aggB.bF[f]||{q:0};
+      const pctA=aggA.tQ>0?fa.q/aggA.tQ*100:0,pctB=aggB.tQ>0?fb.q/aggB.tQ*100:0;
+      const dQ=fb.q-fa.q;
+      h+=`<tr style="background:var(--sur2)"><td class="em"><span class="fc ${chip}">${f}</span></td>
+        <td class="ea">${fL(fa.q)} <span style="font-size:9px;color:var(--mu)">(${pctA.toFixed(1)}%)</span></td>
+        <td class="eb">${fL(fb.q)} <span style="font-size:9px;color:var(--mu)">(${pctB.toFixed(1)}%)</span></td>
+        <td><span class="dp ${dpcls(dQ,true)}">${dQ>=0?'+':'−'}${fL(Math.abs(dQ))}</span></td></tr>`;
+    });
+
+    h+=`<tr><td colspan="4" style="padding:3px 0;border-bottom:2px solid var(--brd);"></td></tr>`;
+
+    // Cost rows
+    [['Cost Before',aggA.cB,aggB.cB],['Cost After',aggA.cA,aggB.cA],['Impact Kenaikan',aggA.dImp,aggB.dImp]].forEach(([m,va,vb])=>{
+      const d=vb-va;
+      h+=`<tr><td class="em">${m}</td><td class="ea">${fS(va)}</td><td class="eb">${fS(vb)}</td>
+        <td><span class="dp ${dpcls(d,true)}">${d>=0?'+':'−'}${fS(Math.abs(d))}</span></td></tr>`;
+    });
+    [['% Impact / Cost',ipA,ipB],['Dexlite % Cost After',dcpA,dcpB]].forEach(([m,va,vb])=>{
+      const d=(vb-va)*100;
+      h+=`<tr><td class="em">${m}</td><td class="ea">${fP(va)}</td><td class="eb">${fP(vb)}</td>
+        <td><span class="dp ${dpcls(d,true)}">${d>=0?'+':'−'}${Math.abs(d).toFixed(2)}pp</span></td></tr>`;
+    });
+
+    h+='</tbody></table>';
+    card.innerHTML+=h;
   });
-  h+='</tbody></table></div>';
-  card.innerHTML+=h;
 
   // Charts: Cost & Volume per BU
   const sec2=mSec(el,'Analisis Volume & Cost per BU');
