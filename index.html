@@ -475,6 +475,14 @@ function getBUofRow(owner){
   return null;
 }
 
+// Get BU from site name (for Hub/BKS sites where owner might not reflect BU)
+function getBUofSite(site){
+  const s=(site||'').toUpperCase();
+  if(s.startsWith('HUB HCI')||s.startsWith('BKS HCI')) return 'HCI';
+  if(s.startsWith('HUB AHI')||s.startsWith('BKS AHI')) return 'AHI';
+  return null;
+}
+
 function grpOf(s){
   if(!s) return null;
   const u=s.toUpperCase().trim();
@@ -1413,7 +1421,9 @@ function rInsightBU(el,aS,aE,bS,bE){
     loadedSites.forEach(site=>{
       const rows=siteData[site]||[];
       rows.forEach(r=>{
-        const buKey=getBUofRow(r.o||'');
+        // For Hub/BKS sites, use site name to determine BU
+        const buBySite=getBUofSite(site);
+        const buKey=buBySite||getBUofRow(r.o||'');
         if(buKey!==bk) return;
         const d=rowToInt(r.d);
         const sdA=toInt(aS),edA=toInt(aE),sdB=toInt(bS),edB=toInt(bE);
