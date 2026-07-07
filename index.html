@@ -443,7 +443,7 @@ const FMAP={'bio solar':'Solar','solar':'Solar','biosolar':'Solar','dexlite':'De
 const normF=f=>FMAP[(f||'').toLowerCase().trim()]||(f||'Solar');
 
 let siteData={}, loadedSites=[];
-let VIEW='NASIONAL', PAGE='overview'; // PAGE: 'overview' | 'insight'
+let VIEW='NASIONAL', PAGE='overview'; // PAGE: 'overview' | 'insight' | 'insight-bu'
 let CH={}, leafletMap=null, mapMarkers=[];
 
 // ============================================================
@@ -694,7 +694,10 @@ function buildSB(){
     <div class="si-d" style="background:#fff;opacity:.5;"></div><div class="si-n">📊 Overview</div>
   </div>
   <div class="si ${PAGE==='insight'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','insight')">
-    <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight</div>
+    <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight — Site</div>
+  </div>
+  <div class="si ${PAGE==='insight-bu'?'active':''}" onclick="setView('NASIONAL','insight-bu')">
+    <div class="si-d" style="background:#fff;opacity:.2;"></div><div class="si-n">🏢 Insight — BU</div>
   </div>
   <div class="sd"></div>
   <div class="sb-section">Sites</div>
@@ -771,6 +774,7 @@ function render(){
   // Page title
   rPT(m,aS,aE,bS,bE);
   if(PAGE==='overview') rOverview(m,aggA,aggB,bS,bE,pA,pB);
+  else if(PAGE==='insight-bu') rInsightBU(m,aS,aE,bS,bE);
   else rInsight(m,aggA,aggB,aS,aE,bS,bE,pA,pB);
 }
 
@@ -782,8 +786,8 @@ function mCard(p,t,s){const c=document.createElement('div');c.className='card';c
 function rPT(el,aS,aE,bS,bE){
   const isNas=VIEW==='NASIONAL';
   const grp=!isNas?grpOf(VIEW):null;
-  const title=isNas?(PAGE==='overview'?'Overview':'Insight — Nasional'):(PAGE==='overview'?VIEW:'Insight — '+VIEW);
-  const sub=isNas?loadedSites.length+' site':(grp?grp.label+' Group':'');
+  const title=isNas?(PAGE==='overview'?'Overview':PAGE==='insight-bu'?'Insight — BU':'Insight — Nasional'):(PAGE==='overview'?VIEW:'Insight — '+VIEW);
+  const sub=isNas?(PAGE==='insight-bu'?'HCI · AHI · FBI · KLS':loadedSites.length+' site'):(grp?grp.label+' Group':'');
   const d=document.createElement('div');d.className='pt';
   d.innerHTML=`<div class="pt-t">${title} <span>${sub}</span></div>
   <div class="pcs"><span class="chip ca">A: ${fD(aS)} — ${fD(aE)}</span><span class="chip cb">B: ${fD(bS)} — ${fD(bE)}</span></div>`;
@@ -1358,6 +1362,107 @@ function rTrend(el,aS,aE,bS,bE,pA,pB){
       },
       options:{...qtyOpts,plugins:{...qtyOpts.plugins,tooltip:{mode:'index',intersect:false,callbacks:{label:c=>' '+c.dataset.label+': '+c.raw.toLocaleString('id-ID',{maximumFractionDigits:0})+' L'}}}}
     });
+  });
+}
+
+
+function rInsightBU(el,aS,aE,bS,bE){
+  // Legend
+  const legend=document.createElement('div');
+  legend.style.cssText='font-size:10px;color:var(--mu);margin-bottom:16px;font-style:italic;';
+  legend.textContent='*Exclude SDC — hanya mencakup armada HCI, AHI, FBI, dan KLS';
+  el.appendChild(legend);
+
+  // Aggregate per BU
+  const buData={};
+  Object.entries(BU_MAP).forEach(([bk,bu])=>{
+    let rA=[],rB=[];
+    // Filter rows by owner across all sites
+    loadedSites.forEach(site=>{
+      const rows=siteData[site]||[];
+      rows.forEach(r=>{
+        const buKey=getBUofRow(r.o||'');
+        if(buKey!==bk) return;
+        const d=rowToInt(r.d);
+        const sdA=toInt(aS),edA=toInt(aE),sdB=toInt(bS),edB=toInt(bE);
+        if(d&&d>=sdA&&d<=edA) rA.push(r);
+        if(d&&d>=sdB&&d<=edB) rB.push(r);
+      });
+    });
+    buData[bk]={bu,rA,rB,aggA:agg(rA,{},{},''),aggB:agg(rB,{},{},'')};
+  });
+
+  // Executive Summary per BU
+  const sec=mSec(el,'Executive Summary per BU');
+  const card=mCard(sec,'Perbandingan Metrik per BU — A vs B','');
+
+  let h=`<div class="tw"><table class="t"><thead><tr>
+    <th>BU</th><th>Liter A</th><th>Liter B</th><th>Δ Liter</th>
+    <th>Cost Before A</th><th>Cost Before B</th>
+    <th>Cost After A</th><th>Cost After B</th>
+    <th>Impact A</th><th>Impact B</th>
+    <th>% Dex A</th><th>% Dex B</th>
+  </tr></thead><tbody>`;
+
+  Object.entries(buData).forEach(([bk,{bu,aggA,aggB}])=>{
+    const dL=aggB.tQ-aggA.tQ;
+    const dI=aggB.dImp-aggA.dImp;
+    const dpA=aggA.tQ>0?aggA.dQ/aggA.tQ:0,dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
+    h+=`<tr>
+      <td><span class="gb" style="background:${bu.color}22;color:${bu.color}">${bu.label}</span></td>
+      <td class="mn" style="color:#2563eb">${fL(aggA.tQ)}</td>
+      <td class="mn" style="color:#f59e0b">${fL(aggB.tQ)}</td>
+      <td><span class="dp ${dpcls(dL,true)}">${dL>=0?'+':'−'}${fL(Math.abs(dL))}</span></td>
+      <td class="mn" style="color:#2563eb">${fS(aggA.cB)}</td>
+      <td class="mn" style="color:#f59e0b">${fS(aggB.cB)}</td>
+      <td class="mn" style="color:#2563eb">${fS(aggA.cA)}</td>
+      <td class="mn" style="color:#f59e0b">${fS(aggB.cA)}</td>
+      <td class="mn" style="color:#2563eb">${fS(aggA.dImp)}</td>
+      <td class="mn" style="color:#f59e0b">${fS(aggB.dImp)}</td>
+      <td><span class="dp ${dpA>0.3?'dpb':'dpn'}">${fP(dpA)}</span></td>
+      <td><span class="dp ${dpB>0.3?'dpb':'dpn'}">${fP(dpB)}</span></td>
+    </tr>`;
+  });
+  h+='</tbody></table></div>';
+  card.innerHTML+=h;
+
+  // Charts: Cost & Volume per BU
+  const sec2=mSec(el,'Analisis Volume & Cost per BU');
+  const row=document.createElement('div');row.className='g2b';sec2.appendChild(row);
+  const c1=mCard(row,'Cost After per BU','Juta Rp — A vs B');c1.innerHTML+=`<canvas id="cv_bu_cost"></canvas>`;
+  const c2=mCard(row,'Volume per BU','Liter — A vs B');c2.innerHTML+=`<canvas id="cv_bu_qty"></canvas>`;
+
+  requestAnimationFrame(()=>{
+    const buKeys=Object.keys(BU_MAP);
+    const colors=buKeys.map(k=>BU_MAP[k].color);
+    mkC('cv_bu_cost',{type:'bar',data:{labels:buKeys,datasets:[
+      {label:'Periode A',data:buKeys.map(k=>buData[k].aggA.cA/1e6),backgroundColor:colors.map(c=>c+'44'),borderColor:colors,borderWidth:1.5,borderRadius:5},
+      {label:'Periode B',data:buKeys.map(k=>buData[k].aggB.cA/1e6),backgroundColor:colors.map(c=>c+'88'),borderColor:colors,borderWidth:1.5,borderRadius:5}
+    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>'Rp '+v.toFixed(1)+' Jt'}}}}});
+
+    mkC('cv_bu_qty',{type:'bar',data:{labels:buKeys,datasets:[
+      {label:'Periode A',data:buKeys.map(k=>buData[k].aggA.tQ),backgroundColor:colors.map(c=>c+'44'),borderColor:colors,borderWidth:1.5,borderRadius:5},
+      {label:'Periode B',data:buKeys.map(k=>buData[k].aggB.tQ),backgroundColor:colors.map(c=>c+'88'),borderColor:colors,borderWidth:1.5,borderRadius:5}
+    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID',{maximumFractionDigits:0})+'L'}}}}});
+  });
+
+  // Impact per BU
+  const sec3=mSec(el,'Impact Kenaikan Dexlite per BU');
+  const card3=mCard(sec3,'Dampak Kenaikan Harga per BU','Periode B');
+  const tg=document.createElement('div');tg.className='tg';card3.appendChild(tg);
+  Object.entries(buData).sort((a,b)=>b[1].aggB.dImp-a[1].aggB.dImp).forEach(([bk,{bu,aggA,aggB}],i)=>{
+    const ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
+    const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0;
+    const d=(ipB-ipA)*100;
+    const div=document.createElement('div');div.className='tc';
+    div.innerHTML=`<div class="tr2">${String(i+1).padStart(2,'0')}</div>
+      <div class="ts">${bu.label}</div>
+      <span class="gb" style="background:${bu.color}22;color:${bu.color};margin-bottom:5px;display:inline-block">${bu.owners.join(', ')}</span>
+      <div class="tp" style="color:${bu.color}">${fP(ipB)}</div>
+      <div class="tm">Dexlite: ${fL(aggB.dQ)} | Impact: ${fS(aggB.dImp)}<br>Periode A: ${fP(ipA)} | ${fS(aggA.dImp)}</div>
+      <div class="tde" style="color:${d>=0?'#dc2626':'#059669'}">${d>=0?'▲ +':'▼ '}${Math.abs(d).toFixed(2)}pp vs Periode A</div>
+      <div class="tbb"><div class="tbf" style="width:${Math.min(ipB*100,100)}%;background:${bu.color}"></div></div>`;
+    tg.appendChild(div);
   });
 }
 
