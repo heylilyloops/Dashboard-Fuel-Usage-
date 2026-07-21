@@ -388,11 +388,11 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260718S123,HCI,18-Jul-2026,,0.0,Jember Barat,0
 260719S103,HCI,19-Jul-2026,,0.0,Bondowoso,0
 260719S104,HCI,19-Jul-2026,,0.0,Lumajang,0
-,,20-Jul-2026,,0.0,Jember Utara,0
-,,20-Jul-2026,,0.0,Jember Barat,0
-,,,,0.0,,0
-,,,,0.0,,0
-,,,,0.0,,0
+260720S127,HCI,20-Jul-2026,,0.0,Jember Utara,0
+260720S092,HCI,20-Jul-2026,,0.0,Jember Timur,0
+260721S117,HCI,21-Jul-2026,,0.0,Jember Barat,0
+260721S123,HCI,21-Jul-2026,,0.0,Jember Selatan,0
+,,,,,,
 ,,,,0.0,,
 ,,,,0.0,,
 ,,,,0.0,,
