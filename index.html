@@ -1124,6 +1124,90 @@ function rLaporan(el){
   </tr></tbody></table></div>`;
   sc4b.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Detail per Group — Avg Apr–Jun</div>'+th4;
 
+
+  // ── SECTION 5: PER PULAU ──
+  const s5p=sec('Pemakaian per Pulau','Rata-rata Volume & Biaya per Pulau — Avg/Minggu Apr–Jun 2026');
+  el.appendChild(s5p);
+
+  // Site to pulau mapping
+  function getPulauOfSite(site){
+    const s=site.toUpperCase();
+    if(s.includes('JABABEKA')||s.includes('CIKUPA')||s.includes('SDA')||
+       s.startsWith('HUB HCI')||s.startsWith('HUB AHI')||s.startsWith('BKS HCI')||s.startsWith('BKS AHI')||
+       s==='TALLO') return 'Jawa & Sulawesi*';
+    if(s==='TAMORA') return 'Sumatera';
+    if(s.includes('BATAM')||s.includes('NAGOYA')) return 'Kep. Riau (FTZ)';
+    if(s.includes('PANGKALPINANG')) return 'Babel';
+    if(s.includes('PONTIANAK')||s.includes('BANJARMASIN')||s.includes('SAMARINDA')||s.includes('TARAKAN')) return 'Kalimantan';
+    if(s.includes('MANADO')||s.includes('KENDARI')||s.includes('PALU')||s.includes('TERNATE')) return 'Sulawesi';
+    if(s.includes('MALUKU')) return 'Maluku';
+    if(s.includes('SORONG')||s.includes('ABEPURA')) return 'Papua';
+    return 'Lainnya';
+  }
+
+  const pulauData={};
+  loadedSites.forEach(site=>{
+    const pulau=getPulauOfSite(site);
+    if(!pulauData[pulau]) pulauData[pulau]={qty:0,cost:0,dexQty:0,dexCost:0,solarQty:0,pertQty:0};
+    [4,5,6].forEach(m=>{
+      const d=siteM[site]&&siteM[site][m];
+      if(!d) return;
+      pulauData[pulau].qty+=d.qty/4/3;
+      pulauData[pulau].cost+=d.cost/4/3;
+      pulauData[pulau].dexQty+=d.dexQty/4/3;
+      pulauData[pulau].dexCost+=d.dexCost/4/3;
+      pulauData[pulau].solarQty+=d.solarQty/4/3;
+      pulauData[pulau].pertQty+=d.pertQty/4/3;
+    });
+  });
+
+  const totalPulauQty=Object.values(pulauData).reduce((s,d)=>s+d.qty,0);
+  const totalPulauCost=Object.values(pulauData).reduce((s,d)=>s+d.cost,0);
+  const pulauSorted=Object.entries(pulauData).sort((a,b)=>b[1].qty-a[1].qty);
+
+  const sg5p=document.createElement('div');sg5p.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:14px;';
+  s5p.appendChild(sg5p);
+
+  const sc5pa=card(sg5p,'');
+  sc5pa.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Share Volume per Pulau</div><canvas id="cv_l_pulau_pie" style="max-height:220px;"></canvas>';
+
+  const sc5pb=card(sg5p,'');
+  const PULAU_COLORS=['#2563eb','#059669','#f59e0b','#ef4444','#7c3aed','#0891b2','#c2410c','#64748b'];
+  let thPulau=`<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:10px;">
+    <thead><tr style="background:#f8fafc;">
+      <th style="padding:7px 8px;text-align:left;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Pulau</th>
+      <th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Avg Ltr/Mg</th>
+      <th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">% Ltr</th>
+      <th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Avg Cost/Mg</th>
+      <th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">% Cost</th>
+    </tr></thead><tbody>`;
+
+  pulauSorted.forEach(([pulau,d],i)=>{
+    const pctQ=totalPulauQty>0?d.qty/totalPulauQty*100:0;
+    const pctC=totalPulauCost>0?d.cost/totalPulauCost*100:0;
+    const col=PULAU_COLORS[i%PULAU_COLORS.length];
+    thPulau+=`<tr>
+      <td style="padding:7px 8px;border-bottom:1px solid #f1f5f9;font-weight:700;color:#0f172a;">${pulau}</td>
+      <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#334155;">${Math.round(d.qty).toLocaleString('id-ID')}</td>
+      <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;">
+          <div style="background:#f1f5f9;border-radius:2px;height:5px;width:50px;"><div style="height:5px;border-radius:2px;background:${col};width:${pctQ.toFixed(0)}%;"></div></div>
+          <span style="color:#64748b;">${pctQ.toFixed(1)}%</span>
+        </div>
+      </td>
+      <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#334155;">${fS(d.cost)}</td>
+      <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#64748b;">${pctC.toFixed(1)}%</td>
+    </tr>`;
+  });
+  thPulau+=`<tr style="background:#f8fafc;font-weight:700;">
+    <td style="padding:7px 8px;">TOTAL</td>
+    <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">${Math.round(totalPulauQty).toLocaleString('id-ID')}</td>
+    <td style="padding:7px 8px;text-align:right;">100%</td>
+    <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">${fS(totalPulauCost)}</td>
+    <td style="padding:7px 8px;text-align:right;">100%</td>
+  </tr></tbody></table></div>`;
+  sc5pb.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Detail per Pulau — Avg Apr–Jun</div>'+thPulau;
+
   // ── SECTION 5: PER BU ──
   const s5=sec('Pemakaian per Business Unit','HCI · AHI · FBI · KLS — Rata-rata/Minggu Apr–Jun 2026 &nbsp;*Exclude SDC');
   el.appendChild(s5);
@@ -1166,6 +1250,99 @@ function rLaporan(el){
         <div style="background:#f1f5f9;border-radius:3px;height:4px;margin-top:2px;"><div style="height:4px;border-radius:3px;background:${bu.color};width:${Math.min(dexPct*5,100)}%;"></div></div>
       </div>`;
   });
+
+
+  // ── SECTION 7: PER PROVINSI ──
+  const s7p=sec('Pemakaian per Provinsi','Estimasi berdasarkan lokasi site — Avg/Minggu Apr–Jun 2026');
+  el.appendChild(s7p);
+
+  // Site to provinsi mapping
+  const SITE_PROV={
+    'AHI JABABEKA':'Jawa Barat','HCI JABABEKA':'Jawa Barat','KLS JABABEKA':'Jawa Barat',
+    'HCI CIKUPA':'Banten','SDA':'Jawa Timur',
+    'TALLO':'Sulawesi Selatan','TAMORA':'Sumatera Utara',
+    'SDC BATAM':'Kepulauan Riau','SDC NAGOYA':'Kepulauan Riau',
+    'SDC SAMARINDA':'Kalimantan Timur','SDC TARAKAN':'Kalimantan Timur',
+    'SDC PANGKALPINANG':'Bangka Belitung',
+    'SDC PONTIANAK':'Kalimantan Barat',
+    'SDC BANJARMASIN':'Kalimantan Selatan',
+    'SDC MANADO':'Sulawesi Utara','SDC KENDARI':'Sulawesi Tenggara',
+    'SDC PALU':'Sulawesi Tengah','SDC TERNATE':'Maluku Utara',
+    'SDC MALUKU':'Maluku','SDC SORONG':'Papua Barat',
+    'SDC ABEPURA':'Papua',
+  };
+  // Hub sites → provinsi by city name
+  function getSiteProvinsi(site){
+    if(SITE_PROV[site]) return SITE_PROV[site];
+    const s=site.toUpperCase();
+    if(s.includes('BOGOR')) return 'Jawa Barat';
+    if(s.includes('BANDUNG')||s.includes('CIREBON')||s.includes('GARUT')||s.includes('TASIK')||s.includes('BEKASI')||s.includes('DEPOK')) return 'Jawa Barat';
+    if(s.includes('TANGERANG')||s.includes('BINTARO')||s.includes('BANTEN')) return 'Banten';
+    if(s.includes('JAKARTA')||s.includes('UTARA')||s.includes('GANDARIA')||s.includes('KASABLANKA')||s.includes('PURI')||s.includes('CIBUBUR')||s.includes('IBCC')||s.includes('ALSUT')||s.includes('AYB')||s.includes('MAG')||s.includes('DEBOK')||s.includes('TERASUTERA')) return 'DKI Jakarta';
+    if(s.includes('SEMARANG')||s.includes('TEGAL')||s.includes('BANYUMAS')) return 'Jawa Tengah';
+    if(s.includes('YOGYA')) return 'DI Yogyakarta';
+    if(s.includes('MALANG')||s.includes('JEMBER')||s.includes('BANYUWANGI')||s.includes('KEDIRI')||s.includes('SURABAYA')) return 'Jawa Timur';
+    if(s.includes('BALI')||s.includes('KUTA')||s.includes('DENPASAR')) return 'Bali';
+    if(s.includes('LAMPUNG')) return 'Lampung';
+    if(s.includes('PALEMBANG')) return 'Sumatera Selatan';
+    if(s.includes('PADANG')) return 'Sumatera Barat';
+    if(s.includes('PEKANBARU')||s.includes('DUMAI')) return 'Riau';
+    if(s.includes('JAMBI')) return 'Jambi';
+    if(s.includes('BENGKULU')) return 'Bengkulu';
+    if(s.includes('SIANTAR')||s.includes('MEDAN')) return 'Sumatera Utara';
+    if(s.includes('ACEH')) return 'Aceh';
+    if(s.includes('BALIKPAPAN')) return 'Kalimantan Timur';
+    if(s.includes('SINGKAWANG')||s.includes('PALANGKA')) return 'Kalimantan Barat';
+    return 'Lainnya';
+  }
+
+  const provData={};
+  loadedSites.forEach(site=>{
+    const prov=getSiteProvinsi(site);
+    if(!provData[prov]) provData[prov]={qty:0,cost:0,dexQty:0,solarQty:0,pertQty:0};
+    [4,5,6].forEach(m=>{
+      const d=siteM[site]&&siteM[site][m];
+      if(!d) return;
+      provData[prov].qty+=d.qty/4/3;
+      provData[prov].cost+=d.cost/4/3;
+      provData[prov].dexQty+=d.dexQty/4/3;
+      provData[prov].solarQty+=d.solarQty/4/3;
+      provData[prov].pertQty+=d.pertQty/4/3;
+    });
+  });
+
+  const provSorted=Object.entries(provData).filter(([,d])=>d.qty>0).sort((a,b)=>b[1].qty-a[1].qty);
+  const totalProvQty=provSorted.reduce((s,[,d])=>s+d.qty,0);
+
+  const sg7p=document.createElement('div');sg7p.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:14px;';
+  s7p.appendChild(sg7p);
+
+  const sc7pa=card(sg7p,'');
+  sc7pa.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Top Provinsi — Volume (Liter/Minggu)</div><canvas id="cv_l_prov_bar" style="max-height:260px;"></canvas>';
+
+  const sc7pb=card(sg7p,'');
+  let thProv=`<div style="overflow-x:auto;max-height:300px;overflow-y:auto;"><table style="width:100%;border-collapse:collapse;font-size:10px;">
+    <thead style="position:sticky;top:0;"><tr style="background:#f8fafc;">
+      <th style="padding:6px 8px;text-align:left;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">#</th>
+      <th style="padding:6px 8px;text-align:left;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Provinsi</th>
+      <th style="padding:6px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Ltr/Mg</th>
+      <th style="padding:6px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">%</th>
+      <th style="padding:6px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Cost/Mg</th>
+    </tr></thead><tbody>`;
+
+  provSorted.forEach(([prov,d],i)=>{
+    const pct=totalProvQty>0?d.qty/totalProvQty*100:0;
+    const dexPct=d.qty>0?d.dexQty/d.qty*100:0;
+    thProv+=`<tr>
+      <td style="padding:6px 8px;border-bottom:1px solid #f1f5f9;color:#94a3b8;font-size:9px;">${i+1}</td>
+      <td style="padding:6px 8px;border-bottom:1px solid #f1f5f9;font-weight:600;color:#0f172a;">${prov}</td>
+      <td style="padding:6px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#334155;">${Math.round(d.qty).toLocaleString('id-ID')}</td>
+      <td style="padding:6px 8px;text-align:right;border-bottom:1px solid #f1f5f9;color:#64748b;">${pct.toFixed(1)}%</td>
+      <td style="padding:6px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#334155;">${fS(d.cost)}</td>
+    </tr>`;
+  });
+  thProv+='</tbody></table></div>';
+  sc7pb.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Ranking per Provinsi</div>'+thProv;
 
   // ── SECTION 6: SOROTAN ──
   const s6=sec('Sorotan & Analisis','Temuan utama berdasarkan data Apr–Jul 2026');
@@ -1316,6 +1493,28 @@ function rLaporan(el){
     },options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
       x:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
       y:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>'Rp '+(v/1000).toFixed(1)+'rb'}}
+    }}});
+
+    // Pulau pie
+    mkC('cv_l_pulau_pie',{type:'doughnut',data:{
+      labels:pulauSorted.map(([p])=>p),
+      datasets:[{data:pulauSorted.map(([,d])=>d.qty),
+        backgroundColor:PULAU_COLORS.slice(0,pulauSorted.length).map(c=>c+'bb'),
+        borderColor:'#fff',borderWidth:2}]
+    },options:{responsive:true,cutout:'60%',plugins:{legend:{position:'right',labels:{color:'#64748b',font:{size:9},padding:6,boxWidth:10}}}}});
+
+    // Provinsi bar (top 10)
+    const top10Prov=provSorted.slice(0,10);
+    mkC('cv_l_prov_bar',{type:'bar',data:{
+      labels:top10Prov.map(([p])=>p.length>12?p.substring(0,12)+'...':p),
+      datasets:[{
+        label:'Liter/Minggu',
+        data:top10Prov.map(([,d])=>d.qty),
+        backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:4
+      }]
+    },options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false}},scales:{
+      x:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+'L'}},
+      y:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}}
     }}});
 
     // Group pie
