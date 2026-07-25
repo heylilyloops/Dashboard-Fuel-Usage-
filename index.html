@@ -1463,8 +1463,14 @@ function rLaporan(el){
     Object.keys(avgData).forEach(k=>avgData[k]/=3);
     mkC('cv_l_pie',{type:'doughnut',data:{
       labels:['Solar','Dexlite','Pertalite','Pertamax'],
-      datasets:[{data:[avgData.solar,avgData.dex,avgData.pert,avgData.max],backgroundColor:FCOLS.map(c=>c+'cc'),borderColor:'#fff',borderWidth:2}]
-    },options:{responsive:true,cutout:'60%',plugins:{legend:{position:'bottom',labels:{color:'#64748b',font:{size:9},padding:8,boxWidth:10}}}}});
+      datasets:[{data:[avgData.solar,avgData.dex,avgData.pert,avgData.max],backgroundColor:FCOLS.map(c=>c+'cc'),borderColor:'#fff',borderWidth:2,
+        datalabels:{color:'#fff',font:{size:9,weight:'700'},
+          formatter:(v,ctx)=>{const total=ctx.dataset.data.reduce((a,b)=>a+b,0);const pct=v/total*100;return pct>2?pct.toFixed(1)+'%':'';}}
+      }]
+    },options:{responsive:true,cutout:'60%',plugins:{
+      legend:{position:'bottom',labels:{color:'#64748b',font:{size:9},padding:8,boxWidth:10}},
+      datalabels:{display:true}
+    }}});
 
     // Stacked komposisi per bulan
     mkC('cv_l_stk',{type:'bar',data:{labels:mLabels,datasets:[
@@ -1490,16 +1496,11 @@ function rLaporan(el){
         pointBackgroundColor:data.color,
         tension:.3,
         fill:false,
-        datalabels:{
-          display:(ctx)=>ctx.dataIndex===MONTHS.length-1||ctx.dataIndex===0,
-          anchor:'end',align:'top',
-          color:data.color,font:{size:8,weight:'700'},
-          formatter:v=>'Rp '+(v/1000).toFixed(1)+'rb'
-        }
+        datalabels:{display:false}
       }))
     },options:{responsive:true,plugins:{
       legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}},
-      datalabels:{display:true}
+      datalabels:{display:false}
     },scales:{
       x:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
       y:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>'Rp '+(v/1000).toFixed(1)+'rb'}}
@@ -1510,8 +1511,14 @@ function rLaporan(el){
       labels:pulauSorted.map(([p])=>p),
       datasets:[{data:pulauSorted.map(([,d])=>d.qty),
         backgroundColor:PULAU_COLORS.slice(0,pulauSorted.length).map(c=>c+'bb'),
-        borderColor:'#fff',borderWidth:2}]
-    },options:{responsive:true,cutout:'60%',plugins:{legend:{position:'right',labels:{color:'#64748b',font:{size:9},padding:6,boxWidth:10}}}}});
+        borderColor:'#fff',borderWidth:2,
+        datalabels:{color:'#fff',font:{size:9,weight:'700'},
+          formatter:(v,ctx)=>{const total=ctx.dataset.data.reduce((a,b)=>a+b,0);const pct=v/total*100;return pct>3?pct.toFixed(1)+'%':'';}}
+      }]
+    },options:{responsive:true,cutout:'60%',plugins:{
+      legend:{position:'right',labels:{color:'#64748b',font:{size:9},padding:6,boxWidth:10}},
+      datalabels:{display:true}
+    }}});
 
     // Provinsi bar (top 10)
     const top10Prov=provSorted.slice(0,10);
@@ -1534,8 +1541,13 @@ function rLaporan(el){
     // Group pie
     mkC('cv_l_grp_vol',{type:'doughnut',data:{
       labels:Object.keys(grpAvg),
-      datasets:[{data:Object.values(grpAvg).map(g=>g.qty),backgroundColor:Object.values(grpAvg).map(g=>g.color+'bb'),borderColor:'#fff',borderWidth:2}]
-    },options:{responsive:true,cutout:'60%',plugins:{legend:{position:'bottom',labels:{color:'#64748b',font:{size:9},padding:8,boxWidth:10}}}}});
+      datasets:[{data:Object.values(grpAvg).map(g=>g.qty),backgroundColor:Object.values(grpAvg).map(g=>g.color+'bb'),borderColor:'#fff',borderWidth:2,
+        datalabels:{color:'#fff',font:{size:9,weight:'700'},formatter:(v,ctx)=>{const total=ctx.dataset.data.reduce((a,b)=>a+b,0);return (v/total*100).toFixed(1)+'%';}}
+      }]
+    },options:{responsive:true,cutout:'60%',plugins:{
+      legend:{position:'bottom',labels:{color:'#64748b',font:{size:9},padding:8,boxWidth:10}},
+      datalabels:{display:true}
+    }}});
   });
 }
 
