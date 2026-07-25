@@ -814,6 +814,10 @@ function render(){
   const aggA=agg(rA,{},{},currentSite),aggB=agg(rB,{},{},currentSite);
   Object.values(CH).forEach(c=>{try{c.destroy();}catch(e){}});CH={};
   const m=document.getElementById('main');m.innerHTML='';
+  // Hide/show topbar date filter based on page
+  const isLaporan=PAGE==='laporan';
+  document.querySelector('.tb-c').style.display=isLaporan?'none':'flex';
+  document.getElementById('btnFull').parentElement.style.display=isLaporan?'none':'flex';
   // Page title
   rPT(m,aS,aE,bS,bE);
   if(PAGE==='overview') rOverview(m,aggA,aggB,bS,bE,pA,pB);
@@ -882,15 +886,39 @@ function rLaporan(el){
     return null;
   }
 
-  const MONTHS=[
-    {m:1,label:'Januari 2026',short:'Jan',color:'#4f46e5',light:'#eef2ff',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:2,label:'Februari 2026',short:'Feb',color:'#0891b2',light:'#ecfeff',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:3,label:'Maret 2026',short:'Mar',color:'#059669',light:'#ecfdf5',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:4,label:'April 2026',short:'Apr',color:'#7c3aed',light:'#f5f3ff',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:5,label:'Mei 2026',short:'Mei',color:'#dc2626',light:'#fef2f2',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:6,label:'Juni 2026',short:'Jun',color:'#0f766e',light:'#f0fdfa',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:7,label:'Juli 2026',short:'Jul',color:'#c2410c',light:'#fff7ed',weeks:1,note:'W1 (1 Minggu)'},
+  // Auto-detect current month & week
+  const _now=new Date();
+  const _curY=_now.getFullYear();
+  const _curM=_now.getMonth()+1; // 1-indexed
+  const _curD=_now.getDate();
+  const _curW=Math.ceil(_curD/7); // week number in month
+
+  const MONTH_CFG=[
+    {m:1,label:'Januari 2026',short:'Jan',color:'#4f46e5',light:'#eef2ff'},
+    {m:2,label:'Februari 2026',short:'Feb',color:'#0891b2',light:'#ecfeff'},
+    {m:3,label:'Maret 2026',short:'Mar',color:'#059669',light:'#ecfdf5'},
+    {m:4,label:'April 2026',short:'Apr',color:'#7c3aed',light:'#f5f3ff'},
+    {m:5,label:'Mei 2026',short:'Mei',color:'#dc2626',light:'#fef2f2'},
+    {m:6,label:'Juni 2026',short:'Jun',color:'#0f766e',light:'#f0fdfa'},
+    {m:7,label:'Juli 2026',short:'Jul',color:'#c2410c',light:'#fff7ed'},
   ];
+
+  const MONTHS=MONTH_CFG.map(mc=>{
+    const isCurrent=(_curY===2026&&mc.m===_curM);
+    const isPast=(_curY===2026&&mc.m<_curM)||_curY>2026;
+    let weeks,note;
+    if(isCurrent){
+      weeks=_curW;
+      note=`W${_curW} (${_curW} Minggu berjalan)`;
+    } else if(isPast){
+      weeks=4;
+      note='Full Month ÷ 4 Minggu';
+    } else {
+      weeks=4;
+      note='—';
+    }
+    return{...mc,weeks,note,isCurrent,isPast};
+  }).filter(mc=>mc.isPast||mc.isCurrent);
 
   const DEX={
     1:{pjawa:14200,ljawa:14500},2:{pjawa:14200,ljawa:14500},3:{pjawa:14200,ljawa:14500},
@@ -1166,6 +1194,41 @@ function rLaporan(el){
     sg6.appendChild(c);
   });
 
+  // ── SECTION 6b: TRENDLINE HARGA BBM ──
+  const s6b=sec('Trendline Harga Dexlite per Area','Pergerakan harga Rp/Liter Jan–Jul 2026');
+  el.appendChild(s6b);
+  const sg6b=document.createElement('div');sg6b.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:14px;';
+  s6b.appendChild(sg6b);
+
+  const DEX_TREND={
+    'P. Jawa / Bali':{color:'#2563eb',prices:[14200,14200,14200,14200,26000,23000,19700]},
+    'L. Jawa (Sumut/Kal/Sul)':{color:'#059669',prices:[14500,14500,14500,23600,26550,23500,20150]},
+    'Sumbar / Riau / Kepri':{color:'#7c3aed',prices:[14800,14800,14800,24650,27050,24000,20550]},
+    'FTZ Batam':{color:'#f59e0b',prices:[13450,13450,13450,22450,24850,21850,17550]},
+  };
+
+  const tc6b=card(sg6b,'');
+  tc6b.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Harga Dexlite per Wilayah (Rp/Liter)</div><canvas id="cv_l_dex" style="max-height:220px;"></canvas>';
+
+  // Table harga
+  const tc6bt=card(sg6b,'');
+  let thDex='<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="background:#f8fafc;">';
+  thDex+=`<th style="padding:7px 8px;text-align:left;border-bottom:1px solid #e2e8f0;color:#64748b;font-weight:700;">Area</th>`;
+  MONTHS.forEach(mc=>{thDex+=`<th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:${mc.color};font-weight:700;">${mc.short}</th>`;});
+  thDex+='</tr></thead><tbody>';
+  Object.entries(DEX_TREND).forEach(([area,data])=>{
+    thDex+=`<tr><td style="padding:7px 8px;border-bottom:1px solid #f1f5f9;font-weight:700;color:#334155;">${area}</td>`;
+    MONTHS.forEach((mc,i)=>{
+      const p=data.prices[mc.m-1];
+      const prev=i>0?data.prices[MONTHS[i-1].m-1]:null;
+      const up=prev&&p>prev,down=prev&&p<prev;
+      thDex+=`<td style="padding:7px 8px;text-align:right;border-bottom:1px solid #f1f5f9;font-family:'JetBrains Mono',monospace;color:${up?'#dc2626':down?'#059669':'#334155'};font-weight:${up||down?700:400};">${(p/1000).toFixed(2)}rb${up?' ↑':down?' ↓':''}</td>`;
+    });
+    thDex+='</tr>';
+  });
+  thDex+='</tbody></table></div>';
+  tc6bt.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Tabel Harga Dexlite (Rp/Ltr) — Merah = naik, Hijau = turun</div>'+thDex;
+
   // ── SECTION 7: TOP SITES ──
   const s7=sec('Top 10 Site — Volume Tertinggi','Rata-rata Ltr/Minggu Apr–Jun 2026');
   el.appendChild(s7);
@@ -1240,6 +1303,25 @@ function rLaporan(el){
     ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
       x:{stacked:true,grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
       y:{stacked:true,grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+'L'}}
+    }}});
+
+    // Dexlite trendline
+    mkC('cv_l_dex',{type:'line',data:{
+      labels:MONTHS.map(mc=>mc.short),
+      datasets:Object.entries(DEX_TREND).map(([area,data])=>({
+        label:area,
+        data:MONTHS.map(mc=>data.prices[mc.m-1]),
+        borderColor:data.color,
+        backgroundColor:data.color+'15',
+        borderWidth:2,
+        pointRadius:4,
+        pointBackgroundColor:data.color,
+        tension:.3,
+        fill:false,
+      }))
+    },options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
+      x:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
+      y:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>'Rp '+(v/1000).toFixed(1)+'rb'}}
     }}});
 
     // Group pie
