@@ -222,7 +222,8 @@ table.t tr:hover td{background:var(--sur2);}
     </div>
   </div>
   <div class="tb-r">
-    <div style="display:flex;align-items:center;gap:5px;"><div class="sdot" id="sdot"></div><div class="stx" id="stx">Memuat...</div></div>
+    <div style="display:flex;align-items:center;gap:5px;"><div class="sdot" id="sdot"></div><div class="stx" id="stx">Memuat...</div>
+    <div class="stx" id="last-update" style="color:rgba(255,255,255,.3);font-size:9px;"></div></div>
     <button class="btn-g" onclick="loadAll()" id="btnLoad">↻ Reload</button>
   </div>
 </div>
@@ -422,7 +423,7 @@ let CH={}, leafletMap=null, mapMarkers=[];
 // UTILS
 // ============================================================
 const pn=v=>{const n=parseFloat(String(v||0).replace(',','.'));return isNaN(n)?0:n;};
-const fL=v=>Math.round(v).toLocaleString('id-ID')+' Ltr';
+const fL=v=>Math.round(v).toLocaleString('id-ID')+' Liter';
 // fS defined above with Rb/Jt/Mil format
 const fP=(v,d=2)=>(v*100).toFixed(d)+'%';
 const fD=s=>{try{const d=new Date(s+'T00:00:00');return d.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;}};
@@ -655,6 +656,20 @@ async function loadAll(){
   if(!loadedSites.length){document.getElementById('sdot').className='sdot err';document.getElementById('stx').textContent='Gagal load';return;}
   document.getElementById('sdot').className='sdot ok';
   document.getElementById('stx').textContent=`${loadedSites.length} site`;
+  // Find latest date across all data
+  let latestDate=null;
+  loadedSites.forEach(s=>{
+    (siteData[s]||[]).forEach(r=>{
+      const n=rowToInt(r.d);
+      if(n&&(!latestDate||n>latestDate)) latestDate=n;
+    });
+  });
+  if(latestDate){
+    const y=Math.floor(latestDate/10000),m=Math.floor((latestDate%10000)/100),d=latestDate%100;
+    const dt=new Date(y,m-1,d);
+    const el=document.getElementById('last-update');
+    if(el) el.textContent='Data s/d '+dt.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
+  }
   buildSB();render();
 }
 
@@ -990,11 +1005,11 @@ function rLaporan(el){
       <div style="display:flex;flex-direction:column;gap:7px;">
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
           <span style="font-size:10px;color:#64748b;">Total Liter</span>
-          <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${Math.round(d.qty).toLocaleString('id-ID')} Ltr</span>
+          <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${Math.round(d.qty).toLocaleString('id-ID')} Liter</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#64748b;">Avg/Minggu</span>
-          <span style="font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;color:${mc.color};">${Math.round(avgW).toLocaleString('id-ID')} Ltr</span>
+          <span style="font-size:10px;color:#64748b;">Rata-rata/Minggu</span>
+          <span style="font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;color:${mc.color};">${Math.round(avgW).toLocaleString('id-ID')} Liter</span>
         </div>
         <div style="height:1px;background:#f1f5f9;"></div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
@@ -1002,7 +1017,7 @@ function rLaporan(el){
           <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${fS(d.cost)}</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#94a3b8;">Avg Cost/Minggu</span>
+          <span style="font-size:10px;color:#94a3b8;">Rata-rata Biaya/Minggu</span>
           <span style="font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;color:${mc.color};">${fS(avgCW)}</span>
         </div>
         <div style="height:1px;background:#f1f5f9;"></div>
@@ -1059,7 +1074,7 @@ function rLaporan(el){
   sc3c.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Ltr/Minggu per Jenis per Bulan</div>'+th3;
 
   // ── SECTION 4: PER GROUP ──
-  const s4=sec('Pemakaian per Group Site','Share volume dan cost per group — Avg/Minggu');
+  const s4=sec('Pemakaian per Group Site','Share volume dan cost per group — Rata-rata/Minggu');
   el.appendChild(s4);
   const sg4=document.createElement('div');sg4.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:14px;';
   s4.appendChild(sg4);
@@ -1103,7 +1118,7 @@ function rLaporan(el){
   sc4b.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Detail per Group — Avg Apr–Jun</div>'+th4;
 
   // ── SECTION 5: PER BU ──
-  const s5=sec('Pemakaian per Business Unit','HCI · AHI · FBI · KLS — Avg/Minggu Apr–Jun 2026 &nbsp;*Exclude SDC');
+  const s5=sec('Pemakaian per Business Unit','HCI · AHI · FBI · KLS — Rata-rata/Minggu Apr–Jun 2026 &nbsp;*Exclude SDC');
   el.appendChild(s5);
   const buAvg={};
   Object.entries(BU_MAP).forEach(([bk,bu])=>{
@@ -1219,7 +1234,7 @@ function rLaporan(el){
       <td style="padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#94a3b8;font-size:10px;">${i+1}</td>
       <td style="padding:7px 10px;border-bottom:1px solid #f1f5f9;font-weight:700;color:#0f172a;">${r.site}</td>
       <td style="padding:7px 10px;border-bottom:1px solid #f1f5f9;">${grp?`<span style="background:${gc}22;color:${gc};font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;">${grp.label}</span>`:'—'}</td>
-      <td style="padding:7px 10px;text-align:right;border-bottom:1px solid #f1f5f9;font-family:'JetBrains Mono',monospace;font-weight:700;color:#334155;">${Math.round(r.qty).toLocaleString('id-ID')} Ltr</td>
+      <td style="padding:7px 10px;text-align:right;border-bottom:1px solid #f1f5f9;font-family:'JetBrains Mono',monospace;font-weight:700;color:#334155;">${Math.round(r.qty).toLocaleString('id-ID')} Liter</td>
       <td style="padding:7px 10px;border-bottom:1px solid #f1f5f9;width:120px;">
         <div style="background:#f1f5f9;border-radius:3px;height:6px;"><div style="height:6px;border-radius:3px;background:${gc};width:${(r.qty/maxQty*100).toFixed(0)}%;"></div></div>
       </td>
@@ -1239,7 +1254,7 @@ function rLaporan(el){
       {label:'Pertamax',data:mData.map((d,i)=>d.maxQty/(MONTHS[i].weeks||4)),backgroundColor:'#8b5cf644',borderColor:'#8b5cf6',borderWidth:1,stack:'v'},
     ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
       x:{stacked:true,grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
-      y:{stacked:true,grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+'L'}}
+      y:{stacked:true,grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+' L'}}
     }}});
 
     const dexPcts=mData.map(d=>d.cost>0?d.dexCost/d.cost*100:0);
@@ -1274,7 +1289,7 @@ function rLaporan(el){
       {label:'Pertamax',data:mData.map(d=>d.maxQty),backgroundColor:'#8b5cf644',borderColor:'#8b5cf6',borderWidth:1,stack:'s'},
     ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
       x:{stacked:true,grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
-      y:{stacked:true,grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+'L'}}
+      y:{stacked:true,grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+' L'}}
     }}});
 
     // Dexlite trendline
@@ -1310,9 +1325,9 @@ function rMap(el,bS,bE,pA,pB){
   const mapCard=document.createElement('div');mapCard.className='map-card';
   mapCard.innerHTML=`
     <div class="map-head">
-      <div><div class="map-title">Peta Distribusi BBM</div><div class="map-sub">Klik label site untuk detail — Periode B: ${fD(bS)} — ${fD(bE)}</div></div>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        ${Object.entries(GROUPS).map(([k,g])=>`<span style="display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:${g.color}"><span style="width:8px;height:8px;border-radius:50%;background:${g.color};display:inline-block;"></span>${g.label}</span>`).join('')}
+      <div><div class="map-title">Peta Distribusi BBM</div><div class="map-sub">🖱️ Klik label atau marker untuk detail site &nbsp;·&nbsp; Periode Ini: ${fD(bS)} — ${fD(bE)}</div></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        ${Object.entries(GROUPS).map(([k,g])=>`<span style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:${g.color};background:${g.color}15;padding:3px 8px;border-radius:5px;border:1px solid ${g.color}33;"><span style="width:8px;height:8px;border-radius:50%;background:${g.color};display:inline-block;"></span>${g.label}</span>`).join('')}
       </div>
     </div>
     <div style="position:relative;width:100%;height:460px;">
@@ -1564,7 +1579,7 @@ function rVol(el,a,b){
     mkC('cv_vol',{type:'bar',data:{labels:FUELS,datasets:[
       {label:'Periode A',data:FUELS.map(f=>a.bF[f]?a.bF[f].q:0),backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:5},
       {label:'Periode B',data:FUELS.map(f=>b.bF[f]?b.bF[f].q:0),backgroundColor:'#f59e0b44',borderColor:'#f59e0b',borderWidth:1.5,borderRadius:5}
-    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID')+'L'}}}}});
+    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID')+' L'}}}}});
     [['cv_pA',a],['cv_pB',b]].forEach(([id,ag])=>{
       mkC(id,{type:'doughnut',data:{labels:FUELS,datasets:[{data:FUELS.map(f=>ag.bF[f]?ag.bF[f].q:0),backgroundColor:FUELS.map(f=>FC[f]+'bb'),borderColor:'#fff',borderWidth:2}]},
         options:{responsive:true,cutout:'64%',plugins:{legend:{position:'bottom',labels:{color:'#64748b',font:{size:9},padding:6,boxWidth:10}},tooltip:{callbacks:{label:c=>' '+(ag.tQ>0?(c.raw/ag.tQ*100).toFixed(1):'0')+'%'}}}}});
