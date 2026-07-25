@@ -209,16 +209,16 @@ table.t tr:hover td{background:var(--sur2);}
     <div><div class="tb-ti">Dashboard BBM</div><div class="tb-su">Nasional 2026</div></div>
   </div>
   <div class="tb-c">
-    <div class="pw"><span class="pd pda"></span><span class="pl">A</span>
+    <div class="pw"><span class="pd pda"></span><span class="pl">Bulan Lalu</span>
       <input type="date" id="aS" value="2026-04-01"><span class="ps">—</span><input type="date" id="aE" value="2026-04-30">
     </div>
-    <div class="pw"><span class="pd pdb"></span><span class="pl">B</span>
+    <div class="pw"><span class="pd pdb"></span><span class="pl">Bulan Ini</span>
       <input type="date" id="bS" value="2026-05-01"><span class="ps">—</span><input type="date" id="bE" value="2026-05-31">
     </div>
     <button class="btn" onclick="render()">▶ Terapkan</button>
     <div style="display:flex;gap:3px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:3px;">
-      <button class="btn-mode active" id="btnFull" onclick="setMode('full')">Full Month</button>
-      <button class="btn-mode" id="btnMTD" onclick="setMode('mtd')">MTD</button>
+      <button class="btn-mode active" id="btnFull" onclick="setMode('full')">Bulan Penuh</button>
+      <button class="btn-mode" id="btnMTD" onclick="setMode('mtd')">Bulan Berjalan</button>
     </div>
   </div>
   <div class="tb-r">
@@ -712,7 +712,7 @@ function buildSB(){
     <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight — Site</div>
   </div>
   <div class="si ${PAGE==='insight-bu'?'active':''}" onclick="setView('NASIONAL','insight-bu')">
-    <div class="si-d" style="background:#fff;opacity:.2;"></div><div class="si-n">🏢 Insight — BU</div>
+    <div class="si-d" style="background:#fff;opacity:.2;"></div><div class="si-n">🏢 Insight — Unit Bisnis</div>
   </div>
   <div class="sd"></div>
   <div class="sb-section">Sites</div>
@@ -823,12 +823,12 @@ function rKPI(el,a,b){
   const ks=[
     {l:'Total Liter',va:fL(a.tQ),vb:fL(b.tQ),d:b.tQ-a.tQ,f:v=>fL(Math.abs(v)),lg:true,c:'#2563eb'},
     {l:'Dexlite Volume',va:fL(a.dQ),vb:fL(b.dQ),d:b.dQ-a.dQ,f:v=>fL(Math.abs(v)),lg:true,c:'#ef4444'},
-    {l:'Cost After Hike',va:fS(a.cA),vb:fS(b.cA),d:b.cA-a.cA,f:v=>fS(Math.abs(v)),lg:true,c:'#dc2626'},
-    {l:'Impact Kenaikan',va:fS(a.dImp),vb:fS(b.dImp),d:b.dImp-a.dImp,f:v=>fS(Math.abs(v)),lg:true,c:'#7c3aed'},
+    {l:'Biaya BBM Aktual',va:fS(a.cA),vb:fS(b.cA),d:b.cA-a.cA,f:v=>fS(Math.abs(v)),lg:true,c:'#dc2626'},
+    {l:'Dampak Kenaikan Harga Dexlite',va:fS(a.dImp),vb:fS(b.dImp),d:b.dImp-a.dImp,f:v=>fS(Math.abs(v)),lg:true,c:'#7c3aed'},
     {l:'% Impact / Cost',va:fP(ipA),vb:fP(ipB),d:(ipB-ipA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f59e0b'},
     {l:'Total Trip',va:a.trip.toLocaleString('id-ID'),vb:b.trip.toLocaleString('id-ID'),d:b.trip-a.trip,f:v=>Math.abs(v).toLocaleString('id-ID'),lg:false,c:'#059669'},
-    {l:'Cost Before',va:fS(a.cB),vb:fS(b.cB),d:b.cB-a.cB,f:v=>fS(Math.abs(v)),lg:true,c:'#0891b2'},
-    {l:'Dexlite % Vol',va:fP(dpA),vb:fP(dpB),d:(dpB-dpA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f97316'},
+    {l:'Biaya BBM (Harga Awal Tahun)',va:fS(a.cB),vb:fS(b.cB),d:b.cB-a.cB,f:v=>fS(Math.abs(v)),lg:true,c:'#0891b2'},
+    {l:'% Volume Dexlite',va:fP(dpA),vb:fP(dpB),d:(dpB-dpA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f97316'},
   ];
   const g=document.createElement('div');g.className='kg';
   g.innerHTML=ks.map(k=>`<div class="kc" style="--kc:${k.c}">
@@ -1011,7 +1011,7 @@ function rLaporan(el){
           <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${fS(d.dexCost)}</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#64748b;">Dex % Cost</span>
+          <span style="font-size:10px;color:#64748b;">% Biaya Dexlite</span>
           <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:${dexPct>15?'#dc2626':dexPct>10?'#f59e0b':'#059669'};">${dexPct.toFixed(2)}%</span>
         </div>
       </div>`;
@@ -1025,7 +1025,7 @@ function rLaporan(el){
   const tg=document.createElement('div');tg.style.cssText='display:grid;grid-template-columns:1.5fr 1fr;gap:14px;';
   s2.appendChild(tg);
   const tc1=card(tg);tc1.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Volume per Jenis BBM (Ltr/Minggu)</div><canvas id="cv_l_vol" style="max-height:200px;"></canvas>';
-  const tc2=card(tg);tc2.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Cost BBM & Dex % Cost</div><canvas id="cv_l_cost" style="max-height:200px;"></canvas>';
+  const tc2=card(tg);tc2.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Cost BBM & % Biaya Dexlite</div><canvas id="cv_l_cost" style="max-height:200px;"></canvas>';
 
   // ── SECTION 3: KOMPOSISI ──
   const s3=sec('Komposisi per Jenis BBM','Rata-rata volume & cost per jenis BBM per bulan');
@@ -1140,7 +1140,7 @@ function rLaporan(el){
         <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#64748b;">Avg Cost/Mg</span><span style="font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${fS(bu.cost)}</span></div>
         <div style="height:1px;background:#f1f5f9;"></div>
         <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#64748b;">Dexlite Ltr</span><span style="font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#ef4444;">${Math.round(bu.dexQty).toLocaleString('id-ID')}</span></div>
-        <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#64748b;">Dex % Cost</span><span style="font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;color:${dexPct>15?'#dc2626':dexPct>10?'#f59e0b':'#059669'};">${dexPct.toFixed(2)}%</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#64748b;">% Biaya Dexlite</span><span style="font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;color:${dexPct>15?'#dc2626':dexPct>10?'#f59e0b':'#059669'};">${dexPct.toFixed(2)}%</span></div>
         <div style="background:#f1f5f9;border-radius:3px;height:4px;margin-top:2px;"><div style="height:4px;border-radius:3px;background:${bu.color};width:${Math.min(dexPct*5,100)}%;"></div></div>
       </div>`;
   });
@@ -1245,7 +1245,7 @@ function rLaporan(el){
     const dexPcts=mData.map(d=>d.cost>0?d.dexCost/d.cost*100:0);
     mkC('cv_l_cost',{type:'bar',data:{labels:mLabels,datasets:[
       {label:'Cost BBM (Jt)',data:mData.map((d,i)=>d.cost/(MONTHS[i].weeks||4)/1e6),backgroundColor:'#0891b244',borderColor:'#0891b2',borderWidth:1.5,borderRadius:4,order:2},
-      {label:'Dex % Cost',data:dexPcts,type:'line',yAxisID:'y2',borderColor:'#ef4444',backgroundColor:'transparent',borderWidth:2,pointRadius:4,pointBackgroundColor:'#ef4444',tension:.3,order:1},
+      {label:'% Biaya Dexlite',data:dexPcts,type:'line',yAxisID:'y2',borderColor:'#ef4444',backgroundColor:'transparent',borderWidth:2,pointRadius:4,pointBackgroundColor:'#ef4444',tension:.3,order:1},
     ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
       x:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
       y:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>'Rp '+v.toFixed(0)+' Jt'}},
@@ -1511,7 +1511,7 @@ function rExec(el,a,b){
     {f:'Solar',chip:'fcs'},{f:'Dexlite',chip:'fcd'},
     {f:'Pertalite',chip:'fcp'},{f:'Pertamax',chip:'fcx'},
   ];
-  let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Periode A</th><th style="color:#f59e0b">Periode B</th><th>Selisih MoM</th></tr></thead><tbody>`;
+  let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Bulan Lalu</th><th style="color:#f59e0b">Bulan Ini</th><th>Perubahan</th></tr></thead><tbody>`;
   // Total Liter
   const dTot=b.tQ-a.tQ;
   h+=`<tr><td class="em">Total Liter</td><td class="ea">${fL(a.tQ)}</td><td class="eb">${fL(b.tQ)}</td><td><span class="dp ${dpcls(dTot,true)}">${dTot>=0?'+':'−'}${fL(Math.abs(dTot))}</span></td></tr>`;
@@ -1579,8 +1579,8 @@ function rCost(el,a,b){
   const c2=mCard(row,'Impact Kenaikan Dexlite','Rp & % dari total cost');c2.innerHTML+=`<canvas id="cv_imp"></canvas>`;
   requestAnimationFrame(()=>{
     mkC('cv_cost',{type:'bar',data:{labels:['Periode A','Periode B'],datasets:[
-      {label:'Cost Before',data:[a.cB/1e6,b.cB/1e6],backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:6},
-      {label:'Cost After',data:[a.cA/1e6,b.cA/1e6],backgroundColor:'#ef444444',borderColor:'#ef4444',borderWidth:1.5,borderRadius:6}
+      {label:'Biaya BBM (Harga Awal Tahun)',data:[a.cB/1e6,b.cB/1e6],backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:6},
+      {label:'Biaya BBM (Harga Aktual)',data:[a.cA/1e6,b.cA/1e6],backgroundColor:'#ef444444',borderColor:'#ef4444',borderWidth:1.5,borderRadius:6}
     ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>'Rp '+v.toFixed(1)+' Jt'}}}}});
     const ipA=a.cA>0?a.dImp/a.cA*100:0,ipB=b.cA>0?b.dImp/b.cA*100:0;
     mkC('cv_imp',{type:'bar',data:{labels:['Periode A','Periode B'],datasets:[
@@ -1639,8 +1639,8 @@ function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
     const card=mCard(sec,VIEW+' — Summary','Data jalur tidak tersedia untuk site SDC');
     const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0,ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
     const dpA=aggA.tQ>0?aggA.dQ/aggA.tQ:0,dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
-    const rows=[['Total Liter',fL(aggA.tQ),fL(aggB.tQ)],['Dexlite Volume',fL(aggA.dQ),fL(aggB.dQ)],['Dexlite % Vol',fP(dpA),fP(dpB)],['Cost Before',fS(aggA.cB),fS(aggB.cB)],['Cost After',fS(aggA.cA),fS(aggB.cA)],['Impact Kenaikan',fS(aggA.dImp),fS(aggB.dImp)],['% Impact / Cost',fP(ipA),fP(ipB)],['Total Trip',aggA.trip.toLocaleString('id-ID'),aggB.trip.toLocaleString('id-ID')]];
-    let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Periode A</th><th style="color:#f59e0b">Periode B</th></tr></thead><tbody>`;
+    const rows=[['Total Liter',fL(aggA.tQ),fL(aggB.tQ)],['Dexlite Volume',fL(aggA.dQ),fL(aggB.dQ)],['% Volume Dexlite',fP(dpA),fP(dpB)],['Biaya BBM (Harga Awal Tahun)',fS(aggA.cB),fS(aggB.cB)],['Biaya BBM (Harga Aktual)',fS(aggA.cA),fS(aggB.cA)],['Dampak Kenaikan Harga Dexlite',fS(aggA.dImp),fS(aggB.dImp)],['% Impact / Cost',fP(ipA),fP(ipB)],['Total Trip',aggA.trip.toLocaleString('id-ID'),aggB.trip.toLocaleString('id-ID')]];
+    let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Bulan Lalu</th><th style="color:#f59e0b">Bulan Ini</th></tr></thead><tbody>`;
     rows.forEach(([m,va,vb])=>{h+=`<tr><td class="em">${m}</td><td class="ea">${va}</td><td class="eb">${vb}</td></tr>`;});
     h+='</tbody></table>';card.innerHTML+=h;return;
   }
@@ -1888,9 +1888,9 @@ function rInsightBU(el,aS,aE,bS,bE){
 
     let h=`<table class="et"><thead><tr>
       <th>Metrik</th>
-      <th style="color:#2563eb">Periode A</th>
-      <th style="color:#f59e0b">Periode B</th>
-      <th>Selisih MoM</th>
+      <th style="color:#2563eb">Bulan Lalu</th>
+      <th style="color:#f59e0b">Bulan Ini</th>
+      <th>Perubahan</th>
     </tr></thead><tbody>`;
 
     // Total Liter
@@ -1912,12 +1912,12 @@ function rInsightBU(el,aS,aE,bS,bE){
     h+=`<tr><td colspan="4" style="padding:3px 0;border-bottom:2px solid var(--brd);"></td></tr>`;
 
     // Cost rows
-    [['Cost Before',aggA.cB,aggB.cB],['Cost After',aggA.cA,aggB.cA],['Impact Kenaikan',aggA.dImp,aggB.dImp]].forEach(([m,va,vb])=>{
+    [['Biaya BBM (Harga Awal Tahun)',aggA.cB,aggB.cB],['Biaya BBM (Harga Aktual)',aggA.cA,aggB.cA],['Dampak Kenaikan Harga Dexlite',aggA.dImp,aggB.dImp]].forEach(([m,va,vb])=>{
       const d=vb-va;
       h+=`<tr><td class="em">${m}</td><td class="ea">${fS(va)}</td><td class="eb">${fS(vb)}</td>
         <td><span class="dp ${dpcls(d,true)}">${d>=0?'+':'−'}${fS(Math.abs(d))}</span></td></tr>`;
     });
-    [['% Impact / Cost',ipA,ipB],['Dexlite % Cost After',dcpA,dcpB]].forEach(([m,va,vb])=>{
+    [['% Impact / Cost',ipA,ipB],['% Biaya Dexlite dari Total',dcpA,dcpB]].forEach(([m,va,vb])=>{
       const d=(vb-va)*100;
       h+=`<tr><td class="em">${m}</td><td class="ea">${fP(va)}</td><td class="eb">${fP(vb)}</td>
         <td><span class="dp ${dpcls(d,true)}">${d>=0?'+':'−'}${Math.abs(d).toFixed(2)}pp</span></td></tr>`;
