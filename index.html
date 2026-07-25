@@ -472,9 +472,7 @@ function grpOf(s){
     return{key:'NDC',label:'NDC',color:'#eab308'};
   return null;
 }
-// getPx not needed — all pricing uses actual price table (getActualPrice)
-// Kept as stub for compatibility
-const getPx=p=>({Solar:6800,Dexlite:p==='a'?14300:26600,Pertalite:10000,Pertamax:12300});
+
 const dcls=(d,lg)=>d===0?'dn':(lg?(d<0?'dg':'db2'):(d>0?'dg':'db2'));
 const dpcls=(d,lg)=>d===0?'dpn':(lg?(d<0?'dpg':'dpb'):(d>0?'dpg':'dpb'));
 const isSDC=s=>{const g=grpOf(s);return g&&g.key==='SDC';};
@@ -780,7 +778,7 @@ function render(){
   if(!loadedSites.length)return;
   const aS=document.getElementById('aS').value,aE=document.getElementById('aE').value;
   const bS=document.getElementById('bS').value,bE=document.getElementById('bE').value;
-  const pA=getPx('a'),pB=getPx('b');
+  const pA={},pB={}; // pricing handled by getActualPrice per row
   let rA=[],rB=[];
   const currentSite=VIEW==='NASIONAL'?'':VIEW;
   if(VIEW==='NASIONAL'){loadedSites.forEach(s=>{const r=siteData[s]||[];rA=[...rA,...fRows(r,aS,aE)];rB=[...rB,...fRows(r,bS,bE)];});}
