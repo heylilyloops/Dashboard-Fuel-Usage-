@@ -841,6 +841,28 @@ function rPT(el,aS,aE,bS,bE){
 // ============================================================
 // OVERVIEW PAGE
 // ============================================================
+function rKPI(el,a,b){
+  const dpA=a.tQ>0?a.dQ/a.tQ:0,dpB=b.tQ>0?b.dQ/b.tQ:0;
+  const ipA=a.cA>0?a.dImp/a.cA:0,ipB=b.cA>0?b.dImp/b.cA:0;
+  const ks=[
+    {l:'Total Liter',va:fL(a.tQ),vb:fL(b.tQ),d:b.tQ-a.tQ,f:v=>fL(Math.abs(v)),lg:true,c:'#2563eb'},
+    {l:'Dexlite Volume',va:fL(a.dQ),vb:fL(b.dQ),d:b.dQ-a.dQ,f:v=>fL(Math.abs(v)),lg:true,c:'#ef4444'},
+    {l:'Cost After Hike',va:fS(a.cA),vb:fS(b.cA),d:b.cA-a.cA,f:v=>fS(Math.abs(v)),lg:true,c:'#dc2626'},
+    {l:'Impact Kenaikan',va:fS(a.dImp),vb:fS(b.dImp),d:b.dImp-a.dImp,f:v=>fS(Math.abs(v)),lg:true,c:'#7c3aed'},
+    {l:'% Impact / Cost',va:fP(ipA),vb:fP(ipB),d:(ipB-ipA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f59e0b'},
+    {l:'Total Trip',va:a.trip.toLocaleString('id-ID'),vb:b.trip.toLocaleString('id-ID'),d:b.trip-a.trip,f:v=>Math.abs(v).toLocaleString('id-ID'),lg:false,c:'#059669'},
+    {l:'Cost Before',va:fS(a.cB),vb:fS(b.cB),d:b.cB-a.cB,f:v=>fS(Math.abs(v)),lg:true,c:'#0891b2'},
+    {l:'Dexlite % Vol',va:fP(dpA),vb:fP(dpB),d:(dpB-dpA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f97316'},
+  ];
+  const g=document.createElement('div');g.className='kg';
+  g.innerHTML=ks.map(k=>`<div class="kc" style="--kc:${k.c}">
+    <div class="kl">${k.l}</div>
+    <div class="kv"><span class="kva">${k.va}</span><span class="ksp">→</span><span class="kvb">${k.vb}</span></div>
+    <span class="kd ${dcls(k.d,k.lg)}">${k.d>=0?'+':'−'}${k.f(k.d)}</span>
+  </div>`).join('');
+  el.appendChild(g);
+}
+
 function rOverview(el,aggA,aggB,bS,bE,pA,pB){
   rKPI(el,aggA,aggB);
   rMap(el,bS,bE,pA,pB);
