@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
 <style>
 :root{
   --bg:#f0f3f9;--sur:#fff;--sur2:#f7f8fc;--brd:#e2e8f0;
@@ -1485,12 +1486,21 @@ function rLaporan(el){
         borderColor:data.color,
         backgroundColor:data.color+'15',
         borderWidth:2,
-        pointRadius:4,
+        pointRadius:5,
         pointBackgroundColor:data.color,
         tension:.3,
         fill:false,
+        datalabels:{
+          display:(ctx)=>ctx.dataIndex===MONTHS.length-1||ctx.dataIndex===0,
+          anchor:'end',align:'top',
+          color:data.color,font:{size:8,weight:'700'},
+          formatter:v=>'Rp '+(v/1000).toFixed(1)+'rb'
+        }
       }))
-    },options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
+    },options:{responsive:true,plugins:{
+      legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}},
+      datalabels:{display:true}
+    },scales:{
       x:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
       y:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>'Rp '+(v/1000).toFixed(1)+'rb'}}
     }}});
@@ -1506,13 +1516,17 @@ function rLaporan(el){
     // Provinsi bar (top 10)
     const top10Prov=provSorted.slice(0,10);
     mkC('cv_l_prov_bar',{type:'bar',data:{
-      labels:top10Prov.map(([p])=>p.length>12?p.substring(0,12)+'...':p),
+      labels:top10Prov.map(([p])=>p.length>14?p.substring(0,14)+'...':p),
       datasets:[{
         label:'Liter/Minggu',
         data:top10Prov.map(([,d])=>d.qty),
-        backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:4
+        backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:4,
+        datalabels:{anchor:'end',align:'end',color:'#2563eb',font:{size:8,weight:'700'},formatter:v=>v.toLocaleString('id-ID')+' L'}
       }]
-    },options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false}},scales:{
+    },options:{indexAxis:'y',responsive:true,plugins:{
+      legend:{display:false},
+      datalabels:{display:true}
+    },scales:{
       x:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+'L'}},
       y:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}}
     }}});
@@ -2294,7 +2308,9 @@ function rReko(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
 // ============================================================
 // INIT
 // ============================================================
+Chart.register(ChartDataLabels);
 Chart.defaults.color='#64748b';
+Chart.defaults.plugins.datalabels={display:false}; // disable by default, enable per chart
 Chart.defaults.font.family='Plus Jakarta Sans';
 loadAll();
 </script>
