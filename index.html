@@ -838,10 +838,150 @@ function rPT(el,aS,aE,bS,bE){
 // OVERVIEW PAGE
 // ============================================================
 function rOverview(el,aggA,aggB,bS,bE,pA,pB){
-  // KPI
-  rKPI(el,aggA,aggB);
-  // Map
+  rLaporan(el);
   rMap(el,bS,bE,pA,pB);
+}
+
+function rLaporan(el){
+  const DAYS={1:31,2:28,3:31,4:30,5:31,6:30,7:31};
+  const MONTH_MAP_P={'jan':1,'feb':2,'mar':3,'apr':4,'mei':5,'may':5,'jun':6,'jul':7,
+    'january':1,'february':2,'march':3,'april':4,'june':6,'july':7};
+
+  function parseDateM(raw){
+    if(!raw||!raw.trim()) return null;
+    const s=raw.trim();
+    if(s.includes('/')){const p=s.split('/');if(p.length===3){const m=parseInt(p[0]),d=parseInt(p[1]),y=parseInt(p[2]);if(m>=1&&m<=12&&d>=1&&y>=2020)return{y,m,d};}}
+    const clean=s.replace(/-/g,' ');const parts=clean.split(' ').filter(x=>x);
+    if(parts.length===3){const d2=parseInt(parts[0]),mon=MONTH_MAP_P[parts[1].toLowerCase().substring(0,3)],y=parseInt(parts[2]);if(!isNaN(d2)&&mon&&!isNaN(y))return{y,m:mon,d:d2};}
+    return null;
+  }
+
+  // Harga Dexlite per bulan (P Jawa & L Jawa)
+  const DEX_PRICE={
+    1:{pjawa:14200,ljawa:14500},2:{pjawa:14200,ljawa:14500},3:{pjawa:14200,ljawa:14500},
+    4:{pjawa:14200,ljawa:23600},5:{pjawa:26000,ljawa:26550},
+    6:{pjawa:23000,ljawa:23500},7:{pjawa:19700,ljawa:20150},
+  };
+
+  const MONTHS=[
+    {m:1,label:'Januari 2026',short:'Jan',color:'#4c1d95',weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:2,label:'Februari 2026',short:'Feb',color:'#0e7490',weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:3,label:'Maret 2026',short:'Mar',color:'#065f46',weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:4,label:'April 2026',short:'Apr',color:'#6d28d9',weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:5,label:'Mei 2026',short:'Mei',color:'#991b1b',weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:6,label:'Juni 2026',short:'Jun',color:'#0f766e',weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:7,label:'Juli 2026',short:'Jul',color:'#c2410c',weeks:1,note:'W1 (1 Minggu)'},
+  ];
+
+  // Aggregate per site per month
+  const monthly={};
+  for(let m=1;m<=7;m++) monthly[m]={qty:0,cost:0,dexQty:0,dexCost:0};
+
+  const siteM={};
+  loadedSites.forEach(site=>{
+    siteM[site]={};
+    (siteData[site]||[]).forEach(r=>{
+      const dt=parseDateM(r.d);
+      if(!dt||dt.y!==2026||dt.m>7) return;
+      const m=dt.m;
+      if(!siteM[site][m]) siteM[site][m]={qty:0,cost:0,dexQty:0,dexCost:0};
+      const q=r.q||0;
+      const price=getActualPrice(r.f,q,r.i,site,r.d);
+      const c=q*price;
+      siteM[site][m].qty+=q;
+      siteM[site][m].cost+=c;
+      if((r.f||'').toLowerCase()==='dexlite'){siteM[site][m].dexQty+=q;siteM[site][m].dexCost+=c;}
+    });
+  });
+
+  // Fill assumptions
+  loadedSites.forEach(site=>{
+    const avail=Object.keys(siteM[site]).map(Number).filter(m=>siteM[site][m]&&siteM[site][m].qty>0).sort((a,b)=>a-b);
+    if(!avail.length) return;
+    const firstM=avail[0];
+    for(let m=1;m<=7;m++){
+      const d=siteM[site][m];
+      if(d&&d.qty>0){
+        monthly[m].qty+=d.qty;monthly[m].cost+=d.cost;
+        monthly[m].dexQty+=d.dexQty;monthly[m].dexCost+=d.dexCost;
+      } else if(m<firstM){
+        const mir=siteM[site][firstM];
+        const ratio=(DAYS[m]||30)/(DAYS[firstM]||30);
+        monthly[m].qty+=mir.qty*ratio;monthly[m].cost+=mir.cost*ratio;
+        monthly[m].dexQty+=mir.dexQty*ratio;monthly[m].dexCost+=mir.dexCost*ratio;
+      }
+    }
+  });
+
+  // Header
+  const hdr=document.createElement('div');
+  hdr.style.cssText='margin-bottom:20px;';
+  hdr.innerHTML=`
+    <div style="font-size:26px;font-weight:900;color:var(--nv);line-height:1.1;">LAPORAN PEMAKAIAN</div>
+    <div style="font-size:20px;font-weight:800;color:#06b6d4;line-height:1.2;margin-bottom:6px;">BBM NASIONAL</div>
+    <div style="font-size:11px;color:var(--mu);">Analisis Bulanan & Rata-Rata Mingguan &nbsp;|&nbsp; ${loadedSites.length} Site Nasional &nbsp;|&nbsp; 5 Group</div>`;
+  el.appendChild(hdr);
+
+  // Cards grid - 4 top, 3 bottom
+  const grid1=document.createElement('div');
+  grid1.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;';
+  const grid2=document.createElement('div');
+  grid2.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;';
+  el.appendChild(grid1);el.appendChild(grid2);
+
+  MONTHS.forEach((mc,idx)=>{
+    const d=monthly[mc.m]||{qty:0,cost:0,dexQty:0,dexCost:0};
+    const avgWeek=d.qty/(mc.weeks||4);
+    const avgCostWeek=d.cost/(mc.weeks||4);
+    const dexPct=d.cost>0?d.dexCost/d.cost*100:0;
+    const px=DEX_PRICE[mc.m];
+
+    const wrap=document.createElement('div');
+
+    // Price trendline header
+    const ph=document.createElement('div');
+    ph.style.cssText='font-size:9px;color:var(--mu);margin-bottom:5px;line-height:1.4;font-weight:600;';
+    ph.innerHTML=`Harga ${mc.short} · Dexlite &nbsp;
+      <span style="color:#2563eb">P.Jawa Rp ${px.pjawa.toLocaleString('id-ID')}</span> &nbsp;
+      <span style="color:#ef4444">L.Jawa Rp ${px.ljawa.toLocaleString('id-ID')}</span>`;
+    wrap.appendChild(ph);
+
+    const card=document.createElement('div');
+    card.style.cssText=`background:${mc.color};border-radius:12px;padding:18px 20px;color:#fff;`;
+    card.innerHTML=`
+      <div style="font-size:20px;font-weight:900;margin-bottom:2px;">${mc.label}</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.7);margin-bottom:14px;font-weight:700;letter-spacing:.5px;">${mc.note}</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:11px;opacity:.8;">Total Liter</span>
+          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${Math.round(d.qty).toLocaleString('id-ID')} Ltr</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:11px;opacity:.8;">Avg/Minggu</span>
+          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${Math.round(avgWeek).toLocaleString('id-ID')} Ltr</span>
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,.2);margin:2px 0;"></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:11px;opacity:.8;">Cost BBM</span>
+          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${fS(d.cost)}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:11px;color:rgba(255,255,255,.75);font-weight:600;">Avg Cost/Minggu</span>
+          <span style="font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#fde68a;">${fS(avgCostWeek)}</span>
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,.2);margin:2px 0;"></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:11px;opacity:.8;">Cost Dexlite</span>
+          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${fS(d.dexCost)}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:11px;opacity:.8;">Dex % Cost</span>
+          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${dexPct.toFixed(2)}%</span>
+        </div>
+      </div>`;
+    wrap.appendChild(card);
+    if(idx<4) grid1.appendChild(wrap); else grid2.appendChild(wrap);
+  });
 }
 
 function rKPI(el,a,b){
