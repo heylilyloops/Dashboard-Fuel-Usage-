@@ -830,8 +830,9 @@ function rPT(el,aS,aE,bS,bE){
   const title=isNas?(PAGE==='overview'?'Overview':PAGE==='laporan'?'Laporan BBM Nasional':PAGE==='insight-bu'?'Insight — BU':'Insight — Nasional'):(PAGE==='overview'?VIEW:'Insight — '+VIEW);
   const sub=isNas?(PAGE==='insight-bu'?'HCI · AHI · FBI · KLS':PAGE==='laporan'?'Januari — Juli 2026':loadedSites.length+' site'):(grp?grp.label+' Group':'');
   const d=document.createElement('div');d.className='pt';
-  d.innerHTML=`<div class="pt-t">${title} <span>${sub}</span></div>
-  <div class="pcs"><span class="chip ca">A: ${fD(aS)} — ${fD(aE)}</span><span class="chip cb">B: ${fD(bS)} — ${fD(bE)}</span></div>`;
+  const chips=PAGE==='laporan'?'':
+    `<div class="pcs"><span class="chip ca">Bulan Lalu: ${fD(aS)} — ${fD(aE)}</span><span class="chip cb">Bulan Ini: ${fD(bS)} — ${fD(bE)}</span></div>`;
+  d.innerHTML=`<div class="pt-t">${title} <span>${sub}</span></div>${chips}`;
   el.appendChild(d);
 }
 
