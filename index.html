@@ -202,33 +202,6 @@ table.t tr:hover td{background:var(--sur2);}
   <div class="lo-sub" id="lo-sub">Mohon tunggu</div>
 </div>
 
-<!-- MODAL HARGA -->
-<div class="mo" id="mo">
-<div class="mdl">
-  <h2>⚙️ Harga Referensi BBM</h2>
-  <div class="mdl-sub">Set harga Rp/Liter per periode untuk kalkulasi Cost Before/After</div>
-  <div class="ms"><div class="ms-t">⛽ Harga BBM (Rp/Liter)</div>
-    <div class="pg">
-      <div><div class="pc-t" style="color:#2563eb">Periode A</div><div class="pr">
-        <div class="pi"><label>Bio Solar</label><input type="number" id="pa_s" value="6800"></div>
-        <div class="pi"><label>Dexlite</label><input type="number" id="pa_d" value="14300"></div>
-        <div class="pi"><label>Pertalite</label><input type="number" id="pa_p" value="10000"></div>
-        <div class="pi"><label>Pertamax</label><input type="number" id="pa_x" value="12300"></div>
-      </div></div>
-      <div><div class="pc-t" style="color:#f59e0b">Periode B</div><div class="pr">
-        <div class="pi"><label>Bio Solar</label><input type="number" id="pb_s" value="6800"></div>
-        <div class="pi"><label>Dexlite</label><input type="number" id="pb_d" value="26600"></div>
-        <div class="pi"><label>Pertalite</label><input type="number" id="pb_p" value="10000"></div>
-        <div class="pi"><label>Pertamax</label><input type="number" id="pb_x" value="12300"></div>
-      </div></div>
-    </div>
-  </div>
-  <div class="ma">
-    <button class="btn-cn" onclick="closeMo()">Batal</button>
-    <button class="btn-sv" onclick="saveMo()">💾 Simpan & Render</button>
-  </div>
-</div></div>
-
 <!-- TOPBAR -->
 <div class="tb">
   <div class="tb-br">
@@ -250,7 +223,6 @@ table.t tr:hover td{background:var(--sur2);}
   </div>
   <div class="tb-r">
     <div style="display:flex;align-items:center;gap:5px;"><div class="sdot" id="sdot"></div><div class="stx" id="stx">Memuat...</div></div>
-    <button class="btn-g" onclick="openMo()" title="Override harga manual (opsional)">⚙️ Override Harga</button>
     <button class="btn-g" onclick="loadAll()" id="btnLoad">↻ Reload</button>
   </div>
 </div>
@@ -500,7 +472,9 @@ function grpOf(s){
     return{key:'NDC',label:'NDC',color:'#eab308'};
   return null;
 }
-const getPx=p=>{const x=p==='a'?'pa':'pb';return{Solar:pn(document.getElementById(x+'_s').value)||6800,Dexlite:pn(document.getElementById(x+'_d').value)||14300,Pertalite:pn(document.getElementById(x+'_p').value)||10000,Pertamax:pn(document.getElementById(x+'_x').value)||12300};};
+// getPx not needed — all pricing uses actual price table (getActualPrice)
+// Kept as stub for compatibility
+const getPx=p=>({Solar:6800,Dexlite:p==='a'?14300:26600,Pertalite:10000,Pertamax:12300});
 const dcls=(d,lg)=>d===0?'dn':(lg?(d<0?'dg':'db2'):(d>0?'dg':'db2'));
 const dpcls=(d,lg)=>d===0?'dpn':(lg?(d<0?'dpg':'dpb'):(d>0?'dpg':'dpb'));
 const isSDC=s=>{const g=grpOf(s);return g&&g.key==='SDC';};
