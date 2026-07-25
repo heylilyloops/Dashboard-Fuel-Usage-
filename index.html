@@ -693,8 +693,14 @@ function buildSB(){
   <div class="si ${PAGE==='overview'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','overview')">
     <div class="si-d" style="background:#fff;opacity:.5;"></div><div class="si-n">📊 Overview</div>
   </div>
+  <div class="si ${PAGE==='laporan'?'active':''}" onclick="setView('NASIONAL','laporan')">
+    <div class="si-d" style="background:#fff;opacity:.5;"></div><div class="si-n">📋 Laporan</div>
+  </div>
   <div class="si ${PAGE==='insight'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','insight')">
-    <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight</div>
+    <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight — Site</div>
+  </div>
+  <div class="si ${PAGE==='insight-bu'?'active':''}" onclick="setView('NASIONAL','insight-bu')">
+    <div class="si-d" style="background:#fff;opacity:.2;"></div><div class="si-n">🏢 Insight — Unit Bisnis</div>
   </div>
   <div class="sd"></div>
   <div class="sb-section">Sites</div>
