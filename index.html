@@ -443,7 +443,7 @@ const FMAP={'bio solar':'Solar','solar':'Solar','biosolar':'Solar','dexlite':'De
 const normF=f=>FMAP[(f||'').toLowerCase().trim()]||(f||'Solar');
 
 let siteData={}, loadedSites=[];
-let VIEW='NASIONAL', PAGE='overview'; // PAGE: 'overview' | 'insight' | 'insight-bu'
+let VIEW='NASIONAL', PAGE='overview'; // PAGE: 'overview' | 'laporan' | 'insight' | 'insight-bu'
 let CH={}, leafletMap=null, mapMarkers=[];
 
 // ============================================================
@@ -733,6 +733,9 @@ function buildSB(){
   <div class="si ${PAGE==='overview'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','overview')">
     <div class="si-d" style="background:#fff;opacity:.5;"></div><div class="si-n">📊 Overview</div>
   </div>
+  <div class="si ${PAGE==='laporan'?'active':''}" onclick="setView('NASIONAL','laporan')">
+    <div class="si-d" style="background:#fff;opacity:.5;"></div><div class="si-n">📋 Laporan</div>
+  </div>
   <div class="si ${PAGE==='insight'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','insight')">
     <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight — Site</div>
   </div>
@@ -814,6 +817,7 @@ function render(){
   // Page title
   rPT(m,aS,aE,bS,bE);
   if(PAGE==='overview') rOverview(m,aggA,aggB,bS,bE,pA,pB);
+  else if(PAGE==='laporan') rLaporan(m);
   else if(PAGE==='insight-bu') rInsightBU(m,aS,aE,bS,bE);
   else rInsight(m,aggA,aggB,aS,aE,bS,bE,pA,pB);
 }
@@ -826,8 +830,8 @@ function mCard(p,t,s){const c=document.createElement('div');c.className='card';c
 function rPT(el,aS,aE,bS,bE){
   const isNas=VIEW==='NASIONAL';
   const grp=!isNas?grpOf(VIEW):null;
-  const title=isNas?(PAGE==='overview'?'Overview':PAGE==='insight-bu'?'Insight — BU':'Insight — Nasional'):(PAGE==='overview'?VIEW:'Insight — '+VIEW);
-  const sub=isNas?(PAGE==='insight-bu'?'HCI · AHI · FBI · KLS':loadedSites.length+' site'):(grp?grp.label+' Group':'');
+  const title=isNas?(PAGE==='overview'?'Overview':PAGE==='laporan'?'Laporan BBM Nasional':PAGE==='insight-bu'?'Insight — BU':'Insight — Nasional'):(PAGE==='overview'?VIEW:'Insight — '+VIEW);
+  const sub=isNas?(PAGE==='insight-bu'?'HCI · AHI · FBI · KLS':PAGE==='laporan'?'Januari — Juli 2026':loadedSites.length+' site'):(grp?grp.label+' Group':'');
   const d=document.createElement('div');d.className='pt';
   d.innerHTML=`<div class="pt-t">${title} <span>${sub}</span></div>
   <div class="pcs"><span class="chip ca">A: ${fD(aS)} — ${fD(aE)}</span><span class="chip cb">B: ${fD(bS)} — ${fD(bE)}</span></div>`;
@@ -838,7 +842,7 @@ function rPT(el,aS,aE,bS,bE){
 // OVERVIEW PAGE
 // ============================================================
 function rOverview(el,aggA,aggB,bS,bE,pA,pB){
-  rLaporan(el);
+  rKPI(el,aggA,aggB);
   rMap(el,bS,bE,pA,pB);
 }
 
