@@ -202,6 +202,33 @@ table.t tr:hover td{background:var(--sur2);}
   <div class="lo-sub" id="lo-sub">Mohon tunggu</div>
 </div>
 
+<!-- MODAL HARGA -->
+<div class="mo" id="mo">
+<div class="mdl">
+  <h2>⚙️ Harga Referensi BBM</h2>
+  <div class="mdl-sub">Set harga Rp/Liter per periode untuk kalkulasi Cost Before/After</div>
+  <div class="ms"><div class="ms-t">⛽ Harga BBM (Rp/Liter)</div>
+    <div class="pg">
+      <div><div class="pc-t" style="color:#2563eb">Periode A</div><div class="pr">
+        <div class="pi"><label>Bio Solar</label><input type="number" id="pa_s" value="6800"></div>
+        <div class="pi"><label>Dexlite</label><input type="number" id="pa_d" value="14300"></div>
+        <div class="pi"><label>Pertalite</label><input type="number" id="pa_p" value="10000"></div>
+        <div class="pi"><label>Pertamax</label><input type="number" id="pa_x" value="12300"></div>
+      </div></div>
+      <div><div class="pc-t" style="color:#f59e0b">Periode B</div><div class="pr">
+        <div class="pi"><label>Bio Solar</label><input type="number" id="pb_s" value="6800"></div>
+        <div class="pi"><label>Dexlite</label><input type="number" id="pb_d" value="26600"></div>
+        <div class="pi"><label>Pertalite</label><input type="number" id="pb_p" value="10000"></div>
+        <div class="pi"><label>Pertamax</label><input type="number" id="pb_x" value="12300"></div>
+      </div></div>
+    </div>
+  </div>
+  <div class="ma">
+    <button class="btn-cn" onclick="closeMo()">Batal</button>
+    <button class="btn-sv" onclick="saveMo()">💾 Simpan & Render</button>
+  </div>
+</div></div>
+
 <!-- TOPBAR -->
 <div class="tb">
   <div class="tb-br">
@@ -209,21 +236,21 @@ table.t tr:hover td{background:var(--sur2);}
     <div><div class="tb-ti">Dashboard BBM</div><div class="tb-su">Nasional 2026</div></div>
   </div>
   <div class="tb-c">
-    <div class="pw"><span class="pd pda"></span><span class="pl">Bulan Lalu</span>
+    <div class="pw"><span class="pd pda"></span><span class="pl">A</span>
       <input type="date" id="aS" value="2026-04-01"><span class="ps">—</span><input type="date" id="aE" value="2026-04-30">
     </div>
-    <div class="pw"><span class="pd pdb"></span><span class="pl">Bulan Ini</span>
+    <div class="pw"><span class="pd pdb"></span><span class="pl">B</span>
       <input type="date" id="bS" value="2026-05-01"><span class="ps">—</span><input type="date" id="bE" value="2026-05-31">
     </div>
     <button class="btn" onclick="render()">▶ Terapkan</button>
     <div style="display:flex;gap:3px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:7px;padding:3px;">
-      <button class="btn-mode active" id="btnFull" onclick="setMode('full')">Bulan Penuh</button>
-      <button class="btn-mode" id="btnMTD" onclick="setMode('mtd')">Bulan Berjalan</button>
+      <button class="btn-mode active" id="btnFull" onclick="setMode('full')">Full Month</button>
+      <button class="btn-mode" id="btnMTD" onclick="setMode('mtd')">MTD</button>
     </div>
   </div>
   <div class="tb-r">
-    <div style="display:flex;align-items:center;gap:5px;"><div class="sdot" id="sdot"></div><div class="stx" id="stx">Memuat...</div>
-    <div class="stx" id="last-update" style="color:rgba(255,255,255,.3);font-size:9px;"></div></div>
+    <div style="display:flex;align-items:center;gap:5px;"><div class="sdot" id="sdot"></div><div class="stx" id="stx">Memuat...</div></div>
+    <button class="btn-g" onclick="openMo()" title="Override harga manual (opsional)">⚙️ Override Harga</button>
     <button class="btn-g" onclick="loadAll()" id="btnLoad">↻ Reload</button>
   </div>
 </div>
@@ -396,7 +423,7 @@ function getActualPrice(fuel, qty, idr, site, dateStr){
   const f=(fuel||'').toLowerCase();
   const range=VALID_PPL[f];
   if(range&&ppl>=range[0]&&ppl<=range[1]) return ppl; // valid actual
-  return getRefPrice(fuel,site,dateStr); // fallback to reference price
+  return getRefPrice(fuel,site,dateStr); // fallback to reference
 }
 
 // ============================================================
@@ -416,44 +443,19 @@ const FMAP={'bio solar':'Solar','solar':'Solar','biosolar':'Solar','dexlite':'De
 const normF=f=>FMAP[(f||'').toLowerCase().trim()]||(f||'Solar');
 
 let siteData={}, loadedSites=[];
-let VIEW='NASIONAL', PAGE='overview'; // PAGE: 'overview' | 'laporan' | 'insight' | 'insight-bu'
+let VIEW='NASIONAL', PAGE='overview'; // PAGE: 'overview' | 'insight'
 let CH={}, leafletMap=null, mapMarkers=[];
 
 // ============================================================
 // UTILS
 // ============================================================
 const pn=v=>{const n=parseFloat(String(v||0).replace(',','.'));return isNaN(n)?0:n;};
-const fL=v=>Math.round(v).toLocaleString('id-ID')+' Liter';
+const fL=v=>Math.round(v).toLocaleString('id-ID')+' Ltr';
 // fS defined above with Rb/Jt/Mil format
 const fP=(v,d=2)=>(v*100).toFixed(d)+'%';
 const fD=s=>{try{const d=new Date(s+'T00:00:00');return d.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return s;}};
 function getGroupSites(gk){
   return loadedSites.filter(s=>{ const g=grpOf(s); return g&&g.key===gk; });
-}
-
-// BU Mapping — berdasarkan kolom OWNER di CSV
-const BU_MAP = {
-  'HCI': { label:'HCI', color:'#2563eb', owners:['HCI','HCI CDP','GPC'] },
-  'AHI': { label:'AHI', color:'#059669', owners:['AHI','TGI','NKA'] },
-  'FBI': { label:'FBI', color:'#7c3aed', owners:['FBI','MLY'] },
-  'KLS': { label:'KLS', color:'#dc2626', owners:['KLS','KI','KRS'] },
-};
-
-function getBUofRow(owner){
-  if(!owner) return null;
-  const o=(owner||'').trim().toUpperCase();
-  for(const[k,bu] of Object.entries(BU_MAP)){
-    if(bu.owners.some(x=>x.toUpperCase()===o)) return k;
-  }
-  return null;
-}
-
-// Get BU from site name (for Hub/BKS sites where owner might not reflect BU)
-function getBUofSite(site){
-  const s=(site||'').toUpperCase();
-  if(s.startsWith('HUB HCI')||s.startsWith('BKS HCI')) return 'HCI';
-  if(s.startsWith('HUB AHI')||s.startsWith('BKS AHI')) return 'AHI';
-  return null;
 }
 
 function grpOf(s){
@@ -473,7 +475,7 @@ function grpOf(s){
     return{key:'NDC',label:'NDC',color:'#eab308'};
   return null;
 }
-
+const getPx=p=>{const x=p==='a'?'pa':'pb';return{Solar:pn(document.getElementById(x+'_s').value)||6800,Dexlite:pn(document.getElementById(x+'_d').value)||14300,Pertalite:pn(document.getElementById(x+'_p').value)||10000,Pertamax:pn(document.getElementById(x+'_x').value)||12300};};
 const dcls=(d,lg)=>d===0?'dn':(lg?(d<0?'dg':'db2'):(d>0?'dg':'db2'));
 const dpcls=(d,lg)=>d===0?'dpn':(lg?(d<0?'dpg':'dpb'):(d>0?'dpg':'dpb'));
 const isSDC=s=>{const g=grpOf(s);return g&&g.key==='SDC';};
@@ -521,8 +523,7 @@ function toInt(s){
 // Convert any raw date string from CSV to integer YYYYMMDD
 function rowToInt(raw){
   if(!raw||!raw.trim()) return 0;
-  // Strip timestamp suffix e.g. "4/6/2026 12:00:00 AM"
-  const s=raw.trim().replace(/\s+\d{1,2}:\d{2}(:\d{2})?(\s*(AM|PM))?$/i,'').trim();
+  const s=raw.trim();
   // MM/DD/YYYY or M/D/YYYY
   if(s.includes('/')){
     const p=s.split('/');
@@ -532,15 +533,17 @@ function rowToInt(raw){
     }
   }
   // D Mon YYYY or D-Mon-YYYY
-  const MMAP={'jan':1,'feb':2,'mar':3,'apr':4,'mei':5,'may':5,'jun':6,'jul':7,'aug':8,'agu':8,'sep':9,'okt':10,'oct':10,'nov':11,'des':12,'dec':12,
-    'january':1,'february':2,'march':3,'april':4,'june':6,'july':7,'august':8,'september':9,'october':10,'november':11,'december':12};
+  const MMAP={'jan':1,'feb':2,'mar':3,'apr':4,'mei':5,'may':5,'jun':6,'jul':7,'aug':8,'agu':8,'sep':9,'okt':10,'oct':10,'nov':11,'des':12,'dec':12};
   const clean=s.replace(/-/g,' ');
   const parts=clean.split(' ').filter(x=>x);
-  if(parts.length>=3){
+  if(parts.length===3){
     const d=parseInt(parts[0]),m=MMAP[parts[1].toLowerCase().substring(0,3)],y=parseInt(parts[2]);
     if(!isNaN(d)&&m&&!isNaN(y)) return y*10000+m*100+d;
   }
-  if(s.match(/^\d{4}-\d{2}-\d{2}$/)) return parseInt(s.replace(/-/g,''));
+  // YYYY-MM-DD
+  if(s.match(/^\d{4}-\d{2}-\d{2}$/)){
+    return parseInt(s.replace(/-/g,''));
+  }
   return 0;
 }
 function agg(rows,pOld,pNew,site){
@@ -596,38 +599,16 @@ function cleanNum(v){
   return isNaN(n)?0:n;
 }
 
-function cleanQty(v){
-  if(!v) return 0;
-  const s=String(v).replace(/,/g,'.').trim();
-  return parseFloat(s)||0;
-}
-
-function cleanIDR(v){
-  if(!v) return 0;
-  let s=String(v).replace(/Rp\s*/gi,'').trim();
-  if(s.includes(',')&&s.includes('.')){s=s.replace(/\./g,'').replace(',','.');}
-  else if(s.includes('.')&&!s.includes(',')){const p=s.split('.');if(p[p.length-1].length===3)s=s.replace(/\./g,'');}
-  return parseFloat(s)||0;
-}
-
 function csvToRows(text){
   return parseCSV(text).map(r=>({
     d:r['Delivery Date']||'',
     f:r["Fuel's Type"]||r["Fuels Type"]||'Solar',
-    q:cleanQty(r['Qty Fuel']),
+    q:cleanNum(r['Qty Fuel']),
     j:r['Jalur']||'',
-    i:cleanIDR(r['BBM IDR']),
-    o:r['OWNER']||''
+    i:cleanNum(r['BBM IDR'])
   })).filter(r=>{
     if(r.q<=0&&r.i<=0) return false;
-    if(r.q>500) return false;
-    // Filter jenis BBM tidak valid
-    const f=(r.f||'').toLowerCase().trim();
-    const validFuels=['solar','bio solar','biosolar','dexlite','pertalite','pertamax','pertamax turbo','pertamina dex'];
-    if(r.f&&!validFuels.includes(f)) return false;
-    // Filter tahun bukan 2026
-    const n=rowToInt(r.d);
-    if(n>0){const y=Math.floor(n/10000);if(y!==2026) return false;}
+    if(r.q>500) return false; // cap outlier qty per trip
     return true;
   });
 }
@@ -662,20 +643,6 @@ async function loadAll(){
   if(!loadedSites.length){document.getElementById('sdot').className='sdot err';document.getElementById('stx').textContent='Gagal load';return;}
   document.getElementById('sdot').className='sdot ok';
   document.getElementById('stx').textContent=`${loadedSites.length} site`;
-  // Find latest date across all data
-  let latestDate=null;
-  loadedSites.forEach(s=>{
-    (siteData[s]||[]).forEach(r=>{
-      const n=rowToInt(r.d);
-      if(n&&(!latestDate||n>latestDate)) latestDate=n;
-    });
-  });
-  if(latestDate){
-    const y=Math.floor(latestDate/10000),m=Math.floor((latestDate%10000)/100),d=latestDate%100;
-    const dt=new Date(y,m-1,d);
-    const el=document.getElementById('last-update');
-    if(el) el.textContent='Data s/d '+dt.toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'});
-  }
   buildSB();render();
 }
 
@@ -726,14 +693,8 @@ function buildSB(){
   <div class="si ${PAGE==='overview'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','overview')">
     <div class="si-d" style="background:#fff;opacity:.5;"></div><div class="si-n">📊 Overview</div>
   </div>
-  <div class="si ${PAGE==='laporan'?'active':''}" onclick="setView('NASIONAL','laporan')">
-    <div class="si-d" style="background:#fff;opacity:.5;"></div><div class="si-n">📋 Laporan</div>
-  </div>
   <div class="si ${PAGE==='insight'&&VIEW==='NASIONAL'?'active':''}" onclick="setView('NASIONAL','insight')">
-    <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight — Site</div>
-  </div>
-  <div class="si ${PAGE==='insight-bu'?'active':''}" onclick="setView('NASIONAL','insight-bu')">
-    <div class="si-d" style="background:#fff;opacity:.2;"></div><div class="si-n">🏢 Insight — Unit Bisnis</div>
+    <div class="si-d" style="background:#fff;opacity:.3;"></div><div class="si-n">📈 Insight</div>
   </div>
   <div class="sd"></div>
   <div class="sb-section">Sites</div>
@@ -799,7 +760,7 @@ function render(){
   if(!loadedSites.length)return;
   const aS=document.getElementById('aS').value,aE=document.getElementById('aE').value;
   const bS=document.getElementById('bS').value,bE=document.getElementById('bE').value;
-  const pA={},pB={}; // pricing handled by getActualPrice per row
+  const pA=getPx('a'),pB=getPx('b');
   let rA=[],rB=[];
   const currentSite=VIEW==='NASIONAL'?'':VIEW;
   if(VIEW==='NASIONAL'){loadedSites.forEach(s=>{const r=siteData[s]||[];rA=[...rA,...fRows(r,aS,aE)];rB=[...rB,...fRows(r,bS,bE)];});}
@@ -807,15 +768,9 @@ function render(){
   const aggA=agg(rA,{},{},currentSite),aggB=agg(rB,{},{},currentSite);
   Object.values(CH).forEach(c=>{try{c.destroy();}catch(e){}});CH={};
   const m=document.getElementById('main');m.innerHTML='';
-  // Hide/show topbar date filter based on page
-  const isLaporan=PAGE==='laporan';
-  document.querySelector('.tb-c').style.display=isLaporan?'none':'flex';
-  document.getElementById('btnFull').parentElement.style.display=isLaporan?'none':'flex';
   // Page title
   rPT(m,aS,aE,bS,bE);
   if(PAGE==='overview') rOverview(m,aggA,aggB,bS,bE,pA,pB);
-  else if(PAGE==='laporan') rLaporan(m);
-  else if(PAGE==='insight-bu') rInsightBU(m,aS,aE,bS,bE);
   else rInsight(m,aggA,aggB,aS,aE,bS,bE,pA,pB);
 }
 
@@ -827,29 +782,37 @@ function mCard(p,t,s){const c=document.createElement('div');c.className='card';c
 function rPT(el,aS,aE,bS,bE){
   const isNas=VIEW==='NASIONAL';
   const grp=!isNas?grpOf(VIEW):null;
-  const title=isNas?(PAGE==='overview'?'Overview':PAGE==='laporan'?'Laporan BBM Nasional':PAGE==='insight-bu'?'Insight — BU':'Insight — Nasional'):(PAGE==='overview'?VIEW:'Insight — '+VIEW);
+  const title=isNas?(PAGE==='overview'?'Overview':PAGE==='laporan'?'Laporan BBM Nasional':PAGE==='insight-bu'?'Insight — Unit Bisnis':'Insight — Nasional'):(PAGE==='overview'?VIEW:'Insight — '+VIEW);
   const sub=isNas?(PAGE==='insight-bu'?'HCI · AHI · FBI · KLS':PAGE==='laporan'?'Januari — Juli 2026':loadedSites.length+' site'):(grp?grp.label+' Group':'');
   const d=document.createElement('div');d.className='pt';
-  d.innerHTML=`<div class="pt-t">${title} <span>${sub}</span></div>
-  <div class="pcs"><span class="chip ca">A: ${fD(aS)} — ${fD(aE)}</span><span class="chip cb">B: ${fD(bS)} — ${fD(bE)}</span></div>`;
+  const chips=PAGE==='laporan'?'':
+    `<div class="pcs"><span class="chip ca">Bulan Lalu: ${fD(aS)} — ${fD(aE)}</span><span class="chip cb">Bulan Ini: ${fD(bS)} — ${fD(bE)}</span></div>`;
+  d.innerHTML=`<div class="pt-t">${title} <span>${sub}</span></div>${chips}`;
   el.appendChild(d);
 }
 
 // ============================================================
 // OVERVIEW PAGE
 // ============================================================
+function rOverview(el,aggA,aggB,bS,bE,pA,pB){
+  // KPI
+  rKPI(el,aggA,aggB);
+  // Map
+  rMap(el,bS,bE,pA,pB);
+}
+
 function rKPI(el,a,b){
   const dpA=a.tQ>0?a.dQ/a.tQ:0,dpB=b.tQ>0?b.dQ/b.tQ:0;
   const ipA=a.cA>0?a.dImp/a.cA:0,ipB=b.cA>0?b.dImp/b.cA:0;
   const ks=[
     {l:'Total Liter',va:fL(a.tQ),vb:fL(b.tQ),d:b.tQ-a.tQ,f:v=>fL(Math.abs(v)),lg:true,c:'#2563eb'},
     {l:'Dexlite Volume',va:fL(a.dQ),vb:fL(b.dQ),d:b.dQ-a.dQ,f:v=>fL(Math.abs(v)),lg:true,c:'#ef4444'},
-    {l:'Biaya BBM Aktual',va:fS(a.cA),vb:fS(b.cA),d:b.cA-a.cA,f:v=>fS(Math.abs(v)),lg:true,c:'#dc2626'},
-    {l:'Dampak Kenaikan Harga Dexlite',va:fS(a.dImp),vb:fS(b.dImp),d:b.dImp-a.dImp,f:v=>fS(Math.abs(v)),lg:true,c:'#7c3aed'},
+    {l:'Cost After Hike',va:fS(a.cA),vb:fS(b.cA),d:b.cA-a.cA,f:v=>fS(Math.abs(v)),lg:true,c:'#dc2626'},
+    {l:'Impact Kenaikan',va:fS(a.dImp),vb:fS(b.dImp),d:b.dImp-a.dImp,f:v=>fS(Math.abs(v)),lg:true,c:'#7c3aed'},
     {l:'% Impact / Cost',va:fP(ipA),vb:fP(ipB),d:(ipB-ipA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f59e0b'},
     {l:'Total Trip',va:a.trip.toLocaleString('id-ID'),vb:b.trip.toLocaleString('id-ID'),d:b.trip-a.trip,f:v=>Math.abs(v).toLocaleString('id-ID'),lg:false,c:'#059669'},
-    {l:'Biaya BBM (Harga Awal Tahun)',va:fS(a.cB),vb:fS(b.cB),d:b.cB-a.cB,f:v=>fS(Math.abs(v)),lg:true,c:'#0891b2'},
-    {l:'% Volume Dexlite',va:fP(dpA),vb:fP(dpB),d:(dpB-dpA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f97316'},
+    {l:'Cost Before',va:fS(a.cB),vb:fS(b.cB),d:b.cB-a.cB,f:v=>fS(Math.abs(v)),lg:true,c:'#0891b2'},
+    {l:'Dexlite % Vol',va:fP(dpA),vb:fP(dpB),d:(dpB-dpA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f97316'},
   ];
   const g=document.createElement('div');g.className='kg';
   g.innerHTML=ks.map(k=>`<div class="kc" style="--kc:${k.c}">
@@ -860,480 +823,14 @@ function rKPI(el,a,b){
   el.appendChild(g);
 }
 
-function rOverview(el,aggA,aggB,bS,bE,pA,pB){
-  rKPI(el,aggA,aggB);
-  rMap(el,bS,bE,pA,pB);
-}
-
-function rLaporan(el){
-  const DAYS={1:31,2:28,3:31,4:30,5:31,6:30,7:31};
-  const MN={'jan':1,'feb':2,'mar':3,'apr':4,'mei':5,'may':5,'jun':6,'jul':7,
-    'january':1,'february':2,'march':3,'april':4,'june':6,'july':7};
-
-  function parseDM(raw){
-    if(!raw||!raw.trim()) return null;
-    const s=raw.trim();
-    if(s.includes('/')){const p=s.split('/');if(p.length===3){const m=parseInt(p[0]),d=parseInt(p[1]),y=parseInt(p[2]);if(m>=1&&m<=12&&d>=1&&y>=2020)return{y,m,d};}}
-    const parts=s.replace(/-/g,' ').split(' ').filter(x=>x);
-    if(parts.length===3){const d2=parseInt(parts[0]),mon=MN[parts[1].toLowerCase().substring(0,3)],y=parseInt(parts[2]);if(!isNaN(d2)&&mon&&!isNaN(y))return{y,m:mon,d:d2};}
-    return null;
-  }
-
-  // Auto-detect current month & week
-  const _now=new Date();
-  const _curY=_now.getFullYear();
-  const _curM=_now.getMonth()+1; // 1-indexed
-  const _curD=_now.getDate();
-  const _curW=Math.ceil(_curD/7); // week number in month
-
-  const MONTH_CFG=[
-    {m:1,label:'Januari 2026',short:'Jan',color:'#4f46e5',light:'#eef2ff'},
-    {m:2,label:'Februari 2026',short:'Feb',color:'#0891b2',light:'#ecfeff'},
-    {m:3,label:'Maret 2026',short:'Mar',color:'#059669',light:'#ecfdf5'},
-    {m:4,label:'April 2026',short:'Apr',color:'#7c3aed',light:'#f5f3ff'},
-    {m:5,label:'Mei 2026',short:'Mei',color:'#dc2626',light:'#fef2f2'},
-    {m:6,label:'Juni 2026',short:'Jun',color:'#0f766e',light:'#f0fdfa'},
-    {m:7,label:'Juli 2026',short:'Jul',color:'#c2410c',light:'#fff7ed'},
-  ];
-
-  const MONTHS=MONTH_CFG.map(mc=>{
-    const isCurrent=(_curY===2026&&mc.m===_curM);
-    const isPast=(_curY===2026&&mc.m<_curM)||_curY>2026;
-    let weeks,note;
-    if(isCurrent){
-      weeks=_curW;
-      note=`W${_curW} (${_curW} Minggu berjalan)`;
-    } else if(isPast){
-      weeks=4;
-      note='Full Month ÷ 4 Minggu';
-    } else {
-      weeks=4;
-      note='—';
-    }
-    return{...mc,weeks,note,isCurrent,isPast};
-  }).filter(mc=>mc.isPast||mc.isCurrent);
-
-  const DEX={
-    1:{pjawa:14200,ljawa:14500},2:{pjawa:14200,ljawa:14500},3:{pjawa:14200,ljawa:14500},
-    4:{pjawa:14200,ljawa:23600},5:{pjawa:26000,ljawa:26550},
-    6:{pjawa:23000,ljawa:23500},7:{pjawa:19700,ljawa:20150},
-  };
-
-  // Aggregate
-  const monthly={};
-  for(let m=1;m<=7;m++) monthly[m]={qty:0,cost:0,dexQty:0,dexCost:0,solarQty:0,solarCost:0,pertQty:0,pertCost:0,maxQty:0,maxCost:0};
-
-  const siteM={};
-  loadedSites.forEach(site=>{
-    siteM[site]={};
-    (siteData[site]||[]).forEach(r=>{
-      const dt=parseDM(r.d);
-      if(!dt||dt.y!==2026||dt.m>7) return;
-      const m=dt.m;
-      if(!siteM[site][m]) siteM[site][m]={qty:0,cost:0,dexQty:0,dexCost:0,solarQty:0,solarCost:0,pertQty:0,pertCost:0,maxQty:0,maxCost:0};
-      const q=r.q||0,f=(r.f||'').toLowerCase(),price=getActualPrice(r.f,q,r.i,site,r.d),c=q*price;
-      siteM[site][m].qty+=q;siteM[site][m].cost+=c;
-      if(f==='dexlite'){siteM[site][m].dexQty+=q;siteM[site][m].dexCost+=c;}
-      if(f==='solar'||f==='bio solar'){siteM[site][m].solarQty+=q;siteM[site][m].solarCost+=c;}
-      if(f==='pertalite'){siteM[site][m].pertQty+=q;siteM[site][m].pertCost+=c;}
-      if(f==='pertamax'){siteM[site][m].maxQty+=q;siteM[site][m].maxCost+=c;}
-    });
-  });
-
-  loadedSites.forEach(site=>{
-    const avail=Object.keys(siteM[site]).map(Number).filter(m=>siteM[site][m]&&siteM[site][m].qty>0).sort((a,b)=>a-b);
-    if(!avail.length) return;
-    const firstM=avail[0];
-    const keys=['qty','cost','dexQty','dexCost','solarQty','solarCost','pertQty','pertCost','maxQty','maxCost'];
-    for(let m=1;m<=7;m++){
-      const d=siteM[site][m];
-      if(d&&d.qty>0){keys.forEach(k=>monthly[m][k]+=d[k]||0);}
-      else if(m<firstM){const mir=siteM[site][firstM],ratio=(DAYS[m]||30)/(DAYS[firstM]||30);keys.forEach(k=>monthly[m][k]+=(mir[k]||0)*ratio);}
-    }
-  });
-
-  const mLabels=MONTHS.map(mc=>mc.short);
-  const mData=MONTHS.map(mc=>monthly[mc.m]||{qty:0,cost:0,dexQty:0,dexCost:0,solarQty:0,solarCost:0,pertQty:0,pertCost:0,maxQty:0,maxCost:0});
-
-  function sec(title,sub){
-    const s=document.createElement('div');s.style.cssText='margin-bottom:28px;';
-    const h=document.createElement('div');h.style.cssText='margin-bottom:14px;';
-    h.innerHTML=`<div style="font-size:13px;font-weight:800;color:#0f172a;">${title}</div>${sub?`<div style="font-size:11px;color:#64748b;margin-top:2px;">${sub}</div>`:''}`;
-    s.appendChild(h);return s;
-  }
-  function card(p,extra){
-    const c=document.createElement('div');
-    c.style.cssText=`background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;${extra||''}`;
-    p.appendChild(c);return c;
-  }
-
-  // ── HEADER ──
-  const hdr=document.createElement('div');
-  hdr.style.cssText='background:linear-gradient(135deg,#0f172a,#1e3a5f);border-radius:14px;padding:24px 28px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;';
-  hdr.innerHTML=`
-    <div>
-      <div style="font-size:10px;font-weight:700;letter-spacing:3px;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">Transport · SCM</div>
-      <div style="font-size:26px;font-weight:900;color:#fff;line-height:1.1;">Laporan Pemakaian <span style="color:#7dd3fc">BBM Nasional</span></div>
-      <div style="font-size:11px;color:#64748b;margin-top:6px;">${loadedSites.length} Site Nasional &nbsp;·&nbsp; 5 Group &nbsp;·&nbsp; Analisis Bulanan Jan–Jul 2026</div>
-    </div>
-    <div style="text-align:right;">
-      <div style="font-size:10px;color:#475569;">YTD 2026</div>
-      <div style="font-size:20px;font-weight:900;color:#7dd3fc;font-family:'JetBrains Mono',monospace;">${MONTHS.length} Bulan</div>
-    </div>`;
-  el.appendChild(hdr);
-
-  // ── SECTION 1: KARTU BULAN ──
-  const s1=sec('Ringkasan Pemakaian BBM per Bulan','Total Liter, Cost, dan Dexlite per bulan — Jan–Jul 2026');
-  el.appendChild(s1);
-
-  const g1=document.createElement('div');g1.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px;';
-  const g2=document.createElement('div');g2.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;';
-  s1.appendChild(g1);s1.appendChild(g2);
-
-  MONTHS.forEach((mc,idx)=>{
-    const d=monthly[mc.m];
-    const avgW=d.qty/(mc.weeks||4),avgCW=d.cost/(mc.weeks||4),dexPct=d.cost>0?d.dexCost/d.cost*100:0;
-    const px=DEX[mc.m];
-    const wrap=document.createElement('div');
-
-    const ph=document.createElement('div');
-    ph.style.cssText='font-size:9px;color:#94a3b8;margin-bottom:4px;font-weight:600;';
-    ph.innerHTML=`Dexlite · <span style="color:#2563eb">P.Jawa Rp ${(px.pjawa/1000).toFixed(1)}rb</span> <span style="color:#ef4444">L.Jawa Rp ${(px.ljawa/1000).toFixed(1)}rb</span>`;
-    wrap.appendChild(ph);
-
-    const c=document.createElement('div');
-    c.style.cssText=`background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px;border-top:3px solid ${mc.color};`;
-    c.innerHTML=`
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-        <div style="font-size:14px;font-weight:800;color:${mc.color};">${mc.label}</div>
-        <div style="font-size:9px;font-weight:700;color:#94a3b8;background:${mc.light};padding:2px 8px;border-radius:4px;">${mc.note}</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:7px;">
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#64748b;">Total Liter</span>
-          <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${Math.round(d.qty).toLocaleString('id-ID')} Liter</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#64748b;">Rata-rata/Minggu</span>
-          <span style="font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;color:${mc.color};">${Math.round(avgW).toLocaleString('id-ID')} Liter</span>
-        </div>
-        <div style="height:1px;background:#f1f5f9;"></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#64748b;">Cost BBM</span>
-          <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${fS(d.cost)}</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#94a3b8;">Rata-rata Biaya/Minggu</span>
-          <span style="font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;color:${mc.color};">${fS(avgCW)}</span>
-        </div>
-        <div style="height:1px;background:#f1f5f9;"></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#64748b;">Cost Dexlite</span>
-          <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${fS(d.dexCost)}</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:10px;color:#64748b;">% Biaya Dexlite</span>
-          <span style="font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;color:${dexPct>15?'#dc2626':dexPct>10?'#f59e0b':'#059669'};">${dexPct.toFixed(2)}%</span>
-        </div>
-      </div>`;
-    wrap.appendChild(c);
-    if(idx<4) g1.appendChild(wrap); else g2.appendChild(wrap);
-  });
-
-  // ── SECTION 2: TREND ──
-  const s2=sec('Trend Pemakaian BBM — Avg per Minggu','Volume per jenis BBM dan Cost bulanan Jan–Jul 2026');
-  el.appendChild(s2);
-  const tg=document.createElement('div');tg.style.cssText='display:grid;grid-template-columns:1.5fr 1fr;gap:14px;';
-  s2.appendChild(tg);
-  const tc1=card(tg);tc1.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Volume per Jenis BBM (Ltr/Minggu)</div><canvas id="cv_l_vol" style="max-height:200px;"></canvas>';
-  const tc2=card(tg);tc2.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Cost BBM & % Biaya Dexlite</div><canvas id="cv_l_cost" style="max-height:200px;"></canvas>';
-
-  // ── SECTION 3: KOMPOSISI ──
-  const s3=sec('Komposisi per Jenis BBM','Rata-rata volume & cost per jenis BBM per bulan');
-  el.appendChild(s3);
-  const sg3=document.createElement('div');sg3.style.cssText='display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;';
-  s3.appendChild(sg3);
-  const sc3a=card(sg3);sc3a.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Volume per Bulan (Stacked)</div><canvas id="cv_l_stk" style="max-height:220px;"></canvas>';
-  const sc3b=card(sg3);sc3b.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Proporsi Volume Avg (Apr–Jul)</div><canvas id="cv_l_pie" style="max-height:220px;"></canvas>';
-
-  // Table komposisi
-  const sc3c=card(sg3,'');
-  const fuels=['Solar','Dexlite','Pertalite','Pertamax'];
-  const FCOL={Solar:'#f59e0b',Dexlite:'#ef4444',Pertalite:'#3b82f6',Pertamax:'#8b5cf6'};
-  const avgMonths=MONTHS.filter(mc=>mc.m>=4);
-  let th3='<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="background:#f8fafc;">';
-  th3+=`<th style="padding:7px 8px;text-align:left;color:#64748b;font-weight:700;border-bottom:1px solid #e2e8f0;">Jenis</th>`;
-  avgMonths.forEach(mc=>{th3+=`<th style="padding:7px 8px;text-align:right;color:${mc.color};font-weight:700;border-bottom:1px solid #e2e8f0;">${mc.short}</th>`;});
-  th3+='</tr></thead><tbody>';
-  fuels.forEach(f=>{
-    const fk=f.toLowerCase();
-    th3+=`<tr><td style="padding:6px 8px;border-bottom:1px solid #f1f5f9;"><span style="background:${FCOL[f]}22;color:${FCOL[f]};font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;">${f}</span></td>`;
-    avgMonths.forEach(mc=>{
-      const d=monthly[mc.m];
-      const qty=f==='Solar'?d.solarQty:f==='Dexlite'?d.dexQty:f==='Pertalite'?d.pertQty:d.maxQty;
-      const pct=d.qty>0?qty/d.qty*100:0;
-      th3+=`<td style="padding:6px 8px;text-align:right;border-bottom:1px solid #f1f5f9;font-family:'JetBrains Mono',monospace;color:#334155;">${Math.round(qty/mc.weeks).toLocaleString('id-ID')}<br><span style="color:#94a3b8;font-size:9px;">${pct.toFixed(1)}%</span></td>`;
-    });
-    th3+='</tr>';
-  });
-  th3+='</tbody></table></div>';
-  sc3c.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Ltr/Minggu per Jenis per Bulan</div>'+th3;
-
-  // ── SECTION 4: PER GROUP ──
-  const s4=sec('Pemakaian per Group Site','Share volume dan cost per group — Rata-rata/Minggu');
-  el.appendChild(s4);
-  const sg4=document.createElement('div');sg4.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:14px;';
-  s4.appendChild(sg4);
-
-  // Aggregate per group per month (Apr-Jun avg)
-  const GRP_DEF={
-    'NDC':{color:'#eab308',sites:s=>grpOf(s)&&grpOf(s).key==='NDC'},
-    'RDC':{color:'#06b6d4',sites:s=>grpOf(s)&&grpOf(s).key==='RDC'},
-    'Hub':{color:'#6366f1',sites:s=>grpOf(s)&&grpOf(s).key==='HUB'},
-    'SDC':{color:'#f97316',sites:s=>grpOf(s)&&grpOf(s).key==='SDC'},
-  };
-  const grpAvg={};
-  Object.entries(GRP_DEF).forEach(([gk,g])=>{
-    let qty=0,cost=0;
-    loadedSites.filter(s=>g.sites(s)).forEach(s=>{
-      [4,5,6].forEach(m=>{const d=siteM[s][m];if(d){qty+=d.qty/4;cost+=d.cost/4;}});
-    });
-    grpAvg[gk]={qty:qty/3,cost:cost/3,color:g.color};
-  });
-  const totalGrpQty=Object.values(grpAvg).reduce((s,g)=>s+g.qty,0);
-  const totalGrpCost=Object.values(grpAvg).reduce((s,g)=>s+g.cost,0);
-
-  const sc4a=card(sg4);sc4a.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Share Volume per Group</div><canvas id="cv_l_grp_vol" style="max-height:220px;"></canvas>';
-  const sc4b=card(sg4);
-  let th4='<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="background:#f8fafc;"><th style="padding:7px 8px;text-align:left;border-bottom:1px solid #e2e8f0;">Group</th><th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;">Avg Ltr/Mg</th><th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;">% Ltr</th><th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;">Avg Cost/Mg</th><th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;">% Cost</th></tr></thead><tbody>';
-  Object.entries(grpAvg).forEach(([gk,g])=>{
-    const pctQ=totalGrpQty>0?g.qty/totalGrpQty*100:0,pctC=totalGrpCost>0?g.cost/totalGrpCost*100:0;
-    th4+=`<tr><td style="padding:7px 8px;border-bottom:1px solid #f1f5f9;"><span style="background:${g.color}22;color:${g.color};font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;">${gk}</span></td>
-      <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#334155;">${Math.round(g.qty).toLocaleString('id-ID')}</td>
-      <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#64748b;">${pctQ.toFixed(1)}%</td>
-      <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#334155;">${fS(g.cost)}</td>
-      <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #f1f5f9;color:#64748b;">${pctC.toFixed(1)}%</td>
-    </tr>`;
-  });
-  th4+=`<tr style="background:#f8fafc;font-weight:700;"><td style="padding:7px 8px;">TOTAL</td>
-    <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">${Math.round(totalGrpQty).toLocaleString('id-ID')}</td>
-    <td style="padding:7px 8px;text-align:right;">100%</td>
-    <td style="padding:7px 8px;text-align:right;font-family:'JetBrains Mono',monospace;">${fS(totalGrpCost)}</td>
-    <td style="padding:7px 8px;text-align:right;">100%</td>
-  </tr></tbody></table></div>`;
-  sc4b.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Detail per Group — Avg Apr–Jun</div>'+th4;
-
-  // ── SECTION 5: PER BU ──
-  const s5=sec('Pemakaian per Business Unit','HCI · AHI · FBI · KLS — Rata-rata/Minggu Apr–Jun 2026 &nbsp;*Exclude SDC');
-  el.appendChild(s5);
-  const buAvg={};
-  Object.entries(BU_MAP).forEach(([bk,bu])=>{
-    let qty=0,cost=0,dexQty=0,dexCost=0;
-    loadedSites.forEach(site=>{
-      [4,5,6].forEach(m=>{
-        const rows=(siteData[site]||[]).filter(r=>{
-          const dt=parseDM(r.d);if(!dt||dt.m!==m) return false;
-          const buBySite=getBUofSite(site);
-          return (buBySite||getBUofRow(r.o||''))===bk;
-        });
-        rows.forEach(r=>{
-          const q=r.q||0,price=getActualPrice(r.f,q,r.i,site,r.d),c=q*price;
-          qty+=q/4/3;cost+=c/4/3;
-          if((r.f||'').toLowerCase()==='dexlite'){dexQty+=q/4/3;dexCost+=c/4/3;}
-        });
-      });
-    });
-    buAvg[bk]={...bu,qty,cost,dexQty,dexCost};
-  });
-
-  const sg5=document.createElement('div');sg5.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:12px;';
-  s5.appendChild(sg5);
-  Object.entries(buAvg).forEach(([bk,bu])=>{
-    const dexPct=bu.cost>0?bu.dexCost/bu.cost*100:0;
-    const c=card(sg5,`border-top:3px solid ${bu.color};`);
-    c.innerHTML=`
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-        <div style="font-size:16px;font-weight:900;color:${bu.color};">${bu.label}</div>
-        <div style="font-size:9px;color:#94a3b8;">${bu.owners.join(', ')}</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:7px;">
-        <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#64748b;">Avg Ltr/Mg</span><span style="font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${Math.round(bu.qty).toLocaleString('id-ID')}</span></div>
-        <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#64748b;">Avg Cost/Mg</span><span style="font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#0f172a;">${fS(bu.cost)}</span></div>
-        <div style="height:1px;background:#f1f5f9;"></div>
-        <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#64748b;">Dexlite Ltr</span><span style="font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#ef4444;">${Math.round(bu.dexQty).toLocaleString('id-ID')}</span></div>
-        <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:#64748b;">% Biaya Dexlite</span><span style="font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;color:${dexPct>15?'#dc2626':dexPct>10?'#f59e0b':'#059669'};">${dexPct.toFixed(2)}%</span></div>
-        <div style="background:#f1f5f9;border-radius:3px;height:4px;margin-top:2px;"><div style="height:4px;border-radius:3px;background:${bu.color};width:${Math.min(dexPct*5,100)}%;"></div></div>
-      </div>`;
-  });
-
-  // ── SECTION 6: SOROTAN ──
-  const s6=sec('Sorotan & Analisis','Temuan utama berdasarkan data Apr–Jul 2026');
-  el.appendChild(s6);
-  const sorotan=[
-    {icon:'🌿',title:'Dominasi Bio Solar — Strategi Hemat Biaya',color:'#059669',body:'Rata-rata Bio Solar 82% dari total pemakaian, porsinya terus naik dari 80,89% (Apr) → 82,97% (Jun). Menekan cost per liter blended meski volume total naik 5,1%.'},
-    {icon:'🎯',title:'Ketepatan Pemilihan Armada Niaga',color:'#2563eb',body:'Armada pickup/losbak untuk jalur sempit dioperasikan dengan Pertalite — bukan Pertamax (Rp16.250 vs Rp10.000/liter) — menjaga jangkauan tanpa membebani biaya.'},
-    {icon:'🔒',title:'Kontrol Ketat BBM Bernilai Tinggi',color:'#7c3aed',body:'Pertamax rata-rata 0,15–0,24% dan Dexlite rata-rata 3,4–3,5% dari total volume. Porsi biaya Dexlite turun dari 11,29% (Apr) → 9,47% (Jun).'},
-    {icon:'📈',title:'Kenaikan Bio Solar Didorong Ekspansi',color:'#f59e0b',body:'Volume Bio Solar naik 7,8% (Apr→Jun), sejalan peningkatan pengiriman luar kota — terutama Jawa Barat (≈50% dari total nasional) dan Lampung.'},
-    {icon:'⚠️',title:'Dexlite Terbatas di Wilayah Kelangkaan',color:'#ef4444',body:'Dexlite struktural hanya di wilayah minim Bio Solar: Kalimantan (72,95% volume Dexlite tertinggi nasional), Sulawesi, dan Kepulauan Riau (Batam, Nagoya).'},
-  ];
-  const sg6=document.createElement('div');sg6.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:12px;';
-  s6.appendChild(sg6);
-  sorotan.forEach(s=>{
-    const c=document.createElement('div');
-    c.style.cssText=`background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;display:flex;gap:12px;border-left:3px solid ${s.color};`;
-    c.innerHTML=`<div style="font-size:20px;flex-shrink:0;">${s.icon}</div>
-      <div><div style="font-size:11px;font-weight:800;color:#0f172a;margin-bottom:4px;">${s.title}</div>
-      <div style="font-size:10px;color:#64748b;line-height:1.6;">${s.body}</div></div>`;
-    sg6.appendChild(c);
-  });
-
-  // ── SECTION 6b: TRENDLINE HARGA BBM ──
-  const s6b=sec('Trendline Harga Dexlite per Area','Pergerakan harga Rp/Liter Jan–Jul 2026');
-  el.appendChild(s6b);
-  const sg6b=document.createElement('div');sg6b.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:14px;';
-  s6b.appendChild(sg6b);
-
-  const DEX_TREND={
-    'P. Jawa / Bali':{color:'#2563eb',prices:[14200,14200,14200,14200,26000,23000,19700]},
-    'L. Jawa (Sumut/Kal/Sul)':{color:'#059669',prices:[14500,14500,14500,23600,26550,23500,20150]},
-    'Sumbar / Riau / Kepri':{color:'#7c3aed',prices:[14800,14800,14800,24650,27050,24000,20550]},
-    'FTZ Batam':{color:'#f59e0b',prices:[13450,13450,13450,22450,24850,21850,17550]},
-  };
-
-  const tc6b=card(sg6b,'');
-  tc6b.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Harga Dexlite per Wilayah (Rp/Liter)</div><canvas id="cv_l_dex" style="max-height:220px;"></canvas>';
-
-  // Table harga
-  const tc6bt=card(sg6b,'');
-  let thDex='<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:10px;"><thead><tr style="background:#f8fafc;">';
-  thDex+=`<th style="padding:7px 8px;text-align:left;border-bottom:1px solid #e2e8f0;color:#64748b;font-weight:700;">Area</th>`;
-  MONTHS.forEach(mc=>{thDex+=`<th style="padding:7px 8px;text-align:right;border-bottom:1px solid #e2e8f0;color:${mc.color};font-weight:700;">${mc.short}</th>`;});
-  thDex+='</tr></thead><tbody>';
-  Object.entries(DEX_TREND).forEach(([area,data])=>{
-    thDex+=`<tr><td style="padding:7px 8px;border-bottom:1px solid #f1f5f9;font-weight:700;color:#334155;">${area}</td>`;
-    MONTHS.forEach((mc,i)=>{
-      const p=data.prices[mc.m-1];
-      const prev=i>0?data.prices[MONTHS[i-1].m-1]:null;
-      const up=prev&&p>prev,down=prev&&p<prev;
-      thDex+=`<td style="padding:7px 8px;text-align:right;border-bottom:1px solid #f1f5f9;font-family:'JetBrains Mono',monospace;color:${up?'#dc2626':down?'#059669':'#334155'};font-weight:${up||down?700:400};">${(p/1000).toFixed(2)}rb${up?' ↑':down?' ↓':''}</td>`;
-    });
-    thDex+='</tr>';
-  });
-  thDex+='</tbody></table></div>';
-  tc6bt.innerHTML='<div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:10px;">Tabel Harga Dexlite (Rp/Ltr) — Merah = naik, Hijau = turun</div>'+thDex;
-
-  // ── SECTION 7: TOP SITES ──
-  const s7=sec('Top 10 Site — Volume Tertinggi','Rata-rata Ltr/Minggu Apr–Jun 2026');
-  el.appendChild(s7);
-  const siteRank=loadedSites.map(site=>{
-    let qty=0;
-    [4,5,6].forEach(m=>{const d=siteM[site][m];if(d) qty+=d.qty/4;});
-    return{site,qty:qty/3};
-  }).sort((a,b)=>b.qty-a.qty).slice(0,10);
-
-  const sc7=card(s7,'');
-  let th7='<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:11px;"><thead><tr style="background:#f8fafc;"><th style="padding:8px 10px;text-align:left;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">#</th><th style="padding:8px 10px;text-align:left;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Site</th><th style="padding:8px 10px;text-align:left;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Group</th><th style="padding:8px 10px;text-align:right;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Avg Ltr/Mg</th><th style="padding:8px 10px;border-bottom:1px solid #e2e8f0;color:#64748b;font-size:9px;font-weight:700;">Share</th></tr></thead><tbody>';
-  const maxQty=siteRank[0]?.qty||1;
-  siteRank.forEach((r,i)=>{
-    const grp=grpOf(r.site),gc=grp?grp.color:'#94a3b8';
-    th7+=`<tr>
-      <td style="padding:7px 10px;border-bottom:1px solid #f1f5f9;color:#94a3b8;font-size:10px;">${i+1}</td>
-      <td style="padding:7px 10px;border-bottom:1px solid #f1f5f9;font-weight:700;color:#0f172a;">${r.site}</td>
-      <td style="padding:7px 10px;border-bottom:1px solid #f1f5f9;">${grp?`<span style="background:${gc}22;color:${gc};font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;">${grp.label}</span>`:'—'}</td>
-      <td style="padding:7px 10px;text-align:right;border-bottom:1px solid #f1f5f9;font-family:'JetBrains Mono',monospace;font-weight:700;color:#334155;">${Math.round(r.qty).toLocaleString('id-ID')} Liter</td>
-      <td style="padding:7px 10px;border-bottom:1px solid #f1f5f9;width:120px;">
-        <div style="background:#f1f5f9;border-radius:3px;height:6px;"><div style="height:6px;border-radius:3px;background:${gc};width:${(r.qty/maxQty*100).toFixed(0)}%;"></div></div>
-      </td>
-    </tr>`;
-  });
-  th7+='</tbody></table></div>';
-  sc7.innerHTML=th7;
-
-  // ── RENDER CHARTS ──
-  requestAnimationFrame(()=>{
-    const FCOLS=['#f59e0b','#ef4444','#3b82f6','#8b5cf6'];
-
-    mkC('cv_l_vol',{type:'bar',data:{labels:mLabels,datasets:[
-      {label:'Solar',data:mData.map((d,i)=>d.solarQty/(MONTHS[i].weeks||4)),backgroundColor:'#f59e0b44',borderColor:'#f59e0b',borderWidth:1,stack:'v'},
-      {label:'Dexlite',data:mData.map((d,i)=>d.dexQty/(MONTHS[i].weeks||4)),backgroundColor:'#ef444444',borderColor:'#ef4444',borderWidth:1,stack:'v'},
-      {label:'Pertalite',data:mData.map((d,i)=>d.pertQty/(MONTHS[i].weeks||4)),backgroundColor:'#3b82f644',borderColor:'#3b82f6',borderWidth:1,stack:'v'},
-      {label:'Pertamax',data:mData.map((d,i)=>d.maxQty/(MONTHS[i].weeks||4)),backgroundColor:'#8b5cf644',borderColor:'#8b5cf6',borderWidth:1,stack:'v'},
-    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
-      x:{stacked:true,grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
-      y:{stacked:true,grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+' L'}}
-    }}});
-
-    const dexPcts=mData.map(d=>d.cost>0?d.dexCost/d.cost*100:0);
-    mkC('cv_l_cost',{type:'bar',data:{labels:mLabels,datasets:[
-      {label:'Cost BBM (Jt)',data:mData.map((d,i)=>d.cost/(MONTHS[i].weeks||4)/1e6),backgroundColor:'#0891b244',borderColor:'#0891b2',borderWidth:1.5,borderRadius:4,order:2},
-      {label:'% Biaya Dexlite',data:dexPcts,type:'line',yAxisID:'y2',borderColor:'#ef4444',backgroundColor:'transparent',borderWidth:2,pointRadius:4,pointBackgroundColor:'#ef4444',tension:.3,order:1},
-    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
-      x:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
-      y:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>'Rp '+v.toFixed(0)+' Jt'}},
-      y2:{position:'right',grid:{display:false},ticks:{color:'#ef4444',font:{size:9},callback:v=>v.toFixed(1)+'%'}}
-    }}});
-
-    // Komposisi pie (avg Apr-Jun)
-    const avgData={solar:0,dex:0,pert:0,max:0};
-    [4,5,6].forEach(m=>{
-      avgData.solar+=monthly[m].solarQty/4;
-      avgData.dex+=monthly[m].dexQty/4;
-      avgData.pert+=monthly[m].pertQty/4;
-      avgData.max+=monthly[m].maxQty/4;
-    });
-    Object.keys(avgData).forEach(k=>avgData[k]/=3);
-    mkC('cv_l_pie',{type:'doughnut',data:{
-      labels:['Solar','Dexlite','Pertalite','Pertamax'],
-      datasets:[{data:[avgData.solar,avgData.dex,avgData.pert,avgData.max],backgroundColor:FCOLS.map(c=>c+'cc'),borderColor:'#fff',borderWidth:2}]
-    },options:{responsive:true,cutout:'60%',plugins:{legend:{position:'bottom',labels:{color:'#64748b',font:{size:9},padding:8,boxWidth:10}}}}});
-
-    // Stacked komposisi per bulan
-    mkC('cv_l_stk',{type:'bar',data:{labels:mLabels,datasets:[
-      {label:'Solar',data:mData.map(d=>d.solarQty),backgroundColor:'#f59e0b44',borderColor:'#f59e0b',borderWidth:1,stack:'s'},
-      {label:'Dexlite',data:mData.map(d=>d.dexQty),backgroundColor:'#ef444444',borderColor:'#ef4444',borderWidth:1,stack:'s'},
-      {label:'Pertalite',data:mData.map(d=>d.pertQty),backgroundColor:'#3b82f644',borderColor:'#3b82f6',borderWidth:1,stack:'s'},
-      {label:'Pertamax',data:mData.map(d=>d.maxQty),backgroundColor:'#8b5cf644',borderColor:'#8b5cf6',borderWidth:1,stack:'s'},
-    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
-      x:{stacked:true,grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
-      y:{stacked:true,grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+' L'}}
-    }}});
-
-    // Dexlite trendline
-    mkC('cv_l_dex',{type:'line',data:{
-      labels:MONTHS.map(mc=>mc.short),
-      datasets:Object.entries(DEX_TREND).map(([area,data])=>({
-        label:area,
-        data:MONTHS.map(mc=>data.prices[mc.m-1]),
-        borderColor:data.color,
-        backgroundColor:data.color+'15',
-        borderWidth:2,
-        pointRadius:4,
-        pointBackgroundColor:data.color,
-        tension:.3,
-        fill:false,
-      }))
-    },options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:9},boxWidth:10}}},scales:{
-      x:{grid:{display:false},ticks:{color:'#64748b',font:{size:9}}},
-      y:{grid:{color:'#f1f5f9'},ticks:{color:'#64748b',font:{size:9},callback:v=>'Rp '+(v/1000).toFixed(1)+'rb'}}
-    }}});
-
-    // Group pie
-    mkC('cv_l_grp_vol',{type:'doughnut',data:{
-      labels:Object.keys(grpAvg),
-      datasets:[{data:Object.values(grpAvg).map(g=>g.qty),backgroundColor:Object.values(grpAvg).map(g=>g.color+'bb'),borderColor:'#fff',borderWidth:2}]
-    },options:{responsive:true,cutout:'60%',plugins:{legend:{position:'bottom',labels:{color:'#64748b',font:{size:9},padding:8,boxWidth:10}}}}});
-  });
-}
-
-
 function rMap(el,bS,bE,pA,pB){
   const sec=mSec(el,'Sebaran Site Nasional');
   const mapCard=document.createElement('div');mapCard.className='map-card';
   mapCard.innerHTML=`
     <div class="map-head">
-      <div><div class="map-title">Peta Distribusi BBM</div><div class="map-sub">🖱️ Klik label atau marker untuk detail site &nbsp;·&nbsp; Periode Ini: ${fD(bS)} — ${fD(bE)}</div></div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-        ${Object.entries(GROUPS).map(([k,g])=>`<span style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:${g.color};background:${g.color}15;padding:3px 8px;border-radius:5px;border:1px solid ${g.color}33;"><span style="width:8px;height:8px;border-radius:50%;background:${g.color};display:inline-block;"></span>${g.label}</span>`).join('')}
+      <div><div class="map-title">Peta Distribusi BBM</div><div class="map-sub">Klik label site untuk detail — Periode B: ${fD(bS)} — ${fD(bE)}</div></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        ${Object.entries(GROUPS).map(([k,g])=>`<span style="display:flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:${g.color}"><span style="width:8px;height:8px;border-radius:50%;background:${g.color};display:inline-block;"></span>${g.label}</span>`).join('')}
       </div>
     </div>
     <div style="position:relative;width:100%;height:460px;">
@@ -1532,7 +1029,7 @@ function rExec(el,a,b){
     {f:'Solar',chip:'fcs'},{f:'Dexlite',chip:'fcd'},
     {f:'Pertalite',chip:'fcp'},{f:'Pertamax',chip:'fcx'},
   ];
-  let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Bulan Lalu</th><th style="color:#f59e0b">Bulan Ini</th><th>Perubahan</th></tr></thead><tbody>`;
+  let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Periode A</th><th style="color:#f59e0b">Periode B</th><th>Selisih MoM</th></tr></thead><tbody>`;
   // Total Liter
   const dTot=b.tQ-a.tQ;
   h+=`<tr><td class="em">Total Liter</td><td class="ea">${fL(a.tQ)}</td><td class="eb">${fL(b.tQ)}</td><td><span class="dp ${dpcls(dTot,true)}">${dTot>=0?'+':'−'}${fL(Math.abs(dTot))}</span></td></tr>`;
@@ -1585,7 +1082,7 @@ function rVol(el,a,b){
     mkC('cv_vol',{type:'bar',data:{labels:FUELS,datasets:[
       {label:'Periode A',data:FUELS.map(f=>a.bF[f]?a.bF[f].q:0),backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:5},
       {label:'Periode B',data:FUELS.map(f=>b.bF[f]?b.bF[f].q:0),backgroundColor:'#f59e0b44',borderColor:'#f59e0b',borderWidth:1.5,borderRadius:5}
-    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID')+' L'}}}}});
+    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID')+'L'}}}}});
     [['cv_pA',a],['cv_pB',b]].forEach(([id,ag])=>{
       mkC(id,{type:'doughnut',data:{labels:FUELS,datasets:[{data:FUELS.map(f=>ag.bF[f]?ag.bF[f].q:0),backgroundColor:FUELS.map(f=>FC[f]+'bb'),borderColor:'#fff',borderWidth:2}]},
         options:{responsive:true,cutout:'64%',plugins:{legend:{position:'bottom',labels:{color:'#64748b',font:{size:9},padding:6,boxWidth:10}},tooltip:{callbacks:{label:c=>' '+(ag.tQ>0?(c.raw/ag.tQ*100).toFixed(1):'0')+'%'}}}}});
@@ -1600,8 +1097,8 @@ function rCost(el,a,b){
   const c2=mCard(row,'Impact Kenaikan Dexlite','Rp & % dari total cost');c2.innerHTML+=`<canvas id="cv_imp"></canvas>`;
   requestAnimationFrame(()=>{
     mkC('cv_cost',{type:'bar',data:{labels:['Periode A','Periode B'],datasets:[
-      {label:'Biaya BBM (Harga Awal Tahun)',data:[a.cB/1e6,b.cB/1e6],backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:6},
-      {label:'Biaya BBM (Harga Aktual)',data:[a.cA/1e6,b.cA/1e6],backgroundColor:'#ef444444',borderColor:'#ef4444',borderWidth:1.5,borderRadius:6}
+      {label:'Cost Before',data:[a.cB/1e6,b.cB/1e6],backgroundColor:'#2563eb44',borderColor:'#2563eb',borderWidth:1.5,borderRadius:6},
+      {label:'Cost After',data:[a.cA/1e6,b.cA/1e6],backgroundColor:'#ef444444',borderColor:'#ef4444',borderWidth:1.5,borderRadius:6}
     ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>'Rp '+v.toFixed(1)+' Jt'}}}}});
     const ipA=a.cA>0?a.dImp/a.cA*100:0,ipB=b.cA>0?b.dImp/b.cA*100:0;
     mkC('cv_imp',{type:'bar',data:{labels:['Periode A','Periode B'],datasets:[
@@ -1660,8 +1157,8 @@ function rDetail(el,aggA,aggB,aS,aE,bS,bE,pA,pB){
     const card=mCard(sec,VIEW+' — Summary','Data jalur tidak tersedia untuk site SDC');
     const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0,ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
     const dpA=aggA.tQ>0?aggA.dQ/aggA.tQ:0,dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
-    const rows=[['Total Liter',fL(aggA.tQ),fL(aggB.tQ)],['Dexlite Volume',fL(aggA.dQ),fL(aggB.dQ)],['% Volume Dexlite',fP(dpA),fP(dpB)],['Biaya BBM (Harga Awal Tahun)',fS(aggA.cB),fS(aggB.cB)],['Biaya BBM (Harga Aktual)',fS(aggA.cA),fS(aggB.cA)],['Dampak Kenaikan Harga Dexlite',fS(aggA.dImp),fS(aggB.dImp)],['% Impact / Cost',fP(ipA),fP(ipB)],['Total Trip',aggA.trip.toLocaleString('id-ID'),aggB.trip.toLocaleString('id-ID')]];
-    let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Bulan Lalu</th><th style="color:#f59e0b">Bulan Ini</th></tr></thead><tbody>`;
+    const rows=[['Total Liter',fL(aggA.tQ),fL(aggB.tQ)],['Dexlite Volume',fL(aggA.dQ),fL(aggB.dQ)],['Dexlite % Vol',fP(dpA),fP(dpB)],['Cost Before',fS(aggA.cB),fS(aggB.cB)],['Cost After',fS(aggA.cA),fS(aggB.cA)],['Impact Kenaikan',fS(aggA.dImp),fS(aggB.dImp)],['% Impact / Cost',fP(ipA),fP(ipB)],['Total Trip',aggA.trip.toLocaleString('id-ID'),aggB.trip.toLocaleString('id-ID')]];
+    let h=`<table class="et"><thead><tr><th>Metrik</th><th style="color:#2563eb">Periode A</th><th style="color:#f59e0b">Periode B</th></tr></thead><tbody>`;
     rows.forEach(([m,va,vb])=>{h+=`<tr><td class="em">${m}</td><td class="ea">${va}</td><td class="eb">${vb}</td></tr>`;});
     h+='</tbody></table>';card.innerHTML+=h;return;
   }
@@ -1862,129 +1359,6 @@ function rTrend(el,aS,aE,bS,bE,pA,pB){
       },
       options:{...qtyOpts,plugins:{...qtyOpts.plugins,tooltip:{mode:'index',intersect:false,callbacks:{label:c=>' '+c.dataset.label+': '+c.raw.toLocaleString('id-ID',{maximumFractionDigits:0})+' L'}}}}
     });
-  });
-}
-
-
-function rInsightBU(el,aS,aE,bS,bE){
-  // Legend
-  const legend=document.createElement('div');
-  legend.style.cssText='font-size:10px;color:var(--mu);margin-bottom:16px;font-style:italic;';
-  legend.textContent='*Exclude SDC — hanya mencakup armada HCI, AHI, FBI, dan KLS';
-  el.appendChild(legend);
-
-  // Aggregate per BU
-  const buData={};
-  Object.entries(BU_MAP).forEach(([bk,bu])=>{
-    let rA=[],rB=[];
-    // Filter rows by owner across all sites
-    loadedSites.forEach(site=>{
-      const rows=siteData[site]||[];
-      rows.forEach(r=>{
-        // For Hub/BKS sites, use site name to determine BU
-        const buBySite=getBUofSite(site);
-        const buKey=buBySite||getBUofRow(r.o||'');
-        if(buKey!==bk) return;
-        const d=rowToInt(r.d);
-        const sdA=toInt(aS),edA=toInt(aE),sdB=toInt(bS),edB=toInt(bE);
-        if(d&&d>=sdA&&d<=edA) rA.push(r);
-        if(d&&d>=sdB&&d<=edB) rB.push(r);
-      });
-    });
-    buData[bk]={bu,rA,rB,aggA:agg(rA,{},{},''),aggB:agg(rB,{},{},'')};
-  });
-
-  // Executive Summary per BU — same style as rExec
-  const FUELS_EXEC2=[
-    {f:'Solar',chip:'fcs'},{f:'Dexlite',chip:'fcd'},
-    {f:'Pertalite',chip:'fcp'},{f:'Pertamax',chip:'fcx'},
-  ];
-
-  Object.entries(buData).forEach(([bk,{bu,aggA,aggB}])=>{
-    const sec=mSec(el,'Executive Summary — '+bu.label);
-    const card=mCard(sec,'Perbandingan Metrik A vs B','');
-    const dpA=aggA.tQ>0?aggA.dQ/aggA.tQ:0,dpB=aggB.tQ>0?aggB.dQ/aggB.tQ:0;
-    const dcpA=aggA.cA>0?aggA.dcA/aggA.cA:0,dcpB=aggB.cA>0?aggB.dcA/aggB.cA:0;
-    const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0,ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
-
-    let h=`<table class="et"><thead><tr>
-      <th>Metrik</th>
-      <th style="color:#2563eb">Bulan Lalu</th>
-      <th style="color:#f59e0b">Bulan Ini</th>
-      <th>Perubahan</th>
-    </tr></thead><tbody>`;
-
-    // Total Liter
-    const dTot=aggB.tQ-aggA.tQ;
-    h+=`<tr><td class="em">Total Liter</td><td class="ea">${fL(aggA.tQ)}</td><td class="eb">${fL(aggB.tQ)}</td>
-      <td><span class="dp ${dpcls(dTot,true)}">${dTot>=0?'+':'−'}${fL(Math.abs(dTot))}</span></td></tr>`;
-
-    // Per jenis BBM
-    FUELS_EXEC2.forEach(({f,chip})=>{
-      const fa=aggA.bF[f]||{q:0},fb=aggB.bF[f]||{q:0};
-      const pctA=aggA.tQ>0?fa.q/aggA.tQ*100:0,pctB=aggB.tQ>0?fb.q/aggB.tQ*100:0;
-      const dQ=fb.q-fa.q;
-      h+=`<tr style="background:var(--sur2)"><td class="em"><span class="fc ${chip}">${f}</span></td>
-        <td class="ea">${fL(fa.q)} <span style="font-size:9px;color:var(--mu)">(${pctA.toFixed(1)}%)</span></td>
-        <td class="eb">${fL(fb.q)} <span style="font-size:9px;color:var(--mu)">(${pctB.toFixed(1)}%)</span></td>
-        <td><span class="dp ${dpcls(dQ,true)}">${dQ>=0?'+':'−'}${fL(Math.abs(dQ))}</span></td></tr>`;
-    });
-
-    h+=`<tr><td colspan="4" style="padding:3px 0;border-bottom:2px solid var(--brd);"></td></tr>`;
-
-    // Cost rows
-    [['Biaya BBM (Harga Awal Tahun)',aggA.cB,aggB.cB],['Biaya BBM (Harga Aktual)',aggA.cA,aggB.cA],['Dampak Kenaikan Harga Dexlite',aggA.dImp,aggB.dImp]].forEach(([m,va,vb])=>{
-      const d=vb-va;
-      h+=`<tr><td class="em">${m}</td><td class="ea">${fS(va)}</td><td class="eb">${fS(vb)}</td>
-        <td><span class="dp ${dpcls(d,true)}">${d>=0?'+':'−'}${fS(Math.abs(d))}</span></td></tr>`;
-    });
-    [['% Impact / Cost',ipA,ipB],['% Biaya Dexlite dari Total',dcpA,dcpB]].forEach(([m,va,vb])=>{
-      const d=(vb-va)*100;
-      h+=`<tr><td class="em">${m}</td><td class="ea">${fP(va)}</td><td class="eb">${fP(vb)}</td>
-        <td><span class="dp ${dpcls(d,true)}">${d>=0?'+':'−'}${Math.abs(d).toFixed(2)}pp</span></td></tr>`;
-    });
-
-    h+='</tbody></table>';
-    card.innerHTML+=h;
-  });
-
-  // Charts: Cost & Volume per BU
-  const sec2=mSec(el,'Analisis Volume & Cost per BU');
-  const row=document.createElement('div');row.className='g2b';sec2.appendChild(row);
-  const c1=mCard(row,'Cost After per BU','Juta Rp — A vs B');c1.innerHTML+=`<canvas id="cv_bu_cost"></canvas>`;
-  const c2=mCard(row,'Volume per BU','Liter — A vs B');c2.innerHTML+=`<canvas id="cv_bu_qty"></canvas>`;
-
-  requestAnimationFrame(()=>{
-    const buKeys=Object.keys(BU_MAP);
-    const colors=buKeys.map(k=>BU_MAP[k].color);
-    mkC('cv_bu_cost',{type:'bar',data:{labels:buKeys,datasets:[
-      {label:'Periode A',data:buKeys.map(k=>buData[k].aggA.cA/1e6),backgroundColor:colors.map(c=>c+'44'),borderColor:colors,borderWidth:1.5,borderRadius:5},
-      {label:'Periode B',data:buKeys.map(k=>buData[k].aggB.cA/1e6),backgroundColor:colors.map(c=>c+'88'),borderColor:colors,borderWidth:1.5,borderRadius:5}
-    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>'Rp '+v.toFixed(1)+' Jt'}}}}});
-
-    mkC('cv_bu_qty',{type:'bar',data:{labels:buKeys,datasets:[
-      {label:'Periode A',data:buKeys.map(k=>buData[k].aggA.tQ),backgroundColor:colors.map(c=>c+'44'),borderColor:colors,borderWidth:1.5,borderRadius:5},
-      {label:'Periode B',data:buKeys.map(k=>buData[k].aggB.tQ),backgroundColor:colors.map(c=>c+'88'),borderColor:colors,borderWidth:1.5,borderRadius:5}
-    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#64748b',font:{size:10}}}},scales:{x:{grid:{display:false},ticks:{color:'#64748b'}},y:{grid:{color:'#e2e8f0'},ticks:{color:'#64748b',font:{size:10},callback:v=>v.toLocaleString('id-ID',{maximumFractionDigits:0})+'L'}}}}});
-  });
-
-  // Impact per BU
-  const sec3=mSec(el,'Impact Kenaikan Dexlite per BU');
-  const card3=mCard(sec3,'Dampak Kenaikan Harga per BU','Periode B');
-  const tg=document.createElement('div');tg.className='tg';card3.appendChild(tg);
-  Object.entries(buData).sort((a,b)=>b[1].aggB.dImp-a[1].aggB.dImp).forEach(([bk,{bu,aggA,aggB}],i)=>{
-    const ipB=aggB.cA>0?aggB.dImp/aggB.cA:0;
-    const ipA=aggA.cA>0?aggA.dImp/aggA.cA:0;
-    const d=(ipB-ipA)*100;
-    const div=document.createElement('div');div.className='tc';
-    div.innerHTML=`<div class="tr2">${String(i+1).padStart(2,'0')}</div>
-      <div class="ts">${bu.label}</div>
-      <span class="gb" style="background:${bu.color}22;color:${bu.color};margin-bottom:5px;display:inline-block">${bu.owners.join(', ')}</span>
-      <div class="tp" style="color:${bu.color}">${fP(ipB)}</div>
-      <div class="tm">Dexlite: ${fL(aggB.dQ)} | Impact: ${fS(aggB.dImp)}<br>Periode A: ${fP(ipA)} | ${fS(aggA.dImp)}</div>
-      <div class="tde" style="color:${d>=0?'#dc2626':'#059669'}">${d>=0?'▲ +':'▼ '}${Math.abs(d).toFixed(2)}pp vs Periode A</div>
-      <div class="tbb"><div class="tbf" style="width:${Math.min(ipB*100,100)}%;background:${bu.color}"></div></div>`;
-    tg.appendChild(div);
   });
 }
 
