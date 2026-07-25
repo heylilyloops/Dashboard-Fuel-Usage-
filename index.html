@@ -860,7 +860,17 @@ function rLaporan(el){
     return null;
   }
 
-  // Harga Dexlite per bulan (P Jawa & L Jawa)
+  // Dark elegant color palette per month
+  const MONTH_COLORS={
+    1:{bg:'#1e293b',accent:'#7dd3fc',label:'Januari 2026'},   // slate + sky
+    2:{bg:'#1e2a3a',accent:'#6ee7b7',label:'Februari 2026'},  // dark + emerald
+    3:{bg:'#1a2535',accent:'#a5b4fc',label:'Maret 2026'},     // dark + indigo
+    4:{bg:'#1f2937',accent:'#fcd34d',label:'April 2026'},     // dark + amber
+    5:{bg:'#1e2030',accent:'#f9a8d4',label:'Mei 2026'},       // dark + pink
+    6:{bg:'#162032',accent:'#5eead4',label:'Juni 2026'},      // dark + teal
+    7:{bg:'#1c1f2e',accent:'#fb923c',label:'Juli 2026'},      // dark + orange
+  };
+
   const DEX_PRICE={
     1:{pjawa:14200,ljawa:14500},2:{pjawa:14200,ljawa:14500},3:{pjawa:14200,ljawa:14500},
     4:{pjawa:14200,ljawa:23600},5:{pjawa:26000,ljawa:26550},
@@ -868,18 +878,18 @@ function rLaporan(el){
   };
 
   const MONTHS=[
-    {m:1,label:'Januari 2026',short:'Jan',color:'#4c1d95',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:2,label:'Februari 2026',short:'Feb',color:'#0e7490',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:3,label:'Maret 2026',short:'Mar',color:'#065f46',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:4,label:'April 2026',short:'Apr',color:'#6d28d9',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:5,label:'Mei 2026',short:'Mei',color:'#991b1b',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:6,label:'Juni 2026',short:'Jun',color:'#0f766e',weeks:4,note:'Full Month ÷ 4 Minggu'},
-    {m:7,label:'Juli 2026',short:'Jul',color:'#c2410c',weeks:1,note:'W1 (1 Minggu)'},
+    {m:1,weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:2,weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:3,weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:4,weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:5,weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:6,weeks:4,note:'Full Month ÷ 4 Minggu'},
+    {m:7,weeks:1,note:'W1 (1 Minggu)'},
   ];
 
   // Aggregate per site per month
   const monthly={};
-  for(let m=1;m<=7;m++) monthly[m]={qty:0,cost:0,dexQty:0,dexCost:0};
+  for(let m=1;m<=7;m++) monthly[m]={qty:0,cost:0,dexQty:0,dexCost:0,solarQty:0,solarCost:0,pertQty:0,pertCost:0,maxQty:0,maxCost:0};
 
   const siteM={};
   loadedSites.forEach(site=>{
@@ -888,127 +898,174 @@ function rLaporan(el){
       const dt=parseDateM(r.d);
       if(!dt||dt.y!==2026||dt.m>7) return;
       const m=dt.m;
-      if(!siteM[site][m]) siteM[site][m]={qty:0,cost:0,dexQty:0,dexCost:0};
-      const q=r.q||0;
+      if(!siteM[site][m]) siteM[site][m]={qty:0,cost:0,dexQty:0,dexCost:0,solarQty:0,solarCost:0,pertQty:0,pertCost:0,maxQty:0,maxCost:0};
+      const q=r.q||0, f=(r.f||'').toLowerCase();
       const price=getActualPrice(r.f,q,r.i,site,r.d);
       const c=q*price;
-      siteM[site][m].qty+=q;
-      siteM[site][m].cost+=c;
-      if((r.f||'').toLowerCase()==='dexlite'){siteM[site][m].dexQty+=q;siteM[site][m].dexCost+=c;}
+      siteM[site][m].qty+=q; siteM[site][m].cost+=c;
+      if(f==='dexlite'){siteM[site][m].dexQty+=q;siteM[site][m].dexCost+=c;}
+      if(f==='solar'||f==='bio solar'){siteM[site][m].solarQty+=q;siteM[site][m].solarCost+=c;}
+      if(f==='pertalite'){siteM[site][m].pertQty+=q;siteM[site][m].pertCost+=c;}
+      if(f==='pertamax'){siteM[site][m].maxQty+=q;siteM[site][m].maxCost+=c;}
     });
   });
 
-  // Fill assumptions
   loadedSites.forEach(site=>{
     const avail=Object.keys(siteM[site]).map(Number).filter(m=>siteM[site][m]&&siteM[site][m].qty>0).sort((a,b)=>a-b);
     if(!avail.length) return;
     const firstM=avail[0];
     for(let m=1;m<=7;m++){
       const d=siteM[site][m];
+      const keys=['qty','cost','dexQty','dexCost','solarQty','solarCost','pertQty','pertCost','maxQty','maxCost'];
       if(d&&d.qty>0){
-        monthly[m].qty+=d.qty;monthly[m].cost+=d.cost;
-        monthly[m].dexQty+=d.dexQty;monthly[m].dexCost+=d.dexCost;
+        keys.forEach(k=>monthly[m][k]+=d[k]||0);
       } else if(m<firstM){
         const mir=siteM[site][firstM];
         const ratio=(DAYS[m]||30)/(DAYS[firstM]||30);
-        monthly[m].qty+=mir.qty*ratio;monthly[m].cost+=mir.cost*ratio;
-        monthly[m].dexQty+=mir.dexQty*ratio;monthly[m].dexCost+=mir.dexCost*ratio;
+        keys.forEach(k=>monthly[m][k]+=(mir[k]||0)*ratio);
       }
     }
   });
 
+  // ── WRAPPER dark bg ──
+  const wrap=document.createElement('div');
+  wrap.style.cssText='background:#0f172a;border-radius:16px;padding:28px 28px 32px;margin-bottom:24px;';
+  el.appendChild(wrap);
+
   // Header
   const hdr=document.createElement('div');
-  hdr.style.cssText='margin-bottom:20px;';
+  hdr.style.cssText='margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:18px;';
   hdr.innerHTML=`
-    <div style="font-size:26px;font-weight:900;color:var(--nv);line-height:1.1;">LAPORAN PEMAKAIAN</div>
-    <div style="font-size:20px;font-weight:800;color:#06b6d4;line-height:1.2;margin-bottom:6px;">BBM NASIONAL</div>
-    <div style="font-size:11px;color:var(--mu);">Analisis Bulanan & Rata-Rata Mingguan &nbsp;|&nbsp; ${loadedSites.length} Site Nasional &nbsp;|&nbsp; 5 Group</div>`;
-  el.appendChild(hdr);
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:3px;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">Transport · SCM</div>
+        <div style="font-size:30px;font-weight:900;color:#f8fafc;line-height:1.1;">Laporan Pemakaian <span style="color:#7dd3fc;">BBM Nasional</span></div>
+        <div style="font-size:12px;color:#64748b;margin-top:6px;">Analisis Bulanan & Rata-Rata Mingguan &nbsp;·&nbsp; ${loadedSites.length} Site Nasional &nbsp;·&nbsp; 5 Group</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:10px;color:#475569;font-weight:600;">Update</div>
+        <div style="font-size:13px;font-weight:700;color:#94a3b8;font-family:'JetBrains Mono',monospace;">YTD 2026</div>
+      </div>
+    </div>`;
+  wrap.appendChild(hdr);
 
-  // Cards grid - 4 top, 3 bottom
+  // Cards grid
   const grid1=document.createElement('div');
-  grid1.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;';
+  grid1.style.cssText='display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px;';
   const grid2=document.createElement('div');
-  grid2.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;';
-  el.appendChild(grid1);el.appendChild(grid2);
+  grid2.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;';
+  wrap.appendChild(grid1); wrap.appendChild(grid2);
 
   MONTHS.forEach((mc,idx)=>{
     const d=monthly[mc.m]||{qty:0,cost:0,dexQty:0,dexCost:0};
+    const cl=MONTH_COLORS[mc.m];
     const avgWeek=d.qty/(mc.weeks||4);
     const avgCostWeek=d.cost/(mc.weeks||4);
     const dexPct=d.cost>0?d.dexCost/d.cost*100:0;
     const px=DEX_PRICE[mc.m];
 
-    const wrap=document.createElement('div');
+    const cardWrap=document.createElement('div');
 
-    // Price trendline header
+    // Price header
     const ph=document.createElement('div');
-    ph.style.cssText='font-size:9px;color:var(--mu);margin-bottom:5px;line-height:1.4;font-weight:600;';
-    ph.innerHTML=`Harga ${mc.short} · Dexlite &nbsp;
-      <span style="color:#2563eb">P.Jawa Rp ${px.pjawa.toLocaleString('id-ID')}</span> &nbsp;
-      <span style="color:#ef4444">L.Jawa Rp ${px.ljawa.toLocaleString('id-ID')}</span>`;
-    wrap.appendChild(ph);
+    ph.style.cssText='font-size:9px;color:#64748b;margin-bottom:5px;font-weight:600;line-height:1.5;';
+    ph.innerHTML=`Dexlite ${cl.label.split(' ')[0]} &nbsp;·&nbsp;
+      <span style="color:#7dd3fc">P.Jawa Rp ${(px.pjawa/1000).toFixed(1)}rb</span> &nbsp;
+      <span style="color:#f9a8d4">L.Jawa Rp ${(px.ljawa/1000).toFixed(1)}rb</span>`;
+    cardWrap.appendChild(ph);
 
     const card=document.createElement('div');
-    card.style.cssText=`background:${mc.color};border-radius:12px;padding:18px 20px;color:#fff;`;
+    card.style.cssText=`background:${cl.bg};border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden;`;
+
+    // Accent top border
     card.innerHTML=`
-      <div style="font-size:20px;font-weight:900;margin-bottom:2px;">${mc.label}</div>
-      <div style="font-size:10px;color:rgba(255,255,255,.7);margin-bottom:14px;font-weight:700;letter-spacing:.5px;">${mc.note}</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:${cl.accent};opacity:.8;border-radius:12px 12px 0 0;"></div>
+      <div style="font-size:15px;font-weight:800;color:#f1f5f9;margin-bottom:2px;">${cl.label}</div>
+      <div style="font-size:9px;color:#475569;font-weight:700;letter-spacing:.5px;margin-bottom:14px;">${mc.note}</div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:11px;opacity:.8;">Total Liter</span>
-          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${Math.round(d.qty).toLocaleString('id-ID')} Ltr</span>
+          <span style="font-size:10px;color:#94a3b8;">Total Liter</span>
+          <span style="font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#f1f5f9;">${Math.round(d.qty).toLocaleString('id-ID')} <span style="font-size:10px;font-weight:600;">Ltr</span></span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:11px;opacity:.8;">Avg/Minggu</span>
-          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${Math.round(avgWeek).toLocaleString('id-ID')} Ltr</span>
+          <span style="font-size:10px;color:#94a3b8;">Avg/Minggu</span>
+          <span style="font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace;color:${cl.accent};">${Math.round(avgWeek).toLocaleString('id-ID')} <span style="font-size:10px;">Ltr</span></span>
         </div>
-        <div style="height:1px;background:rgba(255,255,255,.2);margin:2px 0;"></div>
+        <div style="height:1px;background:rgba(255,255,255,.06);"></div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:11px;opacity:.8;">Cost BBM</span>
-          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${fS(d.cost)}</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:11px;color:rgba(255,255,255,.75);font-weight:600;">Avg Cost/Minggu</span>
-          <span style="font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#fde68a;">${fS(avgCostWeek)}</span>
-        </div>
-        <div style="height:1px;background:rgba(255,255,255,.2);margin:2px 0;"></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:11px;opacity:.8;">Cost Dexlite</span>
-          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${fS(d.dexCost)}</span>
+          <span style="font-size:10px;color:#94a3b8;">Cost BBM</span>
+          <span style="font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#f1f5f9;">${fS(d.cost)}</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:baseline;">
-          <span style="font-size:11px;opacity:.8;">Dex % Cost</span>
-          <span style="font-size:16px;font-weight:800;font-family:'JetBrains Mono',monospace;">${dexPct.toFixed(2)}%</span>
+          <span style="font-size:10px;color:#64748b;">Avg Cost/Minggu</span>
+          <span style="font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;color:${cl.accent};">${fS(avgCostWeek)}</span>
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,.06);"></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:10px;color:#94a3b8;">Cost Dexlite</span>
+          <span style="font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;color:#f1f5f9;">${fS(d.dexCost)}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-size:10px;color:#94a3b8;">Dex % Cost</span>
+          <span style="font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;color:${dexPct>15?'#fca5a5':dexPct>10?'#fcd34d':cl.accent};">${dexPct.toFixed(2)}%</span>
         </div>
       </div>`;
-    wrap.appendChild(card);
-    if(idx<4) grid1.appendChild(wrap); else grid2.appendChild(wrap);
+    cardWrap.appendChild(card);
+    if(idx<4) grid1.appendChild(cardWrap); else grid2.appendChild(cardWrap);
+  });
+
+  // ── TREND CHART ──
+  const trendSec=document.createElement('div');
+  trendSec.style.cssText='border-top:1px solid rgba(255,255,255,.06);padding-top:22px;margin-top:4px;';
+  wrap.appendChild(trendSec);
+
+  const trendTitle=document.createElement('div');
+  trendTitle.style.cssText='font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#475569;margin-bottom:14px;';
+  trendTitle.textContent='Trend Pemakaian BBM — Avg per Minggu';
+  trendSec.appendChild(trendTitle);
+
+  const trendGrid=document.createElement('div');
+  trendGrid.style.cssText='display:grid;grid-template-columns:1.5fr 1fr;gap:16px;';
+  trendSec.appendChild(trendGrid);
+
+  const c1=document.createElement('div');
+  c1.style.cssText='background:#1e293b;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px;';
+  c1.innerHTML='<div style="font-size:10px;color:#64748b;font-weight:700;margin-bottom:10px;">Volume per Jenis BBM (Ltr/Minggu)</div><canvas id="cv_lap_vol" style="max-height:200px;"></canvas>';
+
+  const c2=document.createElement('div');
+  c2.style.cssText='background:#1e293b;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px;';
+  c2.innerHTML='<div style="font-size:10px;color:#64748b;font-weight:700;margin-bottom:10px;">Cost BBM & Dex % Cost</div><canvas id="cv_lap_cost" style="max-height:200px;"></canvas>';
+
+  trendGrid.appendChild(c1); trendGrid.appendChild(c2);
+
+  requestAnimationFrame(()=>{
+    const mLabels=['Jan','Feb','Mar','Apr','Mei','Jun','Jul'];
+    const mData=MONTHS.map(mc=>monthly[mc.m]||{qty:0,cost:0,dexQty:0,dexCost:0,solarQty:0,pertQty:0,maxQty:0});
+
+    // Volume stacked bar
+    mkC('cv_lap_vol',{type:'bar',data:{labels:mLabels,datasets:[
+      {label:'Solar',data:mData.map((d,i)=>d.solarQty/(MONTHS[i].weeks||4)),backgroundColor:'#fcd34d88',borderColor:'#fcd34d',borderWidth:1,stack:'v'},
+      {label:'Dexlite',data:mData.map((d,i)=>d.dexQty/(MONTHS[i].weeks||4)),backgroundColor:'#f9a8d488',borderColor:'#f9a8d4',borderWidth:1,stack:'v'},
+      {label:'Pertalite',data:mData.map((d,i)=>d.pertQty/(MONTHS[i].weeks||4)),backgroundColor:'#7dd3fc88',borderColor:'#7dd3fc',borderWidth:1,stack:'v'},
+      {label:'Pertamax',data:mData.map((d,i)=>d.maxQty/(MONTHS[i].weeks||4)),backgroundColor:'#a5b4fc88',borderColor:'#a5b4fc',borderWidth:1,stack:'v'},
+    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8',font:{size:9},boxWidth:10}}},scales:{
+      x:{stacked:true,grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#64748b',font:{size:9}}},
+      y:{stacked:true,grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#64748b',font:{size:9},callback:v=>v.toLocaleString('id-ID')+'L'}}
+    }}});
+
+    // Cost line + Dex% line
+    const dexPcts=mData.map(d=>d.cost>0?d.dexCost/d.cost*100:0);
+    mkC('cv_lap_cost',{type:'bar',data:{labels:mLabels,datasets:[
+      {label:'Cost BBM (Jt)',data:mData.map((d,i)=>d.cost/(MONTHS[i].weeks||4)/1e6),backgroundColor:'#5eead488',borderColor:'#5eead4',borderWidth:1.5,borderRadius:4,order:2},
+      {label:'Dex % Cost',data:dexPcts,type:'line',yAxisID:'y2',borderColor:'#fb923c',backgroundColor:'transparent',borderWidth:2,pointRadius:4,pointBackgroundColor:'#fb923c',tension:.3,order:1},
+    ]},options:{responsive:true,plugins:{legend:{labels:{color:'#94a3b8',font:{size:9},boxWidth:10}}},scales:{
+      x:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#64748b',font:{size:9}}},
+      y:{grid:{color:'rgba(255,255,255,.04)'},ticks:{color:'#64748b',font:{size:9},callback:v=>'Rp '+v.toFixed(0)+' Jt'},position:'left'},
+      y2:{position:'right',grid:{display:false},ticks:{color:'#fb923c',font:{size:9},callback:v=>v.toFixed(1)+'%'}}
+    }}});
   });
 }
 
-function rKPI(el,a,b){
-  const dpA=a.tQ>0?a.dQ/a.tQ:0,dpB=b.tQ>0?b.dQ/b.tQ:0;
-  const ipA=a.cA>0?a.dImp/a.cA:0,ipB=b.cA>0?b.dImp/b.cA:0;
-  const ks=[
-    {l:'Total Liter',va:fL(a.tQ),vb:fL(b.tQ),d:b.tQ-a.tQ,f:v=>fL(Math.abs(v)),lg:true,c:'#2563eb'},
-    {l:'Dexlite Volume',va:fL(a.dQ),vb:fL(b.dQ),d:b.dQ-a.dQ,f:v=>fL(Math.abs(v)),lg:true,c:'#ef4444'},
-    {l:'Cost After Hike',va:fS(a.cA),vb:fS(b.cA),d:b.cA-a.cA,f:v=>fS(Math.abs(v)),lg:true,c:'#dc2626'},
-    {l:'Impact Kenaikan',va:fS(a.dImp),vb:fS(b.dImp),d:b.dImp-a.dImp,f:v=>fS(Math.abs(v)),lg:true,c:'#7c3aed'},
-    {l:'% Impact / Cost',va:fP(ipA),vb:fP(ipB),d:(ipB-ipA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f59e0b'},
-    {l:'Total Trip',va:a.trip.toLocaleString('id-ID'),vb:b.trip.toLocaleString('id-ID'),d:b.trip-a.trip,f:v=>Math.abs(v).toLocaleString('id-ID'),lg:false,c:'#059669'},
-    {l:'Cost Before',va:fS(a.cB),vb:fS(b.cB),d:b.cB-a.cB,f:v=>fS(Math.abs(v)),lg:true,c:'#0891b2'},
-    {l:'Dexlite % Vol',va:fP(dpA),vb:fP(dpB),d:(dpB-dpA)*100,f:v=>Math.abs(v).toFixed(2)+'pp',lg:true,c:'#f97316'},
-  ];
-  const g=document.createElement('div');g.className='kg';
-  g.innerHTML=ks.map(k=>`<div class="kc" style="--kc:${k.c}">
-    <div class="kl">${k.l}</div>
-    <div class="kv"><span class="kva">${k.va}</span><span class="ksp">→</span><span class="kvb">${k.vb}</span></div>
-    <span class="kd ${dcls(k.d,k.lg)}">${k.d>=0?'+':'−'}${k.f(k.d)}</span>
-  </div>`).join('');
-  el.appendChild(g);
-}
 
 function rMap(el,bS,bE,pA,pB){
   const sec=mSec(el,'Sebaran Site Nasional');
