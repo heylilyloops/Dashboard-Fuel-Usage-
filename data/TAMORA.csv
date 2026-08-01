@@ -5566,7 +5566,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260703D129,HCI,3-Jul-2026,Solar,6.62,Deli Serdang,45000.0
 260703C180,HCI,3-Jul-2026,,,Medan,0.0
 260703D175,HCI,3-Jul-2026,Solar,4.41,Medan,30000.0
-260703D140,FBI,3-Jul-2026,Pertalite,14.3,Medan,143000.0
+260703D140,FBI,3-Jul-2026,Pertalite,14.3,Binjai,143000.0
 260703C211,HCI,3-Jul-2026,Solar,14.71,Medan,100000.0
 260703C288,HCI,3-Jul-2026,,,Medan,0.0
 260703D130,HCI,3-Jul-2026,Solar,7.35,Deli Serdang,50000.0
@@ -5640,7 +5640,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260706C225,HCI,6-Jul-2026,Solar,5.15,Medan,35000
 260706C228,HCI,6-Jul-2026,Solar,6.47,Medan,44000
 260706D124,AHI,6-Jul-2026,Solar,4.41,Medan,30000
-260706D114,FBI,6-Jul-2026,Pertalite,10,Medan,100000
+260706D114,FBI,6-Jul-2026,Pertalite,10,Binjai,100000
 260706C210,HCI,6-Jul-2026,Solar,16.18,Medan,110000
 260706C211,HCI,6-Jul-2026,Solar,8.09,Medan,55000
 260706C232,HCI,6-Jul-2026,Solar,35.88,Langkat,244000
@@ -6062,7 +6062,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260719C160,HCI,19-Jul-2026,Pertalite,9.5,Medan,95000
 260719C140,HCI,19-Jul-2026,Solar,12.5,Binjai,85000
 260719H046,HCI,19-Jul-2026,Solar,32.35,Pematangsiantar,220000
-260720D134,FBI,20-Jul-2026,Pertalite,10.4,Medan,104000
+260720D134,FBI,20-Jul-2026,Pertalite,10.4,Binjai,104000
 260720D067,AHI,20-Jul-2026,Solar,6.03,Deli Serdang,41000
 260720C224,HCI,20-Jul-2026,Solar,8.82,Medan,60000
 260720C238,HCI,20-Jul-2026,Solar,4.41,Deli Serdang,30000
@@ -6467,3 +6467,38 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260730H065,HCI,30-Jul-2026,Solar,29.12,Pematangsiantar,198000
 260730D150,HCI,30-Jul-2026,Solar,4.71,Medan,32000
 260730D191,HCI,30-Jul-2026,Solar,6.47,Medan,44000
+,,,,,,55000
+,,,,,,30000
+,,,,,,75000
+,,,,,,40000
+,,,,,,30000
+,,,,,,30000
+,,,,,,0
+,,,,,,35000
+,,,,,,38000
+,,,,,,40000
+,,,,,,89000
+,,,,,,105000
+,,,,,,110000
+,,,,,,40000
+,,,,,,70000
+,,,,,,100000
+,,,,,,75000
+,,,,,,0
+,,,,,,85000
+,,,,,,80000
+,,,,,,55000
+,,,,,,65000
+,,,,,,80000
+,,,,,,226000
+,,,,,,110000
+,,,,,,250000
+,,,,,,250000
+,,,,,,99000
+,,,,,,80000
+,,,,,,207000
+,,,,,,80000
+,,,,,,80000
+,,,,,,30000
+,,,,,,25000
+,,,,,,82000
