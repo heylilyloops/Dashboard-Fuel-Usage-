@@ -414,9 +414,9 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260731S111,HCI,31-Jul-2026,Rechecked,0.05,Jember Barat,Rp365.00
 260801S127,HCI,1-Aug-2026,,0.0,Jember Selatan,0
 260801S128,HCI,1-Aug-2026,,0.0,Jember Timur,0
-260802S100,HCI,2-Aug-2026,,0.0,Jember Utara,
-260802S105,HCI,2-Aug-2026,,0.0,Bondowoso,
-,,,,0.0,,
+260802S100,HCI,2-Aug-2026,,0.0,Jember Utara,0
+260802S105,HCI,2-Aug-2026,,0.0,Bondowoso,0
+260803S171,HCI,3-Aug-2026,,0.0,Jember Selatan,0
 ,,,,0.0,,
 ,,,,0.0,,
 ,,,,0.0,,
