@@ -410,8 +410,8 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260729S155,HCI,29-Jul-2026,,0.0,Jember Selatan,0
 260730S157,HCI,30-Jul-2026,,0.0,Jember Timur,0
 260730S158,HCI,30-Jul-2026,,0.0,Jember Barat,0
-260731S110,HCI,31-Jul-2026,Rechecked,0.06,Bondowoso,Rp400.00
-260731S111,HCI,31-Jul-2026,Rechecked,0.05,Jember Barat,Rp365.00
+260731S110,HCI,31-Jul-2026,Rechecked,58.82,Bondowoso,"Rp400,000.00"
+260731S111,HCI,31-Jul-2026,Rechecked,53.68,Jember Barat,"Rp365,000.00"
 260801S127,HCI,1-Aug-2026,,0.0,Jember Selatan,0
 260801S128,HCI,1-Aug-2026,,0.0,Jember Timur,0
 260802S100,HCI,2-Aug-2026,,0.0,Jember Utara,0
@@ -422,5 +422,16 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260804S153,HCI,4-Aug-2026,,0.0,Jember Timur,0
 260805S123,HCI,5-Aug-2026,,0.0,Lumajang,0
 260805S124,HCI,5-Aug-2026,,0.0,Bondowoso,0
-,,,,0.0,,
-,,,,0.0,,
+260806S204,HCI,6-Aug-2026,,0.0,Jember Timur,0
+260806S224,HCI,6-Aug-2026,Rechecked,57.35,Jember Barat,"Rp390,000.00"
+260807S132,HCI,7-Aug-2026,,,Lumajang,0
+260807S134,HCI,7-Aug-2026,,,Jember Barat,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
