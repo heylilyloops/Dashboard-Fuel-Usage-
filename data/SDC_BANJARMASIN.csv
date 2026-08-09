@@ -32,7 +32,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 ,,26 Mar 2026,Pertalite,38,,"Rp 380,000"
 ,,26 Mar 2026,Pertalite,40,,"Rp 400,000"
 ,,26 Mar 2026,Dexlite,81,,"Rp 1,200,000"
-,,26 March 2026,Dexlite,81,,"Rp 1,200,000"
+,,26 March 2026,Dexlite,81,,"Rp1,200,000"
 ,,26 Mar 2026,Pertalite,37,,"Rp 365,000"
 ,,26 Mar 2026,Pertalite,34,,"Rp 335,200"
 ,,26 March 2026,Pertalite,37,,"Rp365,000"
@@ -254,3 +254,5 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 ,,06 Aug 2026,,0,,Rp 0
 ,,07 Aug 2026,Dexlite,12,,"Rp 250,000"
 ,,07 Aug 2026,Dexlite,80,,"Rp 1,650,000"
+,,08 Aug 2026,Pertalite,36,,"Rp 364,900"
+,,08 Aug 2026,Pertalite,,,
