@@ -88,8 +88,8 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 ,,23 July 2026,,0,,0
 ,,24 July 2026,,0,,0
 ,,25 July 2026,,0,,0
-,,26 July 2026,Pertalite,24,,"Rp 240,000"
-,,27 July 2026,Bio Solar,23,,"Rp 156,400"
+,,26 July 2026,Pertalite,24,,240000
+,,27 July 2026,Bio Solar,23,,156400
 ,,28 July 2026,,0,,0
 ,,29 July 2026,,0,,0
 ,,30 July 2026,,0,,0
@@ -129,7 +129,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 ,,02 September 2026,,0,,Rp 0
 ,,03 September 2026,,0,,Rp 0
 ,,04 September 2026,,0,,Rp 0
-,,05 September 2026,,,,
+,,05 September 2026,,0,,Rp 0
 ,,06 September 2026,,,,
 ,,07 September 2026,,,,
 ,,08 September 2026,,,,
