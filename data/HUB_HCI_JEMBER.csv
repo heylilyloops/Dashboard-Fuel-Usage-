@@ -500,5 +500,13 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260912S065,HCI,9/12/2026,,0.0,Jember Selatan,0
 260913S071,HCI,9/13/2026,,0.0,Jember Selatan,0
 260913S070,HCI,9/13/2026,,0.0,Jember Utara,0
-0,HCI,0,,,0,
-260914S229,HCI,9/14/2026,,,Jember Utara,
+0,HCI,0,,0.0,0,
+260914S229,HCI,9/14/2026,,0.0,Jember Utara,0
+260915S155,HCI,15-Sep-2026,,0.0,Lumajang,0
+260915S163,HCI,15-Sep-2026,,0.0,Jember Timur,0
+,,,,0.0,,0
+,,,,0.0,,0
+,,,,0.0,,0
+,,,,0.0,,0
+,,,,0.0,,0
+,,,,,,0
