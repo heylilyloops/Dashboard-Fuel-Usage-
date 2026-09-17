@@ -429,7 +429,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260808S166,HCI,8-Aug-2026,,0.0,Jember Timur,0
 260808S008,HCI,8-Aug-2026,,0.0,Jember Barat,0
 260809S026,HCI,9-Aug-2026,,0.0,Jember Barat,0
-260809S101,HCI,9-Aug-2026,Rechecked,55.0,Lumajang,"Rp374,000.00"
+260809S101,HCI,9-Aug-2026,Pertalite,55.0,Lumajang,"Rp374,000.00"
 260810S225,HCI,10-Aug-2026,Solar,58.82,Jember Timur,"Rp400,000.00"
 260810S226,HCI,8/10/2026,,0.0,Jember Utara,0
 260811S111,HCI,11-Aug-2026,,0.0,Jember Timur,
@@ -437,7 +437,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260812S123,HCI,8/12/2026,,0.0,Lumajang,0
 260812S125,HCI,12-Aug-2026,,0.0,Bondowoso,0
 260813S115,HCI,13-Aug-2026,,0.0,Jember Utara,0
-260813S120,HCI,13-Aug-2026,Rechecked,47.94,Bondowoso,"Rp326,000.00"
+260813S120,HCI,13-Aug-2026,Pertalite,47.94,Bondowoso,"Rp326,000.00"
 260814S115,HCI,14-Aug-2026,,0.0,Lumajang,0
 260814S116,HCI,14-Aug-2026,,0.0,Bondowoso,0
 260815S202,HCI,15-Aug-2026,Solar,58.82,Jember Timur,"Rp400,000.00"
@@ -447,7 +447,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 0,HCI,0,,0.0,0,0
 260817S209,HCI,17-Aug-2026,,0.0,Jember Selatan,0
 260818S136,HCI,18-Aug-2026,,0.0,Jember Timur,0
-260818S138,HCI,18-Aug-2026,Rechecked,49.12,Jember Selatan,"Rp334,000.00"
+260818S138,HCI,18-Aug-2026,Pertalite,49.12,Jember Selatan,"Rp334,000.00"
 260819S112,HCI,19-Aug-2026,,0.0,Bondowoso,0
 260819S113,HCI,19-Aug-2026,,0.0,Jember Barat,0
 260820S177,HCI,20-Aug-2026,,0.0,Jember Selatan,0
@@ -455,7 +455,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260821S205,HCI,21-Aug-2026,,0.0,Bondowoso,0
 260821S216,HCI,21-Aug-2026,,0.0,Lumajang,0
 260822S109,HCI,22-Aug-2026,,0.0,Jember Utara,0
-260822S110,HCI,22-Aug-2026,Rechecked,48.82,Jember Timur,"Rp332,000.00"
+260822S110,HCI,22-Aug-2026,Pertalite,48.82,Jember Timur,"Rp332,000.00"
 260823S136,HCI,23-Aug-2026,,0.0,Lumajang,0
 260823S137,HCI,23-Aug-2026,,0.0,Bondowoso,0
 260824S124,HCI,24-Aug-2026,,0.0,Jember Utara,0
@@ -477,24 +477,24 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 260901S122,HCI,1-Sep-2026,,0.0,Jember Timur,0
 260901S073,HCI,9/1/2026,,0.0,Bondowoso,0
 260902S113,HCI,9/2/2026,,0.0,Lumajang,0
-260902S114,HCI,2-Sep-2026,Rechecked,56.62,Bondowoso,"Rp385,000.00"
+260902S114,HCI,2-Sep-2026,Pertalite,56.62,Bondowoso,"Rp385,000.00"
 260903S102,HCI,3-Sep-2026,Solar,58.82,Jember Utara,"Rp400,000.00"
 260903S103,HCI,3-Sep-2026,,0.0,Jember Timur,0
 260904S105,HCI,4-Sep-2026,,0.0,Jember Timur,0
 260904S106,HCI,4-Sep-2026,,0.0,Bondowoso,0
 260905S150,HCI,9/5/2026,,0.0,Jember Utara,0
 260905S142,HCI,9/5/2026,,0.0,Jember Barat,0
-260906S114,HCI,9/6/2026,,0.0,Jember Selatan,0
+260906S114,HCI,9/6/2026,Solar,58.82,Jember Selatan,"Rp400,000.00"
 260906S154,HCI,9/6/2026,,0.0,Lumajang,0
 260907S129,HCI,9/7/2026,,0.0,Jember Timur,
-260907S127,HCI,9/7/2026,Rechecked,49.56,Jember Utara,"Rp337,000.00"
+260907S127,HCI,9/7/2026,Pertalite,49.56,Jember Utara,"Rp337,000.00"
 260908S182,HCI,9/8/2026,,0.0,Bondowoso,0
 260908S125,HCI,9/8/2026,,0.0,Jember Barat,0
 260909S175,HCI,9/9/2026,,0.0,Bondowoso,0
 260909S162,HCI,9/9/2026,,0.0,Jember Selatan,0
 260910S108,HCI,10-Sep-2026,,0.0,Jember Utara,0
 260910S110,HCI,10-Sep-2026,,0.0,Jember Barat,0
-260911S114,HCI,11-Sep-2026,,0.0,Lumajang,0
+260911S114,HCI,11-Sep-2026,Solar,58.82,Lumajang,"Rp400,000.00"
 260911S115,HCI,11-Sep-2026,,0.0,Bondowoso,0
 260912S064,HCI,12-Sep-2026,,0.0,Jember Barat,0
 260912S065,HCI,9/12/2026,,0.0,Jember Selatan,0
@@ -503,10 +503,10 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 0,HCI,0,,0.0,0,
 260914S229,HCI,9/14/2026,,0.0,Jember Utara,0
 260915S155,HCI,15-Sep-2026,,0.0,Lumajang,0
-260915S163,HCI,15-Sep-2026,,0.0,Jember Timur,0
-260916S139,HCI,9/16/2026,,0.0,Lumajang,0
+260915S163,HCI,15-Sep-2026,Pertalite,50.15,Jember Timur,"Rp341,000.00"
+260916S139,HCI,9/16/2026,Solar,58.82,Lumajang,"Rp400,000.00"
 260916S140,HCI,16-Sep-2026,,0.0,Jember Barat,0
-,,,,0.0,,0
-,,,,0.0,,0
+260917S213,HCI,17-Sep-2026,,0.0,Jember Selatan,0
+260917S140,HCI,17-Sep-2026,,0.0,Jember Barat,0
 ,,,,0.0,,0
 ,,,,,,0
