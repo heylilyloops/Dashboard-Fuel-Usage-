@@ -723,3 +723,7 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 261029S178,HCI,2026-10-29,Pertalite,10,Kabupaten Tasik Sela,100000
 261030S168,HCI,2026-10-30,Pertalite,7,Kota Tasik Barat,70000
 261030S169,HCI,2026-10-30,Solar,7.35,Kota Tasik Utara,50000
+261031S001,HCI,2026-10-31,Pertalite,7.5,Singaparna,75000
+261031S190,HCI,2026-10-31,Solar,8.82,Ciamis Kota,60000
+261101S116,HCI,2026-11-01,Pertalite,5.7,Ciamis Utara,57000
+261101S215,HCI,2026-11-01,Solar,7.35,Singaparna,50000
