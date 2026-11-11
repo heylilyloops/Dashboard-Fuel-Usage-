@@ -610,8 +610,16 @@ LC,OWNER,Delivery Date,Fuel's Type,Qty Fuel,Jalur,BBM IDR
 261107S179,HCI,7-Nov-2026,,0.0,Jember Utara,0
 261107S178,HCI,7-Nov-2026,,0.0,Bondowoso,0
 261108S270,HCI,8-Nov-2026,,0.0,Jember Barat,0
-261108S271,HCI,8-Nov-2026,,0.0,Jember Utara,
-261109S228,HCI,9-Nov-2026,,0.0,Jember Utara,
-261109S169,HCI,9-Nov-2026,,0.0,Lumajang,
-261110S230,HCI,10-Nov-2026,,,Jember Barat,
-261110S293,HCI,10-Nov-2026,,,Jember Timur,
+261108S271,HCI,8-Nov-2026,,0.0,Jember Utara,0
+261109S228,HCI,9-Nov-2026,,0.0,Jember Utara,0
+261109S169,HCI,9-Nov-2026,,0.0,Lumajang,0
+261110S230,HCI,10-Nov-2026,,,Jember Barat,0
+261110S293,HCI,10-Nov-2026,,,Jember Timur,0
+261111S220,HCI,11-Nov-2026,,,Jember Barat,0
+261111S219,HCI,11-Nov-2026,,,Lumajang,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
+,,,,,,0
